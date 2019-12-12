@@ -44,11 +44,23 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\frmNovoCliente.cs">
+    <Compile Include="Forms\frmAtendenteDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmNovoCliente.Designer.cs">
-      <DependentUpon>frmNovoCliente.cs</DependentUpon>
+    <Compile Include="Forms\frmAtendenteDialog.Designer.cs">
+      <DependentUpon>frmAtendenteDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGenCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGenCliente.Designer.cs">
+      <DependentUpon>frmGenCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGerenciadorSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGerenciadorSistema.Designer.cs">
+      <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -58,8 +70,14 @@
     </Compile>
     <Compile Include="Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\frmNovoCliente.resx">
-      <DependentUpon>frmNovoCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmAtendenteDialog.resx">
+      <DependentUpon>frmAtendenteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGenCliente.resx">
+      <DependentUpon>frmGenCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGerenciadorSistema.resx">
+      <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -91,13 +109,22 @@
     <None Include="Resources\add-user.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

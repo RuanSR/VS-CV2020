@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace UI.Forms
 {
-    public partial class frmNovoCliente : Form
+    public partial class frmGenCliente : Form
     {
         
-        public frmNovoCliente(Size sizeParent)
+        public frmGenCliente(Size sizeParent)
         {
             InitializeComponent();
             sizeParent.Width = sizeParent.Width / 2;
