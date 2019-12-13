@@ -7,12 +7,9 @@ namespace UI.Forms
     public partial class frmGenCliente : Form
     {
         
-        public frmGenCliente(Size sizeParent)
+        public frmGenCliente()
         {
             InitializeComponent();
-            sizeParent.Width = sizeParent.Width / 2;
-            sizeParent.Height = sizeParent.Height / 2;
-            this.Size = sizeParent;
         }
     }
 }

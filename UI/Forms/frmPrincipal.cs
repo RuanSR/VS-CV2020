@@ -13,7 +13,7 @@ namespace UI.Forms
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
             //REUTILIZAR VARIÁVEL PARA VERIFICAÇÃO SE O FORM JÁ FOI FECHADO.\\
-            frmGenCliente frm = new frmGenCliente(this.Size);
+            frmGenCliente frm = new frmGenCliente();
             frm.ShowDialog();
         }
         private void btnSistema_Click(object sender, EventArgs e)
@@ -23,8 +23,17 @@ namespace UI.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //new frmLogin().ShowDialog();
-            new frmCliente(this.Size).ShowDialog();
+            new frmLogin().ShowDialog();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
         }
     }
 }

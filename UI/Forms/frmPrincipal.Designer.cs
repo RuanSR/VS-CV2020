@@ -43,6 +43,7 @@
             this.limite_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ultima_compra_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNotaRapida = new System.Windows.Forms.DataGridViewImageColumn();
             this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endereco_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +127,7 @@
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(55, 21);
             this.btnAbout.Text = "Sobre";
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // dataGridView1
             // 
@@ -133,7 +135,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -149,6 +151,7 @@
             this.limite_conta_cliente,
             this.ultima_compra_cliente,
             this.total_conta_cliente,
+            this.btnNotaRapida,
             this.id_cliente,
             this.endereco_cliente,
             this.telefone_cliente,
@@ -164,6 +167,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(484, 325);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // nome_cliente
             // 
@@ -202,6 +206,13 @@
             this.total_conta_cliente.HeaderText = "Total";
             this.total_conta_cliente.Name = "total_conta_cliente";
             this.total_conta_cliente.ReadOnly = true;
+            // 
+            // btnNotaRapida
+            // 
+            this.btnNotaRapida.HeaderText = "";
+            this.btnNotaRapida.Image = global::UI.Properties.Resources.speed;
+            this.btnNotaRapida.Name = "btnNotaRapida";
+            this.btnNotaRapida.ReadOnly = true;
             // 
             // id_cliente
             // 
@@ -321,12 +332,14 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBoxPesquisa;
         private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.ToolStripMenuItem btnSistema;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn login_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_conta_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn limite_conta_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn ultima_compra_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_conta_cliente;
+        private System.Windows.Forms.DataGridViewImageColumn btnNotaRapida;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn endereco_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone_cliente;
@@ -335,7 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total_pago_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_notas_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn conta_ativa_cliente;
-        private System.Windows.Forms.ToolStripMenuItem btnSistema;
     }
 }
 
