@@ -63,6 +63,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_user {
             get {
                 object obj = ResourceManager.GetObject("add_user", resourceCulture);
@@ -76,6 +86,26 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap backup {
             get {
                 object obj = ResourceManager.GetObject("backup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap debitar {
+            get {
+                object obj = ResourceManager.GetObject("debitar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ediatar {
+            get {
+                object obj = ResourceManager.GetObject("ediatar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

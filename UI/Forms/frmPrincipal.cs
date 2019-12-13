@@ -16,10 +16,15 @@ namespace UI.Forms
             frmGenCliente frm = new frmGenCliente(this.Size);
             frm.ShowDialog();
         }
-
         private void btnSistema_Click(object sender, EventArgs e)
         {
             new frmGerenciadorSistema().ShowDialog();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //new frmLogin().ShowDialog();
+            new frmCliente(this.Size).ShowDialog();
         }
     }
 }

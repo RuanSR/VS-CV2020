@@ -30,8 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripBar = new System.Windows.Forms.ToolStrip();
+            this.btnNovoCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnLogin = new System.Windows.Forms.ToolStripButton();
             this.menuBar = new System.Windows.Forms.MenuStrip();
+            this.btnSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +53,6 @@
             this.conta_ativa_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxPesquisa = new System.Windows.Forms.GroupBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.btnSistema = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnNovoCliente = new System.Windows.Forms.ToolStripButton();
-            this.btnLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,10 +73,32 @@
             this.toolStripBar.TabIndex = 0;
             this.toolStripBar.Text = "toolStripBar";
             // 
+            // btnNovoCliente
+            // 
+            this.btnNovoCliente.Image = global::UI.Properties.Resources.add_user;
+            this.btnNovoCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnNovoCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNovoCliente.Name = "btnNovoCliente";
+            this.btnNovoCliente.Size = new System.Drawing.Size(109, 55);
+            this.btnNovoCliente.Text = "Novo Cliente";
+            this.btnNovoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 58);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Image = global::UI.Properties.Resources.login;
+            this.btnLogin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(55, 55);
+            this.btnLogin.Text = "Login";
+            this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // menuBar
             // 
@@ -91,6 +113,13 @@
             this.menuBar.Size = new System.Drawing.Size(484, 25);
             this.menuBar.TabIndex = 1;
             this.menuBar.Text = "menuBar";
+            // 
+            // btnSistema
+            // 
+            this.btnSistema.Name = "btnSistema";
+            this.btnSistema.Size = new System.Drawing.Size(67, 21);
+            this.btnSistema.Text = "Sistema";
+            this.btnSistema.Click += new System.EventHandler(this.btnSistema_Click);
             // 
             // btnAbout
             // 
@@ -252,34 +281,6 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(478, 25);
             this.txtPesquisa.TabIndex = 0;
-            // 
-            // btnSistema
-            // 
-            this.btnSistema.Name = "btnSistema";
-            this.btnSistema.Size = new System.Drawing.Size(67, 21);
-            this.btnSistema.Text = "Sistema";
-            this.btnSistema.Click += new System.EventHandler(this.btnSistema_Click);
-            // 
-            // btnNovoCliente
-            // 
-            this.btnNovoCliente.Image = global::UI.Properties.Resources.add_user;
-            this.btnNovoCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnNovoCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNovoCliente.Name = "btnNovoCliente";
-            this.btnNovoCliente.Size = new System.Drawing.Size(109, 55);
-            this.btnNovoCliente.Text = "Novo Cliente";
-            this.btnNovoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Image = global::UI.Properties.Resources.login;
-            this.btnLogin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(55, 55);
-            this.btnLogin.Text = "Login";
-            this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // frmPrincipal
             // 

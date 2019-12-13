@@ -50,6 +50,12 @@
     <Compile Include="Forms\frmAtendenteDialog.Designer.cs">
       <DependentUpon>frmAtendenteDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmGenCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,12 @@
     <Compile Include="Forms\frmGerenciadorSistema.Designer.cs">
       <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,11 +85,17 @@
     <EmbeddedResource Include="Forms\frmAtendenteDialog.resx">
       <DependentUpon>frmAtendenteDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGenCliente.resx">
       <DependentUpon>frmGenCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGerenciadorSistema.resx">
       <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -125,6 +143,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\debitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ediatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
