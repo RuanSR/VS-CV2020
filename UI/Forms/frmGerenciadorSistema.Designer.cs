@@ -63,7 +63,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBackupRestore = new System.Windows.Forms.ToolStripButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbBackupIntervalo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSalvarIntervalo = new System.Windows.Forms.ToolStripButton();
@@ -338,7 +338,7 @@
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.toolStrip3);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.cbBackupIntervalo);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.toolStrip1);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
@@ -453,16 +453,16 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "BACKUP MANUAL";
             // 
-            // comboBox1
+            // cbBackupIntervalo
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(470, 25);
-            this.comboBox1.TabIndex = 2;
+            this.cbBackupIntervalo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbBackupIntervalo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbBackupIntervalo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBackupIntervalo.FormattingEnabled = true;
+            this.cbBackupIntervalo.Location = new System.Drawing.Point(3, 72);
+            this.cbBackupIntervalo.Name = "cbBackupIntervalo";
+            this.cbBackupIntervalo.Size = new System.Drawing.Size(470, 25);
+            this.cbBackupIntervalo.TabIndex = 2;
             // 
             // label4
             // 
@@ -553,7 +553,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNovaSenha;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbBackupIntervalo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnSalvarIntervalo;

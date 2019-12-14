@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnSalvar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtEndereco = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtApelido = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNomeCompleto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ckStatus = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtLimite = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -63,32 +63,32 @@
             this.toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.btnSalvar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(484, 58);
-            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "btnSalvar";
             // 
-            // toolStripButton1
+            // btnSalvar
             // 
-            this.toolStripButton1.Image = global::UI.Properties.Resources.save;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(57, 55);
-            this.toolStripButton1.Text = "Salvar";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalvar.Image = global::UI.Properties.Resources.save;
+            this.btnSalvar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(57, 55);
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtEndereco);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtApelido);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtNomeCompleto);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,7 +116,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.maskedTextBox2);
+            this.panel1.Controls.Add(this.txtCpf);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -124,17 +124,17 @@
             this.panel1.Size = new System.Drawing.Size(233, 54);
             this.panel1.TabIndex = 0;
             // 
-            // maskedTextBox2
+            // txtCpf
             // 
-            this.maskedTextBox2.BackColor = System.Drawing.Color.White;
-            this.maskedTextBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maskedTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.maskedTextBox2.Location = new System.Drawing.Point(0, 17);
-            this.maskedTextBox2.Mask = "999.999.999-99";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(233, 29);
-            this.maskedTextBox2.TabIndex = 1;
-            this.maskedTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCpf.BackColor = System.Drawing.Color.White;
+            this.txtCpf.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCpf.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCpf.Location = new System.Drawing.Point(0, 17);
+            this.txtCpf.Mask = "999.999.999-99";
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(233, 29);
+            this.txtCpf.TabIndex = 0;
+            this.txtCpf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -148,7 +148,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.maskedTextBox1);
+            this.panel2.Controls.Add(this.txtTelefone);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(242, 3);
@@ -156,17 +156,17 @@
             this.panel2.Size = new System.Drawing.Size(233, 54);
             this.panel2.TabIndex = 1;
             // 
-            // maskedTextBox1
+            // txtTelefone
             // 
-            this.maskedTextBox1.BackColor = System.Drawing.Color.White;
-            this.maskedTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.maskedTextBox1.Location = new System.Drawing.Point(0, 17);
-            this.maskedTextBox1.Mask = "(99) 9 9999-9999";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(233, 29);
-            this.maskedTextBox1.TabIndex = 1;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTelefone.BackColor = System.Drawing.Color.White;
+            this.txtTelefone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtTelefone.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtTelefone.Location = new System.Drawing.Point(0, 17);
+            this.txtTelefone.Mask = "(99) 9 9999-9999";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(233, 29);
+            this.txtTelefone.TabIndex = 0;
+            this.txtTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -178,16 +178,16 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Telefone";
             // 
-            // textBox3
+            // txtEndereco
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox3.Location = new System.Drawing.Point(3, 142);
-            this.textBox3.MaxLength = 50;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(478, 29);
-            this.textBox3.TabIndex = 6;
+            this.txtEndereco.BackColor = System.Drawing.Color.White;
+            this.txtEndereco.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtEndereco.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtEndereco.Location = new System.Drawing.Point(3, 142);
+            this.txtEndereco.MaxLength = 50;
+            this.txtEndereco.Name = "txtEndereco";
+            this.txtEndereco.Size = new System.Drawing.Size(478, 29);
+            this.txtEndereco.TabIndex = 2;
             // 
             // label3
             // 
@@ -200,16 +200,16 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Endereço";
             // 
-            // textBox2
+            // txtApelido
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox2.Location = new System.Drawing.Point(3, 92);
-            this.textBox2.MaxLength = 30;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(478, 29);
-            this.textBox2.TabIndex = 4;
+            this.txtApelido.BackColor = System.Drawing.Color.White;
+            this.txtApelido.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtApelido.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtApelido.Location = new System.Drawing.Point(3, 92);
+            this.txtApelido.MaxLength = 30;
+            this.txtApelido.Name = "txtApelido";
+            this.txtApelido.Size = new System.Drawing.Size(478, 29);
+            this.txtApelido.TabIndex = 1;
             // 
             // label2
             // 
@@ -222,16 +222,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Apelido";
             // 
-            // textBox1
+            // txtNomeCompleto
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox1.Location = new System.Drawing.Point(3, 42);
-            this.textBox1.MaxLength = 30;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(478, 29);
-            this.textBox1.TabIndex = 2;
+            this.txtNomeCompleto.BackColor = System.Drawing.Color.White;
+            this.txtNomeCompleto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNomeCompleto.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtNomeCompleto.Location = new System.Drawing.Point(3, 42);
+            this.txtNomeCompleto.MaxLength = 30;
+            this.txtNomeCompleto.Name = "txtNomeCompleto";
+            this.txtNomeCompleto.Size = new System.Drawing.Size(478, 29);
+            this.txtNomeCompleto.TabIndex = 0;
             // 
             // label1
             // 
@@ -247,9 +247,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.ckStatus);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.txtLimite);
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -261,15 +261,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados da Conta";
             // 
-            // checkBox1
+            // ckStatus
             // 
-            this.checkBox1.BackColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(28, 114);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(64, 25);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Ativa";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.ckStatus.BackColor = System.Drawing.Color.White;
+            this.ckStatus.Location = new System.Drawing.Point(28, 114);
+            this.ckStatus.Name = "ckStatus";
+            this.ckStatus.Size = new System.Drawing.Size(64, 25);
+            this.ckStatus.TabIndex = 1;
+            this.ckStatus.Text = "Ativa";
+            this.ckStatus.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
@@ -280,14 +280,14 @@
             this.label7.Text = "Status Conta";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox5
+            // txtLimite
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(35, 59);
-            this.textBox5.MaxLength = 8;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(80, 29);
-            this.textBox5.TabIndex = 2;
+            this.txtLimite.BackColor = System.Drawing.Color.White;
+            this.txtLimite.Location = new System.Drawing.Point(35, 59);
+            this.txtLimite.MaxLength = 8;
+            this.txtLimite.Name = "txtLimite";
+            this.txtLimite.Size = new System.Drawing.Size(80, 29);
+            this.txtLimite.TabIndex = 0;
             // 
             // textBox4
             // 
@@ -323,7 +323,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "frmGenCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Caderno Virtual - Cadastro de Novo Cliente";
+            this.Text = ":: Cadastro de Novo Cliente";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -343,26 +343,26 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNomeCompleto;
+        private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtApelido;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.MaskedTextBox txtCpf;
+        private System.Windows.Forms.CheckBox ckStatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtLimite;
     }
 }

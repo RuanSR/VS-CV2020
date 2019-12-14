@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("UI")]
+[assembly: AssemblyTitle("Caderno Virtual")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UI")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCompany("Minimalistware - Ruan da Silva Rosa")]
+[assembly: AssemblyProduct("Palma de Ouro")]
+[assembly: AssemblyCopyright("Copyright ©  2019 - Ruan da Silva Rosa")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

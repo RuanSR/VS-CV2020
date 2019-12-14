@@ -23,7 +23,8 @@ namespace UI.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            new frmLogin().ShowDialog();
+            //new frmLogin().ShowDialog();
+            new frmCliente(Size).ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
