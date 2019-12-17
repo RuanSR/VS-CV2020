@@ -179,5 +179,11 @@
   <ItemGroup>
     <None Include="Resources\speed.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{698236fb-ba32-4495-9cc3-b502d7586fbb}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
