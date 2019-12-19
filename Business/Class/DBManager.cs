@@ -1,46 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.Class;
 
 namespace Business.Class
 {
-    public class DBManager : ICRUD
+    public sealed class DBManager : IDB
     {
-        CRUD crud;
 
+        public DB DB { get; private set; }
         public DBManager()
         {
-            crud = new CRUD();
+            DB = new DB();
         }
 
-        public DataTable Read()
+        public DataTable GetData()
         {
             try
             {
-                return crud.Read();
+                return DB.GetData();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-        }
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
         }
     }
 }

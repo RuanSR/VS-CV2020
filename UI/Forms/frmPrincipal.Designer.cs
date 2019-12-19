@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripBar = new System.Windows.Forms.ToolStrip();
             this.btnNovoCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -36,28 +39,26 @@
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.btnSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.dtgClientes = new System.Windows.Forms.DataGridView();
             this.groupBoxPesquisa = new System.Windows.Forms.GroupBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.dtgClientes = new System.Windows.Forms.DataGridView();
             this.btnGo = new System.Windows.Forms.DataGridViewImageColumn();
+            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apelido_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.limite_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ultima_compra_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endereco_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cpf_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.credito_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.limite_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total_pago_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.num_notas_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
             this.groupBoxPesquisa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripBar
@@ -129,46 +130,6 @@
             this.btnAbout.Text = "Sobre";
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
-            // dtgClientes
-            // 
-            this.dtgClientes.AllowUserToAddRows = false;
-            this.dtgClientes.AllowUserToDeleteRows = false;
-            this.dtgClientes.BackgroundColor = System.Drawing.Color.White;
-            this.dtgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnGo,
-            this.nome_cliente,
-            this.apelido_cliente,
-            this.data_conta_cliente,
-            this.limite_conta_cliente,
-            this.ultima_compra_cliente,
-            this.total_conta_cliente,
-            this.id_cliente,
-            this.endereco_cliente,
-            this.telefone_cliente,
-            this.cpf_cliente,
-            this.credito_cliente,
-            this.total_pago_cliente,
-            this.num_notas_cliente,
-            this.status_cliente});
-            this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgClientes.Location = new System.Drawing.Point(0, 136);
-            this.dtgClientes.Name = "dtgClientes";
-            this.dtgClientes.ReadOnly = true;
-            this.dtgClientes.RowHeadersVisible = false;
-            this.dtgClientes.Size = new System.Drawing.Size(484, 325);
-            this.dtgClientes.TabIndex = 2;
-            
-            // 
             // groupBoxPesquisa
             // 
             this.groupBoxPesquisa.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -191,6 +152,64 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(478, 25);
             this.txtPesquisa.TabIndex = 0;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
+            // dtgClientes
+            // 
+            this.dtgClientes.AllowUserToAddRows = false;
+            this.dtgClientes.AllowUserToDeleteRows = false;
+            this.dtgClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btnGo,
+            this.id_cliente,
+            this.nome_cliente,
+            this.apelido_cliente,
+            this.endereco_cliente,
+            this.telefone_cliente,
+            this.cpf_cliente,
+            this.limite_conta_cliente,
+            this.total_conta_cliente,
+            this.total_pago_cliente,
+            this.num_notas_cliente,
+            this.data_conta_cliente,
+            this.status_cliente});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgClientes.GridColor = System.Drawing.Color.SlateGray;
+            this.dtgClientes.Location = new System.Drawing.Point(0, 136);
+            this.dtgClientes.Name = "dtgClientes";
+            this.dtgClientes.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgClientes.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgClientes.Size = new System.Drawing.Size(484, 325);
+            this.dtgClientes.TabIndex = 4;
             // 
             // btnGo
             // 
@@ -198,6 +217,16 @@
             this.btnGo.Image = global::UI.Properties.Resources.speed;
             this.btnGo.Name = "btnGo";
             this.btnGo.ReadOnly = true;
+            this.btnGo.ToolTipText = "Ação Rápida";
+            this.btnGo.Width = 50;
+            // 
+            // id_cliente
+            // 
+            this.id_cliente.DataPropertyName = "id_cliente";
+            this.id_cliente.HeaderText = "id_clliente";
+            this.id_cliente.Name = "id_cliente";
+            this.id_cliente.ReadOnly = true;
+            this.id_cliente.Visible = false;
             // 
             // nome_cliente
             // 
@@ -205,7 +234,7 @@
             this.nome_cliente.HeaderText = "Nome";
             this.nome_cliente.Name = "nome_cliente";
             this.nome_cliente.ReadOnly = true;
-            this.nome_cliente.Width = 200;
+            this.nome_cliente.Width = 250;
             // 
             // apelido_cliente
             // 
@@ -213,42 +242,7 @@
             this.apelido_cliente.HeaderText = "Apelido";
             this.apelido_cliente.Name = "apelido_cliente";
             this.apelido_cliente.ReadOnly = true;
-            // 
-            // data_conta_cliente
-            // 
-            this.data_conta_cliente.DataPropertyName = "data_conta_cliente";
-            this.data_conta_cliente.HeaderText = "Data Conta";
-            this.data_conta_cliente.Name = "data_conta_cliente";
-            this.data_conta_cliente.ReadOnly = true;
-            // 
-            // limite_conta_cliente
-            // 
-            this.limite_conta_cliente.DataPropertyName = "limite_conta_cliente";
-            this.limite_conta_cliente.HeaderText = "Limite";
-            this.limite_conta_cliente.Name = "limite_conta_cliente";
-            this.limite_conta_cliente.ReadOnly = true;
-            // 
-            // ultima_compra_cliente
-            // 
-            this.ultima_compra_cliente.HeaderText = "Ultima Compra";
-            this.ultima_compra_cliente.Name = "ultima_compra_cliente";
-            this.ultima_compra_cliente.ReadOnly = true;
-            this.ultima_compra_cliente.Width = 150;
-            // 
-            // total_conta_cliente
-            // 
-            this.total_conta_cliente.DataPropertyName = "total_conta_cliente";
-            this.total_conta_cliente.HeaderText = "Total";
-            this.total_conta_cliente.Name = "total_conta_cliente";
-            this.total_conta_cliente.ReadOnly = true;
-            // 
-            // id_cliente
-            // 
-            this.id_cliente.DataPropertyName = "id_cliente";
-            this.id_cliente.HeaderText = "Código";
-            this.id_cliente.Name = "id_cliente";
-            this.id_cliente.ReadOnly = true;
-            this.id_cliente.Visible = false;
+            this.apelido_cliente.Width = 150;
             // 
             // endereco_cliente
             // 
@@ -256,12 +250,12 @@
             this.endereco_cliente.HeaderText = "Endereço";
             this.endereco_cliente.Name = "endereco_cliente";
             this.endereco_cliente.ReadOnly = true;
-            this.endereco_cliente.Visible = false;
+            this.endereco_cliente.Width = 250;
             // 
             // telefone_cliente
             // 
             this.telefone_cliente.DataPropertyName = "telefone_cliente";
-            this.telefone_cliente.HeaderText = "Telefone";
+            this.telefone_cliente.HeaderText = "telefone_cliente";
             this.telefone_cliente.Name = "telefone_cliente";
             this.telefone_cliente.ReadOnly = true;
             this.telefone_cliente.Visible = false;
@@ -269,18 +263,26 @@
             // cpf_cliente
             // 
             this.cpf_cliente.DataPropertyName = "cpf_cliente";
-            this.cpf_cliente.HeaderText = "CPF";
+            this.cpf_cliente.HeaderText = "cpf_cliente";
             this.cpf_cliente.Name = "cpf_cliente";
             this.cpf_cliente.ReadOnly = true;
             this.cpf_cliente.Visible = false;
             // 
-            // credito_cliente
+            // limite_conta_cliente
             // 
-            this.credito_cliente.DataPropertyName = "credito_cliente";
-            this.credito_cliente.HeaderText = "Crédito";
-            this.credito_cliente.Name = "credito_cliente";
-            this.credito_cliente.ReadOnly = true;
-            this.credito_cliente.Visible = false;
+            this.limite_conta_cliente.DataPropertyName = "limite_conta_cliente";
+            this.limite_conta_cliente.HeaderText = "Limite Conta";
+            this.limite_conta_cliente.Name = "limite_conta_cliente";
+            this.limite_conta_cliente.ReadOnly = true;
+            this.limite_conta_cliente.Width = 150;
+            // 
+            // total_conta_cliente
+            // 
+            this.total_conta_cliente.DataPropertyName = "total_conta_cliente";
+            this.total_conta_cliente.HeaderText = "Total Conta";
+            this.total_conta_cliente.Name = "total_conta_cliente";
+            this.total_conta_cliente.ReadOnly = true;
+            this.total_conta_cliente.Width = 150;
             // 
             // total_pago_cliente
             // 
@@ -288,15 +290,23 @@
             this.total_pago_cliente.HeaderText = "Total Pago";
             this.total_pago_cliente.Name = "total_pago_cliente";
             this.total_pago_cliente.ReadOnly = true;
-            this.total_pago_cliente.Visible = false;
+            this.total_pago_cliente.Width = 150;
             // 
             // num_notas_cliente
             // 
             this.num_notas_cliente.DataPropertyName = "num_notas_cliente";
-            this.num_notas_cliente.HeaderText = "Num. Notas";
+            this.num_notas_cliente.HeaderText = "num_notas_cliente";
             this.num_notas_cliente.Name = "num_notas_cliente";
             this.num_notas_cliente.ReadOnly = true;
             this.num_notas_cliente.Visible = false;
+            // 
+            // data_conta_cliente
+            // 
+            this.data_conta_cliente.DataPropertyName = "data_conta_cliente";
+            this.data_conta_cliente.HeaderText = "Data Conta";
+            this.data_conta_cliente.Name = "data_conta_cliente";
+            this.data_conta_cliente.ReadOnly = true;
+            this.data_conta_cliente.Width = 150;
             // 
             // status_cliente
             // 
@@ -304,7 +314,7 @@
             this.status_cliente.HeaderText = "Status";
             this.status_cliente.Name = "status_cliente";
             this.status_cliente.ReadOnly = true;
-            this.status_cliente.Visible = false;
+            this.status_cliente.Width = 50;
             // 
             // frmPrincipal
             // 
@@ -327,9 +337,9 @@
             this.toolStripBar.PerformLayout();
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
             this.groupBoxPesquisa.ResumeLayout(false);
             this.groupBoxPesquisa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,24 +353,22 @@
         private System.Windows.Forms.ToolStripButton btnLogin;
         private System.Windows.Forms.MenuStrip menuBar;
         private System.Windows.Forms.ToolStripMenuItem btnAbout;
-        private System.Windows.Forms.DataGridView dtgClientes;
         private System.Windows.Forms.GroupBox groupBoxPesquisa;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.ToolStripMenuItem btnSistema;
+        private System.Windows.Forms.DataGridView dtgClientes;
         private System.Windows.Forms.DataGridViewImageColumn btnGo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn apelido_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_conta_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn limite_conta_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ultima_compra_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total_conta_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn endereco_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpf_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn credito_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn limite_conta_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total_conta_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_pago_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_notas_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_conta_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn status_cliente;
     }
 }
