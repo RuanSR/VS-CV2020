@@ -35,7 +35,8 @@ namespace Business.Class
             }
         }
 
-        public void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf, double limiteConta, double totalConta, double totalPago, int numNotas, string dataConta, bool status)
+        public void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf,
+            string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta, bool status)
         {
             try
             {
@@ -47,7 +48,8 @@ namespace Business.Class
             }
         }
 
-        public void AtualizaCliente(int id, string nome, string apelido, string endereco, string telefone, string cpf, double limiteConta, double totalConta, double totalPago, int numNotas, string dataConta, bool status)
+        public void AtualizaCliente(int id, string nome, string apelido, string endereco, string telefone, string cpf,
+            string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta, bool status)
         {
             try
             {
@@ -62,6 +64,30 @@ namespace Business.Class
         public DataTable GetRegistro(int id)
         {
             return null;
+        }
+
+        public DataTable GetAtendentes()
+        {
+            try
+            {
+                return DB.GetAtendentes();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AtualizaNota(string totalConta, string totalPago, int numNotas, string dataConta, int id)
+        {
+            try
+            {
+                DB.AtualizaNota(totalConta, totalPago, numNotas, dataConta, id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

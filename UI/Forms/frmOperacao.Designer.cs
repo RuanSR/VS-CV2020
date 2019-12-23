@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConfirmar = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -70,44 +68,30 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCancelar,
-            this.toolStripSeparator1,
             this.btnConfirmar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(323, 52);
+            this.toolStrip1.Size = new System.Drawing.Size(323, 54);
             this.toolStrip1.TabIndex = 0;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Image = global::UI.Properties.Resources.decline;
-            this.btnCancelar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(71, 49);
-            this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
             // 
             // btnConfirmar
             // 
+            this.btnConfirmar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Image = global::UI.Properties.Resources.accept;
             this.btnConfirmar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnConfirmar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(79, 49);
+            this.btnConfirmar.Size = new System.Drawing.Size(88, 51);
             this.btnConfirmar.Text = "CONFIRMAR";
             this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Lavender;
             this.groupBox2.Controls.Add(this.flowLayoutPanel5);
             this.groupBox2.Controls.Add(this.flowLayoutPanel4);
             this.groupBox2.Controls.Add(this.flowLayoutPanel3);
@@ -116,7 +100,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(0, 77);
+            this.groupBox2.Location = new System.Drawing.Point(0, 79);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(323, 168);
             this.groupBox2.TabIndex = 3;
@@ -248,7 +232,7 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Lavender;
             this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.label4);
             this.flowLayoutPanel2.Controls.Add(this.lblLimiteConta);
@@ -324,7 +308,7 @@
             this.lblNomeCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblNomeCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomeCliente.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNomeCliente.Location = new System.Drawing.Point(0, 52);
+            this.lblNomeCliente.Location = new System.Drawing.Point(0, 54);
             this.lblNomeCliente.Name = "lblNomeCliente";
             this.lblNomeCliente.Size = new System.Drawing.Size(171, 25);
             this.lblNomeCliente.TabIndex = 2;
@@ -334,37 +318,41 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.Color.Crimson;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(7, 29);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 25);
+            this.label14.Size = new System.Drawing.Size(95, 21);
             this.label14.TabIndex = 0;
             this.label14.Text = "VALOR R$:";
             // 
             // txtValorOperacao
             // 
             this.txtValorOperacao.BackColor = System.Drawing.Color.White;
+            this.txtValorOperacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorOperacao.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.txtValorOperacao.Location = new System.Drawing.Point(131, 26);
             this.txtValorOperacao.MaxLength = 8;
             this.txtValorOperacao.Name = "txtValorOperacao";
             this.txtValorOperacao.Size = new System.Drawing.Size(100, 33);
             this.txtValorOperacao.TabIndex = 1;
+            this.txtValorOperacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValorOperacao_KeyDown);
+            this.txtValorOperacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorOperacao_KeyPress);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.Color.Crimson;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(7, 69);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(123, 25);
+            this.label15.Size = new System.Drawing.Size(112, 21);
             this.label15.TabIndex = 0;
             this.label15.Text = "ATENDENTE:";
             // 
             // cbAtendente
             // 
+            this.cbAtendente.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cbAtendente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAtendente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.cbAtendente.FormattingEnabled = true;
@@ -375,15 +363,17 @@
             // 
             // groupOperacao
             // 
+            this.groupOperacao.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupOperacao.Controls.Add(this.label15);
             this.groupOperacao.Controls.Add(this.txtValorOperacao);
             this.groupOperacao.Controls.Add(this.label14);
             this.groupOperacao.Controls.Add(this.cbAtendente);
             this.groupOperacao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupOperacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupOperacao.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
-            this.groupOperacao.Location = new System.Drawing.Point(0, 245);
+            this.groupOperacao.Location = new System.Drawing.Point(0, 247);
             this.groupOperacao.Name = "groupOperacao";
-            this.groupOperacao.Size = new System.Drawing.Size(323, 106);
+            this.groupOperacao.Size = new System.Drawing.Size(323, 104);
             this.groupOperacao.TabIndex = 4;
             this.groupOperacao.TabStop = false;
             this.groupOperacao.Text = "OPERAÇÃO :: ";
@@ -392,7 +382,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(323, 351);
             this.Controls.Add(this.groupOperacao);
             this.Controls.Add(this.groupBox2);
@@ -406,6 +396,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "::";
+            this.Load += new System.EventHandler(this.frmOperacao_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -427,8 +418,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripButton btnCancelar;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnConfirmar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;

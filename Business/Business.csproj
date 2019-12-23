@@ -41,6 +41,7 @@
     <Compile Include="Class\Admin.cs" />
     <Compile Include="Class\Cliente.cs" />
     <Compile Include="Class\DBManager.cs" />
+    <Compile Include="Class\Operacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

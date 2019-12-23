@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Business.Class;
 
 namespace UI.Forms
 {
     public partial class frmCliente : Form
     {
+        private Cliente _cliente;
         private int sizeSplitDetail = 80;
         private Size _sizeParent;
 
         //CONSTRUTOR\\
-        public frmCliente(Size sizeParent)
+        public frmCliente(Size sizeParent, Cliente cliente)
         {
             InitializeComponent();
             _sizeParent = sizeParent;
             SetDefaultSize();
             SetDefaultSplitDistance();
+            _cliente = cliente;
         }
 
         //CONTROLES\\
@@ -41,11 +44,11 @@ namespace UI.Forms
         }
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
-            new frmOperacao().ShowDialog();
+            new frmOperacao(_cliente, Operacao.ADICIONAR).ShowDialog();
         }
         private void btnDebitarValor_Click(object sender, EventArgs e)
         {
-            new frmOperacao().ShowDialog();
+            new frmOperacao(_cliente, Operacao.DEBITAR).ShowDialog();
         }
 
         //MÉTODOS\\

@@ -292,6 +292,8 @@
             this.txtLimite.Name = "txtLimite";
             this.txtLimite.Size = new System.Drawing.Size(80, 29);
             this.txtLimite.TabIndex = 0;
+            this.txtLimite.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLimite_KeyDown);
+            this.txtLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimite_KeyPress);
             // 
             // textBox4
             // 

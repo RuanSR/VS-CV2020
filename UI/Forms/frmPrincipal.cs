@@ -18,12 +18,21 @@ namespace UI.Forms
         //CONTROLES\\
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            StartLogin();
+            Admin.Logado = true;
+            GetPermissao();
+            //StartLogin();
+
         }
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
             frmGenCliente frm = new frmGenCliente();
             frm.ShowDialog();
+
+            if (frm.IsDisposed)
+            {
+                LoadDataSourceCliente();
+                ShowCliente();
+            }
         }
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
@@ -58,6 +67,81 @@ namespace UI.Forms
         private void btnAbout_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog();
+        }
+
+        private void dtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cliente cliente = new Cliente();
+
+                cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
+                cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
+                cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
+                cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
+                cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
+                cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
+                cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
+                cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
+                cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
+                cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
+                cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
+                cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
+                if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
+                {
+                    frmOperacao frm = new frmOperacao(cliente, Operacao.ADICIONAR);
+                    frm.ShowDialog();
+
+                    if (frm.IsDisposed)
+                    {
+                        LoadDataSourceCliente();
+                        ShowCliente();
+                    }
+                }
+                else if(dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
+                {
+                    frmOperacao frm = new frmOperacao(cliente, Operacao.DEBITAR);
+                    frm.ShowDialog();
+
+                    if (frm.IsDisposed)
+                    {
+                        LoadDataSourceCliente();
+                        ShowCliente();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+            }
+        }
+        private void dtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cliente cliente = new Cliente();
+
+                cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
+                cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
+                cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
+                cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
+                cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
+                cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
+                cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
+                cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
+                cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
+                cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
+                cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
+                cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
+
+                frmCliente frmCliente = new frmCliente(Size, cliente);
+                frmCliente.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+            }
         }
 
         //METODOS\\
@@ -131,6 +215,5 @@ namespace UI.Forms
                 throw new Exception($"Erro ao obter dados dos clientes! Detalhes: {ex.Message}");
             }
         }
-
     }
 }
