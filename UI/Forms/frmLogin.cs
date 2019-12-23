@@ -19,7 +19,20 @@ namespace UI.Forms
         {
 
         }
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FazerLogin();
+            }
+        }
         private void btnLogin_Click(object sender, EventArgs e)
+        {
+            FazerLogin();
+        }
+
+        //MÉTODOS\\
+        private void FazerLogin()
         {
             try
             {
@@ -45,8 +58,5 @@ namespace UI.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //MÉTODOS\\
-
     }
 }

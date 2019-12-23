@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace Business.Class
 {
@@ -17,9 +18,8 @@ namespace Business.Class
         public string DataConta { get; set; }
         public bool Status { get; set; }
 
-        public Cliente(int id, string nome, string apelido, string endereco, string telefone, string cpf, double limiteConta)
+        public Cliente(string nome, string apelido, string endereco, string telefone, string cpf, double limiteConta)
         {
-            Id = id;
             Nome = nome;
             Apelido = apelido;
             Endereco = endereco;

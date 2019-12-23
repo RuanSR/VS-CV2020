@@ -12,7 +12,6 @@ namespace Business.Class
         {
             DB = new DB();
         }
-
         public DataTable GetData()
         {
             try
@@ -24,7 +23,6 @@ namespace Business.Class
                 throw new Exception(ex.Message);
             }
         }
-
         public DataTable GetAdmin(string usuario, string senha)
         {
             try
@@ -35,6 +33,35 @@ namespace Business.Class
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf, double limiteConta, double totalConta, double totalPago, int numNotas, string dataConta, bool status)
+        {
+            try
+            {
+                DB.NovoCliente(nome, apelido, endereco, telefone, cpf, limiteConta, totalConta, totalPago, numNotas, dataConta, status);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AtualizaCliente(int id, string nome, string apelido, string endereco, string telefone, string cpf, double limiteConta, double totalConta, double totalPago, int numNotas, string dataConta, bool status)
+        {
+            try
+            {
+                DB.AtualizaCliente(id, nome, apelido, endereco, telefone, cpf, limiteConta, totalConta, totalPago, numNotas, dataConta, status);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable GetRegistro(int id)
+        {
+            return null;
         }
     }
 }

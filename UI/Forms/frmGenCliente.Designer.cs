@@ -79,6 +79,7 @@
             this.btnSalvar.Size = new System.Drawing.Size(57, 55);
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // groupBox1
             // 
@@ -264,6 +265,9 @@
             // ckStatus
             // 
             this.ckStatus.BackColor = System.Drawing.Color.White;
+            this.ckStatus.Checked = true;
+            this.ckStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckStatus.Enabled = false;
             this.ckStatus.Location = new System.Drawing.Point(28, 114);
             this.ckStatus.Name = "ckStatus";
             this.ckStatus.Size = new System.Drawing.Size(64, 25);
@@ -324,6 +328,7 @@
             this.Name = "frmGenCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = ":: Cadastro de Novo Cliente";
+            this.Load += new System.EventHandler(this.frmGenCliente_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
