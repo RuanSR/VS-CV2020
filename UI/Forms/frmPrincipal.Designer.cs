@@ -77,6 +77,7 @@
             // 
             // btnNovoCliente
             // 
+            this.btnNovoCliente.Enabled = false;
             this.btnNovoCliente.Image = global::UI.Properties.Resources.add_user;
             this.btnNovoCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnNovoCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -118,6 +119,7 @@
             // 
             // btnSistema
             // 
+            this.btnSistema.Enabled = false;
             this.btnSistema.Name = "btnSistema";
             this.btnSistema.Size = new System.Drawing.Size(67, 21);
             this.btnSistema.Text = "Sistema";
@@ -135,6 +137,7 @@
             this.groupBoxPesquisa.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxPesquisa.Controls.Add(this.txtPesquisa);
             this.groupBoxPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBoxPesquisa.Enabled = false;
             this.groupBoxPesquisa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxPesquisa.Location = new System.Drawing.Point(0, 83);
             this.groupBoxPesquisa.Name = "groupBoxPesquisa";
@@ -210,10 +213,11 @@
             this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgClientes.Size = new System.Drawing.Size(484, 325);
             this.dtgClientes.TabIndex = 4;
+            this.dtgClientes.Visible = false;
             // 
             // btnGo
             // 
-            this.btnGo.HeaderText = "";
+            this.btnGo.HeaderText = "Go";
             this.btnGo.Image = global::UI.Properties.Resources.speed;
             this.btnGo.Name = "btnGo";
             this.btnGo.ReadOnly = true;

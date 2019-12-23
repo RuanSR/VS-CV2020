@@ -7,7 +7,7 @@ namespace Business.Class
     public sealed class DBManager : IDB
     {
 
-        public DB DB { get; private set; }
+        private DB DB { get; set; }
         public DBManager()
         {
             DB = new DB();
@@ -18,6 +18,18 @@ namespace Business.Class
             try
             {
                 return DB.GetData();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable GetAdmin(string usuario, string senha)
+        {
+            try
+            {
+                return DB.GetAdmin(usuario, senha);
             }
             catch (Exception ex)
             {
