@@ -34,10 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtgAtendente = new System.Windows.Forms.DataGridView();
-            this.id_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -67,6 +63,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSalvarIntervalo = new System.Windows.Forms.ToolStripButton();
+            this.id_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.senha_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -153,7 +155,9 @@
             this.dtgAtendente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgAtendente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_atendente,
-            this.nome_atendente,
+            this.usuario_atendente,
+            this.senha_atendente,
+            this.btnAdd,
             this.btnEdit,
             this.btnDelete});
             this.dtgAtendente.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,36 +165,10 @@
             this.dtgAtendente.Name = "dtgAtendente";
             this.dtgAtendente.ReadOnly = true;
             this.dtgAtendente.RowHeadersVisible = false;
+            this.dtgAtendente.RowTemplate.Height = 30;
             this.dtgAtendente.Size = new System.Drawing.Size(458, 139);
             this.dtgAtendente.TabIndex = 1;
-            // 
-            // id_atendente
-            // 
-            this.id_atendente.HeaderText = "Código";
-            this.id_atendente.Name = "id_atendente";
-            this.id_atendente.ReadOnly = true;
-            this.id_atendente.Width = 75;
-            // 
-            // nome_atendente
-            // 
-            this.nome_atendente.HeaderText = "Nome";
-            this.nome_atendente.Name = "nome_atendente";
-            this.nome_atendente.ReadOnly = true;
-            this.nome_atendente.Width = 280;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.HeaderText = "";
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ReadOnly = true;
-            this.btnEdit.Width = 50;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.HeaderText = "";
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ReadOnly = true;
-            this.btnDelete.Width = 50;
+            this.dtgAtendente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgAtendente_CellContentClick);
             // 
             // groupBox1
             // 
@@ -495,6 +473,54 @@
             this.btnSalvarIntervalo.Text = "Salvar";
             this.btnSalvarIntervalo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // id_atendente
+            // 
+            this.id_atendente.DataPropertyName = "id_atendente";
+            this.id_atendente.HeaderText = "Código";
+            this.id_atendente.Name = "id_atendente";
+            this.id_atendente.ReadOnly = true;
+            this.id_atendente.Width = 60;
+            // 
+            // usuario_atendente
+            // 
+            this.usuario_atendente.DataPropertyName = "usuario_atendente";
+            this.usuario_atendente.HeaderText = "Nome";
+            this.usuario_atendente.Name = "usuario_atendente";
+            this.usuario_atendente.ReadOnly = true;
+            this.usuario_atendente.Width = 250;
+            // 
+            // senha_atendente
+            // 
+            this.senha_atendente.DataPropertyName = "senha_atendente";
+            this.senha_atendente.HeaderText = "senha_atendente";
+            this.senha_atendente.Name = "senha_atendente";
+            this.senha_atendente.ReadOnly = true;
+            this.senha_atendente.Visible = false;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.HeaderText = "";
+            this.btnAdd.Image = global::UI.Properties.Resources.add_user;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.ReadOnly = true;
+            this.btnAdd.Width = 50;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.HeaderText = "";
+            this.btnEdit.Image = global::UI.Properties.Resources.ediatar;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.ReadOnly = true;
+            this.btnEdit.Width = 50;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.HeaderText = "";
+            this.btnDelete.Image = global::UI.Properties.Resources.decline;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ReadOnly = true;
+            this.btnDelete.Width = 50;
+            // 
             // frmGerenciadorSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +536,7 @@
             this.Name = "frmGerenciadorSistema";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " :: Sistema / Atendentes / Administrador / Backup & restore";
+            this.Load += new System.EventHandler(this.frmGerenciadorSistema_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -568,13 +595,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dtgAtendente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_atendente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome_atendente;
-        private System.Windows.Forms.DataGridViewImageColumn btnEdit;
-        private System.Windows.Forms.DataGridViewImageColumn btnDelete;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnBackupRestore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_atendente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuario_atendente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn senha_atendente;
+        private System.Windows.Forms.DataGridViewImageColumn btnAdd;
+        private System.Windows.Forms.DataGridViewImageColumn btnEdit;
+        private System.Windows.Forms.DataGridViewImageColumn btnDelete;
     }
 }

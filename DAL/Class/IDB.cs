@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 
 namespace DAL.Class
 {
@@ -17,5 +16,8 @@ namespace DAL.Class
             bool status);
         void AtualizaNota(string totalConta, string totalPago, int numNotas, string dataConta, int id);
         void GravaLog(int idCliente, string dataNota, string horaNota, string atendente, string valor, string log);
+        void NovoAtendente(string nome, string senha);
+        void AtualizaAtendente(int id, string nome, string senha);
+        void RemoveAtendente(int id);
     }
 }

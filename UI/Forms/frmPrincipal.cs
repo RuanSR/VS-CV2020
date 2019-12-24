@@ -18,9 +18,9 @@ namespace UI.Forms
         //CONTROLES\\
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            Admin.Logado = true;
-            GetPermissao();
-            //StartLogin();
+            //Admin.Logado = true;
+            //GetPermissao();
+            StartLogin();
 
         }
         private void btnNovoCliente_Click(object sender, EventArgs e)

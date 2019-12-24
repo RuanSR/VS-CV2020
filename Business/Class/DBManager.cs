@@ -103,5 +103,41 @@ namespace Business.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        public void RemoveAtendente(int id)
+        {
+            try
+            {
+                DB.RemoveAtendente(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void NovoAtendente(string nome, string senha)
+        {
+            try
+            {
+                DB.NovoAtendente(nome, senha);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AtualizaAtendente(int id, string nome, string senha)
+        {
+            try
+            {
+                DB.AtualizaAtendente(id, nome, senha);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

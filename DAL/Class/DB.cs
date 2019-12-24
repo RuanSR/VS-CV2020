@@ -260,5 +260,87 @@ namespace DAL.Class
                 throw new Exception($"Erro ao gravar registro da nota! Detalhes: {ex.Message}");
             }
         }
+
+        public void NovoAtendente(string nome, string senha)
+        {
+            try
+            {
+                _query = new StringBuilder();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("INSERT INTO Atendente (usuario_atendente, senha_atendente) ");
+                        _query.Append("VALUES (@nome, @senha)");
+
+                        cmd.Parameters.Add(new SqlParameter("@nome", nome));
+                        cmd.Parameters.Add(new SqlParameter("@senha", senha));
+
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao inserir atendente! Detalhes: {ex.Message}");
+            }
+        }
+
+        public void AtualizaAtendente(int id, string nome, string senha)
+        {
+            try
+            {
+                _query = new StringBuilder();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("UPDATE Atendente SET usuario_atendente = @nome, senha_atendente = @senha ");
+                        _query.Append("WHERE id_atendente = @id");
+
+                        cmd.Parameters.Add(new SqlParameter("@nome", nome));
+                        cmd.Parameters.Add(new SqlParameter("@senha", senha));
+                        cmd.Parameters.Add(new SqlParameter("@id", id));
+
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao atualizar atendente! Detalhes: {ex.Message}");
+            }
+        }
+
+        public void RemoveAtendente(int id)
+        {
+            try
+            {
+                _query = new StringBuilder();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("DELETE FROM Atendente WHERE id_atendente = @id");
+                        cmd.Parameters.Add(new SqlParameter("@id", id));
+
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao remover atendente! Detalhes: {ex.Message}");
+            }
+        }
     }
 }
