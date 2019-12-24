@@ -14,6 +14,112 @@ namespace DAL.Class
 
         }
 
+        public DataTable GetAdmin(string usuario, string senha)
+        {
+            try
+            {
+                _query = new StringBuilder();
+                DataTable dataTable = new DataTable();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("SELECT * FROM Atendente ");
+                        _query.Append("WHERE usuario_atendente = @usuario AND senha_atendente = @senha");
+
+                        cmd.Parameters.Add(new SqlParameter("@usuario", usuario));
+                        cmd.Parameters.Add(new SqlParameter("@senha", senha));
+
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        dataTable.Load(cmd.ExecuteReader());
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter dados do administrador! Detalhes: {ex.Message}");
+            }
+        }
+        public DataTable GetData()
+        {
+            try
+            {
+                _query = new StringBuilder();
+                DataTable dataTable = new DataTable();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("SELECT * FROM Cliente");
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        dataTable.Load(cmd.ExecuteReader());
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter dados! Detalhes: {ex.Message}");
+            }
+        }
+        public DataTable GetLog(int idCliente)
+        {
+            try
+            {
+                _query = new StringBuilder();
+                DataTable dataTable = new DataTable();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("SELECT * FROM Registro ");
+                        _query.Append("WHERE id_cliente_registro = @idCliente ORDER BY id_registro DESC");
+
+                        cmd.Parameters.Add(new SqlParameter("@idCliente", idCliente));
+
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        dataTable.Load(cmd.ExecuteReader());
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter dados do registro! Detalhes: {ex.Message}");
+            }
+        }
+        public DataTable GetAtendentes()
+        {
+            try
+            {
+                _query = new StringBuilder();
+                DataTable dataTable = new DataTable();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("SELECT * FROM Atendente");
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        dataTable.Load(cmd.ExecuteReader());
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter dados! Detalhes: {ex.Message}");
+            }
+        }
+
         public void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf,
             string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta, bool status)
         {
@@ -92,88 +198,6 @@ namespace DAL.Class
                 throw new Exception($"Erro ao inserir dados do cliente! Detalhes: {ex.Message}");
             }
         }
-        public DataTable GetAdmin(string usuario, string senha)
-        {
-            try
-            {
-                _query = new StringBuilder();
-                DataTable dataTable = new DataTable();
-                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        _query.Append("SELECT * FROM Atendente ");
-                        _query.Append("WHERE usuario_atendente = @usuario AND senha_atendente = @senha");
-
-                        cmd.Parameters.Add(new SqlParameter("@usuario", usuario));
-                        cmd.Parameters.Add(new SqlParameter("@senha", senha));
-
-                        cmd.Connection = conn;
-                        cmd.CommandText = _query.ToString();
-                        dataTable.Load(cmd.ExecuteReader());
-                        return dataTable;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao obter dados do administrador! Detalhes: {ex.Message}");
-            }
-        }
-        public DataTable GetData()
-        {
-            try
-            {
-                _query = new StringBuilder();
-                DataTable dataTable = new DataTable();
-                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        _query.Append("SELECT * FROM Cliente");
-                        cmd.Connection = conn;
-                        cmd.CommandText = _query.ToString();
-                        dataTable.Load(cmd.ExecuteReader());
-                        return dataTable;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao obter dados! Detalhes: {ex.Message}");
-            }
-        }
-        public DataTable GetRegistro(int id)
-        {
-            return null;
-        }
-        public DataTable GetAtendentes()
-        {
-            try
-            {
-                _query = new StringBuilder();
-                DataTable dataTable = new DataTable();
-                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        _query.Append("SELECT * FROM Atendente");
-                        cmd.Connection = conn;
-                        cmd.CommandText = _query.ToString();
-                        dataTable.Load(cmd.ExecuteReader());
-                        return dataTable;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao obter dados! Detalhes: {ex.Message}");
-            }
-        }
-
         public void AtualizaNota(string totalConta, string totalPago, int numNotas, string dataConta, int id)
         {
             try
@@ -203,6 +227,37 @@ namespace DAL.Class
             catch (Exception ex)
             {
                 throw new Exception($"Erro ao atualizar nota! Detalhes: {ex.Message}");
+            }
+        }
+
+        public void GravaLog(int idCliente, string dataNota, string horaNota, string atendente, string valor, string log)
+        {
+            try
+            {
+                _query = new StringBuilder();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("INSERT INTO Registro (data_nota_registro, hora_nota_registro, atendente_registro, valor_registro, log_registro, id_cliente_registro) ");
+                        _query.Append("VALUES (@dataNota, @horaNota, @atendente, @valor, @log, @idCliente)");
+                        cmd.Parameters.Add(new SqlParameter("@idCliente", idCliente));
+                        cmd.Parameters.Add(new SqlParameter("@dataNota", dataNota));
+                        cmd.Parameters.Add(new SqlParameter("@horaNota", horaNota));
+                        cmd.Parameters.Add(new SqlParameter("@atendente", atendente));
+                        cmd.Parameters.Add(new SqlParameter("@valor", valor));
+                        cmd.Parameters.Add(new SqlParameter("@log", log));
+
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao gravar registro da nota! Detalhes: {ex.Message}");
             }
         }
     }

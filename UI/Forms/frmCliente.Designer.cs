@@ -84,13 +84,13 @@
             this.label25 = new System.Windows.Forms.Label();
             this.lblApelido = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgLog = new System.Windows.Forms.DataGridView();
             this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -114,7 +114,7 @@
             this.flowLayoutPanel9.SuspendLayout();
             this.flowLayoutPanel10.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -691,7 +691,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dtgLog);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -701,13 +701,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro";
             // 
-            // dataGridView1
+            // dtgLog
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgLog.AllowUserToAddRows = false;
+            this.dtgLog.AllowUserToDeleteRows = false;
+            this.dtgLog.BackgroundColor = System.Drawing.Color.White;
+            this.dtgLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -715,21 +715,21 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_registro,
             this.data_nota_registro,
             this.hora_nota_registro,
             this.atendente_registro,
             this.valor_registro,
-            this.item_registro,
+            this.log_registro,
             this.id_cliente_registro});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.dtgLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgLog.EnableHeadersVisualStyles = false;
+            this.dtgLog.Location = new System.Drawing.Point(3, 25);
+            this.dtgLog.Name = "dtgLog";
+            this.dtgLog.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -737,13 +737,14 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(242, 379);
-            this.dataGridView1.TabIndex = 0;
+            this.dtgLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgLog.RowHeadersVisible = false;
+            this.dtgLog.Size = new System.Drawing.Size(242, 379);
+            this.dtgLog.TabIndex = 0;
             // 
             // id_registro
             // 
+            this.id_registro.DataPropertyName = "id_registro";
             this.id_registro.HeaderText = "Código";
             this.id_registro.Name = "id_registro";
             this.id_registro.ReadOnly = true;
@@ -751,20 +752,21 @@
             // 
             // data_nota_registro
             // 
+            this.data_nota_registro.DataPropertyName = "data_nota_registro";
             this.data_nota_registro.HeaderText = "Data";
             this.data_nota_registro.Name = "data_nota_registro";
             this.data_nota_registro.ReadOnly = true;
-            this.data_nota_registro.Width = 50;
             // 
             // hora_nota_registro
             // 
+            this.hora_nota_registro.DataPropertyName = "hora_nota_registro";
             this.hora_nota_registro.HeaderText = "Hora";
             this.hora_nota_registro.Name = "hora_nota_registro";
             this.hora_nota_registro.ReadOnly = true;
-            this.hora_nota_registro.Width = 50;
             // 
             // atendente_registro
             // 
+            this.atendente_registro.DataPropertyName = "atendente_registro";
             this.atendente_registro.HeaderText = "Atendente";
             this.atendente_registro.Name = "atendente_registro";
             this.atendente_registro.ReadOnly = true;
@@ -772,20 +774,23 @@
             // 
             // valor_registro
             // 
+            this.valor_registro.DataPropertyName = "valor_registro";
             this.valor_registro.HeaderText = "Valor";
             this.valor_registro.Name = "valor_registro";
             this.valor_registro.ReadOnly = true;
             this.valor_registro.Width = 65;
             // 
-            // item_registro
+            // log_registro
             // 
-            this.item_registro.HeaderText = "Item";
-            this.item_registro.Name = "item_registro";
-            this.item_registro.ReadOnly = true;
-            this.item_registro.Width = 205;
+            this.log_registro.DataPropertyName = "log_registro";
+            this.log_registro.HeaderText = "Detalhes";
+            this.log_registro.Name = "log_registro";
+            this.log_registro.ReadOnly = true;
+            this.log_registro.Width = 200;
             // 
             // id_cliente_registro
             // 
+            this.id_cliente_registro.DataPropertyName = "id_cliente_registro";
             this.id_cliente_registro.HeaderText = "Código Cliente";
             this.id_cliente_registro.Name = "id_cliente_registro";
             this.id_cliente_registro.ReadOnly = true;
@@ -841,7 +846,7 @@
             this.flowLayoutPanel10.ResumeLayout(false);
             this.flowLayoutPanel10.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -859,15 +864,8 @@
         private System.Windows.Forms.ToolStripButton btnLogout;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgLog;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_nota_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hora_nota_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn atendente_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valor_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn item_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente_registro;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
@@ -911,5 +909,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_nota_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hora_nota_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn atendente_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valor_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn log_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente_registro;
     }
 }

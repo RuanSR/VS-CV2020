@@ -34,6 +34,28 @@ namespace Business.Class
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable GetLog(int idCliente)
+        {
+            try
+            {
+                return DB.GetLog(idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public DataTable GetAtendentes()
+        {
+            try
+            {
+                return DB.GetAtendentes();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf,
             string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta, bool status)
@@ -47,7 +69,6 @@ namespace Business.Class
                 throw new Exception(ex.Message);
             }
         }
-
         public void AtualizaCliente(int id, string nome, string apelido, string endereco, string telefone, string cpf,
             string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta, bool status)
         {
@@ -60,29 +81,22 @@ namespace Business.Class
                 throw new Exception(ex.Message);
             }
         }
-
-        public DataTable GetRegistro(int id)
-        {
-            return null;
-        }
-
-        public DataTable GetAtendentes()
+        public void AtualizaNota(string totalConta, string totalPago, int numNotas, string dataConta, int id)
         {
             try
             {
-                return DB.GetAtendentes();
+                DB.AtualizaNota(totalConta, totalPago, numNotas, dataConta, id);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
-        public void AtualizaNota(string totalConta, string totalPago, int numNotas, string dataConta, int id)
+        public void GravaLog(int idCliente, string dataNota, string horaNota, string atendente, string valor, string log)
         {
             try
             {
-                DB.AtualizaNota(totalConta, totalPago, numNotas, dataConta, id);
+                DB.GravaLog(idCliente, dataNota, horaNota, atendente, valor, log);
             }
             catch (Exception ex)
             {

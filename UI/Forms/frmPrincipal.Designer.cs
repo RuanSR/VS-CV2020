@@ -171,6 +171,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(10);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -213,9 +214,11 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgClientes.RowHeadersVisible = false;
+            this.dtgClientes.RowHeadersWidth = 49;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
             this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgClientes.RowTemplate.Height = 35;
             this.dtgClientes.Size = new System.Drawing.Size(484, 325);
             this.dtgClientes.TabIndex = 4;
             this.dtgClientes.Visible = false;

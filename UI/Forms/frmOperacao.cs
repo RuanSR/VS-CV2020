@@ -11,25 +11,26 @@ namespace UI.Forms
         private string _str = string.Empty;
         private DBManager _dbManager;
         private Operacao _operacao;
-        private Cliente _cliente;
-        
+        public Cliente Cliente { get; private set; }
+
         //CONTROLES\\
         public frmOperacao(Cliente cliente, Operacao operacao)
         {
             InitializeComponent();
-            _cliente = cliente;
+            Cliente = cliente;
             _operacao = operacao;
             _dbManager = new DBManager();
             if (operacao == Operacao.ADICIONAR)
             {
                 groupOperacao.BackColor = Color.SeaGreen;
-                //txtValorOperacao.BackColor = Color.Green;
                 toolStrip1.BackColor = Color.SeaGreen;
+                groupLog.BackColor = Color.SeaGreen;
             }
             else
             {
                 toolStrip1.BackColor = Color.Brown;
                 groupOperacao.BackColor = Color.Brown;
+                groupLog.BackColor = Color.Brown;
             }
         }
         private void frmOperacao_Load(object sender, EventArgs e)
@@ -93,51 +94,75 @@ namespace UI.Forms
                         {
                             if (_operacao == Operacao.ADICIONAR)
                             {
-                                if (double.Parse(txtValorOperacao.Text) <= (_cliente.LimiteConta - _cliente.TotalConta))
+                                if (double.Parse(txtValorOperacao.Text) <= (Cliente.LimiteConta - Cliente.TotalConta))
                                 {
-                                    _cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
-                                    _cliente.TotalConta += double.Parse(txtValorOperacao.Text);
-                                    _cliente.NumNotas++;
-                                    _dbManager.AtualizaNota(ConverteVirgula(_cliente.TotalConta.ToString("F2")), ConverteVirgula(_cliente.TotalPago.ToString("F2", CultureInfo.InvariantCulture)), _cliente.NumNotas, _cliente.DataConta, _cliente.Id);
-                                    MessageBox.Show("TUDO OK!");
+                                    string log = txtLog.Text.ToString();
+                                    Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
+                                    Cliente.TotalConta += double.Parse(txtValorOperacao.Text);
+                                    Cliente.NumNotas++;
+
+                                    if (log == string.Empty)
+                                    {
+                                        log = "SEM DETALHES!";
+                                    }
+
+                                    _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2", CultureInfo.InvariantCulture)), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
+                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), DateTime.Now.ToString("HH:mm:ss"), cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
+                                    
+                                    MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Dispose();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Valor da nota não pode ser maior que o limite da conta");
+                                    MessageBox.Show("Valor da nota não pode ser maior que o limite da conta", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                             else
                             {
-                                if (double.Parse(txtValorOperacao.Text) <= _cliente.TotalConta)
+                                if (double.Parse(txtValorOperacao.Text) <= Cliente.TotalConta)
                                 {
-                                    _cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
-                                    _cliente.TotalConta -= double.Parse(txtValorOperacao.Text);
-                                    _cliente.TotalPago += double.Parse(ConverteVirgula(txtValorOperacao.Text));
-                                    _dbManager.AtualizaNota(ConverteVirgula(_cliente.TotalConta.ToString("F2")), ConverteVirgula(_cliente.TotalPago.ToString("F2")), _cliente.NumNotas, _cliente.DataConta, _cliente.Id);
-                                    MessageBox.Show("TUDO OK!");
+                                    string log = txtLog.Text.ToString();
+                                    Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
+                                    Cliente.TotalConta -= double.Parse(txtValorOperacao.Text);
+                                    Cliente.TotalPago += double.Parse(ConverteVirgula(txtValorOperacao.Text));
+
+
+                                    if (log == string.Empty)
+                                    {
+                                        log = "DEBITO EFETUADO! SEM OBSERVAÇÔES!";
+                                    }
+                                    else
+                                    {
+                                        log = "DEBITO EFETUADO!" + txtLog.Text.Trim();
+                                    }
+
+                                    _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2")), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
+                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), DateTime.Now.ToString("HH:mm:ss"), cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
+                                    
+                                    
+                                    MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Dispose();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Valor do debito não pode ser maior que o valor em aberto!");
+                                    MessageBox.Show("Valor do debito não pode ser maior que o valor total!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Selecione o atendente!");
+                        MessageBox.Show("Selecione o atendente!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Digite um valor válido!");
+                    MessageBox.Show("Digite um valor válido!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         //METODOS\\
@@ -161,12 +186,12 @@ namespace UI.Forms
         {
             try
             {
-                lblNomeCliente.Text = _cliente.Nome;
-                lblDataConta.Text = _cliente.DataConta;
-                lblLimiteConta.Text = _cliente.LimiteConta.ToString("F2", CultureInfo.InvariantCulture);
-                lblLimiteRestante.Text = (_cliente.LimiteConta - _cliente.TotalConta).ToString("F2", CultureInfo.InvariantCulture);
+                lblNomeCliente.Text = Cliente.Nome;
+                lblDataConta.Text = Cliente.DataConta;
+                lblLimiteConta.Text = Cliente.LimiteConta.ToString("F2", CultureInfo.InvariantCulture);
+                lblLimiteRestante.Text = (Cliente.LimiteConta - Cliente.TotalConta).ToString("F2", CultureInfo.InvariantCulture);
                 //lblTempoAberto.Text = CalculaTempo(TimeSpan.Parse("01/12/2019"));
-                lblTotalConta.Text = _cliente.TotalConta.ToString("F2", CultureInfo.InvariantCulture);
+                lblTotalConta.Text = Cliente.TotalConta.ToString("F2", CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
             {
@@ -181,8 +206,6 @@ namespace UI.Forms
         {
             try
             {
-                cbAtendente.SelectedIndex = -1;
-                cbAtendente.ValueMember = "id_atendente";
                 cbAtendente.DisplayMember = "usuario_atendente";
                 cbAtendente.DataSource = _dbManager.GetAtendentes();
             }

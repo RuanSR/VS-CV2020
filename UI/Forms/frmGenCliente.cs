@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows.Forms;
 using Business.Class;
 
@@ -8,13 +7,13 @@ namespace UI.Forms
     public partial class frmGenCliente : Form
     {
         private string _str = string.Empty;
-        private Cliente _cliente;
+        public Cliente Cliente { get; private set; }
         private DBManager _dbManager;
         public frmGenCliente(Cliente cliente = null)
         {
             InitializeComponent();
             _dbManager = new DBManager();
-            _cliente = cliente;
+            Cliente = cliente;
         }
         private void frmGenCliente_Load(object sender, EventArgs e)
         {
@@ -28,11 +27,12 @@ namespace UI.Forms
             {
                 if (ValidaCliente())
                 {
-                    if (GenCliente())
+                    if (Cliente != null)
                     {
+                        AtualizaCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text), ckStatus.Checked);
                         //atualizar\\
-                        _dbManager.AtualizaCliente(_cliente.Id, _cliente.Nome, _cliente.Apelido, _cliente.Endereco, _cliente.Telefone,
-                            _cliente.Cpf, _cliente.LimiteConta.ToString("F2",CultureInfo.InvariantCulture), _cliente.TotalConta.ToString("F2",CultureInfo.InvariantCulture), _cliente.TotalPago.ToString("F2", CultureInfo.InvariantCulture), _cliente.NumNotas, _cliente.DataConta, _cliente.Status);
+                        _dbManager.AtualizaCliente(Cliente.Id, Cliente.Nome, Cliente.Apelido, Cliente.Endereco, Cliente.Telefone,
+                            Cliente.Cpf, Cliente.LimiteConta.ToString("F2"), Cliente.TotalConta.ToString("F2"), Cliente.TotalPago.ToString("F2"), Cliente.NumNotas, Cliente.DataConta, Cliente.Status);
                         MessageBox.Show("Cliente atualizado com sucesso!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -99,15 +99,15 @@ namespace UI.Forms
         //METODOS\\
         private bool GenCliente()
         {
-            if (_cliente != null)
+            if (Cliente != null)
             {
-                txtNomeCompleto.Text = _cliente.Nome;
-                txtApelido.Text = _cliente.Apelido;
-                txtEndereco.Text = _cliente.Endereco;
-                txtTelefone.Text = _cliente.Telefone;
-                txtCpf.Text = _cliente.Cpf;
-                txtLimite.Text = _cliente.LimiteConta.ToString();
-                ckStatus.Checked = _cliente.Status;
+                txtNomeCompleto.Text = Cliente.Nome;
+                txtApelido.Text = Cliente.Apelido;
+                txtEndereco.Text = Cliente.Endereco;
+                txtTelefone.Text = Cliente.Telefone;
+                txtCpf.Text = Cliente.Cpf;
+                txtLimite.Text = Cliente.LimiteConta.ToString("F2");
+                ckStatus.Checked = Cliente.Status;
                 ckStatus.Enabled = true;
                 return true;//Atualizar
             }
@@ -130,6 +130,16 @@ namespace UI.Forms
         private bool IsNumeric(int Val)
         {
             return ((Val >= 48 && Val <= 57) || (Val == 8) || (Val == 46));
+        }
+        private void AtualizaCliente(string nome,string apelido, string endereco, string telefone, string cpf, double limiteConta, bool status)
+        {
+            Cliente.Nome = nome;
+            Cliente.Apelido = apelido;
+            Cliente.Endereco = endereco;
+            Cliente.Telefone = telefone;
+            Cliente.Cpf = cpf;
+            Cliente.LimiteConta = limiteConta;
+            Cliente.Status = status;
         }
     }
 }

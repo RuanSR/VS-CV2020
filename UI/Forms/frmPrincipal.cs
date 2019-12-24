@@ -137,6 +137,11 @@ namespace UI.Forms
 
                 frmCliente frmCliente = new frmCliente(Size, cliente);
                 frmCliente.ShowDialog();
+
+                if (frmCliente.IsDisposed)
+                {
+                    GetPermissao();
+                }
             }
             catch (Exception ex)
             {

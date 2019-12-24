@@ -56,6 +56,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.cbAtendente = new System.Windows.Forms.ComboBox();
             this.groupOperacao = new System.Windows.Forms.GroupBox();
+            this.groupLog = new System.Windows.Forms.GroupBox();
+            this.txtLog = new System.Windows.Forms.RichTextBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
@@ -64,6 +66,7 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupOperacao.SuspendLayout();
+            this.groupLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -328,7 +331,7 @@
             // 
             // txtValorOperacao
             // 
-            this.txtValorOperacao.BackColor = System.Drawing.Color.White;
+            this.txtValorOperacao.BackColor = System.Drawing.Color.Lavender;
             this.txtValorOperacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorOperacao.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.txtValorOperacao.Location = new System.Drawing.Point(131, 26);
@@ -352,10 +355,12 @@
             // 
             // cbAtendente
             // 
-            this.cbAtendente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbAtendente.BackColor = System.Drawing.Color.Lavender;
             this.cbAtendente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAtendente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.cbAtendente.FormattingEnabled = true;
+            this.cbAtendente.Items.AddRange(new object[] {
+            ""});
             this.cbAtendente.Location = new System.Drawing.Point(131, 66);
             this.cbAtendente.Name = "cbAtendente";
             this.cbAtendente.Size = new System.Drawing.Size(180, 33);
@@ -368,22 +373,49 @@
             this.groupOperacao.Controls.Add(this.txtValorOperacao);
             this.groupOperacao.Controls.Add(this.label14);
             this.groupOperacao.Controls.Add(this.cbAtendente);
-            this.groupOperacao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupOperacao.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupOperacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupOperacao.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.groupOperacao.Location = new System.Drawing.Point(0, 247);
             this.groupOperacao.Name = "groupOperacao";
-            this.groupOperacao.Size = new System.Drawing.Size(323, 104);
+            this.groupOperacao.Size = new System.Drawing.Size(323, 105);
             this.groupOperacao.TabIndex = 4;
             this.groupOperacao.TabStop = false;
             this.groupOperacao.Text = "OPERAÇÃO :: ";
+            // 
+            // groupLog
+            // 
+            this.groupLog.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupLog.Controls.Add(this.txtLog);
+            this.groupLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupLog.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupLog.Location = new System.Drawing.Point(0, 352);
+            this.groupLog.Name = "groupLog";
+            this.groupLog.Size = new System.Drawing.Size(323, 127);
+            this.groupLog.TabIndex = 5;
+            this.groupLog.TabStop = false;
+            this.groupLog.Text = "DETALHES";
+            // 
+            // txtLog
+            // 
+            this.txtLog.BackColor = System.Drawing.Color.Lavender;
+            this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Location = new System.Drawing.Point(3, 29);
+            this.txtLog.MaxLength = 500;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(317, 95);
+            this.txtLog.TabIndex = 0;
+            this.txtLog.Text = "";
             // 
             // frmOperacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(323, 351);
+            this.ClientSize = new System.Drawing.Size(323, 479);
+            this.Controls.Add(this.groupLog);
             this.Controls.Add(this.groupOperacao);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblNomeCliente);
@@ -412,6 +444,7 @@
             this.flowLayoutPanel1.PerformLayout();
             this.groupOperacao.ResumeLayout(false);
             this.groupOperacao.PerformLayout();
+            this.groupLog.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,5 +479,7 @@
         private System.Windows.Forms.ComboBox cbAtendente;
         private System.Windows.Forms.GroupBox groupOperacao;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.GroupBox groupLog;
+        private System.Windows.Forms.RichTextBox txtLog;
     }
 }
