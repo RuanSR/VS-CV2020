@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Class;
+using System;
 using System.Windows.Forms;
 using UI.Forms;
 
@@ -14,6 +15,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            SysSettings.Init();
             Application.Run(new frmPrincipal());
         }
     }

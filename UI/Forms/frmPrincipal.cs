@@ -187,6 +187,7 @@ namespace UI.Forms
                     LoadDataSourceCliente();
                     EnableComponentes(true);
                     ShowCliente();
+                    StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
                     btnLogin.Text = "Logout";
                 }
                 else
@@ -219,6 +220,11 @@ namespace UI.Forms
             {
                 throw new Exception($"Erro ao obter dados dos clientes! Detalhes: {ex.Message}");
             }
+        }
+        private void StartTimer(int time)
+        {
+            timeBackup.Interval = time;
+            timeBackup.Start();
         }
     }
 }
