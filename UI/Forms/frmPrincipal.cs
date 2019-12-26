@@ -62,7 +62,14 @@ namespace UI.Forms
         }
         private void btnSistema_Click(object sender, EventArgs e)
         {
-            new frmGerenciadorSistema().ShowDialog();
+            frmGerenciadorSistema frm = new frmGerenciadorSistema();
+            frm.ShowDialog();
+
+            if (frm.IsDisposed)
+            {
+                LoadDataSourceCliente();
+                ShowCliente();
+            }
         }
         private void btnAbout_Click(object sender, EventArgs e)
         {

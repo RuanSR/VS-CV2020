@@ -139,5 +139,17 @@ namespace Business.Class
                 throw new Exception(ex.Message);
             }
         }
+
+        public void RestaurarBackup(string path, string dbName)
+        {
+            try
+            {
+                DB.RestaurarBackup(path, dbName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

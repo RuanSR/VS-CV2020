@@ -57,6 +57,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSalvarDados = new System.Windows.Forms.ToolStripButton();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -283,6 +284,7 @@
             this.btnBackup.Size = new System.Drawing.Size(80, 49);
             this.btnBackup.Text = "Fazer Backup";
             this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // toolStripSeparator1
             // 
@@ -314,6 +316,7 @@
             this.btnBackupRestore.Size = new System.Drawing.Size(102, 49);
             this.btnBackupRestore.Text = "Restaurar Backup";
             this.btnBackupRestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBackupRestore.Click += new System.EventHandler(this.btnBackupRestore_Click);
             // 
             // label6
             // 
@@ -367,6 +370,10 @@
             this.btnSalvarDados.Text = "Salvar";
             this.btnSalvarDados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalvarDados.Click += new System.EventHandler(this.btnSalvarDados_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // frmGerenciadorSistema
             // 
@@ -434,5 +441,6 @@
         private System.Windows.Forms.DataGridViewImageColumn btnEdit;
         private System.Windows.Forms.DataGridViewImageColumn btnDelete;
         private System.Windows.Forms.FolderBrowserDialog folderBrowser;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

@@ -19,5 +19,6 @@ namespace DAL.Class
         void NovoAtendente(string nome, string senha);
         void AtualizaAtendente(int id, string nome, string senha);
         void RemoveAtendente(int id);
+        void RestaurarBackup(string path, string dbName);
     }
 }

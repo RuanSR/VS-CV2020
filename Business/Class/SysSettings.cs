@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Management.Common;
+using Microsoft.SqlServer.Management.Smo;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -8,7 +10,7 @@ namespace Business.Class
 {
     public static class SysSettings
     {
-        private static string _defaultPathBackup = @"C:\Caderno Virtual\Backup";
+        private static string _defaultPathBackup = @"C:\Caderno Virtual\Backup\";
         public static int[] IntervaloBackup { get; private set; } = new int[3];
         public static int SelectedTimerIndex { get; private set; }
         public static string LocalBackup { get; private set; }
@@ -64,8 +66,6 @@ namespace Business.Class
                 throw new Exception("Erro ao definir configurações!");
             }
         }
-
-
         static void AddUpdateAppSettings(string key, string value)
         {
             try
@@ -88,5 +88,62 @@ namespace Business.Class
                 Console.WriteLine("Error writing app settings");
             }
         }
+
+        public static void CreateBackup()
+        {
+            try
+            {
+                string catalog = ConfigurationManager.AppSettings["Catalog-Test"];
+
+                var server = new Microsoft.SqlServer.Management.Smo.Server(ConfigurationManager.AppSettings["Server-Test"]);
+                var backup = new Microsoft.SqlServer.Management.Smo.Backup();
+                backup.Database = catalog;
+                backup.Incremental = false;
+                string nomeArquivoBackup = string.Format("{0}cv2020_{1:dd.MM.yy_HH.mm.ss}.bak", _defaultPathBackup, DateTime.Now);
+                backup.Devices.AddDevice(nomeArquivoBackup, Microsoft.SqlServer.Management.Smo.DeviceType.File);
+                backup.SqlBackup(server);
+                MessageBox.Show(string.Format("Backup '{0}' concluído com sucesso.", nomeArquivoBackup), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao criar backup! Detahes: {ex.Message}");
+            }
+        }
+        //public static void RestoreBackup() 
+        //{
+        //    try
+        //    {
+        //        string server = ConfigurationManager.AppSettings["Server-Test"];
+        //        string security = ConfigurationManager.AppSettings["Security"];
+        //        string catalog = ConfigurationManager.AppSettings["Catalog-Test"];
+
+
+        //        Server dbServer = new Server(new ServerConnection());
+
+        //        Restore dbRestore = new Restore()
+        //        {
+        //            Database = catalog,
+        //            Action = RestoreActionType.Database,
+        //            ReplaceDatabase = true,
+        //            NoRecovery = false
+        //        };
+        //        dbRestore.Devices.AddDevice(@"C:\Caderno Virtual\Backup\cv2020_26.12.19_17.34.59.bak", DeviceType.File);
+        //        dbRestore.SqlRestore(dbServer);
+
+        //        MessageBox.Show("OK");
+
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Erro ao restaurar backup! Detahes: {ex.Message}");
+        //    }
+        //}
+
+
+
+
     }
 }

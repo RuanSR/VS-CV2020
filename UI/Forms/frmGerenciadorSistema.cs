@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace UI.Forms
 {
@@ -144,7 +145,7 @@ namespace UI.Forms
             try
             {
                 SysSettings.SetSelectedTimerIndex(cbBackupIntervalo.SelectedIndex);
-                SysSettings.SetBackupPath(txtLocal.Text);
+                SysSettings.SetBackupPath(string.Format("{0}{1}", txtLocal.Text, "\\"));
                 SysSettings.Init();
                 MessageBox.Show("Salvo com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();
@@ -152,6 +153,36 @@ namespace UI.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SysSettings.CreateBackup();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBackupRestore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                openFileDialog.ShowDialog();
+                if (openFileDialog.FileName != null)
+                {
+                    dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog-Test"]);
+                    MessageBox.Show("Backup restaurado com sucesso!", "SUCESSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

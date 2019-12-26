@@ -342,5 +342,38 @@ namespace DAL.Class
                 throw new Exception($"Erro ao remover atendente! Detalhes: {ex.Message}");
             }
         }
+
+        public void RestaurarBackup(string path, string dbName)
+        {
+            /*
+            Use Master
+            Alter Database [cv2020]
+            SET SINGLE_USER With ROLLBACK IMMEDIATE 
+            RESTORE DATABASE [cv2020] FROM DISK = 'C:\Caderno Virtual\Backup\cv2020_26.12.19_17.34.59.bak' 
+            WITH REPLACE
+            GO
+             */
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query = new StringBuilder();
+                        _query.Append("Use Master Alter Database "+ dbName + " ");
+                        _query.Append("SET SINGLE_USER With ROLLBACK IMMEDIATE ");
+                        _query.Append("RESTORE DATABASE cv2020 FROM DISK = '"+path+"' WITH REPLACE");
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao restaurar banco de dados! Detalhes: {ex.Message}");
+            }
+        }
     }
 }
