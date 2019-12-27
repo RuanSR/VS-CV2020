@@ -88,9 +88,9 @@ namespace Business.Class
         {
             try
             {
-                string catalog = ConfigurationManager.AppSettings["Catalog-Test"];
+                string catalog = ConfigurationManager.AppSettings["Catalog"];
 
-                var server = new Microsoft.SqlServer.Management.Smo.Server(ConfigurationManager.AppSettings["Server-Test"]);
+                var server = new Microsoft.SqlServer.Management.Smo.Server(ConfigurationManager.AppSettings["Server"]);
                 var backup = new Microsoft.SqlServer.Management.Smo.Backup();
                 backup.Database = catalog;
                 backup.Incremental = false;

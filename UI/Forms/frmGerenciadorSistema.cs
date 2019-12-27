@@ -136,7 +136,7 @@ namespace UI.Forms
                 openFileDialog.ShowDialog();
                 if (openFileDialog.FileName != null)
                 {
-                    dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog-Test"]);
+                    dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog"]);
                     MessageBox.Show("Backup restaurado com sucesso!", "SUCESSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Dispose();
                 }

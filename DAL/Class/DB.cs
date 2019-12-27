@@ -349,7 +349,7 @@ namespace DAL.Class
             Use Master
             Alter Database [cv2020]
             SET SINGLE_USER With ROLLBACK IMMEDIATE 
-            RESTORE DATABASE [cv2020] FROM DISK = 'C:\Caderno Virtual\Backup\cv2020_26.12.19_17.34.59.bak' 
+            RESTORE DATABASE [cv2020] FROM DISK = 'C:' 
             WITH REPLACE
             GO
              */
@@ -361,9 +361,9 @@ namespace DAL.Class
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         _query = new StringBuilder();
-                        _query.Append("Use Master Alter Database "+ dbName + " ");
+                        _query.Append("Use Master Alter Database ["+dbName+"] ");
                         _query.Append("SET SINGLE_USER With ROLLBACK IMMEDIATE ");
-                        _query.Append("RESTORE DATABASE cv2020 FROM DISK = '"+path+"' WITH REPLACE");
+                        _query.Append("RESTORE DATABASE [" + dbName + "] FROM DISK = '" + path + "' WITH REPLACE");
                         cmd.Connection = conn;
                         cmd.CommandText = _query.ToString();
                         cmd.ExecuteNonQuery();
