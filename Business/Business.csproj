@@ -61,6 +61,7 @@
     <Compile Include="Class\Cliente.cs" />
     <Compile Include="Class\DBManager.cs" />
     <Compile Include="Class\Operacao.cs" />
+    <Compile Include="Class\StatusLog.cs" />
     <Compile Include="Class\SysSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -15,8 +15,15 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SysSettings.Init();
-            Application.Run(new frmPrincipal());
+            try
+            {
+                SysSettings.Init();
+                Application.Run(new frmPrincipal());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

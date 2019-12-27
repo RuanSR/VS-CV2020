@@ -1,10 +1,6 @@
-﻿using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
 using System.IO;
-using System.Windows.Forms;
 
 namespace Business.Class
 {
@@ -30,7 +26,7 @@ namespace Business.Class
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Falha ao carregar arquivos de configuração! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception($"Falha ao carregar arquivos de configuração! Detalhes: {ex.Message}");
                 //MessageBox.Show("O sistema será encerrado!");
                 //Application.Exit();
             }
@@ -88,7 +84,6 @@ namespace Business.Class
                 Console.WriteLine("Error writing app settings");
             }
         }
-
         public static void CreateBackup()
         {
             try
@@ -102,7 +97,6 @@ namespace Business.Class
                 string nomeArquivoBackup = string.Format("{0}cv2020_{1:dd.MM.yy_HH.mm.ss}.bak", _defaultPathBackup, DateTime.Now);
                 backup.Devices.AddDevice(nomeArquivoBackup, Microsoft.SqlServer.Management.Smo.DeviceType.File);
                 backup.SqlBackup(server);
-                MessageBox.Show(string.Format("Backup '{0}' concluído com sucesso.", nomeArquivoBackup), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -141,9 +135,5 @@ namespace Business.Class
         //        throw new Exception($"Erro ao restaurar backup! Detahes: {ex.Message}");
         //    }
         //}
-
-
-
-
     }
 }

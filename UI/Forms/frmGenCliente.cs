@@ -38,7 +38,7 @@ namespace UI.Forms
                     else
                     {
                         //gravar novo\\
-                        _dbManager.NovoCliente(txtNomeCompleto.Text, txtApelido.Text,txtEndereco.Text, txtTelefone.Text, txtCpf.Text, txtLimite.Text, "0,0", "0,0", 0, "SEM DADOS", true);
+                        _dbManager.NovoCliente(txtNomeCompleto.Text, txtApelido.Text,txtEndereco.Text, txtTelefone.Text, txtCpf.Text, txtLimite.Text, "0,0", "0,0", 0, "ZERADO", true);
                         MessageBox.Show("Cliente inserido com sucesso!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     Dispose();

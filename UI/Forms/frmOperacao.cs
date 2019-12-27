@@ -97,9 +97,14 @@ namespace UI.Forms
                                 if (double.Parse(txtValorOperacao.Text) <= (Cliente.LimiteConta - Cliente.TotalConta))
                                 {
                                     string log = txtLog.Text.ToString();
-                                    Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
                                     Cliente.TotalConta += double.Parse(txtValorOperacao.Text);
                                     Cliente.NumNotas++;
+                                    string horaNota = DateTime.Now.ToString("HH:mm:ss");
+
+                                    if (Cliente.DataConta == "ZERADO")
+                                    {
+                                        Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
+                                    }
 
                                     if (log == string.Empty)
                                     {
@@ -107,8 +112,9 @@ namespace UI.Forms
                                     }
 
                                     _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2", CultureInfo.InvariantCulture)), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
-                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), DateTime.Now.ToString("HH:mm:ss"), cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
-                                    
+                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), horaNota, cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
+
+                                    StatusLog.SetUltimaNota(Cliente.Nome, txtValorOperacao.Text, horaNota, Operacao.ADICIONAR);
                                     MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Dispose();
                                 }
@@ -122,10 +128,15 @@ namespace UI.Forms
                                 if (double.Parse(txtValorOperacao.Text) <= Cliente.TotalConta)
                                 {
                                     string log = txtLog.Text.ToString();
-                                    Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
                                     Cliente.TotalConta -= double.Parse(txtValorOperacao.Text);
                                     Cliente.TotalPago += double.Parse(ConverteVirgula(txtValorOperacao.Text));
+                                    string horaNota = DateTime.Now.ToString("HH:mm:ss");
 
+
+                                    if (Cliente.DataConta == "ZERADO")
+                                    {
+                                        Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
+                                    }
 
                                     if (log == string.Empty)
                                     {
@@ -136,10 +147,15 @@ namespace UI.Forms
                                         log = "DEBITO EFETUADO!" + txtLog.Text.Trim();
                                     }
 
+                                    if (Cliente.TotalConta == 0)
+                                    {
+                                        Cliente.DataConta = "ZERADO";
+                                    }
+
                                     _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2")), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
-                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), DateTime.Now.ToString("HH:mm:ss"), cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
+                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), horaNota, cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
                                     
-                                    
+                                    StatusLog.SetUltimaNota(Cliente.Nome, txtValorOperacao.Text, horaNota, Operacao.DEBITAR);
                                     MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Dispose();
                                 }
@@ -190,7 +206,7 @@ namespace UI.Forms
                 lblDataConta.Text = Cliente.DataConta;
                 lblLimiteConta.Text = Cliente.LimiteConta.ToString("F2", CultureInfo.InvariantCulture);
                 lblLimiteRestante.Text = (Cliente.LimiteConta - Cliente.TotalConta).ToString("F2", CultureInfo.InvariantCulture);
-                //lblTempoAberto.Text = CalculaTempo(TimeSpan.Parse("01/12/2019"));
+                lblTempoAberto.Text = CalculaTempo();
                 lblTotalConta.Text = Cliente.TotalConta.ToString("F2", CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
@@ -208,15 +224,21 @@ namespace UI.Forms
             {
                 cbAtendente.DisplayMember = "usuario_atendente";
                 cbAtendente.DataSource = _dbManager.GetAtendentes();
+                cbAtendente.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private string CalculaTempo(TimeSpan time)
+        private string CalculaTempo()
         {
-            return time.Days.ToString();
+            if (Cliente.DataConta == "ZERADO")
+            {
+                return "0";
+            }
+            TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(Cliente.DataConta);
+            return date.Days.ToString();
         }
         private bool IsNumeric(int Val)
         {

@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripBar = new System.Windows.Forms.ToolStrip();
             this.btnNovoCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLogin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.btnSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,10 +62,14 @@
             this.data_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeBackup = new System.Windows.Forms.Timer(this.components);
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.lblStatusRegistro = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUltimoBackup = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
             this.groupBoxPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
+            this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripBar
@@ -74,7 +79,8 @@
             this.toolStripBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNovoCliente,
             this.toolStripSeparator1,
-            this.btnLogin});
+            this.btnLogin,
+            this.toolStripSeparator2});
             this.toolStripBar.Location = new System.Drawing.Point(0, 25);
             this.toolStripBar.Name = "toolStripBar";
             this.toolStripBar.Size = new System.Drawing.Size(484, 58);
@@ -108,6 +114,11 @@
             this.btnLogin.Text = "Login";
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 58);
             // 
             // menuBar
             // 
@@ -169,15 +180,15 @@
             this.dtgClientes.AllowUserToDeleteRows = false;
             this.dtgClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dtgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(10);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnDebitar,
@@ -194,32 +205,32 @@
             this.num_notas_cliente,
             this.data_conta_cliente,
             this.status_cliente});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgClientes.GridColor = System.Drawing.Color.SlateGray;
             this.dtgClientes.Location = new System.Drawing.Point(0, 136);
             this.dtgClientes.Name = "dtgClientes";
             this.dtgClientes.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgClientes.RowHeadersVisible = false;
             this.dtgClientes.RowHeadersWidth = 49;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgClientes.RowTemplate.Height = 35;
             this.dtgClientes.Size = new System.Drawing.Size(484, 325);
             this.dtgClientes.TabIndex = 4;
@@ -229,13 +240,13 @@
             // 
             // btnDebitar
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle8.NullValue")));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.btnDebitar.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.btnDebitar.DefaultCellStyle = dataGridViewCellStyle2;
             this.btnDebitar.HeaderText = "--";
             this.btnDebitar.Image = global::UI.Properties.Resources.debitar;
             this.btnDebitar.Name = "btnDebitar";
@@ -244,13 +255,13 @@
             // 
             // btnAdd
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle9.NullValue")));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.btnAdd.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.btnAdd.DefaultCellStyle = dataGridViewCellStyle3;
             this.btnAdd.HeaderText = "$";
             this.btnAdd.Image = global::UI.Properties.Resources.add;
             this.btnAdd.Name = "btnAdd";
@@ -359,6 +370,36 @@
             // timeBackup
             // 
             this.timeBackup.Interval = 10000;
+            this.timeBackup.Tick += new System.EventHandler(this.timeBackup_Tick);
+            // 
+            // statusBar
+            // 
+            this.statusBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.statusBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatusRegistro,
+            this.lblUltimoBackup});
+            this.statusBar.Location = new System.Drawing.Point(0, 439);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusBar.Size = new System.Drawing.Size(484, 22);
+            this.statusBar.SizingGrip = false;
+            this.statusBar.TabIndex = 5;
+            this.statusBar.Visible = false;
+            // 
+            // lblStatusRegistro
+            // 
+            this.lblStatusRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.lblStatusRegistro.Name = "lblStatusRegistro";
+            this.lblStatusRegistro.Size = new System.Drawing.Size(109, 17);
+            this.lblStatusRegistro.Text = "Ultimo Registro: ";
+            // 
+            // lblUltimoBackup
+            // 
+            this.lblUltimoBackup.Name = "lblUltimoBackup";
+            this.lblUltimoBackup.Size = new System.Drawing.Size(103, 17);
+            this.lblUltimoBackup.Text = "Último backup: ";
+            this.lblUltimoBackup.Visible = false;
             // 
             // frmPrincipal
             // 
@@ -366,6 +407,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.groupBoxPesquisa);
             this.Controls.Add(this.toolStripBar);
@@ -384,6 +426,8 @@
             this.groupBoxPesquisa.ResumeLayout(false);
             this.groupBoxPesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,6 +460,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_conta_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn status_cliente;
         private System.Windows.Forms.Timer timeBackup;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatusRegistro;
+        private System.Windows.Forms.ToolStripStatusLabel lblUltimoBackup;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

@@ -102,6 +102,50 @@ namespace UI.Forms
                 CarregaAtendentes();
             }
         }
+        private void btnSalvarDados_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SysSettings.SetSelectedTimerIndex(cbBackupIntervalo.SelectedIndex);
+                SysSettings.SetBackupPath(string.Format("{0}{1}", txtLocal.Text, "\\"));
+                SysSettings.Init();
+                MessageBox.Show("Salvo com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SysSettings.CreateBackup();
+                MessageBox.Show(string.Format("Backup concluído com sucesso.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnBackupRestore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                openFileDialog.ShowDialog();
+                if (openFileDialog.FileName != null)
+                {
+                    dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog-Test"]);
+                    MessageBox.Show("Backup restaurado com sucesso!", "SUCESSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         //METODOS\\
         private void CarregaAtendentes()
         {
@@ -137,52 +181,6 @@ namespace UI.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSalvarDados_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SysSettings.SetSelectedTimerIndex(cbBackupIntervalo.SelectedIndex);
-                SysSettings.SetBackupPath(string.Format("{0}{1}", txtLocal.Text, "\\"));
-                SysSettings.Init();
-                MessageBox.Show("Salvo com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnBackup_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SysSettings.CreateBackup();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnBackupRestore_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                openFileDialog.ShowDialog();
-                if (openFileDialog.FileName != null)
-                {
-                    dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog-Test"]);
-                    MessageBox.Show("Backup restaurado com sucesso!", "SUCESSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
     }

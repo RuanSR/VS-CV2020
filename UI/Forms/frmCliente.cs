@@ -28,10 +28,12 @@ namespace UI.Forms
         {
             ShowDados();
             LoadLog();
+            Estilo();
         }
         private void frmCliente_Resize(object sender, EventArgs e)
         {
             SetDefaultSplitDistance();
+            dtgLog.Columns["log_registro"].Width = _sizeParent.Width;
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -86,6 +88,9 @@ namespace UI.Forms
             double limiteRestante = _cliente.LimiteConta - _cliente.TotalConta;
             lblLimiteRestante.Text = limiteRestante.ToString("F2");
             lblTotalConta.Text = _cliente.TotalConta.ToString("F2");
+            lblTempoAberto.Text = CalculaTempo();
+
+
 
             lblApelido.Text = _cliente.Apelido;
             lblEndereco.Text = _cliente.Endereco;
@@ -94,6 +99,15 @@ namespace UI.Forms
             lblNotasRegistradas.Text = _cliente.NumNotas.ToString();
             lblId.Text = _cliente.Id.ToString();
             VerificaStatus();
+        }
+        private string CalculaTempo()
+        {
+            if (_cliente.DataConta == "ZERADO")
+            {
+                return "0";
+            }
+            TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(_cliente.DataConta);
+            return date.Days.ToString();
         }
         private void LoadLog()
         {
@@ -112,6 +126,7 @@ namespace UI.Forms
             _sizeParent.Height = _sizeParent.Height / 2;
             Size = _sizeParent;
             splitContainer.Panel1MinSize = _sizeParent.Width / 2;
+            dtgLog.Columns["log_registro"].Width += _sizeParent.Width;
         }
         private void SetDefaultSplitDistance()
         {
@@ -133,6 +148,13 @@ namespace UI.Forms
             else 
             {
                 btnAdicionarValor.Enabled = _cliente.Status;
+            }
+        }
+        private void Estilo()
+        {
+            for (int i = 0; i < dtgLog.Rows.Count; i += 2)
+            {
+                dtgLog.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
             }
         }
     }

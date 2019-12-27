@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Business.Class;
 
@@ -18,9 +19,9 @@ namespace UI.Forms
         //CONTROLES\\
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            //Admin.Logado = true;
-            //GetPermissao();
-            StartLogin();
+            Admin.Logado = true;
+            GetPermissao();
+            //StartLogin();
 
         }
         private void btnNovoCliente_Click(object sender, EventArgs e)
@@ -105,7 +106,7 @@ namespace UI.Forms
                         ShowCliente();
                     }
                 }
-                else if(dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
+                else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
                 {
                     frmOperacao frm = new frmOperacao(cliente, Operacao.DEBITAR);
                     frm.ShowDialog();
@@ -155,6 +156,19 @@ namespace UI.Forms
                 MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
+        private void timeBackup_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                SysSettings.CreateBackup();
+                lblUltimoBackup.Text = "Último Backup: " + DateTime.Now.ToString("HH:mm:ss");
+                timeBackup.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //METODOS\\
         private void LoadDataSourceCliente()
@@ -182,7 +196,7 @@ namespace UI.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"ERRO!",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void GetPermissao()
@@ -214,6 +228,7 @@ namespace UI.Forms
             btnNovoCliente.Enabled = status;
             groupBoxPesquisa.Enabled = status;
             dtgClientes.Visible = status;
+            statusBar.Visible = status;
         }
         private void ShowCliente(string filter = "nome_cliente", string searth = null)
         {
@@ -222,6 +237,8 @@ namespace UI.Forms
                 DataSourceCliente.Filter = filter + " like '%" + searth + "%'";
                 dtgClientes.DataSource = DataSourceCliente;
                 dtgClientes.DataSource = DataSourceCliente;
+                Estilo();
+                AtualizaStatus();
             }
             catch (Exception ex)
             {
@@ -232,6 +249,17 @@ namespace UI.Forms
         {
             timeBackup.Interval = time;
             timeBackup.Start();
+        }
+        private void AtualizaStatus()
+        {
+            lblStatusRegistro.Text = "Último Registro: " + StatusLog.UltimaNota;
+        }
+        private void Estilo()
+        {
+            for (int i = 0; i < dtgClientes.Rows.Count; i += 2)
+            {
+                dtgClientes.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
+            }
         }
     }
 }
