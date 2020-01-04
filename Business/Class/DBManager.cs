@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
+using System.Windows.Forms;
 using DAL.Class;
 
 namespace Business.Class
@@ -8,6 +10,7 @@ namespace Business.Class
     {
 
         private DB DB { get; set; }
+
         public DBManager()
         {
             DB = new DB();
@@ -145,6 +148,42 @@ namespace Business.Class
             try
             {
                 DB.RestaurarBackup(path, dbName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable VerificaBanco()
+        {
+            try
+            {
+                return DB.VerificaBanco();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void VerificaDB()
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = VerificaBanco();
+
+            if (dataTable.Rows.Count == 0)
+            {
+                CeateDataBase();
+            }
+
+        }
+
+        public void CeateDataBase()
+        {
+            try
+            {
+                DB.CeateDataBase();
             }
             catch (Exception ex)
             {

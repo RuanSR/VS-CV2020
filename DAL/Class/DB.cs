@@ -119,7 +119,31 @@ namespace DAL.Class
                 throw new Exception($"Erro ao obter dados! Detalhes: {ex.Message}");
             }
         }
-
+        public DataTable VerificaBanco()
+        {
+            try
+            {
+                _query = new StringBuilder();
+                DataTable dataTable = new DataTable();
+                using (SqlConnection conn = new SqlConnection(Conn.GetConnMaster))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        _query.Append("SELECT * FROM sys.databases where name = 'cv2020';");
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                        dataTable.Load(cmd.ExecuteReader());
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Arro ao verificar banco de dados! {ex.Message}");
+            }
+        }
         public void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf,
             string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta, bool status)
         {
@@ -361,9 +385,9 @@ namespace DAL.Class
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         _query = new StringBuilder();
-                        _query.Append("Use Master Alter Database ["+dbName+"] ");
-                        _query.Append("SET SINGLE_USER With ROLLBACK IMMEDIATE ");
-                        _query.Append("RESTORE DATABASE [" + dbName + "] FROM DISK = '" + path + "' WITH REPLACE");
+                        _query.Append("Use Master Alter Database " + dbName + " ");
+                        _query.Append("SET MULTI_USER With ROLLBACK IMMEDIATE ");
+                        _query.Append("RESTORE DATABASE " + dbName + " FROM DISK = '" + path + "' WITH REPLACE");
                         cmd.Connection = conn;
                         cmd.CommandText = _query.ToString();
                         cmd.ExecuteNonQuery();
@@ -373,6 +397,38 @@ namespace DAL.Class
             catch (Exception ex)
             {
                 throw new Exception($"Erro ao restaurar banco de dados! Detalhes: {ex.Message}");
+            }
+        }
+
+        public void CeateDataBase()
+        {
+            try
+            {
+                _query = new StringBuilder();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    using (SqlConnection connMaster = new SqlConnection(Conn.GetConnMaster))
+                    {
+                        connMaster.Open();
+                        _query.Append("CREATE DATABASE cv2020");
+                        cmd.Connection = connMaster;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                        _query.Clear();
+                    }
+                    using (SqlConnection conn = new SqlConnection(Conn.GetConn))
+                    {
+                        conn.Open();
+                        _query.Append(Resource.db_query);
+                        cmd.Connection = conn;
+                        cmd.CommandText = _query.ToString();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao criar banco de dados! Detalhes: {ex.Message}");
             }
         }
     }

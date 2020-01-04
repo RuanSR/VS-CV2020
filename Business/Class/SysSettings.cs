@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Management.Smo;
+using System;
 using System.Configuration;
 using System.IO;
 
@@ -90,17 +91,29 @@ namespace Business.Class
             {
                 string catalog = ConfigurationManager.AppSettings["Catalog"];
 
-                var server = new Microsoft.SqlServer.Management.Smo.Server(ConfigurationManager.AppSettings["Server"]);
-                var backup = new Microsoft.SqlServer.Management.Smo.Backup();
+                var server = new Server(ConfigurationManager.AppSettings["Server"]);
+                var backup = new Backup();
                 backup.Database = catalog;
                 backup.Incremental = false;
                 string nomeArquivoBackup = string.Format("{0}cv2020_{1:dd.MM.yy_HH.mm.ss}.bak", _defaultPathBackup, DateTime.Now);
-                backup.Devices.AddDevice(nomeArquivoBackup, Microsoft.SqlServer.Management.Smo.DeviceType.File);
+                backup.Devices.AddDevice(nomeArquivoBackup, DeviceType.File);
                 backup.SqlBackup(server);
             }
             catch (Exception ex)
             {
                 throw new Exception($"Erro ao criar backup! Detahes: {ex.Message}");
+            }
+        }
+
+        public static void VerificaBanco()
+        {
+            try
+            {
+                new DBManager().VerificaDB();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
         //public static void RestoreBackup() 

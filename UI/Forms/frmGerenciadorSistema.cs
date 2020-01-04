@@ -51,7 +51,7 @@ namespace UI.Forms
                         if (id != 1)
                         {
                             dbManager.RemoveAtendente((int)dtgAtendente.Rows[e.RowIndex].Cells["id_atendente"].Value);
-                            MessageBox.Show("Atendete removido!", "ATENÇÂO!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            MessageBox.Show("Atendete removido!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CarregaAtendentes();
                         }
                         else
@@ -122,11 +122,11 @@ namespace UI.Forms
             try
             {
                 SysSettings.CreateBackup();
-                MessageBox.Show(string.Format("Backup concluído com sucesso.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information));
+                MessageBox.Show("Backup concluído com sucesso.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnBackupRestore_Click(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace UI.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //METODOS\\

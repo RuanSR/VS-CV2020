@@ -17,6 +17,7 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
+                SysSettings.VerificaBanco();
                 SysSettings.Init();
                 Application.Run(new frmPrincipal());
             }

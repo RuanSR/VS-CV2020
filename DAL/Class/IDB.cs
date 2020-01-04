@@ -8,6 +8,7 @@ namespace DAL.Class
         DataTable GetAdmin(string usuario, string senha);
         DataTable GetLog(int idCliente);
         DataTable GetAtendentes();
+        DataTable VerificaBanco();
         void NovoCliente(string nome, string apelido, string endereco, string telefone, string cpf,
         string limiteConta, string totalConta, string totalPago, int numNotas, string dataConta,
         bool status);
@@ -20,5 +21,6 @@ namespace DAL.Class
         void AtualizaAtendente(int id, string nome, string senha);
         void RemoveAtendente(int id);
         void RestaurarBackup(string path, string dbName);
+        void CeateDataBase();
     }
 }
