@@ -213,12 +213,6 @@
     <None Include="Resources\speed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj">
-      <Project>{698236fb-ba32-4495-9cc3-b502d7586fbb}</Project>
-      <Name>Business</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\id.png" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +232,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Control\Control.csproj">
+      <Project>{914d664d-c61d-46c3-bc94-d88a8a207548}</Project>
+      <Name>Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{c589cac6-e5ca-4cda-a415-4f82466da6d1}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
