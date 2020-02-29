@@ -19,7 +19,14 @@ namespace DAL.DAO
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=DB.sqlite;");
+            try
+            {
+                optionsBuilder.UseSqlite("Data Source=C:\\CV2020\\DB.sqlite;");
+            }
+            catch (System.Exception e)
+            {
+                throw new System.Exception($"Erro na conexão com a base de dados! {e.Message}");
+            }
         }
     }
 }

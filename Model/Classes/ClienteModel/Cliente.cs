@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Exceptions;
+using System;
 
 namespace Model.Classes.ClienteModel
 {
@@ -45,7 +46,7 @@ namespace Model.Classes.ClienteModel
             if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(apelido) || string.IsNullOrEmpty(endereco)
                 || string.IsNullOrEmpty(telefone))
             {
-                throw new ArgumentException("Preencha corretamente os dados requeridos.");
+                throw new ClienteException("Preencha corretamente os dados requeridos.");
             }
 
             if (limiteConta < 0)

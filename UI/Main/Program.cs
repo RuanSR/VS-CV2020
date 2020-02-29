@@ -1,5 +1,4 @@
-﻿using Business.Class;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using UI.Forms;
 
@@ -17,8 +16,8 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                SysSettings.VerificaBanco();
-                SysSettings.Init();
+                //SysSettings.VerificaBanco();
+                //SysSettings.Init();
                 Application.Run(new frmPrincipal());
             }
             catch (Exception ex)

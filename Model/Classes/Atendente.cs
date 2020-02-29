@@ -33,15 +33,15 @@ namespace Model.Classes
         {
             if(string.IsNullOrEmpty(nome))
             {
-                throw new AtendenteException("Nome é obrigatório");
+                throw new AtendenteException("Preencha seu nome corretamente.");
             }
             if(string.IsNullOrEmpty(usuario))
             {
-                throw new AtendenteException("Usuario é obrigatório");
+                throw new AtendenteException("Seu nome de usuário não pode ser vazio.");
             }
             if(string.IsNullOrEmpty(senha))
             {
-                throw new AtendenteException("Senha é obrigatório");
+                throw new AtendenteException("Sua senha não pode ser vazia.");
             }
         }
 

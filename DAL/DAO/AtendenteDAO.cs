@@ -12,31 +12,66 @@ namespace DAL.DAO
 
         public AtendenteDAO()
         {
-            _atendenteContext = new CVContext();
+            try
+            {
+                _atendenteContext = new CVContext();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         public void NovoAtendente(Atendente atendente)
         {
-            _atendenteContext.Atendentes.Add(atendente);
-            _atendenteContext.SaveChanges();
+            try
+            {
+                _atendenteContext.Atendentes.Add(atendente);
+                _atendenteContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao adiconar novo atendente. Detalhes: {e.Message}");
+            }
         }
         public void AtualizarAtendente(Atendente atendente)
         {
-            _atendenteContext.Atendentes.Update(atendente);
-            _atendenteContext.SaveChanges();
+            try
+            {
+                _atendenteContext.Atendentes.Update(atendente);
+                _atendenteContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao atualizar dados do atendente. {e.Message}");
+            }
         }
         public void RevomerAtendente(Atendente atendente)
         {
-            _atendenteContext.Atendentes.Remove(atendente);
-            _atendenteContext.SaveChanges();
+            try
+            {
+                _atendenteContext.Atendentes.Remove(atendente);
+                _atendenteContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao remover atendente. {e.Message}");
+            }
         }
         public IList<Atendente> ListaAtendentes()
         {
-            return _atendenteContext.Atendentes.ToList();
+            try
+            {
+                return _atendenteContext.Atendentes.ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao obter lista de atendentes. {e.Message}");
+            }
         }
-
         public void Dispose()
         {
             _atendenteContext.Dispose();
         }
+
     }
 }

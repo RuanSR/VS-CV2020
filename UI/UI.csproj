@@ -28,6 +28,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,7 +67,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -234,9 +238,9 @@
     <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Control\Control.csproj">
-      <Project>{914d664d-c61d-46c3-bc94-d88a8a207548}</Project>
-      <Name>Control</Name>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{9fd2d637-423e-4662-a26b-c5efd1add52f}</Project>
+      <Name>Controller</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{c589cac6-e5ca-4cda-a415-4f82466da6d1}</Project>

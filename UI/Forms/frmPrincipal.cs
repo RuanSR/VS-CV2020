@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Business.Class;
 
 namespace UI.Forms
 {
     public partial class frmPrincipal : Form
     {
         private BindingSource DataSourceCliente { get; set; }
-        private DBManager dbManager { get; set; }
+        //private DBManager dbManager { get; set; }
         public frmPrincipal()
         {
             InitializeComponent();
-            dbManager = new DBManager();
+            //dbManager = new DBManager();
             DataSourceCliente = new BindingSource();
         }
 
@@ -45,18 +44,18 @@ namespace UI.Forms
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            switch (btnLogin.Text)
-            {
-                case "Login":
-                    StartLogin();
-                    break;
-                case "Logout":
-                    Admin.Logado = false;
-                    GetPermissao();
-                    break;
-                default:
-                    break;
-            }
+            //switch (btnLogin.Text)
+            //{
+            //    case "Login":
+            //        StartLogin();
+            //        break;
+            //    case "Logout":
+            //        Admin.Logado = false;
+            //        GetPermissao();
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
         private void btnSistema_Click(object sender, EventArgs e)
         {
@@ -76,103 +75,104 @@ namespace UI.Forms
 
         private void dtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                Cliente cliente = new Cliente();
+            //try
+            //{
+            //    Cliente cliente = new Cliente();
 
-                cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
-                cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
-                cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
-                cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
-                cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
-                cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
-                cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
-                cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
-                cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
-                cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
-                cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
-                cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
-                if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
-                {
-                    frmOperacao frm = new frmOperacao(cliente, Operacao.ADICIONAR);
-                    frm.ShowDialog();
+            //    cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
+            //    cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
+            //    cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
+            //    cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
+            //    cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
+            //    cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
+            //    cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
+            //    cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
+            //    cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
+            //    cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
+            //    cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
+            //    cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
+            //    if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
+            //    {
+            //        frmOperacao frm = new frmOperacao(cliente, Operacao.ADICIONAR);
+            //        frm.ShowDialog();
 
-                    if (frm.IsDisposed)
-                    {
-                        LoadDataSourceCliente();
-                        ShowCliente();
-                    }
-                }
-                else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
-                {
-                    frmOperacao frm = new frmOperacao(cliente, Operacao.DEBITAR);
-                    frm.ShowDialog();
+            //        if (frm.IsDisposed)
+            //        {
+            //            LoadDataSourceCliente();
+            //            ShowCliente();
+            //        }
+            //    }
+            //    else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
+            //    {
+            //        frmOperacao frm = new frmOperacao(cliente, Operacao.DEBITAR);
+            //        frm.ShowDialog();
 
-                    if (frm.IsDisposed)
-                    {
-                        LoadDataSourceCliente();
-                        ShowCliente();
-                    }
+            //        if (frm.IsDisposed)
+            //        {
+            //            LoadDataSourceCliente();
+            //            ShowCliente();
+            //        }
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+            //}
         }
         private void dtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            //    try
+            //    {
+            //        Cliente cliente = new Cliente();
+
+            //        cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
+            //        cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
+            //        cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
+            //        cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
+            //        cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
+            //        cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
+            //        cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
+            //        cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
+            //        cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
+            //        cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
+            //        cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
+            //        cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
+
+            //        frmCliente frmCliente = new frmCliente(Size, cliente);
+            //        frmCliente.ShowDialog();
+
+            //        if (frmCliente.IsDisposed)
+            //        {
+            //            GetPermissao();
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+            //    }
+            //}
+        }
+            private void timeBackup_Tick(object sender, EventArgs e)
             {
-                Cliente cliente = new Cliente();
-
-                cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
-                cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
-                cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
-                cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
-                cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
-                cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
-                cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
-                cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
-                cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
-                cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
-                cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
-                cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
-
-                frmCliente frmCliente = new frmCliente(Size, cliente);
-                frmCliente.ShowDialog();
-
-                if (frmCliente.IsDisposed)
+                try
                 {
-                    GetPermissao();
+                    //SysSettings.CreateBackup();
+                    lblUltimoBackup.Text = "Último Backup: " + DateTime.Now.ToString("HH:mm:ss");
+                    timeBackup.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
-            }
-        }
-        private void timeBackup_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                SysSettings.CreateBackup();
-                lblUltimoBackup.Text = "Último Backup: " + DateTime.Now.ToString("HH:mm:ss");
-                timeBackup.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         //METODOS\\
         private void LoadDataSourceCliente()
         {
             try
             {
-                DataSourceCliente.DataSource = dbManager.GetData();
+                //DataSourceCliente.DataSource = dbManager.GetData();
             }
             catch (Exception ex)
             {
@@ -198,26 +198,26 @@ namespace UI.Forms
         }
         private void GetPermissao()
         {
-            try
-            {
-                if (Admin.Logado)
-                {
-                    LoadDataSourceCliente();
-                    EnableComponentes(true);
-                    ShowCliente();
-                    StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
-                    btnLogin.Text = "Logout";
-                }
-                else
-                {
-                    EnableComponentes(false);
-                    btnLogin.Text = "Login";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao obter permissão de login! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    if (Admin.Logado)
+            //    {
+            //        LoadDataSourceCliente();
+            //        EnableComponentes(true);
+            //        ShowCliente();
+            //        StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
+            //        btnLogin.Text = "Logout";
+            //    }
+            //    else
+            //    {
+            //        EnableComponentes(false);
+            //        btnLogin.Text = "Login";
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Erro ao obter permissão de login! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         private void EnableComponentes(bool status)
         {
@@ -249,7 +249,7 @@ namespace UI.Forms
         }
         private void AtualizaStatus()
         {
-            lblStatusRegistro.Text = "Último Registro: " + StatusLog.UltimaNota;
+            //lblStatusRegistro.Text = "Último Registro: " + StatusLog.UltimaNota;
         }
         private void Estilo()
         {

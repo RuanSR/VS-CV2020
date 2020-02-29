@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Model.Classes.ClienteModel;
+using Model.Enum;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Business.Class;
 
 namespace UI.Forms
 {
     public partial class frmCliente : Form
     {
-        private DBManager _dbManager;
+        //private DBManager _dbManager;
         private Cliente _cliente;
         private int sizeSplitDetail = 80;
         private Size _sizeParent;
@@ -20,7 +21,7 @@ namespace UI.Forms
             SetDefaultSize();
             SetDefaultSplitDistance();
             _cliente = cliente;
-            _dbManager = new DBManager();
+            //_dbManager = new DBManager();
         }
 
         //CONTROLES\\
@@ -56,7 +57,7 @@ namespace UI.Forms
         }
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
-            frmOperacao frm = new frmOperacao(_cliente, Operacao.ADICIONAR);
+            frmOperacao frm = new frmOperacao(_cliente, Operacoes.ADICIONAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -68,7 +69,7 @@ namespace UI.Forms
         }
         private void btnDebitarValor_Click(object sender, EventArgs e)
         {
-            frmOperacao frm = new frmOperacao(_cliente, Operacao.DEBITAR);
+            frmOperacao frm = new frmOperacao(_cliente, Operacoes.DEBITAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -82,38 +83,39 @@ namespace UI.Forms
         //MÉTODOS\\
         private void ShowDados()
         {
-            lblNomeCliente.Text = _cliente.Nome;
-            lblDataConta.Text = _cliente.DataConta;
-            lblLimiteConta.Text = _cliente.LimiteConta.ToString("F2");
-            double limiteRestante = _cliente.LimiteConta - _cliente.TotalConta;
-            lblLimiteRestante.Text = limiteRestante.ToString("F2");
-            lblTotalConta.Text = _cliente.TotalConta.ToString("F2");
-            lblTempoAberto.Text = CalculaTempo();
+            //lblNomeCliente.Text = _cliente.Nome;
+            //lblDataConta.Text = _cliente.DataConta;
+            //lblLimiteConta.Text = _cliente.LimiteConta.ToString("F2");
+            //double limiteRestante = _cliente.LimiteConta - _cliente.TotalConta;
+            //lblLimiteRestante.Text = limiteRestante.ToString("F2");
+            //lblTotalConta.Text = _cliente.TotalConta.ToString("F2");
+            //lblTempoAberto.Text = CalculaTempo();
 
 
 
-            lblApelido.Text = _cliente.Apelido;
-            lblEndereco.Text = _cliente.Endereco;
-            lblTelefone.Text = _cliente.Telefone;
-            lblCpf.Text = _cliente.Cpf;
-            lblNotasRegistradas.Text = _cliente.NumNotas.ToString();
-            lblId.Text = _cliente.Id.ToString();
-            VerificaStatus();
+            //lblApelido.Text = _cliente.Apelido;
+            //lblEndereco.Text = _cliente.Endereco;
+            //lblTelefone.Text = _cliente.Telefone;
+            //lblCpf.Text = _cliente.Cpf;
+            //lblNotasRegistradas.Text = _cliente.NumNotas.ToString();
+            //lblId.Text = _cliente.Id.ToString();
+            //VerificaStatus();
         }
         private string CalculaTempo()
         {
-            if (_cliente.DataConta == "ZERADO")
-            {
-                return "0";
-            }
-            TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(_cliente.DataConta);
-            return date.Days.ToString();
+            //if (_cliente.DataConta == "ZERADO")
+            //{
+            //    return "0";
+            //}
+            //TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(_cliente.DataConta);
+            //return date.Days.ToString();
+            return null;
         }
         private void LoadLog()
         {
             try
             {
-                dtgLog.DataSource = _dbManager.GetLog(_cliente.Id);
+                //dtgLog.DataSource = _dbManager.GetLog(_cliente.Id);
             }
             catch (Exception ex)
             {

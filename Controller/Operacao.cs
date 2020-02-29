@@ -1,16 +1,16 @@
-using Model.Classes.ClienteModel;
+﻿using Model.Classes.ClienteModel;
 using Model.Enum;
 using Model.Exceptions;
 using System;
 
-namespace Model.Classes
+namespace Controller
 {
-    public static class Operacao
+    public class Operacao
     {
         public static Cliente AdicionarValor(Cliente c, double valor, string atendente, string obs)
         {
             ValidaDados(c, valor, atendente);
-            if(valor <= c.NotaConta.LimiteConta)
+            if (valor <= c.NotaConta.LimiteConta)
             {
                 var limiteConta = c.NotaConta.LimiteConta;
                 var totalConta = c.NotaConta.TotalConta + valor;
@@ -25,7 +25,7 @@ namespace Model.Classes
         public static Cliente DebitarValor(Cliente c, double valor, string atendente, string obs)
         {
             ValidaDados(c, valor, atendente);
-            if(valor <= c.NotaConta.TotalConta)
+            if (valor <= c.NotaConta.TotalConta)
             {
                 var limiteConta = c.NotaConta.LimiteConta;
                 var totalConta = c.NotaConta.TotalConta - valor;
@@ -41,12 +41,13 @@ namespace Model.Classes
         {
             if (op == Operacoes.ADICIONAR)
             {
-                if(propriedadeData != "ZERADO")
+                if (propriedadeData != "ZERADO")
                 {
                     return propriedadeData;
                 }
                 return DateTime.Now.ToString("dd/MM/yyyy");
-            }else
+            }
+            else
             {
                 if (totalConta <= 0)
                 {
@@ -57,15 +58,15 @@ namespace Model.Classes
         }
         private static void ValidaDados(Cliente c, double valor, string atendente)
         {
-            if(valor < 0)
+            if (valor < 0)
             {
                 throw new ArgumentException("O valor não pode ser negativo.");
             }
-            if(valor == 0.0)
+            if (valor == 0.0)
             {
                 throw new OperacaoException("O valor não pode ser zero.");
             }
-            if(string.IsNullOrEmpty(atendente))
+            if (string.IsNullOrEmpty(atendente))
             {
                 throw new ArgumentException("É preciso prenecher o campo Atendente.");
             }

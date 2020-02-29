@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Windows.Forms;
-using Business.Class;
 using System.Globalization;
 using System.Drawing;
+using Model.Enum;
+using Model.Classes.ClienteModel;
 
 namespace UI.Forms
 {
     public partial class frmOperacao : Form
     {
         private string _str = string.Empty;
-        private DBManager _dbManager;
-        private Operacao _operacao;
+        //private DBManager _dbManager;
+        private Operacoes _operacao;
         public Cliente Cliente { get; private set; }
 
         //CONTROLES\\
-        public frmOperacao(Cliente cliente, Operacao operacao)
+        public frmOperacao(Cliente cliente, Operacoes operacao)
         {
             InitializeComponent();
             Cliente = cliente;
             _operacao = operacao;
-            _dbManager = new DBManager();
-            if (operacao == Operacao.ADICIONAR)
+            //_dbManager = new DBManager();
+            if (operacao == Operacoes.ADICIONAR)
             {
                 groupOperacao.BackColor = Color.SeaGreen;
                 toolStrip1.BackColor = Color.SeaGreen;
@@ -84,102 +85,102 @@ namespace UI.Forms
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (ValidaValor())
-                {
-                    if (ValidaAtendente())
-                    {
-                        if (MessageBox.Show("Tem certeze que deseja " + _operacao.ToString(), "ATENÇÂO!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            if (_operacao == Operacao.ADICIONAR)
-                            {
-                                if (double.Parse(txtValorOperacao.Text) <= (Cliente.LimiteConta - Cliente.TotalConta))
-                                {
-                                    string log = txtLog.Text.ToString();
-                                    Cliente.TotalConta += double.Parse(txtValorOperacao.Text);
-                                    Cliente.NumNotas++;
-                                    string horaNota = DateTime.Now.ToString("HH:mm:ss");
+            //try
+            //{
+            //    if (ValidaValor())
+            //    {
+            //        if (ValidaAtendente())
+            //        {
+            //            if (MessageBox.Show("Tem certeze que deseja " + _operacao.ToString(), "ATENÇÂO!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //            {
+            //                if (_operacao == Operacao.ADICIONAR)
+            //                {
+            //                    if (double.Parse(txtValorOperacao.Text) <= (Cliente.LimiteConta - Cliente.TotalConta))
+            //                    {
+            //                        string log = txtLog.Text.ToString();
+            //                        Cliente.TotalConta += double.Parse(txtValorOperacao.Text);
+            //                        Cliente.NumNotas++;
+            //                        string horaNota = DateTime.Now.ToString("HH:mm:ss");
 
-                                    if (Cliente.DataConta == "ZERADO")
-                                    {
-                                        Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
-                                    }
+            //                        if (Cliente.DataConta == "ZERADO")
+            //                        {
+            //                            Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
+            //                        }
 
-                                    if (log == string.Empty)
-                                    {
-                                        log = "SEM DETALHES!";
-                                    }
+            //                        if (log == string.Empty)
+            //                        {
+            //                            log = "SEM DETALHES!";
+            //                        }
 
-                                    _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2", CultureInfo.InvariantCulture)), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
-                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), horaNota, cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
+            //                        _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2", CultureInfo.InvariantCulture)), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
+            //                        _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), horaNota, cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
 
-                                    StatusLog.SetUltimaNota(Cliente.Nome, txtValorOperacao.Text, horaNota, Operacao.ADICIONAR);
-                                    MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Dispose();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Valor da nota não pode ser maior que o limite da conta", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                            else
-                            {
-                                if (double.Parse(txtValorOperacao.Text) <= Cliente.TotalConta)
-                                {
-                                    string log = txtLog.Text.ToString();
-                                    Cliente.TotalConta -= double.Parse(txtValorOperacao.Text);
-                                    Cliente.TotalPago += double.Parse(ConverteVirgula(txtValorOperacao.Text));
-                                    string horaNota = DateTime.Now.ToString("HH:mm:ss");
+            //                        StatusLog.SetUltimaNota(Cliente.Nome, txtValorOperacao.Text, horaNota, Operacao.ADICIONAR);
+            //                        MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                        Dispose();
+            //                    }
+            //                    else
+            //                    {
+            //                        MessageBox.Show("Valor da nota não pode ser maior que o limite da conta", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    if (double.Parse(txtValorOperacao.Text) <= Cliente.TotalConta)
+            //                    {
+            //                        string log = txtLog.Text.ToString();
+            //                        Cliente.TotalConta -= double.Parse(txtValorOperacao.Text);
+            //                        Cliente.TotalPago += double.Parse(ConverteVirgula(txtValorOperacao.Text));
+            //                        string horaNota = DateTime.Now.ToString("HH:mm:ss");
 
 
-                                    if (Cliente.DataConta == "ZERADO")
-                                    {
-                                        Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
-                                    }
+            //                        if (Cliente.DataConta == "ZERADO")
+            //                        {
+            //                            Cliente.DataConta = DateTime.Now.ToString("dd/MM/yy");
+            //                        }
 
-                                    if (log == string.Empty)
-                                    {
-                                        log = "DEBITO EFETUADO! SEM OBSERVAÇÔES!";
-                                    }
-                                    else
-                                    {
-                                        log = "DEBITO EFETUADO!" + txtLog.Text.Trim();
-                                    }
+            //                        if (log == string.Empty)
+            //                        {
+            //                            log = "DEBITO EFETUADO! SEM OBSERVAÇÔES!";
+            //                        }
+            //                        else
+            //                        {
+            //                            log = "DEBITO EFETUADO!" + txtLog.Text.Trim();
+            //                        }
 
-                                    if (Cliente.TotalConta == 0)
-                                    {
-                                        Cliente.DataConta = "ZERADO";
-                                    }
+            //                        if (Cliente.TotalConta == 0)
+            //                        {
+            //                            Cliente.DataConta = "ZERADO";
+            //                        }
 
-                                    _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2")), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
-                                    _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), horaNota, cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
+            //                        _dbManager.AtualizaNota(ConverteVirgula(Cliente.TotalConta.ToString("F2")), ConverteVirgula(Cliente.TotalPago.ToString("F2")), Cliente.NumNotas, Cliente.DataConta, Cliente.Id);
+            //                        _dbManager.GravaLog(Cliente.Id, DateTime.Now.ToString("dd/MM/yy"), horaNota, cbAtendente.Text.ToString(), txtValorOperacao.Text, log);
                                     
-                                    StatusLog.SetUltimaNota(Cliente.Nome, txtValorOperacao.Text, horaNota, Operacao.DEBITAR);
-                                    MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Dispose();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Valor do debito não pode ser maior que o valor total!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selecione o atendente!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Digite um valor válido!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //                        StatusLog.SetUltimaNota(Cliente.Nome, txtValorOperacao.Text, horaNota, Operacao.DEBITAR);
+            //                        MessageBox.Show("TUDO OK!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                        Dispose();
+            //                    }
+            //                    else
+            //                    {
+            //                        MessageBox.Show("Valor do debito não pode ser maior que o valor total!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Selecione o atendente!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Digite um valor válido!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         //METODOS\\
         private bool ValidaValor()
@@ -200,19 +201,19 @@ namespace UI.Forms
         }
         private void CarregaDados()
         {
-            try
-            {
-                lblNomeCliente.Text = Cliente.Nome;
-                lblDataConta.Text = Cliente.DataConta;
-                lblLimiteConta.Text = Cliente.LimiteConta.ToString("F2", CultureInfo.InvariantCulture);
-                lblLimiteRestante.Text = (Cliente.LimiteConta - Cliente.TotalConta).ToString("F2", CultureInfo.InvariantCulture);
-                lblTempoAberto.Text = CalculaTempo();
-                lblTotalConta.Text = Cliente.TotalConta.ToString("F2", CultureInfo.InvariantCulture);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao exibir dados do cliente! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    lblNomeCliente.Text = Cliente.Nome;
+            //    lblDataConta.Text = Cliente.DataConta;
+            //    lblLimiteConta.Text = Cliente.LimiteConta.ToString("F2", CultureInfo.InvariantCulture);
+            //    lblLimiteRestante.Text = (Cliente.LimiteConta - Cliente.TotalConta).ToString("F2", CultureInfo.InvariantCulture);
+            //    lblTempoAberto.Text = CalculaTempo();
+            //    lblTotalConta.Text = Cliente.TotalConta.ToString("F2", CultureInfo.InvariantCulture);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Erro ao exibir dados do cliente! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         private void MostraOperacao()
         {
@@ -223,7 +224,7 @@ namespace UI.Forms
             try
             {
                 cbAtendente.DisplayMember = "usuario_atendente";
-                cbAtendente.DataSource = _dbManager.GetAtendentes();
+                //cbAtendente.DataSource = _dbManager.GetAtendentes();
                 cbAtendente.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -233,12 +234,13 @@ namespace UI.Forms
         }
         private string CalculaTempo()
         {
-            if (Cliente.DataConta == "ZERADO")
-            {
-                return "0";
-            }
-            TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(Cliente.DataConta);
-            return date.Days.ToString();
+            //if (Cliente.DataConta == "ZERADO")
+            //{
+            //    return "0";
+            //}
+            //TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(Cliente.DataConta);
+            //return date.Days.ToString();
+            return null;
         }
         private bool IsNumeric(int Val)
         {

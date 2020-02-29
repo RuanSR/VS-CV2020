@@ -1,4 +1,4 @@
-﻿using Business.Class;
+﻿using Model.Classes;
 using System;
 using System.Windows.Forms;
 
@@ -7,13 +7,13 @@ namespace UI.Forms
     public partial class frmAtendenteDialog : Form
     {
         public Atendente Atendente { get; set; }
-        DBManager dbManager;
+        //DBManager dbManager;
         //CONTROLES\\
         public frmAtendenteDialog(Atendente atendente = null)
         {
             InitializeComponent();
             Atendente = atendente;
-            dbManager = new DBManager();
+            //dbManager = new DBManager();
         }
         private void frmAtendenteDialog_Load(object sender, EventArgs e)
         {
@@ -33,17 +33,17 @@ namespace UI.Forms
         //METODOS\\
         private void ValidaAtendente(Atendente atendente)
         {
-            if (atendente != null)
-            {
-                txtIdAtendnete.Text = atendente.Id.ToString();
-                txtNome.Text = atendente.Nome;
-                txtSenha.Text = atendente.Senha;
-            }
-            else
-            {
-                txtIdAtendnete.Text = "-1";
-                Atendente = new Atendente();
-            }
+            //if (atendente != null)
+            //{
+            //    txtIdAtendnete.Text = atendente.Id.ToString();
+            //    txtNome.Text = atendente.Nome;
+            //    txtSenha.Text = atendente.Senha;
+            //}
+            //else
+            //{
+            //    txtIdAtendnete.Text = "-1";
+            //    Atendente = new Atendente();
+            //}
         }
         private void GravaAtendente(int id)
         {
@@ -52,13 +52,13 @@ namespace UI.Forms
                 if (id == -1)
                 {
                     //Novo
-                    dbManager.NovoAtendente(Atendente.Nome, Atendente.Senha);
+                    //dbManager.NovoAtendente(Atendente.Nome, Atendente.Senha);
                     MessageBox.Show("Atendente criado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     //Atualiza
-                    dbManager.AtualizaAtendente(Atendente.Id, Atendente.Nome, Atendente.Senha);
+                    //dbManager.AtualizaAtendente(Atendente.Id, Atendente.Nome, Atendente.Senha);
                     MessageBox.Show("Atendente atualizado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -73,8 +73,8 @@ namespace UI.Forms
         {
             if (!string.IsNullOrEmpty(txtNome.Text.Trim()) && !string.IsNullOrEmpty(txtSenha.Text.Trim()))
             {
-                Atendente.Nome = txtNome.Text.Trim();
-                Atendente.Senha = txtSenha.Text.Trim();
+                //Atendente.Nome = txtNome.Text.Trim();
+                //Atendente.Senha = txtSenha.Text.Trim();
                 return true;
             }
             return false;

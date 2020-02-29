@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Business.Class;
+using Model.Classes.ClienteModel;
 
 namespace UI.Forms
 {
@@ -8,12 +8,12 @@ namespace UI.Forms
     {
         private string _str = string.Empty;
         public Cliente Cliente { get; private set; }
-        private DBManager _dbManager;
+        //private DBManager _dbManager;
         public frmGenCliente(Cliente cliente = null)
         {
             InitializeComponent();
-            _dbManager = new DBManager();
-            Cliente = cliente;
+            //_dbManager = new DBManager();
+            //Cliente = cliente;
         }
         private void frmGenCliente_Load(object sender, EventArgs e)
         {
@@ -27,20 +27,20 @@ namespace UI.Forms
             {
                 if (ValidaCliente())
                 {
-                    if (Cliente != null)
-                    {
-                        AtualizaCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text), ckStatus.Checked);
-                        //atualizar\\
-                        _dbManager.AtualizaCliente(Cliente.Id, Cliente.Nome, Cliente.Apelido, Cliente.Endereco, Cliente.Telefone,
-                            Cliente.Cpf, Cliente.LimiteConta.ToString("F2"), Cliente.TotalConta.ToString("F2"), Cliente.TotalPago.ToString("F2"), Cliente.NumNotas, Cliente.DataConta, Cliente.Status);
-                        MessageBox.Show("Cliente atualizado com sucesso!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        //gravar novo\\
-                        _dbManager.NovoCliente(txtNomeCompleto.Text, txtApelido.Text,txtEndereco.Text, txtTelefone.Text, txtCpf.Text, txtLimite.Text, "0,0", "0,0", 0, "ZERADO", true);
-                        MessageBox.Show("Cliente inserido com sucesso!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    //if (Cliente != null)
+                    //{
+                    //    AtualizaCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text), ckStatus.Checked);
+                    //    //atualizar\\
+                    //    _dbManager.AtualizaCliente(Cliente.Id, Cliente.Nome, Cliente.Apelido, Cliente.Endereco, Cliente.Telefone,
+                    //        Cliente.Cpf, Cliente.LimiteConta.ToString("F2"), Cliente.TotalConta.ToString("F2"), Cliente.TotalPago.ToString("F2"), Cliente.NumNotas, Cliente.DataConta, Cliente.Status);
+                    //    MessageBox.Show("Cliente atualizado com sucesso!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //else
+                    //{
+                    //    //gravar novo\\
+                    //    _dbManager.NovoCliente(txtNomeCompleto.Text, txtApelido.Text,txtEndereco.Text, txtTelefone.Text, txtCpf.Text, txtLimite.Text, "0,0", "0,0", 0, "ZERADO", true);
+                    //    MessageBox.Show("Cliente inserido com sucesso!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
                     Dispose();
                 }
                 else
@@ -106,7 +106,7 @@ namespace UI.Forms
                 txtEndereco.Text = Cliente.Endereco;
                 txtTelefone.Text = Cliente.Telefone;
                 txtCpf.Text = Cliente.Cpf;
-                txtLimite.Text = Cliente.LimiteConta.ToString("F2");
+                //txtLimite.Text = Cliente.LimiteConta.ToString("F2");
                 ckStatus.Checked = Cliente.Status;
                 ckStatus.Enabled = true;
                 return true;//Atualizar
@@ -133,13 +133,13 @@ namespace UI.Forms
         }
         private void AtualizaCliente(string nome,string apelido, string endereco, string telefone, string cpf, double limiteConta, bool status)
         {
-            Cliente.Nome = nome;
-            Cliente.Apelido = apelido;
-            Cliente.Endereco = endereco;
-            Cliente.Telefone = telefone;
-            Cliente.Cpf = cpf;
-            Cliente.LimiteConta = limiteConta;
-            Cliente.Status = status;
+            //Cliente.Nome = nome;
+            //Cliente.Apelido = apelido;
+            //Cliente.Endereco = endereco;
+            //Cliente.Telefone = telefone;
+            //Cliente.Cpf = cpf;
+            //Cliente.LimiteConta = limiteConta;
+            //Cliente.Status = status;
         }
     }
 }
