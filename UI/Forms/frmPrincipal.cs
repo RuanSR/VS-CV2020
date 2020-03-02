@@ -3,8 +3,6 @@ using Model.Classes;
 using Model.Classes.ClienteModel;
 using Model.Enum;
 using System;
-using System.Collections;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -13,22 +11,43 @@ namespace UI.Forms
 {
     public partial class frmPrincipal : Form
     {
-        private BindingSource DataSourceCliente { get; set; }
         private ClienteController _cController;
         public frmPrincipal()
         {
             InitializeComponent();
             _cController = new ClienteController();
             Atendente = new Atendente();
-            //dbManager = new DBManager();
             DataSourceCliente = new BindingSource();
         }
+        private BindingSource DataSourceCliente { get; set; }
         private Atendente Atendente { get; set; }
 
         //CONTROLES\\
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            StartLogin();
+            try
+            {
+                StartLogin();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro! {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            switch (btnLogin.Text)
+            {
+                case "Login":
+                    StartLogin();
+                    break;
+                case "Logout":
+                    Atendente = null;
+                    GetPermissao();
+                    break;
+                default:
+                    break;
+            }
         }
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
@@ -41,32 +60,6 @@ namespace UI.Forms
                 ShowCliente();
             }
         }
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ShowCliente("nome_cliente", txtPesquisa.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            //switch (btnLogin.Text)
-            //{
-            //    case "Login":
-            //        StartLogin();
-            //        break;
-            //    case "Logout":
-            //        Admin.Logado = false;
-            //        GetPermissao();
-            //        break;
-            //    default:
-            //        break;
-            //}
-        }
         private void btnSistema_Click(object sender, EventArgs e)
         {
             frmGerenciadorSistema frm = new frmGerenciadorSistema();
@@ -78,11 +71,6 @@ namespace UI.Forms
                 ShowCliente();
             }
         }
-        private void btnAbout_Click(object sender, EventArgs e)
-        {
-            new AboutBox().ShowDialog();
-        }
-
         private void dtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -109,7 +97,6 @@ namespace UI.Forms
                 MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
-
         private void dtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -119,17 +106,22 @@ namespace UI.Forms
 
                 frmCliente frmCliente = new frmCliente(Size, cliente);
                 frmCliente.ShowDialog();
-
                 FrmIsDisposed(frmCliente);
-
-                //if (frmCliente.IsDisposed)
-                //{
-                //    GetPermissao();
-                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+            }
+        }
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowCliente(txtPesquisa.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void timeBackup_Tick(object sender, EventArgs e)
@@ -145,6 +137,10 @@ namespace UI.Forms
                     MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
+        }
 
         //METODOS\\
         void StartLogin()
@@ -177,8 +173,6 @@ namespace UI.Forms
                     ShowCliente();
                     //StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
                     btnLogin.Text = "Logout";
-
-                    
                 }
                 else
                 {
@@ -225,13 +219,15 @@ namespace UI.Forms
             dtgClientes.Visible = status;
             statusBar.Visible = status;
         }
-        private void ShowCliente(string filter = "nome_cliente", string searth = null)
+        private void ShowCliente(string searth = "")
         {
             try
             {
-                DataSourceCliente.Filter = filter + " like '%" + searth + "%'";
-                dtgClientes.DataSource = DataSourceCliente;
-                dtgClientes.DataSource = DataSourceCliente;
+                dtgClientes.DataSource = _cController.ListaClientes()
+                    .Where(c => c.Nome.Contains(searth) 
+                    || c.Nome.Contains(searth.ToLowerInvariant())
+                    || c.Nome.Contains(searth.ToUpperInvariant())
+                    ).ToList();
                 Estilo();
                 AtualizaStatus();
             }
