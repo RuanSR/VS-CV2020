@@ -48,7 +48,11 @@ namespace Model.Classes
         public override bool Equals(object obj)
         {
             var atend = obj as Atendente;
-            return atend.Nome == Nome && atend.Usuario == Usuario;
+            if (atend != null)
+            {
+                return atend.Nome == Nome && atend.Usuario == Usuario;
+            }
+            return false;
         }
         public override string ToString()
         {

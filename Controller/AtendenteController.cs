@@ -48,7 +48,6 @@ namespace Controller
                 {
                     return aContext.ListaAtendentes();
                 }
-
             }
             catch (AtendenteException e)
             {

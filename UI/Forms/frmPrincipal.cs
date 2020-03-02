@@ -1,8 +1,11 @@
 ﻿using Controller;
 using Model.Classes;
+using Model.Classes.ClienteModel;
+using Model.Enum;
 using System;
 using System.Collections;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -82,51 +85,32 @@ namespace UI.Forms
 
         private void dtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //try
-            //{
-            //    Cliente cliente = new Cliente();
+            try
+            {
+                var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["cliente_id"].Value;
+                var cliente = GetCliente(ClienteId);
 
-            //    cliente.Id = (int)dtgClientes.Rows[e.RowIndex].Cells["id_cliente"].Value;
-            //    cliente.Nome = dtgClientes.Rows[e.RowIndex].Cells["nome_cliente"].Value.ToString();
-            //    cliente.Apelido = dtgClientes.Rows[e.RowIndex].Cells["apelido_cliente"].Value.ToString();
-            //    cliente.Endereco = dtgClientes.Rows[e.RowIndex].Cells["endereco_cliente"].Value.ToString();
-            //    cliente.Cpf = dtgClientes.Rows[e.RowIndex].Cells["cpf_cliente"].Value.ToString();
-            //    cliente.Telefone = dtgClientes.Rows[e.RowIndex].Cells["telefone_cliente"].Value.ToString();
-            //    cliente.LimiteConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["limite_conta_cliente"].Value.ToString());
-            //    cliente.TotalPago = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_pago_cliente"].Value.ToString());
-            //    cliente.TotalConta = double.Parse(dtgClientes.Rows[e.RowIndex].Cells["total_conta_cliente"].Value.ToString());
-            //    cliente.DataConta = dtgClientes.Rows[e.RowIndex].Cells["data_conta_cliente"].Value.ToString();
-            //    cliente.NumNotas = (int)dtgClientes.Rows[e.RowIndex].Cells["num_notas_cliente"].Value;
-            //    cliente.Status = bool.Parse(dtgClientes.Rows[e.RowIndex].Cells["status_cliente"].Value.ToString());
-            //    if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
-            //    {
-            //        frmOperacao frm = new frmOperacao(cliente, Operacao.ADICIONAR);
-            //        frm.ShowDialog();
 
-            //        if (frm.IsDisposed)
-            //        {
-            //            LoadDataSourceCliente();
-            //            ShowCliente();
-            //        }
-            //    }
-            //    else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
-            //    {
-            //        frmOperacao frm = new frmOperacao(cliente, Operacao.DEBITAR);
-            //        frm.ShowDialog();
-
-            //        if (frm.IsDisposed)
-            //        {
-            //            LoadDataSourceCliente();
-            //            ShowCliente();
-            //        }
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
-            //}
+                if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
+                {
+                    frmOperacao frm = new frmOperacao(cliente, Operacoes.ADICIONAR);
+                    frm.ShowDialog();
+                    FrmIsDisposed(frm);
+                }
+                else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
+                {
+                    frmOperacao frm = new frmOperacao(cliente, Operacoes.DEBITAR);
+                    frm.ShowDialog();
+                    FrmIsDisposed(frm);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+            }
         }
+
+
         private void dtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //    try
@@ -230,6 +214,21 @@ namespace UI.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        void FrmIsDisposed(Form frm)
+        {
+            if (frm.IsDisposed)
+            {
+                LoadDataSourceCliente();
+                ShowCliente();
+            }
+        }
+        Cliente GetCliente(int id)
+        {
+            return _cController.ListaClientes()
+                .Where(c => c.ClienteId == id)
+                .FirstOrDefault();
+        }
+
         private void EnableComponentes(bool status)
         {
             btnSistema.Enabled = status;

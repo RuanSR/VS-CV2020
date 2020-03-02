@@ -16,12 +16,11 @@ namespace Controller
                 var totalConta = c.NotaConta.TotalConta + valor;
                 var dataConta = VerificaData(Operacoes.ADICIONAR, c.NotaConta.DataConta, valor);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
-                c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, obs));
+                c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, FormatObs(Operacoes.ADICIONAR,obs)));
                 return c;
             }
             throw new OperacaoException("O valor não pode ser maior que o limite da conta!");
         }
-
         public static Cliente DebitarValor(Cliente c, double valor, string atendente, string obs)
         {
             ValidaDados(c, valor, atendente);
@@ -31,7 +30,7 @@ namespace Controller
                 var totalConta = c.NotaConta.TotalConta - valor;
                 var dataConta = VerificaData(Operacoes.DEBITAR, c.NotaConta.DataConta, totalConta);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
-                c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, obs));
+                c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, FormatObs(Operacoes.DEBITAR, obs)));
                 return c;
             }
             throw new OperacaoException("O valor do debito não pode ser maior que valor total da conta!");
@@ -69,6 +68,25 @@ namespace Controller
             if (string.IsNullOrEmpty(atendente))
             {
                 throw new ArgumentException("É preciso prenecher o campo Atendente.");
+            }
+        }
+        private static string FormatObs(Operacoes opType,string obs)
+        {
+            if (opType == Operacoes.ADICIONAR)
+            {
+                if (string.IsNullOrEmpty(obs))
+                {
+                    return "SEM OBSERVAÇÔES";
+                }
+                return obs;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(obs))
+                {
+                    return "DEBITO EFETUADO, SEM OBSERVAÇÔES";
+                }
+                return $"DEBITO EFETUADO. {obs}";
             }
         }
     }

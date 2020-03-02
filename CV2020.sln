@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "Controller\Controller.csproj", "{9FD2D637-423E-4662-A26B-C5EFD1ADD52F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{5DD3E8B8-ACFE-4A80-83CC-0BE695668304}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{5DD3E8B8-ACFE-4A80-83CC-0BE695668304}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
