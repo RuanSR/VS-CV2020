@@ -21,7 +21,7 @@ namespace UI.Forms
         //CONTROLES\\
         private void frmGenCliente_Load(object sender, EventArgs e)
         {
-            GenForm();
+            GerenForm();
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -86,16 +86,17 @@ namespace UI.Forms
             e.Handled = true;
         }
         //METODOS\\
-        private void GenForm()
+        private void GerenForm()
         {
             if (Cliente != null)
             {
+                this.Text = $":: {Cliente.Nome} ::";
                 txtNomeCompleto.Text = Cliente.Nome;
                 txtApelido.Text = Cliente.Apelido;
                 txtEndereco.Text = Cliente.Endereco;
                 txtTelefone.Text = Cliente.Telefone;
                 txtCpf.Text = Cliente.Cpf;
-                //txtLimite.Text = Cliente.LimiteConta.ToString("F2");
+                txtLimite.Text = Cliente.NotaConta.LimiteConta.ToString("F2");
                 ckStatus.Checked = Cliente.Status;
                 ckStatus.Enabled = true;
             }

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdicionarValor = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -86,13 +87,13 @@
             this.lblApelido = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgLog = new System.Windows.Forms.DataGridView();
-            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_hora_nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -710,57 +711,77 @@
             this.dtgLog.BackgroundColor = System.Drawing.Color.White;
             this.dtgLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_registro,
-            this.data_nota_registro,
-            this.hora_nota_registro,
-            this.atendente_registro,
+            this.data_hora_nota,
             this.valor_registro,
-            this.log_registro,
-            this.id_cliente_registro});
+            this.atendente_registro,
+            this.id_registro,
+            this.hora_nota_registro,
+            this.id_cliente_registro,
+            this.log_registro});
             this.dtgLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgLog.EnableHeadersVisualStyles = false;
             this.dtgLog.Location = new System.Drawing.Point(3, 25);
             this.dtgLog.Name = "dtgLog";
             this.dtgLog.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgLog.RowHeadersVisible = false;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgLog.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgLog.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgLog.RowTemplate.Height = 40;
             this.dtgLog.Size = new System.Drawing.Size(242, 379);
             this.dtgLog.TabIndex = 0;
             // 
+            // data_hora_nota
+            // 
+            this.data_hora_nota.DataPropertyName = "DataHora";
+            this.data_hora_nota.HeaderText = "Data / Hora";
+            this.data_hora_nota.Name = "data_hora_nota";
+            this.data_hora_nota.ReadOnly = true;
+            this.data_hora_nota.Width = 185;
+            // 
+            // valor_registro
+            // 
+            this.valor_registro.DataPropertyName = "Valor";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valor_registro.DefaultCellStyle = dataGridViewCellStyle2;
+            this.valor_registro.HeaderText = "Valor";
+            this.valor_registro.Name = "valor_registro";
+            this.valor_registro.ReadOnly = true;
+            this.valor_registro.Width = 65;
+            // 
+            // atendente_registro
+            // 
+            this.atendente_registro.DataPropertyName = "NomeAtendente";
+            this.atendente_registro.HeaderText = "Atendente";
+            this.atendente_registro.Name = "atendente_registro";
+            this.atendente_registro.ReadOnly = true;
+            this.atendente_registro.Width = 150;
+            // 
             // id_registro
             // 
-            this.id_registro.DataPropertyName = "id_registro";
+            this.id_registro.DataPropertyName = "RegistroNotaId";
             this.id_registro.HeaderText = "Código";
             this.id_registro.Name = "id_registro";
             this.id_registro.ReadOnly = true;
             this.id_registro.Visible = false;
-            // 
-            // data_nota_registro
-            // 
-            this.data_nota_registro.DataPropertyName = "data_nota_registro";
-            this.data_nota_registro.HeaderText = "Data";
-            this.data_nota_registro.Name = "data_nota_registro";
-            this.data_nota_registro.ReadOnly = true;
             // 
             // hora_nota_registro
             // 
@@ -768,38 +789,23 @@
             this.hora_nota_registro.HeaderText = "Hora";
             this.hora_nota_registro.Name = "hora_nota_registro";
             this.hora_nota_registro.ReadOnly = true;
-            // 
-            // atendente_registro
-            // 
-            this.atendente_registro.DataPropertyName = "atendente_registro";
-            this.atendente_registro.HeaderText = "Atendente";
-            this.atendente_registro.Name = "atendente_registro";
-            this.atendente_registro.ReadOnly = true;
-            this.atendente_registro.Width = 110;
-            // 
-            // valor_registro
-            // 
-            this.valor_registro.DataPropertyName = "valor_registro";
-            this.valor_registro.HeaderText = "Valor";
-            this.valor_registro.Name = "valor_registro";
-            this.valor_registro.ReadOnly = true;
-            this.valor_registro.Width = 65;
-            // 
-            // log_registro
-            // 
-            this.log_registro.DataPropertyName = "log_registro";
-            this.log_registro.HeaderText = "Detalhes";
-            this.log_registro.Name = "log_registro";
-            this.log_registro.ReadOnly = true;
-            this.log_registro.Width = 200;
+            this.hora_nota_registro.Visible = false;
             // 
             // id_cliente_registro
             // 
-            this.id_cliente_registro.DataPropertyName = "id_cliente_registro";
+            this.id_cliente_registro.DataPropertyName = "NotaContaId";
             this.id_cliente_registro.HeaderText = "Código Cliente";
             this.id_cliente_registro.Name = "id_cliente_registro";
             this.id_cliente_registro.ReadOnly = true;
             this.id_cliente_registro.Visible = false;
+            // 
+            // log_registro
+            // 
+            this.log_registro.DataPropertyName = "TextoDescricao";
+            this.log_registro.HeaderText = "Detalhes";
+            this.log_registro.Name = "log_registro";
+            this.log_registro.ReadOnly = true;
+            this.log_registro.Width = 200;
             // 
             // frmCliente
             // 
@@ -914,12 +920,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_nota_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hora_nota_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn atendente_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_hora_nota;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn log_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn atendente_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hora_nota_registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn log_registro;
     }
 }

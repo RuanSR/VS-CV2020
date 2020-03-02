@@ -1,60 +1,42 @@
-﻿using Model.Classes.ClienteModel;
+﻿using Controller;
+using Model.Classes.ClienteModel;
 using Model.Enum;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI.Forms
 {
     public partial class frmCliente : Form
     {
-        //private DBManager _dbManager;
         private Cliente _cliente;
         private int sizeSplitDetail = 80;
         private Size _sizeParent;
 
-        //CONSTRUTOR\\
         public frmCliente(Size sizeParent, Cliente cliente)
         {
             InitializeComponent();
             _sizeParent = sizeParent;
+            _cliente = cliente;
             SetDefaultSize();
             SetDefaultSplitDistance();
-            _cliente = cliente;
-            //_dbManager = new DBManager();
         }
 
         //CONTROLES\\
         private void frmCliente_Load(object sender, EventArgs e)
         {
+            GerenForm();
             ShowDados();
             LoadLog();
             Estilo();
         }
-        private void frmCliente_Resize(object sender, EventArgs e)
-        {
-            SetDefaultSplitDistance();
-            dtgLog.Columns["log_registro"].Width = _sizeParent.Width;
-        }
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            Logout();
-        }
-        private void frmCliente_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Logout();
-        }
-        private void btnEditarDados_Click(object sender, EventArgs e)
-        {
-            frmGenCliente frm = new frmGenCliente(_cliente);
-            frm.ShowDialog();
 
-            if (frm.IsDisposed)
-            {
-                _cliente = frm.Cliente;
-                ShowDados();
-            }
+        private void GerenForm()
+        {
+            this.Text = $":: {_cliente.Nome} ::";
         }
+
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
             frmOperacao frm = new frmOperacao(_cliente, Operacoes.ADICIONAR);
@@ -79,48 +61,85 @@ namespace UI.Forms
                 LoadLog();
             }
         }
+        private void btnEditarDados_Click(object sender, EventArgs e)
+        {
+            frmGenCliente frm = new frmGenCliente(_cliente);
+            frm.ShowDialog();
+
+            if (frm.IsDisposed)
+            {
+                _cliente = frm.Cliente;
+                ShowDados();
+            }
+        }
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
+        private void frmCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Logout();
+        }
+        private void frmCliente_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                SetDefaultSplitDistance();
+                dtgLog.Columns["log_registro"].Width = _sizeParent.Width;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao calcular tamanho da janela. {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //MÉTODOS\\
         private void ShowDados()
         {
-            //lblNomeCliente.Text = _cliente.Nome;
-            //lblDataConta.Text = _cliente.DataConta;
-            //lblLimiteConta.Text = _cliente.LimiteConta.ToString("F2");
-            //double limiteRestante = _cliente.LimiteConta - _cliente.TotalConta;
-            //lblLimiteRestante.Text = limiteRestante.ToString("F2");
-            //lblTotalConta.Text = _cliente.TotalConta.ToString("F2");
-            //lblTempoAberto.Text = CalculaTempo();
+            lblNomeCliente.Text = _cliente.Nome;
+            lblDataConta.Text = _cliente.NotaConta.DataConta;
+            lblLimiteConta.Text = _cliente.NotaConta.LimiteConta.ToString("F2");
+            double limiteRestante = _cliente.NotaConta.LimiteConta - _cliente.NotaConta.TotalConta;
+            lblLimiteRestante.Text = limiteRestante.ToString("F2");
+            lblTotalConta.Text = _cliente.NotaConta.TotalConta.ToString("F2");
+            lblTempoAberto.Text = CalculaTempo();
 
-
-
-            //lblApelido.Text = _cliente.Apelido;
-            //lblEndereco.Text = _cliente.Endereco;
-            //lblTelefone.Text = _cliente.Telefone;
-            //lblCpf.Text = _cliente.Cpf;
-            //lblNotasRegistradas.Text = _cliente.NumNotas.ToString();
-            //lblId.Text = _cliente.Id.ToString();
-            //VerificaStatus();
-        }
-        private string CalculaTempo()
-        {
-            //if (_cliente.DataConta == "ZERADO")
-            //{
-            //    return "0";
-            //}
-            //TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(_cliente.DataConta);
-            //return date.Days.ToString();
-            return null;
+            lblApelido.Text = _cliente.Apelido;
+            lblEndereco.Text = _cliente.Endereco;
+            lblTelefone.Text = _cliente.Telefone;
+            lblCpf.Text = _cliente.Cpf;
+            lblNotasRegistradas.Text = _cliente.NotaConta.RegistroNotas.Count.ToString();
+            lblId.Text = _cliente.ClienteId.ToString();
+            VerificaStatus();
         }
         private void LoadLog()
         {
             try
             {
-                //dtgLog.DataSource = _dbManager.GetLog(_cliente.Id);
+                dtgLog.DataSource = _cliente.NotaConta.RegistroNotas
+                    .OrderByDescending(c => c.RegistroNotaId)
+                    .ToList();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void Estilo()
+        {
+            for (int i = 0; i < dtgLog.Rows.Count; i += 2)
+            {
+                dtgLog.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
+            }
+        }
+        private string CalculaTempo()
+        {
+            if (_cliente.NotaConta.DataConta == "ZERADO")
+            {
+                return "0";
+            }
+            TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(_cliente.NotaConta.DataConta);
+            return date.Days.ToString();
         }
         private void SetDefaultSize()
         {
@@ -138,6 +157,7 @@ namespace UI.Forms
         {
             if (!this.IsDisposed)
             {
+                _cliente = null;
                 this.Dispose();
             }
         }
@@ -147,16 +167,9 @@ namespace UI.Forms
             {
                 btnAdicionarValor.Enabled = _cliente.Status;
             }
-            else 
+            else
             {
                 btnAdicionarValor.Enabled = _cliente.Status;
-            }
-        }
-        private void Estilo()
-        {
-            for (int i = 0; i < dtgLog.Rows.Count; i += 2)
-            {
-                dtgLog.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
             }
         }
     }
