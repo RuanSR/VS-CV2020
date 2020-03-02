@@ -129,8 +129,8 @@ namespace UI.Forms
                 try
                 {
                     //SysSettings.CreateBackup();
-                    lblUltimoBackup.Text = "Último Backup: " + DateTime.Now.ToString("HH:mm:ss");
-                    timeBackup.Start();
+                    //lblUltimoBackup.Text = "Último Backup: " + DateTime.Now.ToString("HH:mm:ss");
+                    //timeBackup.Start();
                 }
                 catch (Exception ex)
                 {
@@ -243,7 +243,7 @@ namespace UI.Forms
         }
         private void AtualizaStatus()
         {
-            //lblStatusRegistro.Text = "Último Registro: " + StatusLog.UltimaNota;
+            lblStatusRegistro.Text = "Último Registro: " + AppController.GetUltimaNota;
         }
         private void Estilo()
         {
