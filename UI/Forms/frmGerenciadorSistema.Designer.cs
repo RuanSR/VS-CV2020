@@ -33,11 +33,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtgAtendente = new System.Windows.Forms.DataGridView();
-            this.id_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.senha_atendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnNovoAtendete = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -58,6 +53,13 @@
             this.btnSalvarDados = new System.Windows.Forms.ToolStripButton();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.IdAtendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NivelAcesso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDeletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -126,11 +128,13 @@
             this.dtgAtendente.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dtgAtendente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgAtendente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_atendente,
-            this.usuario_atendente,
-            this.senha_atendente,
-            this.btnEdit,
-            this.btnDelete});
+            this.IdAtendente,
+            this.Nome,
+            this.Usuario,
+            this.NivelAcesso,
+            this.Senha,
+            this.btnEditar,
+            this.btnDeletar});
             this.dtgAtendente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgAtendente.Location = new System.Drawing.Point(0, 52);
             this.dtgAtendente.Name = "dtgAtendente";
@@ -140,46 +144,6 @@
             this.dtgAtendente.Size = new System.Drawing.Size(464, 367);
             this.dtgAtendente.TabIndex = 1;
             this.dtgAtendente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgAtendente_CellContentClick);
-            // 
-            // id_atendente
-            // 
-            this.id_atendente.DataPropertyName = "id_atendente";
-            this.id_atendente.HeaderText = "Código";
-            this.id_atendente.Name = "id_atendente";
-            this.id_atendente.ReadOnly = true;
-            this.id_atendente.Width = 60;
-            // 
-            // usuario_atendente
-            // 
-            this.usuario_atendente.DataPropertyName = "usuario_atendente";
-            this.usuario_atendente.HeaderText = "Nome";
-            this.usuario_atendente.Name = "usuario_atendente";
-            this.usuario_atendente.ReadOnly = true;
-            this.usuario_atendente.Width = 290;
-            // 
-            // senha_atendente
-            // 
-            this.senha_atendente.DataPropertyName = "senha_atendente";
-            this.senha_atendente.HeaderText = "senha_atendente";
-            this.senha_atendente.Name = "senha_atendente";
-            this.senha_atendente.ReadOnly = true;
-            this.senha_atendente.Visible = false;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.HeaderText = "";
-            this.btnEdit.Image = global::UI.Properties.Resources.ediatar;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ReadOnly = true;
-            this.btnEdit.Width = 50;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.HeaderText = "";
-            this.btnDelete.Image = global::UI.Properties.Resources.decline;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ReadOnly = true;
-            this.btnDelete.Width = 50;
             // 
             // toolStrip2
             // 
@@ -375,6 +339,61 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // IdAtendente
+            // 
+            this.IdAtendente.DataPropertyName = "AtendenteId";
+            this.IdAtendente.HeaderText = "Código";
+            this.IdAtendente.Name = "IdAtendente";
+            this.IdAtendente.ReadOnly = true;
+            this.IdAtendente.Width = 60;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 200;
+            // 
+            // Usuario
+            // 
+            this.Usuario.DataPropertyName = "Usuario";
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // NivelAcesso
+            // 
+            this.NivelAcesso.DataPropertyName = "NivelAcesso";
+            this.NivelAcesso.HeaderText = "Nivel Acesso";
+            this.NivelAcesso.Name = "NivelAcesso";
+            this.NivelAcesso.ReadOnly = true;
+            this.NivelAcesso.Visible = false;
+            // 
+            // Senha
+            // 
+            this.Senha.DataPropertyName = "Senha";
+            this.Senha.HeaderText = "senha_atendente";
+            this.Senha.Name = "Senha";
+            this.Senha.ReadOnly = true;
+            this.Senha.Visible = false;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "";
+            this.btnEditar.Image = global::UI.Properties.Resources.ediatar;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.ReadOnly = true;
+            this.btnEditar.Width = 50;
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.HeaderText = "";
+            this.btnDeletar.Image = global::UI.Properties.Resources.decline;
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.ReadOnly = true;
+            this.btnDeletar.Width = 50;
+            // 
             // frmGerenciadorSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,12 +454,14 @@
         private System.Windows.Forms.ToolStripButton btnBackupRestore;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnNovoAtendete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_atendente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario_atendente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn senha_atendente;
-        private System.Windows.Forms.DataGridViewImageColumn btnEdit;
-        private System.Windows.Forms.DataGridViewImageColumn btnDelete;
         private System.Windows.Forms.FolderBrowserDialog folderBrowser;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdAtendente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NivelAcesso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Senha;
+        private System.Windows.Forms.DataGridViewImageColumn btnEditar;
+        private System.Windows.Forms.DataGridViewImageColumn btnDeletar;
     }
 }

@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Configuration;
+using Model.Classes;
+using Controller;
+using System.Linq;
+using Model.Exceptions;
 
 namespace UI.Forms
 {
     public partial class frmGerenciadorSistema : Form
     {
-        //private Atendente Atendente { get; set; }
-        //DBManager dbManager;
+        private AtendenteController _aController;
         public frmGerenciadorSistema()
         {
             InitializeComponent();
-            //dbManager = new DBManager();
+            _aController = new AtendenteController();
         }
+        private Atendente Atendente { get; set; }
 
         private void frmGerenciadorSistema_Load(object sender, EventArgs e)
         {
@@ -26,43 +29,53 @@ namespace UI.Forms
         {
             try
             {
-            //    if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnEdit")
-            //    {
-            //        int id = (int)dtgAtendente.Rows[e.RowIndex].Cells["id_atendente"].Value;
-            //        string nome = dtgAtendente.Rows[e.RowIndex].Cells["usuario_atendente"].Value.ToString();
-            //        string senha = dtgAtendente.Rows[e.RowIndex].Cells["senha_atendente"].Value.ToString();
+                int id = (int)dtgAtendente.Rows[e.RowIndex].Cells["IdAtendente"].Value;
+                var atendente = GetAtendente(id);
 
-            //        Atendente = new Atendente(id, nome, senha);
-            //        frmAtendenteDialog frm = new frmAtendenteDialog(Atendente);
-            //        frm.ShowDialog();
-
-            //        if (frm.IsDisposed)
-            //        {
-            //            CarregaAtendentes();
-            //        }
-            //    }
-            //    else if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnDelete")
-            //    {
-            //        int id = (int)dtgAtendente.Rows[e.RowIndex].Cells["id_atendente"].Value;
-
-            //        if (MessageBox.Show("Deseja realamente remover este atendente?", "ATENÇÂO!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //        {
-            //            if (id != 1)
-            //            {
-            //                dbManager.RemoveAtendente((int)dtgAtendente.Rows[e.RowIndex].Cells["id_atendente"].Value);
-            //                MessageBox.Show("Atendete removido!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //                CarregaAtendentes();
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("Você não pode remover o atendente do código de nº 1, pois ele é o administrador!", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            }
-            //        }
-            //    }
+                if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnEditar")
+                {
+                    BtnEdit(atendente, e);
+                }
+                else if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnDeletar")
+                {
+                    var question = MessageBox.Show("Deseja realamente remover este atendente?", "ATENÇÂO!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (question == DialogResult.Yes)
+                    {
+                        BtnDelete(atendente, e);
+                    }
+                }
+            }
+            catch(AtendenteException ex)
+            {
+                MessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnEdit(Atendente a,DataGridViewCellEventArgs e)
+        {
+            frmAtendenteDialog frm = new frmAtendenteDialog(a);
+            frm.ShowDialog();
+
+            if (frm.IsDisposed)
+            {
+                CarregaAtendentes();
+            }
+        }
+        private void BtnDelete(Atendente a, DataGridViewCellEventArgs e)
+        {
+            if (a.AtendenteId != 1)
+            {
+                _aController.RevomerAtendente(a);
+                MessageBox.Show("Atendete removido.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CarregaAtendentes();
+            }
+            else
+            {
+                MessageBox.Show("Você não pode remover o atendente do código de nº 1, pois ele é o administrador!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void btnDefinirLocal_Click(object sender, EventArgs e)
@@ -121,7 +134,7 @@ namespace UI.Forms
             try
             {
                 //SysSettings.CreateBackup();
-                MessageBox.Show("Backup concluído com sucesso.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Opção inativa no momento!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -132,13 +145,14 @@ namespace UI.Forms
         {
             try
             {
-                openFileDialog.ShowDialog();
-                if (openFileDialog.FileName != null)
-                {
-                    //dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog"]);
-                    MessageBox.Show("Backup restaurado com sucesso!", "SUCESSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Dispose();
-                }
+                MessageBox.Show("Opção inativa no momento!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //openFileDialog.ShowDialog();
+                //if (openFileDialog.FileName != null)
+                //{
+                //    //dbManager.RestaurarBackup(openFileDialog.FileName, ConfigurationManager.AppSettings["Catalog"]);
+                //    MessageBox.Show("Backup restaurado com sucesso!", "SUCESSO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    Dispose();
+                //}
             }
             catch (Exception ex)
             {
@@ -150,7 +164,7 @@ namespace UI.Forms
         {
             try
             {
-                //dtgAtendente.DataSource = dbManager.GetAtendentes();
+                dtgAtendente.DataSource = _aController.ListaAtendentes();
             }
             catch (Exception ex)
             {
@@ -181,6 +195,12 @@ namespace UI.Forms
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private Atendente GetAtendente(int id)
+        {
+            return _aController.ListaAtendentes()
+                .Where(a => a.AtendenteId == id)
+                .FirstOrDefault();
         }
     }
 }

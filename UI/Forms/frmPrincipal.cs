@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Controller;
+using Model.Classes;
+using System;
+using System.Collections;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace UI.Forms
@@ -7,13 +11,16 @@ namespace UI.Forms
     public partial class frmPrincipal : Form
     {
         private BindingSource DataSourceCliente { get; set; }
-        //private DBManager dbManager { get; set; }
+        private ClienteController _cController;
         public frmPrincipal()
         {
             InitializeComponent();
+            _cController = new ClienteController();
+            Atendente = new Atendente();
             //dbManager = new DBManager();
             DataSourceCliente = new BindingSource();
         }
+        private Atendente Atendente { get; set; }
 
         //CONTROLES\\
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -153,7 +160,7 @@ namespace UI.Forms
             //    }
             //}
         }
-            private void timeBackup_Tick(object sender, EventArgs e)
+        private void timeBackup_Tick(object sender, EventArgs e)
             {
                 try
                 {
@@ -168,23 +175,14 @@ namespace UI.Forms
             }
 
         //METODOS\\
-        private void LoadDataSourceCliente()
-        {
-            try
-            {
-                //DataSourceCliente.DataSource = dbManager.GetData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void StartLogin()
+        void StartLogin()
         {
             try
             {
                 frmLogin frm = new frmLogin();
                 frm.ShowDialog();
+
+                Atendente = frm.Atendente;
 
                 if (frm.IsDisposed)
                 {
@@ -196,28 +194,41 @@ namespace UI.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void GetPermissao()
+        void GetPermissao()
         {
-            //try
-            //{
-            //    if (Admin.Logado)
-            //    {
-            //        LoadDataSourceCliente();
-            //        EnableComponentes(true);
-            //        ShowCliente();
-            //        StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
-            //        btnLogin.Text = "Logout";
-            //    }
-            //    else
-            //    {
-            //        EnableComponentes(false);
-            //        btnLogin.Text = "Login";
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Erro ao obter permissão de login! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            try
+            {
+                if (Atendente != null)
+                {
+                    LoadDataSourceCliente();
+                    EnableComponentes(true);
+                    ShowCliente();
+                    //StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
+                    btnLogin.Text = "Logout";
+
+                    
+                }
+                else
+                {
+                    EnableComponentes(false);
+                    btnLogin.Text = "Login";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao obter permissão de login! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        void LoadDataSourceCliente()
+        {
+            try
+            {
+                DataSourceCliente.DataSource = _cController.ListaClientes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void EnableComponentes(bool status)
         {
@@ -253,10 +264,53 @@ namespace UI.Forms
         }
         private void Estilo()
         {
-            for (int i = 0; i < dtgClientes.Rows.Count; i += 2)
+            //for (int i = 0; i < dtgClientes.Rows.Count; i += 2)
+            //{
+            //    dtgClientes.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
+            //}
+        }
+
+        private void dtgClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((dtgClientes.Rows[e.RowIndex].DataBoundItem != null) && (dtgClientes.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
             {
-                dtgClientes.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
+                e.Value = BindProperty(dtgClientes.Rows[e.RowIndex].DataBoundItem, dtgClientes.Columns[e.ColumnIndex].DataPropertyName);
             }
+        }
+        private string BindProperty(object property, string propertyName)
+        {
+            string retValue = "";
+
+            if (propertyName.Contains("."))
+            {
+                PropertyInfo[] arrayProperties;
+                string leftPropertyName;
+
+                leftPropertyName = propertyName.Substring(0, propertyName.IndexOf("."));
+                arrayProperties = property.GetType().GetProperties();
+
+                foreach (PropertyInfo propertyInfo in arrayProperties)
+                {
+                    if (propertyInfo.Name == leftPropertyName)
+                    {
+                        retValue = BindProperty(
+                          propertyInfo.GetValue(property, null),
+                          propertyName.Substring(propertyName.IndexOf(".") + 1));
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Type propertyType;
+                PropertyInfo propertyInfo;
+
+                propertyType = property.GetType();
+                propertyInfo = propertyType.GetProperty(propertyName);
+                retValue = propertyInfo.GetValue(property, null).ToString();
+            }
+
+            return retValue;
         }
     }
 }
