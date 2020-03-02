@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Windows.Forms;
 using UI.Forms;
 
@@ -17,12 +18,12 @@ namespace UI
             try
             {
                 //SysSettings.VerificaBanco();
-                //SysSettings.Init();
+                AppManager.Init();
                 Application.Run(new frmPrincipal());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no sistema! {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

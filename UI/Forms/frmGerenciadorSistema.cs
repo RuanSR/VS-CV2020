@@ -118,11 +118,11 @@ namespace UI.Forms
         {
             try
             {
-                //SysSettings.SetSelectedTimerIndex(cbBackupIntervalo.SelectedIndex);
-                //SysSettings.SetBackupPath(string.Format("{0}{1}", txtLocal.Text, "\\"));
-                //SysSettings.Init();
-                //MessageBox.Show("Salvo com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //Dispose();
+                AppManager.SetSelectedTimerIndex(cbBackupIntervalo.SelectedIndex);
+                AppManager.SetBackupPath(string.Format("{0}{1}", txtLocal.Text, "\\"));
+                AppManager.Init();
+                MessageBox.Show("Salvo com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Dispose();
             }
             catch (Exception ex)
             {
@@ -178,7 +178,7 @@ namespace UI.Forms
             cbBackupIntervalo.Items.Add("20 minutos");
             try
             {
-                //cbBackupIntervalo.SelectedIndex = SysSettings.SelectedTimerIndex;
+                cbBackupIntervalo.SelectedIndex = AppManager.SelectedTimerIndex;
             }
             catch (Exception ex)
             {
@@ -189,7 +189,7 @@ namespace UI.Forms
         {
             try
             {
-                //txtLocal.Text = SysSettings.LocalBackup;
+                txtLocal.Text = AppManager.LocalBackup;
             }
             catch (Exception ex)
             {

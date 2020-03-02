@@ -131,6 +131,15 @@ namespace UI.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        /// </summary>
+        internal static string DefaultPathBackup {
+            get {
+                return ResourceManager.GetString("DefaultPathBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ediatar {
