@@ -18,12 +18,14 @@ namespace UI
             try
             {
                 //SysSettings.VerificaBanco();
+                // new DbManager().Init();
                 AppManager.Init();
-                Application.Run(new frmPrincipal());
+                Application.Run(new FrmPrincipal());
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro no sistema! {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
     }

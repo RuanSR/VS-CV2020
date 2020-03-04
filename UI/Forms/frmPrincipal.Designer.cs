@@ -1,6 +1,6 @@
 ﻿namespace UI.Forms
 {
-    partial class frmPrincipal
+    partial class FrmPrincipal
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripBar = new System.Windows.Forms.ToolStrip();
             this.btnNovoCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,19 +55,13 @@
             this.lblUltimoBackup = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnDebitar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.DataGridViewImageColumn();
-            this.cliente_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apelido_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endereco_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cpf_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LimiteConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total_pago_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.num_notas_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NotaConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
             this.groupBoxPesquisa.SuspendLayout();
@@ -100,7 +94,7 @@
             this.btnNovoCliente.Size = new System.Drawing.Size(109, 55);
             this.btnNovoCliente.Text = "Novo Cliente";
             this.btnNovoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
+            this.btnNovoCliente.Click += new System.EventHandler(this.BtnNovoCliente_Click);
             // 
             // toolStripSeparator1
             // 
@@ -116,7 +110,7 @@
             this.btnLogin.Size = new System.Drawing.Size(55, 55);
             this.btnLogin.Text = "Login";
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // toolStripSeparator2
             // 
@@ -143,14 +137,14 @@
             this.btnSistema.Name = "btnSistema";
             this.btnSistema.Size = new System.Drawing.Size(67, 21);
             this.btnSistema.Text = "Sistema";
-            this.btnSistema.Click += new System.EventHandler(this.btnSistema_Click);
+            this.btnSistema.Click += new System.EventHandler(this.BtnSistema_Click);
             // 
             // btnAbout
             // 
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(55, 21);
             this.btnAbout.Text = "Sobre";
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            this.btnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
             // groupBoxPesquisa
             // 
@@ -175,82 +169,75 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(478, 25);
             this.txtPesquisa.TabIndex = 0;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.TxtPesquisa_TextChanged);
             // 
             // dtgClientes
             // 
             this.dtgClientes.AllowUserToAddRows = false;
             this.dtgClientes.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.NullValue = null;
-            this.dtgClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.NullValue = null;
+            this.dtgClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dtgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(10);
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnDebitar,
             this.btnAdd,
-            this.cliente_id,
+            this.IdCliente,
             this.nome_cliente,
             this.apelido_cliente,
             this.endereco_cliente,
-            this.telefone_cliente,
-            this.cpf_cliente,
             this.LimiteConta,
             this.TotalConta,
-            this.total_pago_cliente,
-            this.num_notas_cliente,
-            this.data_conta_cliente,
-            this.status_cliente,
-            this.NotaConta});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = null;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle14;
+            this.data_conta_cliente});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgClientes.GridColor = System.Drawing.Color.SlateGray;
             this.dtgClientes.Location = new System.Drawing.Point(0, 136);
             this.dtgClientes.Name = "dtgClientes";
             this.dtgClientes.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgClientes.RowHeadersVisible = false;
             this.dtgClientes.RowHeadersWidth = 49;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgClientes.RowTemplate.Height = 35;
             this.dtgClientes.Size = new System.Drawing.Size(484, 325);
             this.dtgClientes.TabIndex = 4;
             this.dtgClientes.Visible = false;
-            this.dtgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgClientes_CellContentClick);
-            this.dtgClientes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgClientes_CellContentDoubleClick);
-            this.dtgClientes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgClientes_CellFormatting);
+            this.dtgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentClick);
+            this.dtgClientes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentDoubleClick);
             // 
             // timeBackup
             // 
             this.timeBackup.Interval = 10000;
-            this.timeBackup.Tick += new System.EventHandler(this.timeBackup_Tick);
+            this.timeBackup.Tick += new System.EventHandler(this.TimeBackup_Tick);
             // 
             // statusBar
             // 
@@ -283,13 +270,13 @@
             // 
             // btnDebitar
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle11.NullValue")));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            this.btnDebitar.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.btnDebitar.DefaultCellStyle = dataGridViewCellStyle3;
             this.btnDebitar.HeaderText = "--";
             this.btnDebitar.Image = global::UI.Properties.Resources.debitar;
             this.btnDebitar.Name = "btnDebitar";
@@ -298,13 +285,13 @@
             // 
             // btnAdd
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle12.NullValue")));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.btnAdd.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.btnAdd.DefaultCellStyle = dataGridViewCellStyle4;
             this.btnAdd.HeaderText = "$";
             this.btnAdd.Image = global::UI.Properties.Resources.add;
             this.btnAdd.Name = "btnAdd";
@@ -312,17 +299,17 @@
             this.btnAdd.ToolTipText = "Ação Rápida";
             this.btnAdd.Width = 50;
             // 
-            // cliente_id
+            // IdCliente
             // 
-            this.cliente_id.DataPropertyName = "ClienteId";
-            this.cliente_id.HeaderText = "id_clliente";
-            this.cliente_id.Name = "cliente_id";
-            this.cliente_id.ReadOnly = true;
-            this.cliente_id.Visible = false;
+            this.IdCliente.DataPropertyName = "IdCliente";
+            this.IdCliente.HeaderText = "Código";
+            this.IdCliente.Name = "IdCliente";
+            this.IdCliente.ReadOnly = true;
+            this.IdCliente.Visible = false;
             // 
             // nome_cliente
             // 
-            this.nome_cliente.DataPropertyName = "Nome";
+            this.nome_cliente.DataPropertyName = "NomeCliente";
             this.nome_cliente.HeaderText = "Nome";
             this.nome_cliente.Name = "nome_cliente";
             this.nome_cliente.ReadOnly = true;
@@ -330,7 +317,7 @@
             // 
             // apelido_cliente
             // 
-            this.apelido_cliente.DataPropertyName = "Apelido";
+            this.apelido_cliente.DataPropertyName = "ApelidoCliente";
             this.apelido_cliente.HeaderText = "Apelido";
             this.apelido_cliente.Name = "apelido_cliente";
             this.apelido_cliente.ReadOnly = true;
@@ -338,34 +325,18 @@
             // 
             // endereco_cliente
             // 
-            this.endereco_cliente.DataPropertyName = "Endereco";
+            this.endereco_cliente.DataPropertyName = "EnderecoCliente";
             this.endereco_cliente.HeaderText = "Endereço";
             this.endereco_cliente.Name = "endereco_cliente";
             this.endereco_cliente.ReadOnly = true;
             this.endereco_cliente.Width = 250;
             // 
-            // telefone_cliente
-            // 
-            this.telefone_cliente.DataPropertyName = "Telefone";
-            this.telefone_cliente.HeaderText = "telefone_cliente";
-            this.telefone_cliente.Name = "telefone_cliente";
-            this.telefone_cliente.ReadOnly = true;
-            this.telefone_cliente.Visible = false;
-            // 
-            // cpf_cliente
-            // 
-            this.cpf_cliente.DataPropertyName = "Cpf";
-            this.cpf_cliente.HeaderText = "cpf_cliente";
-            this.cpf_cliente.Name = "cpf_cliente";
-            this.cpf_cliente.ReadOnly = true;
-            this.cpf_cliente.Visible = false;
-            // 
             // LimiteConta
             // 
-            this.LimiteConta.DataPropertyName = "NotaConta.LimiteConta";
-            dataGridViewCellStyle13.Format = "C2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.LimiteConta.DefaultCellStyle = dataGridViewCellStyle13;
+            this.LimiteConta.DataPropertyName = "LimiteContaCliente";
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.LimiteConta.DefaultCellStyle = dataGridViewCellStyle5;
             this.LimiteConta.HeaderText = "Limite Conta";
             this.LimiteConta.Name = "LimiteConta";
             this.LimiteConta.ReadOnly = true;
@@ -373,53 +344,19 @@
             // 
             // TotalConta
             // 
-            this.TotalConta.DataPropertyName = "NotaConta.TotalConta";
+            this.TotalConta.DataPropertyName = "TotalContaCliente";
             this.TotalConta.HeaderText = "Total Conta";
             this.TotalConta.Name = "TotalConta";
             this.TotalConta.ReadOnly = true;
             this.TotalConta.Width = 150;
             // 
-            // total_pago_cliente
-            // 
-            this.total_pago_cliente.DataPropertyName = "total_pago_cliente";
-            this.total_pago_cliente.HeaderText = "Total Pago";
-            this.total_pago_cliente.Name = "total_pago_cliente";
-            this.total_pago_cliente.ReadOnly = true;
-            this.total_pago_cliente.Visible = false;
-            this.total_pago_cliente.Width = 150;
-            // 
-            // num_notas_cliente
-            // 
-            this.num_notas_cliente.DataPropertyName = "num_notas_cliente";
-            this.num_notas_cliente.HeaderText = "num_notas_cliente";
-            this.num_notas_cliente.Name = "num_notas_cliente";
-            this.num_notas_cliente.ReadOnly = true;
-            this.num_notas_cliente.Visible = false;
-            // 
             // data_conta_cliente
             // 
-            this.data_conta_cliente.DataPropertyName = "NotaConta.DataConta";
+            this.data_conta_cliente.DataPropertyName = "DataContaCliente";
             this.data_conta_cliente.HeaderText = "Data Conta";
             this.data_conta_cliente.Name = "data_conta_cliente";
             this.data_conta_cliente.ReadOnly = true;
             this.data_conta_cliente.Width = 150;
-            // 
-            // status_cliente
-            // 
-            this.status_cliente.DataPropertyName = "Status";
-            this.status_cliente.HeaderText = "Status";
-            this.status_cliente.Name = "status_cliente";
-            this.status_cliente.ReadOnly = true;
-            this.status_cliente.Visible = false;
-            this.status_cliente.Width = 50;
-            // 
-            // NotaConta
-            // 
-            this.NotaConta.DataPropertyName = "NotaConta";
-            this.NotaConta.HeaderText = "NotaConta";
-            this.NotaConta.Name = "NotaConta";
-            this.NotaConta.ReadOnly = true;
-            this.NotaConta.Visible = false;
             // 
             // frmPrincipal
             // 
@@ -438,7 +375,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caderno Virtual :: 2020 Edition";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmPrincipal_Load);
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.toolStripBar.ResumeLayout(false);
             this.toolStripBar.PerformLayout();
             this.menuBar.ResumeLayout(false);
@@ -472,19 +409,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridViewImageColumn btnDebitar;
         private System.Windows.Forms.DataGridViewImageColumn btnAdd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn apelido_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn endereco_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefone_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cpf_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn LimiteConta;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalConta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total_pago_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn num_notas_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_conta_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NotaConta;
     }
 }
 

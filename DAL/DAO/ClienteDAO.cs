@@ -64,12 +64,25 @@ namespace DAL.DAO
             {
                 return _clienteContext.Clientes
                     .Include(nt => nt.NotaConta)
-                    .Include(nt => nt.NotaConta.RegistroNotas)
                     .ToList();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao obter lista de clientes. {e.Message}");
+            }
+        }
+        public IList<Cliente> ListaClienteWithRegistros()
+        {
+            try
+            {
+                return _clienteContext.Clientes
+                    .Include(nt => nt.NotaConta)
+                    .Include(nt => nt.NotaConta.RegistroNotas)
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao obter cliente. {e.Message}");
             }
         }
         public void Dispose()

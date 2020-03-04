@@ -39,6 +39,21 @@ namespace Controller
                 throw e;
             }
         }
+        public void RemoverCliente(Cliente c)
+        {
+            try
+            {
+                ValidaCliente(c);
+                using (var cContext = new ClienteDAO())
+                {
+                    cContext.RemoverCliente(c);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public IList<Cliente> ListaClientes()
         {
             try
@@ -53,14 +68,13 @@ namespace Controller
                 throw e;
             }
         }
-        public void RemoverCliente(Cliente c)
+        public IList<Cliente> ListaClienteWithRegistros()
         {
             try
             {
-                ValidaCliente(c);
                 using (var cContext = new ClienteDAO())
                 {
-                    cContext.RemoverCliente(c);
+                    return cContext.ListaClienteWithRegistros();
                 }
             }
             catch (Exception e)

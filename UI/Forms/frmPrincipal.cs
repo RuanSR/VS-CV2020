@@ -2,54 +2,56 @@
 using Model.Classes;
 using Model.Classes.ClienteModel;
 using Model.Enum;
+using Model.Struct;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace UI.Forms
 {
-    public partial class frmPrincipal : Form
+    public partial class FrmPrincipal : Form
     {
+        private IList<ClienteDataVisualizer> ClienteDataVisualizers { get; set; }
         private ClienteController _cController;
-        public frmPrincipal()
+        public FrmPrincipal()
         {
             InitializeComponent();
             _cController = new ClienteController();
+            ClienteDataVisualizers = new List<ClienteDataVisualizer>();
             Atendente = new Atendente();
-            DataSourceCliente = new BindingSource();
         }
-        private BindingSource DataSourceCliente { get; set; }
         private Atendente Atendente { get; set; }
 
         //CONTROLES\\
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             try
             {
-                StartLogin();
+                Autenticar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro! {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
             switch (btnLogin.Text)
             {
                 case "Login":
-                    StartLogin();
+                    Autenticar();
                     break;
                 case "Logout":
                     Atendente = null;
-                    GetPermissao();
+                    CheckLogin();
                     break;
                 default:
                     break;
             }
         }
-        private void btnNovoCliente_Click(object sender, EventArgs e)
+        private void BtnNovoCliente_Click(object sender, EventArgs e)
         {
             frmGenCliente frm = new frmGenCliente();
             frm.ShowDialog();
@@ -57,25 +59,25 @@ namespace UI.Forms
             if (frm.IsDisposed)
             {
                 LoadDataSourceCliente();
-                ShowCliente();
+                GridViewClientes();
             }
         }
-        private void btnSistema_Click(object sender, EventArgs e)
+        private void BtnSistema_Click(object sender, EventArgs e)
         {
             frmGerenciadorSistema frm = new frmGerenciadorSistema();
             frm.ShowDialog();
 
-            if (frm.IsDisposed)
-            {
-                LoadDataSourceCliente();
-                ShowCliente();
-            }
+            //if (frm.IsDisposed)
+            //{
+            //    LoadDataSourceCliente();
+            //    ListarClientes();
+            //}
         }
-        private void dtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["cliente_id"].Value;
+                var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
                 var cliente = GetCliente(ClienteId);
 
 
@@ -91,40 +93,42 @@ namespace UI.Forms
                     frm.ShowDialog();
                     FrmIsDisposed(frm);
                 }
+                AtualizaStatus();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
-        private void dtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["cliente_id"].Value;
+                var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
                 var cliente = GetCliente(ClienteId);
 
                 frmCliente frmCliente = new frmCliente(Size, cliente);
                 frmCliente.ShowDialog();
                 FrmIsDisposed(frmCliente);
+                AtualizaStatus();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        private void TxtPesquisa_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                ShowCliente(txtPesquisa.Text);
+                GridViewClientes(txtPesquisa.Text);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void timeBackup_Tick(object sender, EventArgs e)
+        private void TimeBackup_Tick(object sender, EventArgs e)
             {
                 try
                 {
@@ -137,13 +141,61 @@ namespace UI.Forms
                     MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        private void btnAbout_Click(object sender, EventArgs e)
+        private void BtnAbout_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog();
         }
 
         //METODOS\\
-        void StartLogin()
+        List<ClienteDataVisualizer> ListaClientes(string searth = "")
+        {
+            try
+            {
+                return ClienteDataVisualizers
+                    .Where(c => c.NomeCliente.Contains(searth)
+                    || c.NomeCliente.Contains(searth.ToLowerInvariant())
+                    || c.NomeCliente.Contains(searth.ToUpperInvariant())
+                    || c.ApelidoCliente.Contains(searth.ToLowerInvariant())
+                    || c.ApelidoCliente.Contains(searth.ToUpperInvariant())
+                    ).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter dados dos clientes! Detalhes: {ex.Message}");
+            }
+        }
+        void GridViewClientes(string searth = "")
+        {
+            dtgClientes.DataSource = ListaClientes(searth);
+            Estilo();
+        }
+        Cliente GetCliente(int id)
+        {
+            return _cController.ListaClienteWithRegistros()
+                .Where(c => c.ClienteId == id)
+                .FirstOrDefault();
+        }
+        void LoadDataSourceCliente()
+        {
+            try
+            {
+                ClienteDataVisualizer clienteData;
+                ClienteDataVisualizers.Clear();
+                var listClientes = _cController.ListaClientes();
+
+                foreach (var cliente in listClientes)
+                {
+                    clienteData = new ClienteDataVisualizer(cliente.ClienteId, cliente.Nome, cliente.Apelido, cliente.Endereco,
+                        cliente.NotaConta.LimiteConta, cliente.NotaConta.TotalConta, cliente.NotaConta.DataConta);
+                    ClienteDataVisualizers.Add(clienteData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        void Autenticar()
         {
             try
             {
@@ -154,7 +206,7 @@ namespace UI.Forms
 
                 if (frm.IsDisposed)
                 {
-                    GetPermissao();
+                    CheckLogin();
                 }
             }
             catch (Exception ex)
@@ -162,7 +214,7 @@ namespace UI.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        void GetPermissao()
+        void CheckLogin()
         {
             try
             {
@@ -170,13 +222,14 @@ namespace UI.Forms
                 {
                     LoadDataSourceCliente();
                     EnableComponentes(true);
-                    ShowCliente();
-                    //StartTimer(SysSettings.IntervaloBackup[SysSettings.SelectedTimerIndex]);
+                    GridViewClientes();
+                    //StartTimer(AppManager.IntervaloBackup[AppManager.SelectedTimerIndex]);
                     btnLogin.Text = "Logout";
                 }
                 else
                 {
                     EnableComponentes(false);
+                    //timeBackup.Stop();
                     btnLogin.Text = "Login";
                 }
             }
@@ -185,33 +238,15 @@ namespace UI.Forms
                 MessageBox.Show($"Erro ao obter permissão de login! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        void LoadDataSourceCliente()
-        {
-            try
-            {
-                DataSourceCliente.DataSource = _cController.ListaClientes();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         void FrmIsDisposed(Form frm)
         {
             if (frm.IsDisposed)
             {
                 LoadDataSourceCliente();
-                ShowCliente();
+                GridViewClientes();
             }
         }
-        Cliente GetCliente(int id)
-        {
-            return _cController.ListaClientes()
-                .Where(c => c.ClienteId == id)
-                .FirstOrDefault();
-        }
-
-        private void EnableComponentes(bool status)
+        void EnableComponentes(bool status)
         {
             btnSistema.Enabled = status;
             btnNovoCliente.Enabled = status;
@@ -219,81 +254,21 @@ namespace UI.Forms
             dtgClientes.Visible = status;
             statusBar.Visible = status;
         }
-        private void ShowCliente(string searth = "")
+        void AtualizaStatus()
         {
-            try
-            {
-                dtgClientes.DataSource = _cController.ListaClientes()
-                    .Where(c => c.Nome.Contains(searth) 
-                    || c.Nome.Contains(searth.ToLowerInvariant())
-                    || c.Nome.Contains(searth.ToUpperInvariant())
-                    ).ToList();
-                Estilo();
-                AtualizaStatus();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao obter dados dos clientes! Detalhes: {ex.Message}");
-            }
+            lblStatusRegistro.Text = "Último Registro: " + AppController.GetUltimaNota;
         }
         private void StartTimer(int time)
         {
             timeBackup.Interval = time;
             timeBackup.Start();
         }
-        private void AtualizaStatus()
-        {
-            lblStatusRegistro.Text = "Último Registro: " + AppController.GetUltimaNota;
-        }
         private void Estilo()
         {
-            //for (int i = 0; i < dtgClientes.Rows.Count; i += 2)
-            //{
-            //    dtgClientes.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
-            //}
-        }
-
-        private void dtgClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if ((dtgClientes.Rows[e.RowIndex].DataBoundItem != null) && (dtgClientes.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
+            for (int i = 0; i < dtgClientes.Rows.Count; i += 2)
             {
-                e.Value = BindProperty(dtgClientes.Rows[e.RowIndex].DataBoundItem, dtgClientes.Columns[e.ColumnIndex].DataPropertyName);
+                dtgClientes.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
             }
-        }
-        private string BindProperty(object property, string propertyName)
-        {
-            string retValue = "";
-
-            if (propertyName.Contains("."))
-            {
-                PropertyInfo[] arrayProperties;
-                string leftPropertyName;
-
-                leftPropertyName = propertyName.Substring(0, propertyName.IndexOf("."));
-                arrayProperties = property.GetType().GetProperties();
-
-                foreach (PropertyInfo propertyInfo in arrayProperties)
-                {
-                    if (propertyInfo.Name == leftPropertyName)
-                    {
-                        retValue = BindProperty(
-                          propertyInfo.GetValue(property, null),
-                          propertyName.Substring(propertyName.IndexOf(".") + 1));
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                Type propertyType;
-                PropertyInfo propertyInfo;
-
-                propertyType = property.GetType();
-                propertyInfo = propertyType.GetProperty(propertyName);
-                retValue = propertyInfo.GetValue(property, null).ToString();
-            }
-
-            return retValue;
         }
     }
 }

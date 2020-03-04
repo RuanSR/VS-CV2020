@@ -9,5 +9,6 @@ namespace Model.Interface
         void AtualizarCliente(Cliente c);
         void RemoverCliente(Cliente c);
         IList<Cliente> ListaClientes();
+        IList<Cliente> ListaClienteWithRegistros();
     }
 }

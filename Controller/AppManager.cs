@@ -7,7 +7,7 @@ namespace Controller
     public static class AppManager
     {
         private static string _defaultPathBackup = @"C:\Caderno Virtual\Backup\";
-        private static int[] _intervaloBackup = new int[3];
+        public static int[] IntervaloBackup { get; private set; } = new int[3];
         public static string LocalBackup { get; private set; }
         public static int SelectedTimerIndex { get; private set; }
 
@@ -15,9 +15,9 @@ namespace Controller
         {
             try
             {
-                _intervaloBackup[0] = int.Parse(ConfigurationManager.AppSettings["Auto10"]);
-                _intervaloBackup[1] = int.Parse(ConfigurationManager.AppSettings["Auto15"]);
-                _intervaloBackup[2] = int.Parse(ConfigurationManager.AppSettings["Auto20"]);
+                IntervaloBackup[0] = int.Parse(ConfigurationManager.AppSettings["Auto10"]);
+                IntervaloBackup[1] = int.Parse(ConfigurationManager.AppSettings["Auto15"]);
+                IntervaloBackup[2] = int.Parse(ConfigurationManager.AppSettings["Auto20"]);
                 SelectedTimerIndex = int.Parse(ConfigurationManager.AppSettings["SelectedTimerIndex"]);
                 LocalBackup = ConfigurationManager.AppSettings["BackupPath"];
 

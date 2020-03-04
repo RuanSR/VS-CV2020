@@ -17,21 +17,26 @@ namespace ConsoleApp
         {
             try
             {
-                LogarAtendente("Ruan", "");
+                // LogarAtendente("Ruan", "");
                 // NovoAtendente(new Atendente("Renan da Silva Rosa", "R", "0", NivelAcesso.ADMIN));
                 // NovoCliente(new Cliente("Ruan da Silva Rosa", "", "Pass Virgem da Conceiçao", "000000000", "", 100.00));
 
                 //var c = CarregaUmCliente();
-                //c = Operacao.AdicionarValor(c, 10.00, "Ruan", "Emprestimo");
+                // c = Operacao.AdicionarValor(c, 10.00, "Ruan", "Emprestimo");
+                // c.NotaConta.AtualizarNota(20000.00, c.NotaConta.TotalConta, c.NotaConta.DataConta);
                 //c.AtualizarCliente("Ruan da Silva Rosa", c.Apelido, "Pass Virgem da Conceição n82", c.Telefone, c.Cpf);
+                //for (int i = 0; i < 9999; i++)
+                //{
+                //    c = Operacao.AdicionarValor(c, .10, "Ruan", "Emprestimo");
+                //}
                 //AtualizaCliente(c);
-                // c = Operacao.AdicionarValor(c, 20.00, "Ruan", "Emprestimo");
                 // c = Operacao.DebitarValor(c, 40.00, "Ruan", "Pagando uma parte do Emprestimo");
-                //  ListarCliente(c);
                 // ListarClientes();
                 //AtualizaCliente(c);
+                //ListarCliente(c);
                 // DeleteaCliente(c);
                 //ListarClientes();
+
 
             }
             catch (ClienteException e)

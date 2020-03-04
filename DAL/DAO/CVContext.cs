@@ -1,13 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using Model.Classes;
 using Model.Classes.ClienteModel;
+using System.Configuration;
 
 namespace DAL.DAO
 {
     public class CVContext : DbContext
     {
+        private readonly string _localPath;
+        private readonly string _dBName;
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Atendente> Atendentes { get; set; }
+
+        public CVContext()
+        {
+            _localPath = ConfigurationManager.AppSettings[Properties.Resources.KeyName_LocalPath];
+            _dBName = ConfigurationManager.AppSettings[Properties.Resources.KeyName_ServerName];
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,7 +30,7 @@ namespace DAL.DAO
         {
             try
             {
-                optionsBuilder.UseSqlite("Data Source=C:\\CV2020\\DB.sqlite;");
+                optionsBuilder.UseSqlite($"Data Source={_localPath}\\{_dBName};");
             }
             catch (System.Exception e)
             {
