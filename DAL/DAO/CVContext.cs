@@ -16,6 +16,9 @@ namespace DAL.DAO
         {
             _localPath = ConfigurationManager.AppSettings[Properties.Resources.KeyName_LocalPath];
             _dBName = ConfigurationManager.AppSettings[Properties.Resources.KeyName_ServerName];
+
+            //_localPath = @"C:\Caderno Virtual\CV2020";
+            //_dBName = "DB.sqlite";
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

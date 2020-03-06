@@ -3,7 +3,7 @@
     public struct ClienteDataVisualizer
     {
         public ClienteDataVisualizer(int idCliente, string nomeCliente, string apelidoCliente, string enderecoCliente, 
-            double limiteContaCliente, double totalContaCliente, string dataContaCliente)
+            double limiteContaCliente, double totalContaCliente, string dataContaCliente, bool statusCliente)
         {
             IdCliente = idCliente;
             NomeCliente = nomeCliente;
@@ -12,6 +12,7 @@
             LimiteContaCliente = limiteContaCliente;
             TotalContaCliente = totalContaCliente;
             DataContaCliente = dataContaCliente;
+            StatusCliente = statusCliente;
         }
 
         public int IdCliente { get; }
@@ -21,5 +22,6 @@
         public double LimiteContaCliente { get; }
         public double TotalContaCliente { get; }
         public string DataContaCliente { get; }
+        public bool StatusCliente { get;  }
     }
 }

@@ -14,7 +14,7 @@ namespace UI.Forms
     public partial class FrmPrincipal : Form
     {
         private IList<ClienteDataVisualizer> ClienteDataVisualizers { get; set; }
-        private ClienteController _cController;
+        private readonly ClienteController _cController;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -141,22 +141,26 @@ namespace UI.Forms
                     MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        private void rbAtivos_CheckedChanged(object sender, EventArgs e)
+        {
+            GridViewClientes();
+        }
         private void BtnAbout_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog();
         }
 
         //METODOS\\
-        List<ClienteDataVisualizer> ListaClientes(string searth = "")
+        List<ClienteDataVisualizer> ListaClientes(string searth = "", bool status = true)
         {
             try
             {
                 return ClienteDataVisualizers
-                    .Where(c => c.NomeCliente.Contains(searth)
-                    || c.NomeCliente.Contains(searth.ToLowerInvariant())
-                    || c.NomeCliente.Contains(searth.ToUpperInvariant())
-                    || c.ApelidoCliente.Contains(searth.ToLowerInvariant())
-                    || c.ApelidoCliente.Contains(searth.ToUpperInvariant())
+                    .Where(c => c.NomeCliente.Contains(searth) && c.StatusCliente == status
+                    || c.NomeCliente.Contains(searth.ToLowerInvariant()) && c.StatusCliente == status
+                    || c.NomeCliente.Contains(searth.ToUpperInvariant()) && c.StatusCliente == status
+                    || c.ApelidoCliente.Contains(searth.ToLowerInvariant()) && c.StatusCliente == status
+                    || c.ApelidoCliente.Contains(searth.ToUpperInvariant()) && c.StatusCliente == status
                     ).ToList();
             }
             catch (Exception ex)
@@ -166,7 +170,14 @@ namespace UI.Forms
         }
         void GridViewClientes(string searth = "")
         {
-            dtgClientes.DataSource = ListaClientes(searth);
+            if (rbAtivos.Checked)
+            {
+                dtgClientes.DataSource = ListaClientes(searth);
+            }
+            else
+            {
+                dtgClientes.DataSource = ListaClientes(searth, false);
+            }
             Estilo();
         }
         Cliente GetCliente(int id)
@@ -186,7 +197,7 @@ namespace UI.Forms
                 foreach (var cliente in listClientes)
                 {
                     clienteData = new ClienteDataVisualizer(cliente.ClienteId, cliente.Nome, cliente.Apelido, cliente.Endereco,
-                        cliente.NotaConta.LimiteConta, cliente.NotaConta.TotalConta, cliente.NotaConta.DataConta);
+                        cliente.NotaConta.LimiteConta, cliente.NotaConta.TotalConta, cliente.NotaConta.DataConta, cliente.Status);
                     ClienteDataVisualizers.Add(clienteData);
                 }
             }
@@ -243,7 +254,7 @@ namespace UI.Forms
             if (frm.IsDisposed)
             {
                 LoadDataSourceCliente();
-                GridViewClientes();
+                GridViewClientes(txtPesquisa.Text);
             }
         }
         void EnableComponentes(bool status)

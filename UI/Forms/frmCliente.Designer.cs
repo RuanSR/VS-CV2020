@@ -765,7 +765,8 @@
             this.valor_registro.HeaderText = "Valor";
             this.valor_registro.Name = "valor_registro";
             this.valor_registro.ReadOnly = true;
-            this.valor_registro.Width = 65;
+            this.valor_registro.ToolTipText = "R$";
+            this.valor_registro.Width = 75;
             // 
             // atendente_registro
             // 
@@ -819,6 +820,7 @@
             this.Name = "frmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "::";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCliente_FormClosed);
             this.Load += new System.EventHandler(this.frmCliente_Load);
             this.Resize += new System.EventHandler(this.frmCliente_Resize);

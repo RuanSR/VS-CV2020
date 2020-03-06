@@ -33,6 +33,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtgAtendente = new System.Windows.Forms.DataGridView();
+            this.IdAtendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NivelAcesso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDeletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnNovoAtendete = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -53,13 +60,6 @@
             this.btnSalvarDados = new System.Windows.Forms.ToolStripButton();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.IdAtendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NivelAcesso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnDeletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -144,6 +144,61 @@
             this.dtgAtendente.Size = new System.Drawing.Size(464, 367);
             this.dtgAtendente.TabIndex = 1;
             this.dtgAtendente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgAtendente_CellContentClick);
+            // 
+            // IdAtendente
+            // 
+            this.IdAtendente.DataPropertyName = "AtendenteId";
+            this.IdAtendente.HeaderText = "Código";
+            this.IdAtendente.Name = "IdAtendente";
+            this.IdAtendente.ReadOnly = true;
+            this.IdAtendente.Width = 60;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 200;
+            // 
+            // Usuario
+            // 
+            this.Usuario.DataPropertyName = "Usuario";
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // NivelAcesso
+            // 
+            this.NivelAcesso.DataPropertyName = "NivelAcesso";
+            this.NivelAcesso.HeaderText = "Nivel Acesso";
+            this.NivelAcesso.Name = "NivelAcesso";
+            this.NivelAcesso.ReadOnly = true;
+            this.NivelAcesso.Visible = false;
+            // 
+            // Senha
+            // 
+            this.Senha.DataPropertyName = "Senha";
+            this.Senha.HeaderText = "senha_atendente";
+            this.Senha.Name = "Senha";
+            this.Senha.ReadOnly = true;
+            this.Senha.Visible = false;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "";
+            this.btnEditar.Image = global::UI.Properties.Resources.ediatar;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.ReadOnly = true;
+            this.btnEditar.Width = 50;
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.HeaderText = "";
+            this.btnDeletar.Image = global::UI.Properties.Resources.decline;
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.ReadOnly = true;
+            this.btnDeletar.Width = 50;
             // 
             // toolStrip2
             // 
@@ -338,61 +393,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // IdAtendente
-            // 
-            this.IdAtendente.DataPropertyName = "AtendenteId";
-            this.IdAtendente.HeaderText = "Código";
-            this.IdAtendente.Name = "IdAtendente";
-            this.IdAtendente.ReadOnly = true;
-            this.IdAtendente.Width = 60;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 200;
-            // 
-            // Usuario
-            // 
-            this.Usuario.DataPropertyName = "Usuario";
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            // 
-            // NivelAcesso
-            // 
-            this.NivelAcesso.DataPropertyName = "NivelAcesso";
-            this.NivelAcesso.HeaderText = "Nivel Acesso";
-            this.NivelAcesso.Name = "NivelAcesso";
-            this.NivelAcesso.ReadOnly = true;
-            this.NivelAcesso.Visible = false;
-            // 
-            // Senha
-            // 
-            this.Senha.DataPropertyName = "Senha";
-            this.Senha.HeaderText = "senha_atendente";
-            this.Senha.Name = "Senha";
-            this.Senha.ReadOnly = true;
-            this.Senha.Visible = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.HeaderText = "";
-            this.btnEditar.Image = global::UI.Properties.Resources.ediatar;
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.ReadOnly = true;
-            this.btnEditar.Width = 50;
-            // 
-            // btnDeletar
-            // 
-            this.btnDeletar.HeaderText = "";
-            this.btnDeletar.Image = global::UI.Properties.Resources.decline;
-            this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.ReadOnly = true;
-            this.btnDeletar.Width = 50;
             // 
             // frmGerenciadorSistema
             // 

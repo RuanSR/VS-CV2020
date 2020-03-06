@@ -31,7 +31,7 @@ namespace Model.Classes.ClienteModel
 
         public void AtualizarCliente(
             string nome, string apelido, string endereco, string telefone,
-            string cpf = null)
+            string cpf, bool status)
         {
             ValidarDados(nome, apelido, endereco, telefone);
             Nome = nome;
@@ -39,7 +39,7 @@ namespace Model.Classes.ClienteModel
             Endereco = endereco;
             Telefone = telefone;
             Cpf = cpf;
-            Status = true;
+            Status = status;
         }
         private void ValidarDados(string nome, string apelido, string endereco, string telefone, double limiteConta = 0.0)
         {

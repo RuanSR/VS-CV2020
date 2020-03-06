@@ -50,6 +50,7 @@
             this.txtLimite = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.BtnExluir = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,7 +64,8 @@
             this.toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSalvar});
+            this.btnSalvar,
+            this.BtnExluir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(484, 58);
@@ -314,6 +316,17 @@
             this.label6.Text = "Limite da Conta";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BtnExluir
+            // 
+            this.BtnExluir.Image = global::UI.Properties.Resources.decline;
+            this.BtnExluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BtnExluir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExluir.Name = "BtnExluir";
+            this.BtnExluir.Size = new System.Drawing.Size(61, 55);
+            this.BtnExluir.Text = "Excluir";
+            this.BtnExluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BtnExluir.Click += new System.EventHandler(this.BtnExluir_Click);
+            // 
             // frmGenCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,5 +384,6 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLimite;
+        private System.Windows.Forms.ToolStripButton BtnExluir;
     }
 }

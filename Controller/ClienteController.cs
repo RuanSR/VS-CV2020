@@ -91,7 +91,7 @@ namespace Controller
              * Endereço no minimo 10 caracteres
              * Telefone precisa ser preenchido
              */
-            if(c.Nome.Length <= 6)
+            if(c.Nome.Length <= 7)
             {
                 Console.WriteLine(c.Nome);
                 throw new ClienteException("Preencha o nome completo do cliente.");

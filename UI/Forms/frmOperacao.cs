@@ -7,6 +7,7 @@ using Controller;
 using System.Linq;
 using System.Collections.Generic;
 using Model.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace UI.Forms
 {

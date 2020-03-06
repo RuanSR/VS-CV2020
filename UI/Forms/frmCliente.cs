@@ -11,7 +11,6 @@ namespace UI.Forms
     public partial class frmCliente : Form
     {
         private Cliente _cliente;
-        private int sizeSplitDetail = 80;
         private Size _sizeParent;
 
         public frmCliente(Size sizeParent, Cliente cliente)
@@ -31,12 +30,10 @@ namespace UI.Forms
             LoadLog();
             Estilo();
         }
-
         private void GerenForm()
         {
             this.Text = $":: {_cliente.Nome} ::";
         }
-
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
             frmOperacao frm = new frmOperacao(_cliente, Operacoes.ADICIONAR);
@@ -68,8 +65,15 @@ namespace UI.Forms
 
             if (frm.IsDisposed)
             {
-                _cliente = frm.Cliente;
-                ShowDados();
+                if (frm.Cliente != null)
+                {
+                    _cliente = frm.Cliente;
+                    ShowDados();
+                }
+                else
+                {
+                    Close();
+                }
             }
         }
         private void btnLogout_Click(object sender, EventArgs e)
@@ -151,7 +155,7 @@ namespace UI.Forms
         }
         private void SetDefaultSplitDistance()
         {
-            splitContainer.SplitterDistance = (_sizeParent.Width / 2) - sizeSplitDetail;
+            splitContainer.SplitterDistance = (_sizeParent.Width / 2);
         }
         private void Logout()
         {

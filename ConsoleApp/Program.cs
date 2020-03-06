@@ -6,6 +6,7 @@ using Model.Enum;
 using Model.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace ConsoleApp
 {
@@ -17,6 +18,8 @@ namespace ConsoleApp
         {
             try
             {
+                LerEGravarClientes();
+                GravaRegistroCliente();
                 // LogarAtendente("Ruan", "");
                 // NovoAtendente(new Atendente("Renan da Silva Rosa", "R", "0", NivelAcesso.ADMIN));
                 // NovoCliente(new Cliente("Ruan da Silva Rosa", "", "Pass Virgem da Conceiçao", "000000000", "", 100.00));
@@ -48,9 +51,72 @@ namespace ConsoleApp
                 System.Console.WriteLine("Erro: " + e.Message);
             }
         }
+        static void LerEGravarClientes()
+        {
+            try
+            {
+                var listaClientes = new List<Cliente>();
+                var caminho = @"C:\CV2020-CSV\clientes.csv";
+                var lines = File.ReadAllLines(caminho);
+                foreach (var linha in lines)
+                {
+                    var c = linha.Split(";");
+                    var novocliente = new Cliente(c[1], c[2], c[3], c[4], c[5], double.Parse(c[6]));
+                    novocliente.NotaConta.AtualizarNota(double.Parse(c[6]), double.Parse(c[7]), c[10]);
+                    listaClientes.Add(novocliente);
+                    Console.WriteLine($"GRAVANDO CLIENTE {novocliente.Nome}");
+                    NovoCliente(novocliente);
+                }
 
+                foreach (var item in listaClientes)
+                {
+                    Console.WriteLine(item.ToString());
+                    Console.WriteLine(item.NotaConta.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERRO: " + e.Message);
+            }
+        }
 
-
+        static void LerEGravarRegistro(Cliente c)
+        {
+            try
+            {
+                var listaRegistro = new List<RegistroNota>();
+                var caminho = @"C:\CV2020-CSV\registros.csv";
+                var lines = File.ReadAllLines(caminho);
+                var numNotasGravadas = 0;
+                foreach (var linha in lines)
+                {
+                    var r = linha.Split(";");
+                    if (c.ClienteId.ToString() == r[6])
+                    {
+                        if (r[4] == "-")
+                        {
+                            var novoRegistro = new RegistroNota(DateTime.Parse(r[1] + " " + r[2]), r[3], 0.0, r[5]);
+                            c.NotaConta.RegistroNotas.Add(novoRegistro);
+                            //listaRegistro.Add(novoRegistro);
+                        }
+                        else
+                        {
+                            var novoRegistro = new RegistroNota(DateTime.Parse(r[1] + " " + r[2]), r[3], double.Parse(r[4]), r[5]);
+                            c.NotaConta.RegistroNotas.Add(novoRegistro);
+                            //listaRegistro.Add(novoRegistro);
+                        }
+                        numNotasGravadas++;
+                    }
+                }
+                Console.WriteLine($"ATUALIZANDO CLIENTE {c.Nome}...");
+                Console.WriteLine($"NUMERO DE REGISTROS: {numNotasGravadas}");
+                AtualizaCliente(c);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERRO: " + e.Message);
+            }
+        }
         static IList<Cliente> CarregaClientes()
         {
             try
@@ -88,6 +154,13 @@ namespace ConsoleApp
                     Console.WriteLine(nota.ToString());
                     Console.ForegroundColor = consoleColorDefault;
                 }
+            }
+        }
+        static void GravaRegistroCliente()
+        {
+            foreach (var c in CarregaClientes())
+            {
+                LerEGravarRegistro(c);
             }
         }
         static Cliente CarregaUmCliente()

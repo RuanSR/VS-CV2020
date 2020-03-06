@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Controller;
+using Model.Classes;
 using Model.Classes.ClienteModel;
 using Model.Exceptions;
 
@@ -34,6 +35,25 @@ namespace UI.Forms
                 MessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(NotaContaException ex)
+            {
+                MessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void BtnExluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ExcluirCliente();
+            }
+            catch (ClienteException ex)
+            {
+                MessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (NotaContaException ex)
             {
                 MessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -100,6 +120,10 @@ namespace UI.Forms
                 ckStatus.Checked = Cliente.Status;
                 ckStatus.Enabled = true;
             }
+            else
+            {
+                BtnExluir.Visible = false;
+            }
         }
         private void SalvarCliente()
         {
@@ -107,7 +131,7 @@ namespace UI.Forms
             {
                 if (Cliente != null)
                 {
-                    Cliente.AtualizarCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text);
+                    Cliente.AtualizarCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, ckStatus.Checked);
                     Cliente.NotaConta.AtualizarNota(double.Parse(txtLimite.Text), Cliente.NotaConta.TotalConta, Cliente.NotaConta.DataConta);
                     _cController.AtualizarCliente(Cliente);
                     MessageBox.Show("Cliente atualizado com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -132,9 +156,40 @@ namespace UI.Forms
                 throw e;
             }
         }
+        private void ExcluirCliente()
+        {
+            var result = MessageBox.Show("TEM CERTEZA QUE DESEJA EXLUIR ESTE CLINTE?\nISTO APAGARÁ:" +
+                "\nTODOS OS DADOS DO CLIENTE." +
+                "\nTODOS OS REGISTROS DO CLIENTE." +
+                "\nNÃO É POSSÍVEL DESFAZER ESTA AÇÃO, DESEJA CONTINUAR?",
+                "ATENÇÃO!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
+            {
+                if (Cliente.NotaConta.TotalConta == 0.0)
+                {
+                    frmLogin frm = new frmLogin();
+                    frm.ShowDialog();
+                    if (frm.Atendente.AtendenteId == 1)
+                    {
+                        _cController.RemoverCliente(Cliente);
+                        Cliente = null;
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Você precisa logar como administrador para fazer esta ação!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não foi permitido a exclusão do cliente, é preciso zerar o total.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
         private bool IsNumeric(int Val)
         {
             return ((Val >= 48 && Val <= 57) || (Val == 8) || (Val == 46));
         }
+
     }
 }

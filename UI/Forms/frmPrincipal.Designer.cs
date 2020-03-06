@@ -53,6 +53,8 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.lblStatusRegistro = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUltimoBackup = new System.Windows.Forms.ToolStripStatusLabel();
+            this.rbAtivos = new System.Windows.Forms.RadioButton();
+            this.rbInativos = new System.Windows.Forms.RadioButton();
             this.btnDebitar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.DataGridViewImageColumn();
             this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +64,7 @@
             this.LimiteConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
             this.groupBoxPesquisa.SuspendLayout();
@@ -149,13 +152,15 @@
             // groupBoxPesquisa
             // 
             this.groupBoxPesquisa.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxPesquisa.Controls.Add(this.rbInativos);
+            this.groupBoxPesquisa.Controls.Add(this.rbAtivos);
             this.groupBoxPesquisa.Controls.Add(this.txtPesquisa);
             this.groupBoxPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBoxPesquisa.Enabled = false;
             this.groupBoxPesquisa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxPesquisa.Location = new System.Drawing.Point(0, 83);
             this.groupBoxPesquisa.Name = "groupBoxPesquisa";
-            this.groupBoxPesquisa.Size = new System.Drawing.Size(484, 53);
+            this.groupBoxPesquisa.Size = new System.Drawing.Size(484, 81);
             this.groupBoxPesquisa.TabIndex = 3;
             this.groupBoxPesquisa.TabStop = false;
             this.groupBoxPesquisa.Text = "Pesquisa";
@@ -198,7 +203,8 @@
             this.endereco_cliente,
             this.LimiteConta,
             this.TotalConta,
-            this.data_conta_cliente});
+            this.data_conta_cliente,
+            this.StatusCliente});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -211,7 +217,7 @@
             this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgClientes.GridColor = System.Drawing.Color.SlateGray;
-            this.dtgClientes.Location = new System.Drawing.Point(0, 136);
+            this.dtgClientes.Location = new System.Drawing.Point(0, 164);
             this.dtgClientes.Name = "dtgClientes";
             this.dtgClientes.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -228,7 +234,7 @@
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgClientes.RowTemplate.Height = 35;
-            this.dtgClientes.Size = new System.Drawing.Size(484, 325);
+            this.dtgClientes.Size = new System.Drawing.Size(484, 297);
             this.dtgClientes.TabIndex = 4;
             this.dtgClientes.Visible = false;
             this.dtgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentClick);
@@ -267,6 +273,30 @@
             this.lblUltimoBackup.Size = new System.Drawing.Size(103, 17);
             this.lblUltimoBackup.Text = "Último backup: ";
             this.lblUltimoBackup.Visible = false;
+            // 
+            // rbAtivos
+            // 
+            this.rbAtivos.AutoSize = true;
+            this.rbAtivos.Checked = true;
+            this.rbAtivos.Location = new System.Drawing.Point(13, 53);
+            this.rbAtivos.Name = "rbAtivos";
+            this.rbAtivos.Size = new System.Drawing.Size(64, 21);
+            this.rbAtivos.TabIndex = 1;
+            this.rbAtivos.TabStop = true;
+            this.rbAtivos.Text = "Ativos";
+            this.rbAtivos.UseVisualStyleBackColor = true;
+            this.rbAtivos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
+            // 
+            // rbInativos
+            // 
+            this.rbInativos.AutoSize = true;
+            this.rbInativos.Location = new System.Drawing.Point(83, 53);
+            this.rbInativos.Name = "rbInativos";
+            this.rbInativos.Size = new System.Drawing.Size(74, 21);
+            this.rbInativos.TabIndex = 1;
+            this.rbInativos.Text = "Inativos";
+            this.rbInativos.UseVisualStyleBackColor = true;
+            this.rbInativos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
             // 
             // btnDebitar
             // 
@@ -358,7 +388,15 @@
             this.data_conta_cliente.ReadOnly = true;
             this.data_conta_cliente.Width = 150;
             // 
-            // frmPrincipal
+            // StatusCliente
+            // 
+            this.StatusCliente.DataPropertyName = "StatusCliente";
+            this.StatusCliente.HeaderText = "StatusCliente";
+            this.StatusCliente.Name = "StatusCliente";
+            this.StatusCliente.ReadOnly = true;
+            this.StatusCliente.Visible = false;
+            // 
+            // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -371,7 +409,7 @@
             this.Controls.Add(this.menuBar);
             this.MainMenuStrip = this.menuBar;
             this.MinimumSize = new System.Drawing.Size(500, 500);
-            this.Name = "frmPrincipal";
+            this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caderno Virtual :: 2020 Edition";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -407,6 +445,8 @@
         private System.Windows.Forms.ToolStripStatusLabel lblStatusRegistro;
         private System.Windows.Forms.ToolStripStatusLabel lblUltimoBackup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.RadioButton rbInativos;
+        private System.Windows.Forms.RadioButton rbAtivos;
         private System.Windows.Forms.DataGridViewImageColumn btnDebitar;
         private System.Windows.Forms.DataGridViewImageColumn btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
@@ -416,6 +456,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LimiteConta;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalConta;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_conta_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCliente;
     }
 }
 
