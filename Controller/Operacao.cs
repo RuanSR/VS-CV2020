@@ -7,6 +7,7 @@ namespace Controller
 {
     public class Operacao
     {
+        static ClienteController cController = new ClienteController();
         public static Cliente AdicionarValor(Cliente c, double valor, string atendente, string obs)
         {
             ValidaDados(c, valor, atendente);
@@ -15,6 +16,7 @@ namespace Controller
                 var limiteConta = c.NotaConta.LimiteConta;
                 var totalConta = c.NotaConta.TotalConta + valor;
                 var dataConta = VerificaData(Operacoes.ADICIONAR, c.NotaConta.DataConta, valor);
+                cController.AtualizarCliente(c);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
                 c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, FormatObs(Operacoes.ADICIONAR,obs)));
                 return c;
@@ -29,6 +31,7 @@ namespace Controller
                 var limiteConta = c.NotaConta.LimiteConta;
                 var totalConta = c.NotaConta.TotalConta - valor;
                 var dataConta = VerificaData(Operacoes.DEBITAR, c.NotaConta.DataConta, totalConta);
+                cController.AtualizarCliente(c);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
                 c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, FormatObs(Operacoes.DEBITAR, obs)));
                 return c;
