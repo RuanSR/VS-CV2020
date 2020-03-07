@@ -28,7 +28,6 @@ namespace UI.Forms
             GerenForm();
             ShowDados();
             LoadLog();
-            Estilo();
         }
         private void GerenForm()
         {
@@ -123,6 +122,7 @@ namespace UI.Forms
                 dtgLog.DataSource = _cliente.NotaConta.RegistroNotas
                     .OrderByDescending(c => c.RegistroNotaId)
                     .ToList();
+                Estilo();
             }
             catch (Exception ex)
             {

@@ -53,13 +53,20 @@ namespace UI.Forms
         }
         private void BtnNovoCliente_Click(object sender, EventArgs e)
         {
-            frmGenCliente frm = new frmGenCliente();
-            frm.ShowDialog();
-
-            if (frm.IsDisposed)
+            try
             {
-                LoadDataSourceCliente();
-                GridViewClientes();
+                frmGenCliente frm = new frmGenCliente();
+                frm.ShowDialog();
+
+                if (frm.IsDisposed)
+                {
+                    LoadDataSourceCliente();
+                    GridViewClientes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro no sistema. {ex.Message}", "ERRO",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void BtnSistema_Click(object sender, EventArgs e)

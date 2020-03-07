@@ -22,7 +22,6 @@ namespace UI.Forms
         //CONTROLES\\
         private void frmGenCliente_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(Cliente.NotaConta.TotalConta.ToString("F2"));
             GerenForm();
         }
         private void btnSalvar_Click(object sender, EventArgs e)
