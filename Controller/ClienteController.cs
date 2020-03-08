@@ -100,7 +100,7 @@ namespace Controller
             {
                 throw new ClienteException("Apelido precisa no minimo 3 caracteres.");
             }
-            if (c.Endereco.Length <= 4)
+            if (c.Endereco.Length <= 2)
             {
                 throw new ClienteException("Endereço precisa no mínimo 10 caracteres.");
             }

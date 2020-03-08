@@ -18,7 +18,7 @@ namespace Controller
                 var dataConta = VerificaData(Operacoes.ADICIONAR, c.NotaConta.DataConta, valor);
                 cController.AtualizarCliente(c);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
-                c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, FormatObs(Operacoes.ADICIONAR,obs)));
+                c.NotaConta.RegistroNotas.Add(new RegistroNota(FormatoDateTime(), atendente, valor, FormatObs(Operacoes.ADICIONAR,obs)));
                 return c;
             }
             throw new OperacaoException("O valor não pode ser maior que o limite da conta!");
@@ -33,7 +33,7 @@ namespace Controller
                 var dataConta = VerificaData(Operacoes.DEBITAR, c.NotaConta.DataConta, totalConta);
                 cController.AtualizarCliente(c);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
-                c.NotaConta.RegistroNotas.Add(new RegistroNota(DateTime.Now, atendente, valor, FormatObs(Operacoes.DEBITAR, obs)));
+                c.NotaConta.RegistroNotas.Add(new RegistroNota(FormatoDateTime(), atendente, valor, FormatObs(Operacoes.DEBITAR, obs)));
                 return c;
             }
             throw new OperacaoException("O valor do debito não pode ser maior que valor total da conta!");
@@ -91,6 +91,10 @@ namespace Controller
                 }
                 return $"DEBITO EFETUADO. {obs}";
             }
+        }
+        private static DateTime FormatoDateTime()
+        {
+            return DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
         }
     }
 }
