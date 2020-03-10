@@ -120,7 +120,7 @@ namespace UI.Forms
             try
             {
                 dtgLog.DataSource = _cliente.NotaConta.RegistroNotas
-                    .OrderByDescending(c => c.RegistroNotaId)
+                    .OrderByDescending(c => c.DataHora)
                     .ToList();
                 Estilo();
             }

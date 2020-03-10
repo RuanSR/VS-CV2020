@@ -87,13 +87,13 @@
             this.lblApelido = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgLog = new System.Windows.Forms.DataGridView();
-            this.data_hora_nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_hora_nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -748,13 +748,45 @@
             this.dtgLog.Size = new System.Drawing.Size(242, 379);
             this.dtgLog.TabIndex = 0;
             // 
-            // data_hora_nota
+            // log_registro
             // 
-            this.data_hora_nota.DataPropertyName = "DataHora";
-            this.data_hora_nota.HeaderText = "Data / Hora";
-            this.data_hora_nota.Name = "data_hora_nota";
-            this.data_hora_nota.ReadOnly = true;
-            this.data_hora_nota.Width = 185;
+            this.log_registro.DataPropertyName = "TextoDescricao";
+            this.log_registro.HeaderText = "Detalhes";
+            this.log_registro.Name = "log_registro";
+            this.log_registro.ReadOnly = true;
+            this.log_registro.Width = 200;
+            // 
+            // id_cliente_registro
+            // 
+            this.id_cliente_registro.DataPropertyName = "NotaContaId";
+            this.id_cliente_registro.HeaderText = "Código Cliente";
+            this.id_cliente_registro.Name = "id_cliente_registro";
+            this.id_cliente_registro.ReadOnly = true;
+            this.id_cliente_registro.Visible = false;
+            // 
+            // hora_nota_registro
+            // 
+            this.hora_nota_registro.DataPropertyName = "hora_nota_registro";
+            this.hora_nota_registro.HeaderText = "Hora";
+            this.hora_nota_registro.Name = "hora_nota_registro";
+            this.hora_nota_registro.ReadOnly = true;
+            this.hora_nota_registro.Visible = false;
+            // 
+            // id_registro
+            // 
+            this.id_registro.DataPropertyName = "RegistroNotaId";
+            this.id_registro.HeaderText = "Código";
+            this.id_registro.Name = "id_registro";
+            this.id_registro.ReadOnly = true;
+            this.id_registro.Visible = false;
+            // 
+            // atendente_registro
+            // 
+            this.atendente_registro.DataPropertyName = "NomeAtendente";
+            this.atendente_registro.HeaderText = "Atendente";
+            this.atendente_registro.Name = "atendente_registro";
+            this.atendente_registro.ReadOnly = true;
+            this.atendente_registro.Width = 150;
             // 
             // valor_registro
             // 
@@ -768,45 +800,13 @@
             this.valor_registro.ToolTipText = "R$";
             this.valor_registro.Width = 75;
             // 
-            // atendente_registro
+            // data_hora_nota
             // 
-            this.atendente_registro.DataPropertyName = "NomeAtendente";
-            this.atendente_registro.HeaderText = "Atendente";
-            this.atendente_registro.Name = "atendente_registro";
-            this.atendente_registro.ReadOnly = true;
-            this.atendente_registro.Width = 150;
-            // 
-            // id_registro
-            // 
-            this.id_registro.DataPropertyName = "RegistroNotaId";
-            this.id_registro.HeaderText = "Código";
-            this.id_registro.Name = "id_registro";
-            this.id_registro.ReadOnly = true;
-            this.id_registro.Visible = false;
-            // 
-            // hora_nota_registro
-            // 
-            this.hora_nota_registro.DataPropertyName = "hora_nota_registro";
-            this.hora_nota_registro.HeaderText = "Hora";
-            this.hora_nota_registro.Name = "hora_nota_registro";
-            this.hora_nota_registro.ReadOnly = true;
-            this.hora_nota_registro.Visible = false;
-            // 
-            // id_cliente_registro
-            // 
-            this.id_cliente_registro.DataPropertyName = "NotaContaId";
-            this.id_cliente_registro.HeaderText = "Código Cliente";
-            this.id_cliente_registro.Name = "id_cliente_registro";
-            this.id_cliente_registro.ReadOnly = true;
-            this.id_cliente_registro.Visible = false;
-            // 
-            // log_registro
-            // 
-            this.log_registro.DataPropertyName = "TextoDescricao";
-            this.log_registro.HeaderText = "Detalhes";
-            this.log_registro.Name = "log_registro";
-            this.log_registro.ReadOnly = true;
-            this.log_registro.Width = 200;
+            this.data_hora_nota.DataPropertyName = "DataHora";
+            this.data_hora_nota.HeaderText = "Data / Hora";
+            this.data_hora_nota.Name = "data_hora_nota";
+            this.data_hora_nota.ReadOnly = true;
+            this.data_hora_nota.Width = 185;
             // 
             // frmCliente
             // 

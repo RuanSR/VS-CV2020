@@ -163,12 +163,11 @@ namespace UI.Forms
             try
             {
                 return ClienteDataVisualizers
-                    .Where(
-                    c => c.NomeCliente.Contains(searth) && c.StatusCliente == status
-                    || c.NomeCliente.Contains(searth.ToLowerInvariant()) && c.StatusCliente == status
-                    || c.NomeCliente.Contains(searth.ToUpperInvariant()) && c.StatusCliente == status
-                    || c.ApelidoCliente.Contains(searth.ToLowerInvariant()) && c.StatusCliente == status
-                    || c.ApelidoCliente.Contains(searth.ToUpperInvariant()) && c.StatusCliente == status
+                    .Where(c => 
+                    c.NomeCliente.ToLowerInvariant().Contains(searth.ToLowerInvariant()) 
+                    && c.StatusCliente == status
+                    || c.ApelidoCliente.ToLowerInvariant().Contains(searth.ToLowerInvariant()) 
+                    && c.StatusCliente == status
                     ).ToList();
             }
             catch (Exception ex)
