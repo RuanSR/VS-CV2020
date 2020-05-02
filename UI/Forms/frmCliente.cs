@@ -16,11 +16,13 @@ namespace UI.Forms
         public frmCliente(Size sizeParent, Cliente cliente)
         {
             InitializeComponent();
+            ClienteController = new ClienteController();
             _sizeParent = sizeParent;
             _cliente = cliente;
             SetDefaultSize();
             SetDefaultSplitDistance();
         }
+        private ClienteController ClienteController { get; }
 
         //CONTROLES\\
         private void frmCliente_Load(object sender, EventArgs e)
@@ -93,6 +95,18 @@ namespace UI.Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao calcular tamanho da janela. {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDeletaRegistro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeletarRegistro();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -175,6 +189,43 @@ namespace UI.Forms
             {
                 btnAdicionarValor.Enabled = _cliente.Status;
             }
+        }
+        private void DeletarRegistro()
+        {
+            try
+            {
+                if (_cliente.NotaConta.RegistroNotas.Count != 0)
+                {
+                    var msgResultDialog =
+                        MessageBox.Show("Deseja apagar todo o registro?\n\nNão é possível desfazer esta ação.", "Atenção!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (msgResultDialog == DialogResult.Yes)
+                    {
+                        if (_cliente.NotaConta.TotalConta == 0.0)
+                        {
+                            ClienteController.DeletarRegistro(_cliente);
+                            _cliente.NotaConta.RegistroNotas.Clear();
+                            dtgLog.DataSource = _cliente.NotaConta.RegistroNotas;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi permitido a exclusão do registro, é preciso zerar o total da conta.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Não existe registro para ser limpo.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
+
         }
     }
 }

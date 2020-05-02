@@ -165,10 +165,17 @@ namespace UI.Forms
                 "ATENÇÃO!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
-                if (Cliente.NotaConta.TotalConta == 0.0)
+                if (Cliente.NotaConta.TotalConta == 0)
                 {
                     frmLogin frm = new frmLogin();
                     frm.ShowDialog();
+
+                    if(frm.Atendente == null)
+                    {
+                        MessageBox.Show("Operação cancelada!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     if (frm.Atendente.AtendenteId == 1)
                     {
                         _cController.RemoverCliente(Cliente);

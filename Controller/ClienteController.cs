@@ -54,6 +54,22 @@ namespace Controller
                 throw e;
             }
         }
+
+        public void DeletarRegistro(Cliente c)
+        {
+            try
+            {
+                using (var cContext = new ClienteDAO())
+                {
+                    cContext.DeletarRegistro(c);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public IList<Cliente> ListaClientes()
         {
             try

@@ -54,6 +54,7 @@ namespace UI.Forms
                 _cController.AtualizarCliente(Cliente);
                 AppController.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
                 MessageBox.Show($"Operação de {_operacoes} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                DeletarRegistro();
                 Dispose();
             }
             catch (OperacaoException ex)
@@ -186,6 +187,30 @@ namespace UI.Forms
         private bool IsNumeric(int Val)
         {
             return ((Val >= 48 && Val <= 57) || (Val == 8) || (Val == 46));
+        }
+
+        private void DeletarRegistro()
+        {
+            try
+            {
+                if (Cliente.NotaConta.TotalConta == 0.0)
+                {
+                    var msgResultDialog =
+                        MessageBox.Show("Deseja apagar todo o registro?\n\nNão é possível desfazer esta ação.", "Atenção!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (msgResultDialog == DialogResult.Yes)
+                    {
+                        _cController.DeletarRegistro(Cliente);
+                    }
+
+                }
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
         }
     }
 }

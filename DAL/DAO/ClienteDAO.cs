@@ -58,6 +58,18 @@ namespace DAL.DAO
                 throw new Exception($"Erro ao remover cliente. {e.Message}");
             }
         }
+        public void DeletarRegistro(Cliente c)
+        {
+            try
+            {
+                _clienteContext.RegistroNotas.RemoveRange(c.NotaConta.RegistroNotas);
+                _clienteContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao deletar registros do cliente. {e.Message}");
+            }
+        }
         public IList<Cliente> ListaClientes()
         {
             try

@@ -44,6 +44,7 @@ namespace UI.Forms
                     Autenticar();
                     break;
                 case "Logout":
+                    txtPesquisa.Text = string.Empty;
                     Atendente = null;
                     CheckLogin();
                     break;
@@ -87,7 +88,6 @@ namespace UI.Forms
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
                 var cliente = GetCliente(ClienteId);
 
-
                 if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
                 {
                     frmOperacao frm = new frmOperacao(cliente, Operacoes.ADICIONAR);
@@ -104,7 +104,7 @@ namespace UI.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+                //MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
         private void DtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -121,7 +121,7 @@ namespace UI.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
+                //MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
         private void TxtPesquisa_TextChanged(object sender, EventArgs e)

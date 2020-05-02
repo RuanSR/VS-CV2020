@@ -30,6 +30,7 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSalvar = new System.Windows.Forms.ToolStripButton();
+            this.BtnExluir = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -50,7 +51,6 @@
             this.txtLimite = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.BtnExluir = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -82,6 +82,17 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // BtnExluir
+            // 
+            this.BtnExluir.Image = global::UI.Properties.Resources.decline;
+            this.BtnExluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BtnExluir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExluir.Name = "BtnExluir";
+            this.BtnExluir.Size = new System.Drawing.Size(61, 55);
+            this.BtnExluir.Text = "Excluir";
+            this.BtnExluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BtnExluir.Click += new System.EventHandler(this.BtnExluir_Click);
             // 
             // groupBox1
             // 
@@ -315,17 +326,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Limite da Conta";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BtnExluir
-            // 
-            this.BtnExluir.Image = global::UI.Properties.Resources.decline;
-            this.BtnExluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BtnExluir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnExluir.Name = "BtnExluir";
-            this.BtnExluir.Size = new System.Drawing.Size(61, 55);
-            this.BtnExluir.Text = "Excluir";
-            this.BtnExluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BtnExluir.Click += new System.EventHandler(this.BtnExluir_Click);
             // 
             // frmGenCliente
             // 

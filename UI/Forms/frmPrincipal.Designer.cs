@@ -47,14 +47,10 @@
             this.btnSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxPesquisa = new System.Windows.Forms.GroupBox();
+            this.rbInativos = new System.Windows.Forms.RadioButton();
+            this.rbAtivos = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.dtgClientes = new System.Windows.Forms.DataGridView();
-            this.timeBackup = new System.Windows.Forms.Timer(this.components);
-            this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.lblStatusRegistro = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblUltimoBackup = new System.Windows.Forms.ToolStripStatusLabel();
-            this.rbAtivos = new System.Windows.Forms.RadioButton();
-            this.rbInativos = new System.Windows.Forms.RadioButton();
             this.btnDebitar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.DataGridViewImageColumn();
             this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +61,10 @@
             this.TotalConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_conta_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeBackup = new System.Windows.Forms.Timer(this.components);
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.lblStatusRegistro = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUltimoBackup = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
             this.groupBoxPesquisa.SuspendLayout();
@@ -165,6 +165,30 @@
             this.groupBoxPesquisa.TabStop = false;
             this.groupBoxPesquisa.Text = "Pesquisa";
             // 
+            // rbInativos
+            // 
+            this.rbInativos.AutoSize = true;
+            this.rbInativos.Location = new System.Drawing.Point(83, 53);
+            this.rbInativos.Name = "rbInativos";
+            this.rbInativos.Size = new System.Drawing.Size(74, 21);
+            this.rbInativos.TabIndex = 1;
+            this.rbInativos.Text = "Inativos";
+            this.rbInativos.UseVisualStyleBackColor = true;
+            this.rbInativos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
+            // 
+            // rbAtivos
+            // 
+            this.rbAtivos.AutoSize = true;
+            this.rbAtivos.Checked = true;
+            this.rbAtivos.Location = new System.Drawing.Point(13, 53);
+            this.rbAtivos.Name = "rbAtivos";
+            this.rbAtivos.Size = new System.Drawing.Size(64, 21);
+            this.rbAtivos.TabIndex = 1;
+            this.rbAtivos.TabStop = true;
+            this.rbAtivos.Text = "Ativos";
+            this.rbAtivos.UseVisualStyleBackColor = true;
+            this.rbAtivos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
+            // 
             // txtPesquisa
             // 
             this.txtPesquisa.BackColor = System.Drawing.Color.White;
@@ -184,6 +208,7 @@
             this.dtgClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dtgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -216,6 +241,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgClientes.EnableHeadersVisualStyles = false;
             this.dtgClientes.GridColor = System.Drawing.Color.SlateGray;
             this.dtgClientes.Location = new System.Drawing.Point(0, 164);
             this.dtgClientes.Name = "dtgClientes";
@@ -239,64 +265,6 @@
             this.dtgClientes.Visible = false;
             this.dtgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentClick);
             this.dtgClientes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentDoubleClick);
-            // 
-            // timeBackup
-            // 
-            this.timeBackup.Interval = 10000;
-            this.timeBackup.Tick += new System.EventHandler(this.TimeBackup_Tick);
-            // 
-            // statusBar
-            // 
-            this.statusBar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.statusBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatusRegistro,
-            this.lblUltimoBackup});
-            this.statusBar.Location = new System.Drawing.Point(0, 439);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusBar.Size = new System.Drawing.Size(484, 22);
-            this.statusBar.SizingGrip = false;
-            this.statusBar.TabIndex = 5;
-            this.statusBar.Visible = false;
-            // 
-            // lblStatusRegistro
-            // 
-            this.lblStatusRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.lblStatusRegistro.Name = "lblStatusRegistro";
-            this.lblStatusRegistro.Size = new System.Drawing.Size(109, 17);
-            this.lblStatusRegistro.Text = "Ultimo Registro: ";
-            // 
-            // lblUltimoBackup
-            // 
-            this.lblUltimoBackup.Name = "lblUltimoBackup";
-            this.lblUltimoBackup.Size = new System.Drawing.Size(103, 17);
-            this.lblUltimoBackup.Text = "Último backup: ";
-            this.lblUltimoBackup.Visible = false;
-            // 
-            // rbAtivos
-            // 
-            this.rbAtivos.AutoSize = true;
-            this.rbAtivos.Checked = true;
-            this.rbAtivos.Location = new System.Drawing.Point(13, 53);
-            this.rbAtivos.Name = "rbAtivos";
-            this.rbAtivos.Size = new System.Drawing.Size(64, 21);
-            this.rbAtivos.TabIndex = 1;
-            this.rbAtivos.TabStop = true;
-            this.rbAtivos.Text = "Ativos";
-            this.rbAtivos.UseVisualStyleBackColor = true;
-            this.rbAtivos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
-            // 
-            // rbInativos
-            // 
-            this.rbInativos.AutoSize = true;
-            this.rbInativos.Location = new System.Drawing.Point(83, 53);
-            this.rbInativos.Name = "rbInativos";
-            this.rbInativos.Size = new System.Drawing.Size(74, 21);
-            this.rbInativos.TabIndex = 1;
-            this.rbInativos.Text = "Inativos";
-            this.rbInativos.UseVisualStyleBackColor = true;
-            this.rbInativos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
             // 
             // btnDebitar
             // 
@@ -395,6 +363,40 @@
             this.StatusCliente.Name = "StatusCliente";
             this.StatusCliente.ReadOnly = true;
             this.StatusCliente.Visible = false;
+            // 
+            // timeBackup
+            // 
+            this.timeBackup.Interval = 10000;
+            this.timeBackup.Tick += new System.EventHandler(this.TimeBackup_Tick);
+            // 
+            // statusBar
+            // 
+            this.statusBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.statusBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatusRegistro,
+            this.lblUltimoBackup});
+            this.statusBar.Location = new System.Drawing.Point(0, 439);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusBar.Size = new System.Drawing.Size(484, 22);
+            this.statusBar.SizingGrip = false;
+            this.statusBar.TabIndex = 5;
+            this.statusBar.Visible = false;
+            // 
+            // lblStatusRegistro
+            // 
+            this.lblStatusRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.lblStatusRegistro.Name = "lblStatusRegistro";
+            this.lblStatusRegistro.Size = new System.Drawing.Size(109, 17);
+            this.lblStatusRegistro.Text = "Ultimo Registro: ";
+            // 
+            // lblUltimoBackup
+            // 
+            this.lblUltimoBackup.Name = "lblUltimoBackup";
+            this.lblUltimoBackup.Size = new System.Drawing.Size(103, 17);
+            this.lblUltimoBackup.Text = "Último backup: ";
+            this.lblUltimoBackup.Visible = false;
             // 
             // FrmPrincipal
             // 

@@ -86,14 +86,17 @@
             this.label25 = new System.Windows.Forms.Label();
             this.lblApelido = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dtgLog = new System.Windows.Forms.DataGridView();
-            this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_hora_nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atendente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_nota_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnDeletaRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -116,7 +119,9 @@
             this.flowLayoutPanel9.SuspendLayout();
             this.flowLayoutPanel10.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -223,7 +228,7 @@
             this.splitContainer.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer.Panel2MinSize = 250;
             this.splitContainer.Size = new System.Drawing.Size(574, 409);
-            this.splitContainer.SplitterDistance = 320;
+            this.splitContainer.SplitterDistance = 268;
             this.splitContainer.TabIndex = 1;
             // 
             // panel1
@@ -232,7 +237,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(318, 407);
+            this.panel1.Size = new System.Drawing.Size(266, 407);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -247,7 +252,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(318, 407);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(266, 407);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -258,7 +263,7 @@
             this.panel2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(312, 197);
+            this.panel2.Size = new System.Drawing.Size(260, 197);
             this.panel2.TabIndex = 0;
             // 
             // groupBox2
@@ -273,7 +278,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox2.Location = new System.Drawing.Point(0, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(312, 172);
+            this.groupBox2.Size = new System.Drawing.Size(260, 172);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DADOS NOTA";
@@ -287,7 +292,7 @@
             this.flowLayoutPanel5.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 129);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(306, 35);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(254, 35);
             this.flowLayoutPanel5.TabIndex = 4;
             // 
             // label10
@@ -329,7 +334,7 @@
             this.flowLayoutPanel4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 104);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel4.TabIndex = 3;
             // 
             // label9
@@ -353,7 +358,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(209, 0);
+            this.label11.Location = new System.Drawing.Point(3, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 25);
             this.label11.TabIndex = 2;
@@ -368,7 +373,7 @@
             this.flowLayoutPanel3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 79);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
             // label6
@@ -411,7 +416,7 @@
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 54);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // label3
@@ -449,7 +454,7 @@
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 29);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -499,7 +504,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox3.Location = new System.Drawing.Point(3, 206);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(312, 198);
+            this.groupBox3.Size = new System.Drawing.Size(260, 198);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DADOS CLIENTE";
@@ -512,7 +517,7 @@
             this.flowLayoutPanel11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel11.Location = new System.Drawing.Point(3, 154);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-            this.flowLayoutPanel11.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel11.TabIndex = 10;
             // 
             // label14
@@ -543,7 +548,7 @@
             this.flowLayoutPanel6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 129);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel6.TabIndex = 9;
             // 
             // label5
@@ -574,7 +579,7 @@
             this.flowLayoutPanel7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 104);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel7.TabIndex = 8;
             // 
             // label16
@@ -605,7 +610,7 @@
             this.flowLayoutPanel8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 79);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel8.TabIndex = 7;
             // 
             // label19
@@ -637,7 +642,7 @@
             this.flowLayoutPanel9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 54);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
-            this.flowLayoutPanel9.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel9.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel9.TabIndex = 6;
             // 
             // label22
@@ -668,7 +673,7 @@
             this.flowLayoutPanel10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel10.Location = new System.Drawing.Point(3, 29);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-            this.flowLayoutPanel10.Size = new System.Drawing.Size(306, 25);
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(254, 25);
             this.flowLayoutPanel10.TabIndex = 5;
             // 
             // label25
@@ -693,16 +698,26 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtgLog);
+            this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 407);
+            this.groupBox1.Size = new System.Drawing.Size(300, 407);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dtgLog);
+            this.panel3.Controls.Add(this.toolStrip2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 25);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(294, 379);
+            this.panel3.TabIndex = 2;
             // 
             // dtgLog
             // 
@@ -730,7 +745,7 @@
             this.log_registro});
             this.dtgLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgLog.EnableHeadersVisualStyles = false;
-            this.dtgLog.Location = new System.Drawing.Point(3, 25);
+            this.dtgLog.Location = new System.Drawing.Point(0, 25);
             this.dtgLog.Name = "dtgLog";
             this.dtgLog.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -745,48 +760,16 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgLog.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgLog.RowTemplate.Height = 40;
-            this.dtgLog.Size = new System.Drawing.Size(242, 379);
+            this.dtgLog.Size = new System.Drawing.Size(294, 354);
             this.dtgLog.TabIndex = 0;
             // 
-            // log_registro
+            // data_hora_nota
             // 
-            this.log_registro.DataPropertyName = "TextoDescricao";
-            this.log_registro.HeaderText = "Detalhes";
-            this.log_registro.Name = "log_registro";
-            this.log_registro.ReadOnly = true;
-            this.log_registro.Width = 200;
-            // 
-            // id_cliente_registro
-            // 
-            this.id_cliente_registro.DataPropertyName = "NotaContaId";
-            this.id_cliente_registro.HeaderText = "Código Cliente";
-            this.id_cliente_registro.Name = "id_cliente_registro";
-            this.id_cliente_registro.ReadOnly = true;
-            this.id_cliente_registro.Visible = false;
-            // 
-            // hora_nota_registro
-            // 
-            this.hora_nota_registro.DataPropertyName = "hora_nota_registro";
-            this.hora_nota_registro.HeaderText = "Hora";
-            this.hora_nota_registro.Name = "hora_nota_registro";
-            this.hora_nota_registro.ReadOnly = true;
-            this.hora_nota_registro.Visible = false;
-            // 
-            // id_registro
-            // 
-            this.id_registro.DataPropertyName = "RegistroNotaId";
-            this.id_registro.HeaderText = "Código";
-            this.id_registro.Name = "id_registro";
-            this.id_registro.ReadOnly = true;
-            this.id_registro.Visible = false;
-            // 
-            // atendente_registro
-            // 
-            this.atendente_registro.DataPropertyName = "NomeAtendente";
-            this.atendente_registro.HeaderText = "Atendente";
-            this.atendente_registro.Name = "atendente_registro";
-            this.atendente_registro.ReadOnly = true;
-            this.atendente_registro.Width = 150;
+            this.data_hora_nota.DataPropertyName = "DataHora";
+            this.data_hora_nota.HeaderText = "Data / Hora";
+            this.data_hora_nota.Name = "data_hora_nota";
+            this.data_hora_nota.ReadOnly = true;
+            this.data_hora_nota.Width = 185;
             // 
             // valor_registro
             // 
@@ -800,13 +783,65 @@
             this.valor_registro.ToolTipText = "R$";
             this.valor_registro.Width = 75;
             // 
-            // data_hora_nota
+            // atendente_registro
             // 
-            this.data_hora_nota.DataPropertyName = "DataHora";
-            this.data_hora_nota.HeaderText = "Data / Hora";
-            this.data_hora_nota.Name = "data_hora_nota";
-            this.data_hora_nota.ReadOnly = true;
-            this.data_hora_nota.Width = 185;
+            this.atendente_registro.DataPropertyName = "NomeAtendente";
+            this.atendente_registro.HeaderText = "Atendente";
+            this.atendente_registro.Name = "atendente_registro";
+            this.atendente_registro.ReadOnly = true;
+            this.atendente_registro.Width = 150;
+            // 
+            // id_registro
+            // 
+            this.id_registro.DataPropertyName = "RegistroNotaId";
+            this.id_registro.HeaderText = "Código";
+            this.id_registro.Name = "id_registro";
+            this.id_registro.ReadOnly = true;
+            this.id_registro.Visible = false;
+            // 
+            // hora_nota_registro
+            // 
+            this.hora_nota_registro.DataPropertyName = "hora_nota_registro";
+            this.hora_nota_registro.HeaderText = "Hora";
+            this.hora_nota_registro.Name = "hora_nota_registro";
+            this.hora_nota_registro.ReadOnly = true;
+            this.hora_nota_registro.Visible = false;
+            // 
+            // id_cliente_registro
+            // 
+            this.id_cliente_registro.DataPropertyName = "NotaContaId";
+            this.id_cliente_registro.HeaderText = "Código Cliente";
+            this.id_cliente_registro.Name = "id_cliente_registro";
+            this.id_cliente_registro.ReadOnly = true;
+            this.id_cliente_registro.Visible = false;
+            // 
+            // log_registro
+            // 
+            this.log_registro.DataPropertyName = "TextoDescricao";
+            this.log_registro.HeaderText = "Detalhes";
+            this.log_registro.Name = "log_registro";
+            this.log_registro.ReadOnly = true;
+            this.log_registro.Width = 200;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.BackColor = System.Drawing.Color.Transparent;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDeletaRegistro});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(294, 25);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // btnDeletaRegistro
+            // 
+            this.btnDeletaRegistro.Image = global::UI.Properties.Resources.decline;
+            this.btnDeletaRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeletaRegistro.Name = "btnDeletaRegistro";
+            this.btnDeletaRegistro.Size = new System.Drawing.Size(110, 22);
+            this.btnDeletaRegistro.Text = "Limpar Registro";
+            this.btnDeletaRegistro.Click += new System.EventHandler(this.btnDeletaRegistro_Click);
             // 
             // frmCliente
             // 
@@ -859,7 +894,11 @@
             this.flowLayoutPanel10.ResumeLayout(false);
             this.flowLayoutPanel10.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -929,5 +968,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_nota_registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente_registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn log_registro;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton btnDeletaRegistro;
     }
 }

@@ -11,6 +11,7 @@ namespace DAL.DAO
         private readonly string _dBName;
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Atendente> Atendentes { get; set; }
+        public DbSet<RegistroNota> RegistroNotas { get; set; }
 
         public CVContext()
         {
