@@ -15,6 +15,7 @@ namespace UI.Forms
         {
             InitializeComponent();
             _aController = new AtendenteController();
+            this.Text = " :: Administrador";
         }
         private Atendente Atendente { get; set; }
 
@@ -23,6 +24,7 @@ namespace UI.Forms
             CarregaAtendentes();
             CarregaTimers();
             CarregaLocalBackup();
+            tabControl1.TabPages.Remove(tabPage2);
         }
         //CONTROLES\\
         private void dtgAtendente_CellContentClick(object sender, DataGridViewCellEventArgs e)

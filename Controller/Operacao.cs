@@ -10,11 +10,13 @@ namespace Controller
         static ClienteController cController = new ClienteController();
         public static Cliente AdicionarValor(Cliente c, double valor, string atendente, string obs)
         {
+
             ValidaDados(c, valor, atendente);
             if (valor <= c.NotaConta.LimiteConta)
             {
                 var limiteConta = c.NotaConta.LimiteConta;
                 var totalConta = c.NotaConta.TotalConta + valor;
+                totalConta = double.Parse(totalConta.ToString("F2"));
                 var dataConta = VerificaData(Operacoes.ADICIONAR, c.NotaConta.DataConta, valor);
                 cController.AtualizarCliente(c);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);
@@ -25,11 +27,13 @@ namespace Controller
         }
         public static Cliente DebitarValor(Cliente c, double valor, string atendente, string obs)
         {
+
             ValidaDados(c, valor, atendente);
             if (valor <= c.NotaConta.TotalConta)
             {
                 var limiteConta = c.NotaConta.LimiteConta;
                 var totalConta = c.NotaConta.TotalConta - valor;
+                totalConta = double.Parse(totalConta.ToString("F2"));
                 var dataConta = VerificaData(Operacoes.DEBITAR, c.NotaConta.DataConta, totalConta);
                 cController.AtualizarCliente(c);
                 c.NotaConta.AtualizarNota(limiteConta, totalConta, dataConta);

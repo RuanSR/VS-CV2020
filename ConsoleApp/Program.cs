@@ -18,13 +18,14 @@ namespace ConsoleApp
         {
             try
             {
-                LerEGravarClientes();
-                GravaRegistroCliente();
+                //LerEGravarClientes();
+                //GravaRegistroCliente();
                 // LogarAtendente("Ruan", "");
                 // NovoAtendente(new Atendente("Renan da Silva Rosa", "R", "0", NivelAcesso.ADMIN));
                 // NovoCliente(new Cliente("Ruan da Silva Rosa", "", "Pass Virgem da Conceiçao", "000000000", "", 100.00));
 
-                //var c = CarregaUmCliente();
+                var c = CarregaUmCliente(8);
+                Console.WriteLine(c.NotaConta.ToString());
                 // c = Operacao.AdicionarValor(c, 10.00, "Ruan", "Emprestimo");
                 // c.NotaConta.AtualizarNota(20000.00, c.NotaConta.TotalConta, c.NotaConta.DataConta);
                 //c.AtualizarCliente("Ruan da Silva Rosa", c.Apelido, "Pass Virgem da Conceição n82", c.Telefone, c.Cpf);
@@ -169,6 +170,19 @@ namespace ConsoleApp
             {
                 var c = CarregaClientes()
                     .FirstOrDefault();
+                return c;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        static Cliente CarregaUmCliente(int id)
+        {
+            try
+            {
+                var c = CarregaClientes()
+                    .FirstOrDefault(cli => cli.ClienteId == id);
                 return c;
             }
             catch (Exception e)
