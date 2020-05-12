@@ -51,7 +51,7 @@ namespace UI.Forms
                     aux = Operacoes.DEBITAR;
                     Operacao.DebitarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
-                //_cController.AtualizarCliente(Cliente);
+                _cController.AtualizarCliente(Cliente);
                 AppController.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
                 MessageBox.Show($"Operação de {_operacoes} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 DeletarRegistro();
