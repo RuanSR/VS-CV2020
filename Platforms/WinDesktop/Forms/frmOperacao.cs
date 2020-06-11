@@ -5,23 +5,26 @@ using Models.Enum;
 using Models.Classes;
 using System.Collections.Generic;
 using Models.Exceptions;
+using DAL.Database;
+using WinDesktop.Utils;
 
 namespace WinDesktop.Forms
 {
     public partial class frmOperacao : Form
     {
+        private readonly AtendenteRepository _atendRepo;
+        private readonly ClienteRepository _clienteRepo;
+
         private string _str = string.Empty;
         private Operacoes _operacoes;
-        //private AtendenteController _aController;
-        //private ClienteController _cController;
 
         public frmOperacao(Cliente cliente, Operacoes operacoes)
         {
             InitializeComponent();
             Cliente = cliente;
             _operacoes = operacoes;
-            //_aController = new AtendenteController();
-            //_cController = new ClienteController();
+            _atendRepo = new AtendenteRepository();
+            _clienteRepo = new ClienteRepository();
             GerenForm(operacoes);
         }
         public Cliente Cliente { get; private set; }
@@ -41,15 +44,15 @@ namespace WinDesktop.Forms
                 if (_operacoes == Operacoes.ADICIONAR)
                 {
                     aux = Operacoes.ADICIONAR;
-                    //Operacao.AdicionarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
+                    Cliente = Operacao.AdicionarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
                 else
                 {
                     aux = Operacoes.DEBITAR;
-                    //Operacao.DebitarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
+                    Cliente = Operacao.DebitarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
-                //_cController.AtualizarCliente(Cliente);
-                //AppController.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
+                _clienteRepo.AtualizarCliente(Cliente);
+                AppController.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
                 MessageBox.Show($"Operação de {_operacoes} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 DeletarRegistro();
                 Dispose();
@@ -149,13 +152,12 @@ namespace WinDesktop.Forms
         }
         private IList<string> ListaNomeAtendentes()
         {
-            //var listaNomes = new List<string>();
-            //foreach (var atendente in _aController.ListaAtendentes())
-            //{
-            //    listaNomes.Add(atendente.Nome);
-            //}
-            //return listaNomes;
-            return null;
+            var listaNomes = new List<string>();
+            foreach (var atendente in _atendRepo.ListaAtendentes())
+            {
+                listaNomes.Add(atendente.Nome);
+            }
+            return listaNomes;
         }
         private void CarregaDados()
         {
@@ -200,7 +202,7 @@ namespace WinDesktop.Forms
 
                     if (msgResultDialog == DialogResult.Yes)
                     {
-                        //_cController.DeletarRegistro(Cliente);
+                        _clienteRepo.DeletarRegistro(Cliente);
                     }
 
                 }
