@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DAL.Database;
 using Models.Classes;
 using Models.Exceptions;
 
@@ -7,20 +8,23 @@ namespace WinDesktop.Forms
 {
     public partial class frmGenCliente : Form
     {
-        //private ClienteController _cController; 
+        private readonly ClienteRepository _clienteRepo;
         private string _str = string.Empty;
+
         public frmGenCliente(Cliente cliente = null)
         {
             InitializeComponent();
             Cliente = cliente;
-            //_cController = new ClienteController();
+            _clienteRepo = new ClienteRepository();
         }
+
         public Cliente Cliente { get; private set; }
 
         //CONTROLES\\
         private void frmGenCliente_Load(object sender, EventArgs e)
         {
             GerenForm();
+            txtLimite.Text = "50,00";
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -103,6 +107,7 @@ namespace WinDesktop.Forms
         {
             e.Handled = true;
         }
+
         //METODOS\\
         private void GerenForm()
         {
@@ -131,12 +136,16 @@ namespace WinDesktop.Forms
                 {
                     Cliente.AtualizarCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, ckStatus.Checked);
                     Cliente.NotaConta.AtualizarNota(double.Parse(txtLimite.Text), Cliente.NotaConta.TotalConta, Cliente.NotaConta.DataConta);
-                    //_cController.AtualizarCliente(Cliente);
+
+                    _clienteRepo.AtualizarCliente(Cliente);
+
                     MessageBox.Show("Cliente atualizado com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    //_cController.NovoCliente(new Cliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text)));
+                    var cliente = new Cliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text));
+                    _clienteRepo.NovoCliente(cliente);
+
                     MessageBox.Show("Cliente inserido com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 Dispose();
@@ -176,7 +185,7 @@ namespace WinDesktop.Forms
 
                     if (frm.Atendente.AtendenteId == 1)
                     {
-                        //_cController.RemoverCliente(Cliente);
+                        _clienteRepo.RemoverCliente(Cliente);
                         Cliente = null;
                         this.Dispose();
                     }

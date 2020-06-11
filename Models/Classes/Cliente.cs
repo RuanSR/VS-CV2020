@@ -1,6 +1,9 @@
 ﻿using Models.Exceptions;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
 
 namespace Models.Classes
 {
@@ -12,7 +15,6 @@ namespace Models.Classes
             string nome, string apelido, string endereco, string telefone,
             string cpf, double limiteConta)
         {
-            ValidarDados(nome, apelido, endereco, telefone, limiteConta);
             Nome = nome;
             Apelido = apelido;
             Endereco = endereco;
@@ -20,6 +22,7 @@ namespace Models.Classes
             Cpf = cpf;
             Status = true;
             NotaConta = new NotaConta(limiteConta);
+            ValidarDados(this);
         }
         public int ClienteId { get; private set; }
 
@@ -51,27 +54,34 @@ namespace Models.Classes
             string nome, string apelido, string endereco, string telefone,
             string cpf, bool status)
         {
-            ValidarDados(nome, apelido, endereco, telefone);
             Nome = nome;
             Apelido = apelido;
             Endereco = endereco;
             Telefone = telefone;
             Cpf = cpf;
             Status = status;
+            ValidarDados(this);
         }
-        private void ValidarDados(string nome, string apelido, string endereco, string telefone, double limiteConta = 0.0)
-        {
-            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(apelido) || string.IsNullOrEmpty(endereco)
-                || string.IsNullOrEmpty(telefone))
-            {
-                throw new ClienteException("Preencha corretamente os dados requeridos.");
-            }
 
-            if (limiteConta < 0)
+        public bool ValidarDados(object obj)
+        {
+            var strError = new StringBuilder();
+            var errors = ValidatorEntity(obj);
+            if (errors.Count() > 0)
             {
-                throw new ArgumentException("O valor do limite da conta não pode ser negativo.", nameof(limiteConta));
+                throw new ValidationException("Preencha os campos corretamente!");
             }
+            return true;
         }
+
+        private IEnumerable<ValidationResult> ValidatorEntity(object obj)
+        {
+            var resultadoValidacao = new List<ValidationResult>();
+            var context = new ValidationContext(obj, null, null);
+            Validator.TryValidateObject(obj, context, resultadoValidacao);
+            return resultadoValidacao;
+        }
+
         public override string ToString()
         {
             return $"Cliente: {Nome}, {Apelido}, {Endereco}, {Telefone}, {Cpf}, {Status}";

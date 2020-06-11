@@ -28,7 +28,8 @@ namespace WinDesktop.Forms
         {
             try
             {
-                Autenticar();
+                //Autenticar();
+                CheckLogin();
             }
             catch (Exception ex)
             {
@@ -210,6 +211,7 @@ namespace WinDesktop.Forms
         {
             try
             {
+                Atendente = new Atendente();
                 if (Atendente != null)
                 {
                     LoadDataSourceCliente();

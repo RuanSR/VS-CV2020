@@ -3,7 +3,6 @@ using Models.Enum;
 using Models.Exceptions;
 using System;
 using System.Windows.Forms;
-using WinDesktop.Utils;
 
 namespace WinDesktop.Forms
 {
@@ -56,12 +55,8 @@ namespace WinDesktop.Forms
         {
             if (txtIdAtendnete.Text == "-1")
             {
-                //Novo
-                if (ValidateEntity.GetValidation(new Atendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN)))
-                {
-                    //_aController.NovoAtendente();
-                    //TODO gravar na base de dados.
-                }
+                var atendente = new Atendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
+                //_aController.NovoAtendente();
                 MessageBox.Show("Atendente criado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
