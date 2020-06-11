@@ -4,16 +4,17 @@ using System.Diagnostics;
 using Models.Classes;
 using System.Linq;
 using Models.Exceptions;
+using DAL.Database;
 
 namespace WinDesktop.Forms
 {
     public partial class frmGerenciadorSistema : Form
     {
-        //private AtendenteController _aController;
+        private readonly AtendenteRepository _atenRepo;
         public frmGerenciadorSistema()
         {
             InitializeComponent();
-            //_aController = new AtendenteController();
+            _atenRepo = new AtendenteRepository();
             this.Text = " :: Administrador";
         }
         private Atendente Atendente { get; set; }
@@ -31,7 +32,7 @@ namespace WinDesktop.Forms
             try
             {
                 int id = (int)dtgAtendente.Rows[e.RowIndex].Cells["IdAtendente"].Value;
-                var atendente = GetAtendente(id);
+                var atendente = _atenRepo.GetAtendenteById(id);
 
                 if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnEditar")
                 {
@@ -55,7 +56,6 @@ namespace WinDesktop.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void BtnEdit(Atendente a,DataGridViewCellEventArgs e)
         {
             frmAtendenteDialog frm = new frmAtendenteDialog(a);
@@ -70,7 +70,7 @@ namespace WinDesktop.Forms
         {
             if (a.AtendenteId != 1)
             {
-                //_aController.RevomerAtendente(a);
+                _atenRepo.RevomerAtendente(a);
                 MessageBox.Show("Atendete removido.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CarregaAtendentes();
             }
@@ -165,7 +165,7 @@ namespace WinDesktop.Forms
         {
             try
             {
-                //dtgAtendente.DataSource = _aController.ListaAtendentes();
+                dtgAtendente.DataSource = _atenRepo.ListaAtendentes();
             }
             catch (Exception ex)
             {
@@ -196,13 +196,6 @@ namespace WinDesktop.Forms
             {
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private Atendente GetAtendente(int id)
-        {
-            //return _aController.ListaAtendentes()
-            //    .Where(a => a.AtendenteId == id)
-            //    .FirstOrDefault();
-            return null;
         }
     }
 }

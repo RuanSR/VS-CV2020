@@ -57,6 +57,18 @@ namespace DAL.Database
                 throw new Exception($"Erro ao remover atendente. {e.Message}");
             }
         }
+        public Atendente GetAtendenteByUserName(string userName, string senha)
+        {
+            return ListaAtendentes()
+                .Where(at => at.Usuario.ToLower() == userName.ToLower() && at.Senha == senha)
+                .FirstOrDefault();
+        }
+        public Atendente GetAtendenteById(int id)
+        {
+            return ListaAtendentes()
+                .Where(a => a.AtendenteId == id)
+                .FirstOrDefault();
+        }
         public IList<Atendente> ListaAtendentes()
         {
             try
@@ -67,12 +79,6 @@ namespace DAL.Database
             {
                 throw new Exception($"Erro ao obter lista de atendentes. {e.Message}");
             }
-        }
-        public Atendente GetAtendenteByUserName(string userName, string senha)
-        {
-            return ListaAtendentes()
-                .Where(at => at.Usuario.ToLower() == userName.ToLower() && at.Senha == senha)
-                .FirstOrDefault();
         }
 
     }

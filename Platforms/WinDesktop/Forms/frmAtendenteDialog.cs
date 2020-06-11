@@ -1,4 +1,5 @@
-﻿using Models.Classes;
+﻿using DAL.Database;
+using Models.Classes;
 using Models.Enum;
 using Models.Exceptions;
 using System;
@@ -8,12 +9,12 @@ namespace WinDesktop.Forms
 {
     public partial class frmAtendenteDialog : Form
     {
-        //private AtendenteController _aController;
+        private readonly AtendenteRepository _atenRepo;
         public frmAtendenteDialog(Atendente atendente = null)
         {
             InitializeComponent();
             Atendente = atendente;
-            //_aController = new AtendenteController();
+            _atenRepo = new AtendenteRepository();
         }
         //CONTROLES\\
         public Atendente Atendente { get; set; }
@@ -56,14 +57,13 @@ namespace WinDesktop.Forms
             if (txtIdAtendnete.Text == "-1")
             {
                 var atendente = new Atendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
-                //_aController.NovoAtendente();
+                _atenRepo.NovoAtendente(atendente);
                 MessageBox.Show("Atendente criado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                //Atualiza
                 Atendente.AtualizarAtendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
-                //_aController.AtualizarAtendente(Atendente);
+                _atenRepo.AtualizarAtendente(Atendente);
                 MessageBox.Show("Atendente atualizado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Dispose();

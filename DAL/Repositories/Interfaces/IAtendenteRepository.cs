@@ -8,7 +8,8 @@ namespace Models.Interface
         void NovoAtendente(Atendente atendente);
         void AtualizarAtendente(Atendente atendente);
         void RevomerAtendente(Atendente atendente);
-        IList<Atendente> ListaAtendentes();
         Atendente GetAtendenteByUserName(string userName, string senha);
+        Atendente GetAtendenteById(int id);
+        IList<Atendente> ListaAtendentes();
     }
 }
