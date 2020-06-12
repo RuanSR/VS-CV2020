@@ -12,11 +12,11 @@ namespace Models.Classes
         public Atendente() { }
         public Atendente(string nome, string usuario, string senha, NivelAcesso nivelAcesso)
         {
+            ValidaAtendente(nome, usuario, senha);
             Nome = nome;
             Usuario = usuario;
             Senha = senha;
             NivelAcesso = nivelAcesso;
-            ValidaAtendente(this);
         }
         public int AtendenteId { get; private set; }
 
@@ -36,29 +36,26 @@ namespace Models.Classes
 
         public void AtualizarAtendente(string nome, string usuario, string senha, NivelAcesso nivelAcesso)
         {
+            ValidaAtendente(nome, usuario, senha);
             Nome = nome;
             Usuario = usuario;
             Senha = senha;
             NivelAcesso = nivelAcesso;
-            ValidaAtendente(this);
         }
-        private bool ValidaAtendente(object obj)
+        private void ValidaAtendente(string nome, string usuario, string senha)
         {
-            var strError = new StringBuilder();
-            var errors = ValidatorEntity(obj);
-            if (errors.Count() > 0)
+            if (string.IsNullOrEmpty(nome))
             {
-                throw new ValidationException("Preencha os campos corretamente!");
+                throw new AtendenteException("Preencha seu nome corretamente.");
             }
-            return true;
-        }
-
-        private IEnumerable<ValidationResult> ValidatorEntity(object obj)
-        {
-            var resultadoValidacao = new List<ValidationResult>();
-            var context = new ValidationContext(obj, null, null);
-            Validator.TryValidateObject(obj, context, resultadoValidacao);
-            return resultadoValidacao;
+            if (string.IsNullOrEmpty(usuario))
+            {
+                throw new AtendenteException("Seu nome de usuário não pode ser vazio.");
+            }
+            if (string.IsNullOrEmpty(senha))
+            {
+                throw new AtendenteException("Sua senha não pode ser vazia.");
+            }
         }
 
         public override bool Equals(object obj)

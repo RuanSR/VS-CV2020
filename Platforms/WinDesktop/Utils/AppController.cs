@@ -5,21 +5,7 @@ namespace WinDesktop.Utils
 {
     public static class AppController
     {
-        public static bool DbModfield { get; set; }
         private static string _ultimoRegistro = null;
-
-        public static string GetUltimaNota {
-            get {
-                if (_ultimoRegistro != null)
-                {
-                    return _ultimoRegistro;
-                }
-                return "Nenhum registro até o momento.";
-            }
-            private set {
-
-            }
-        }
 
         public static void SetUltimaNota(string nomeCliente, double valorNota, DateTime horaNota, Operacoes operacao)
         {

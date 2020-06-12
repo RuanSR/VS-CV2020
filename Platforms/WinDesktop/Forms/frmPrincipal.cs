@@ -106,7 +106,7 @@ namespace WinDesktop.Forms
             try
             {
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
-                var cliente = _clienteRepo.GetClienteById(ClienteId);
+                var cliente = _clienteRepo.GetClienteByIdWithRegistros(ClienteId);
 
                 frmCliente frmCliente = new frmCliente(Size, cliente);
                 frmCliente.ShowDialog();

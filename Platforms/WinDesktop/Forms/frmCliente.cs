@@ -1,4 +1,5 @@
-﻿using Models.Classes;
+﻿using DAL.Database;
+using Models.Classes;
 using Models.Enum;
 using System;
 using System.Drawing;
@@ -9,19 +10,20 @@ namespace WinDesktop.Forms
 {
     public partial class frmCliente : Form
     {
+        private readonly ClienteRepository _clienteRepo;
+
         private Cliente _cliente;
         private Size _sizeParent;
 
         public frmCliente(Size sizeParent, Cliente cliente)
         {
             InitializeComponent();
-            //ClienteController = new ClienteController();
+            _clienteRepo = new ClienteRepository();
             _sizeParent = sizeParent;
             _cliente = cliente;
             SetDefaultSize();
             SetDefaultSplitDistance();
         }
-        //private ClienteController ClienteController { get; }
 
         //CONTROLES\\
         private void frmCliente_Load(object sender, EventArgs e)
@@ -36,45 +38,45 @@ namespace WinDesktop.Forms
         }
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
-            //frmOperacao frm = new frmOperacao(_cliente, Operacoes.ADICIONAR);
-            //frm.ShowDialog();
+            frmOperacao frm = new frmOperacao(_cliente, Operacoes.ADICIONAR);
+            frm.ShowDialog();
 
-            //if (frm.IsDisposed)
-            //{
-            //    _cliente = frm.Cliente;
-            //    ShowDados();
-            //    LoadLog();
-            //}
+            if (frm.IsDisposed)
+            {
+                _cliente = frm.Cliente;
+                ShowDados();
+                LoadLog();
+            }
         }
         private void btnDebitarValor_Click(object sender, EventArgs e)
         {
-            //frmOperacao frm = new frmOperacao(_cliente, Operacoes.DEBITAR);
-            //frm.ShowDialog();
+            frmOperacao frm = new frmOperacao(_cliente, Operacoes.DEBITAR);
+            frm.ShowDialog();
 
-            //if (frm.IsDisposed)
-            //{
-            //    _cliente = frm.Cliente;
-            //    ShowDados();
-            //    LoadLog();
-            //}
+            if (frm.IsDisposed)
+            {
+                _cliente = frm.Cliente;
+                ShowDados();
+                LoadLog();
+            }
         }
         private void btnEditarDados_Click(object sender, EventArgs e)
         {
-            //frmGenCliente frm = new frmGenCliente(_cliente);
-            //frm.ShowDialog();
+            frmGenCliente frm = new frmGenCliente(_cliente);
+            frm.ShowDialog();
 
-            //if (frm.IsDisposed)
-            //{
-            //    if (frm.Cliente != null)
-            //    {
-            //        _cliente = frm.Cliente;
-            //        ShowDados();
-            //    }
-            //    else
-            //    {
-            //        Close();
-            //    }
-            //}
+            if (frm.IsDisposed)
+            {
+                if (frm.Cliente != null)
+                {
+                    _cliente = frm.Cliente;
+                    ShowDados();
+                }
+                else
+                {
+                    Close();
+                }
+            }
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -204,7 +206,7 @@ namespace WinDesktop.Forms
                     {
                         if (_cliente.NotaConta.TotalConta == 0.0)
                         {
-                            //ClienteController.DeletarRegistro(_cliente);
+                            _clienteRepo.DeletarRegistro(_cliente);
                             _cliente.NotaConta.RegistroNotas.Clear();
                             dtgLog.DataSource = _cliente.NotaConta.RegistroNotas;
                         }
