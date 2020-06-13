@@ -1,10 +1,10 @@
 ﻿using DAL.Database;
 using Models.Classes;
-using Models.Enum;
 using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Utils.Enum;
 
 namespace WinDesktop.Forms
 {
@@ -38,7 +38,7 @@ namespace WinDesktop.Forms
         }
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
-            frmOperacao frm = new frmOperacao(_cliente, Operacoes.ADICIONAR);
+            frmOperacao frm = new frmOperacao(_cliente, Operacao.ADICIONAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -50,7 +50,7 @@ namespace WinDesktop.Forms
         }
         private void btnDebitarValor_Click(object sender, EventArgs e)
         {
-            frmOperacao frm = new frmOperacao(_cliente, Operacoes.DEBITAR);
+            frmOperacao frm = new frmOperacao(_cliente, Operacao.DEBITAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)

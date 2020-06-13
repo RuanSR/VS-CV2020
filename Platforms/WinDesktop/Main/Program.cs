@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WinDesktop.Forms;
+using WinDesktop.Utils;
 
 namespace WinDesktop
 {
@@ -18,7 +19,7 @@ namespace WinDesktop
             {
                 //SysSettings.VerificaBanco();
                 // new DbManager().Init();
-                //AppManager.Init();
+                AppManager.Init();
                 Application.Run(new FrmPrincipal());
             }
             catch (Exception ex)

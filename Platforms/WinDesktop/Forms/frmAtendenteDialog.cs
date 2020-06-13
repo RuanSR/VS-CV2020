@@ -1,9 +1,9 @@
 ﻿using DAL.Database;
 using Models.Classes;
-using Models.Enum;
 using Models.Exceptions;
 using System;
 using System.Windows.Forms;
+using Utils.Enum;
 
 namespace WinDesktop.Forms
 {

@@ -1,9 +1,6 @@
-﻿using Models.Enum;
-using Models.Exceptions;
-using System.Collections.Generic;
+﻿using Models.Exceptions;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
+using Utils.Enum;
 
 namespace Models.Classes
 {
@@ -12,7 +9,7 @@ namespace Models.Classes
         public Atendente() { }
         public Atendente(string nome, string usuario, string senha, NivelAcesso nivelAcesso)
         {
-            ValidaAtendente(nome, usuario, senha);
+            ValidarPropriedades(nome, usuario, senha);
             Nome = nome;
             Usuario = usuario;
             Senha = senha;
@@ -36,13 +33,13 @@ namespace Models.Classes
 
         public void AtualizarAtendente(string nome, string usuario, string senha, NivelAcesso nivelAcesso)
         {
-            ValidaAtendente(nome, usuario, senha);
+            ValidarPropriedades(nome, usuario, senha);
             Nome = nome;
             Usuario = usuario;
             Senha = senha;
             NivelAcesso = nivelAcesso;
         }
-        private void ValidaAtendente(string nome, string usuario, string senha)
+        private void ValidarPropriedades(string nome, string usuario, string senha)
         {
             if (string.IsNullOrEmpty(nome))
             {

@@ -1,6 +1,6 @@
-﻿namespace Models.Enum
+﻿namespace Utils.Enum
 {
-    public enum Operacoes
+    public enum Operacao
     {
         ADICIONAR,
         DEBITAR

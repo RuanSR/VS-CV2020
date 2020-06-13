@@ -1,4 +1,4 @@
-﻿namespace Models.Enum
+﻿namespace Utils.Enum
 {
     public enum NivelAcesso
     {

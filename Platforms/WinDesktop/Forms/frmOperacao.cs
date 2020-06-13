@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-using Models.Enum;
-using Models.Classes;
 using System.Collections.Generic;
+using Models.Classes;
 using Models.Exceptions;
 using DAL.Database;
-using WinDesktop.Utils;
+using Utils.Enum;
+using Utils;
+using Utils.Exceptions;
 
 namespace WinDesktop.Forms
 {
@@ -16,16 +17,16 @@ namespace WinDesktop.Forms
         private readonly ClienteRepository _clienteRepo;
 
         private string _str = string.Empty;
-        private Operacoes _operacoes;
+        private Operacao _operacao;
 
-        public frmOperacao(Cliente cliente, Operacoes operacoes)
+        public frmOperacao(Cliente cliente, Operacao operacao)
         {
             InitializeComponent();
             Cliente = cliente;
-            _operacoes = operacoes;
+            _operacao = operacao;
             _atendRepo = new AtendenteRepository();
             _clienteRepo = new ClienteRepository();
-            GerenForm(operacoes);
+            GerenForm(operacao);
         }
         public Cliente Cliente { get; private set; }
         //CONTROLES\\
@@ -39,21 +40,21 @@ namespace WinDesktop.Forms
         {
             try
             {
-                Operacoes aux;
+                Operacao aux;
                 var valor = double.Parse(txtValorOperacao.Text);
-                if (_operacoes == Operacoes.ADICIONAR)
+                if (_operacao == Operacao.ADICIONAR)
                 {
-                    aux = Operacoes.ADICIONAR;
-                    Cliente = Operacao.AdicionarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
+                    aux = Operacao.ADICIONAR;
+                    Cliente.AdicionarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
                 else
                 {
-                    aux = Operacoes.DEBITAR;
-                    Cliente = Operacao.DebitarValor(Cliente, valor, cbAtendente.Text.ToString(), txtLog.Text);
+                    aux = Operacao.DEBITAR;
+                    Cliente.DebitarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
                 _clienteRepo.AtualizarCliente(Cliente);
-                AppController.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
-                MessageBox.Show($"Operação de {_operacoes} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                StatusNotas.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
+                MessageBox.Show($"Operação de {_operacao} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 DeletarRegistro();
                 Dispose();
             }
@@ -118,9 +119,9 @@ namespace WinDesktop.Forms
             e.Handled = true;
         }
         //METODOS\\
-        private void GerenForm(Operacoes operacoes)
+        private void GerenForm(Operacao operacao)
         {
-            if (operacoes == Operacoes.ADICIONAR)
+            if (operacao == Operacao.ADICIONAR)
             {
                 groupOperacao.BackColor = Color.SeaGreen;
                 toolStrip1.BackColor = Color.SeaGreen;
@@ -135,7 +136,7 @@ namespace WinDesktop.Forms
         }
         private void MostraOperacao()
         {
-            groupOperacao.Text += _operacoes.ToString() + " VALOR";
+            groupOperacao.Text += _operacao.ToString() + " VALOR";
         }
         private void CarregaAtendente()
         {

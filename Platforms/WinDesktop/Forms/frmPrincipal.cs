@@ -1,12 +1,12 @@
 ﻿using DAL.Database;
 using Models.Classes;
-using Models.Enum;
 using Models.Struct;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Utils.Enum;
 
 namespace WinDesktop.Forms
 {
@@ -84,13 +84,13 @@ namespace WinDesktop.Forms
 
                 if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
                 {
-                    frmOperacao frm = new frmOperacao(cliente, Operacoes.ADICIONAR);
+                    frmOperacao frm = new frmOperacao(cliente, Operacao.ADICIONAR);
                     frm.ShowDialog();
                     FrmIsDisposed(frm);
                 }
                 else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
                 {
-                    frmOperacao frm = new frmOperacao(cliente, Operacoes.DEBITAR);
+                    frmOperacao frm = new frmOperacao(cliente, Operacao.DEBITAR);
                     frm.ShowDialog();
                     FrmIsDisposed(frm);
                 }

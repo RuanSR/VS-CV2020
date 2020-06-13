@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Models.Exceptions
+namespace Utils.Exceptions
 {
     public class OperacaoException : Exception
     {
