@@ -19,8 +19,10 @@ Estou trabalhando em atualizações de perfomace, e breve, a versão Windows fic
 
 ## Porque?
 
-O projeto veio como objetivo principal atender essa demanda, más também serve como meu portifólio pessoal.
-Deixo meu contatos abaixo, caso queira entar em contato, mande um email :)
+O projeto veio como objetivo principal atender essa demanda, más também serve como meu portifólio profissinal.
+
+Deixo meu contato abaixo, caso queira entrar em contato, mande um email.
+
 Email: ruansilvarosa@gmail.com
 
 Se por acaso queira usar este projeto, entre em contato comigo.
