@@ -19,7 +19,7 @@ Estou trabalhando em atualizações de perfomace, e breve, a versão Windows fic
 
 ## Porque?
 
-O projeto veio como objetivo aposentar as anotações de vendas a prazo em cadernos. O sistema atende muito bem essa demanda.
+O projeto veio com o objetivo de aposentar as anotações de vendas a prazo em cadernos. O sistema atende muito bem essa demanda, pois além de registrar detalhes do que foi pego, também faz a soma e entrega o total de todas as anotações registradas.
 
 Também serve como meu portifólio profissinal.
 
