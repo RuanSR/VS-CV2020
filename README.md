@@ -17,7 +17,7 @@ A terceira (e última, espero) gravada em C# utilizando Windows Forms, está pro
 
 Estou trabalhando em atualizações de perfomace, e breve, a versão Windows ficará obsoleta, pois o projeto está sendo refatorado para compartilhar suas bibliotecas com futuras versções Web e talvez Mobile.
 
-## Porque?
+## Por Que?
 
 O projeto veio com o objetivo de aposentar as anotações de vendas a prazo em cadernos. O sistema atende muito bem essa demanda, pois além de registrar detalhes do que foi pego, também faz a soma e entrega o total de todas as anotações registradas.
 
