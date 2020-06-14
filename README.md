@@ -34,7 +34,7 @@ Se por acaso queira usar este projeto, entre em contato comigo.
 * Cadastro e Exclusão de Clientes.
 * Cadastro e Exclusão de Atendentes (Funcionários).
 * Listagem de todos os clientes cadastrados.
-* Páginas detalhada de cliente, mostra registro de anotações, calculo de todas anotações registradas.
+* Página detalhada de cliente, mostra registro de anotações, cálculo de todas anotações registradas.
 * Adicionar valor.
 * Debitar Valores.
 * Listagem de Atendentes cadastrados.
