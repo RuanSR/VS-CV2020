@@ -11,9 +11,9 @@ servicos, além disso, também é possível debitar valores (dar baixa).
 A ideia do sistema nasceu em 2016, logo foi colocado em produção, esta é a 
 3ª versão do projeto.
 A primeira versão foi feita em SmallBasic (Linguagem de programação para iniciantes, da microsoft).
-porém a primeira a ter um controle de versões.
-A segunda versão foi feita já em C#, usando Forms, porém programado de forma bem ruim (eu estava aprendendo), passou por várias modificações, más ainda não merecia estar aqui.
-A terceira (e última, espero) gravada em C# utilizando Windows Forms, está pronta para ser usada, bem diferente das primeiras versões, está com a interface gráfica bem agradável.
+Porém a 3ª versão foi a primeira a ter um controle de versões.
+A segunda versão foi feita em C#, usando Windows Forms, porém programado de forma bem ruim (eu estava aprendendo), passou por várias modificações, más ainda não merecia estar aqui.
+A terceira (e última, espero) gravada em C# utilizando Windows Forms, está pronta para ser usada, bem diferente das primeiras versões, além de ter o código bem mais estruturado em relação as outras versões, está com a interface gráfica bem amigável.
 
 Estou trabalhando em atualizações de perfomace, e breve, a versão Windows ficará obsoleta, pois o projeto está sendo refatorado para compartilhar suas bibliotecas com futuras versções Web e talvez Mobile.
 
