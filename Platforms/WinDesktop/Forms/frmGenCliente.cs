@@ -8,14 +8,12 @@ namespace WinDesktop.Forms
 {
     public partial class frmGenCliente : Form
     {
-        private readonly ClienteRepository _clienteRepo;
         private string _str = string.Empty;
 
         public frmGenCliente(Cliente cliente = null)
         {
             InitializeComponent();
             Cliente = cliente;
-            _clienteRepo = new ClienteRepository();
         }
 
         public Cliente Cliente { get; private set; }
@@ -137,14 +135,14 @@ namespace WinDesktop.Forms
                     Cliente.AtualizarCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, ckStatus.Checked);
                     Cliente.NotaConta.AtualizarNota(double.Parse(txtLimite.Text), Cliente.NotaConta.TotalConta, Cliente.NotaConta.DataConta);
 
-                    _clienteRepo.AtualizarCliente(Cliente);
+                    new ClienteRepository().AtualizarCliente(Cliente);
 
                     MessageBox.Show("Cliente atualizado com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     var cliente = new Cliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text));
-                    _clienteRepo.NovoCliente(cliente);
+                    new ClienteRepository().NovoCliente(cliente);
 
                     MessageBox.Show("Cliente inserido com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -185,7 +183,7 @@ namespace WinDesktop.Forms
 
                     if (frm.Atendente.AtendenteId == 1)
                     {
-                        _clienteRepo.RemoverCliente(Cliente);
+                        new ClienteRepository().RemoverCliente(Cliente);
                         Cliente = null;
                         this.Dispose();
                     }
