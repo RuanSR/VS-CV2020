@@ -13,9 +13,6 @@ namespace WinDesktop.Forms
 {
     public partial class frmOperacao : Form
     {
-        private readonly AtendenteRepository _atendRepo;
-        private readonly ClienteRepository _clienteRepo;
-
         private string _str = string.Empty;
         private Operacao _operacao;
 
@@ -24,8 +21,6 @@ namespace WinDesktop.Forms
             InitializeComponent();
             Cliente = cliente;
             _operacao = operacao;
-            _atendRepo = new AtendenteRepository();
-            _clienteRepo = new ClienteRepository();
             GerenForm(operacao);
         }
         public Cliente Cliente { get; private set; }
@@ -45,14 +40,14 @@ namespace WinDesktop.Forms
                 if (_operacao == Operacao.ADICIONAR)
                 {
                     aux = Operacao.ADICIONAR;
-                    Cliente.AdicionarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
+                    Cliente.NotaConta.AdicionarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
                 else
                 {
                     aux = Operacao.DEBITAR;
-                    Cliente.DebitarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
+                    Cliente.NotaConta.DebitarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
-                _clienteRepo.AtualizarCliente(Cliente);
+                new ClienteRepository().AtualizarCliente(Cliente);
                 StatusNotas.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
                 MessageBox.Show($"Operação de {_operacao} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 DeletarRegistro();
@@ -154,7 +149,7 @@ namespace WinDesktop.Forms
         private IList<string> ListaNomeAtendentes()
         {
             var listaNomes = new List<string>();
-            foreach (var atendente in _atendRepo.ListaAtendentes())
+            foreach (var atendente in new AtendenteRepository().ListaAtendentes())
             {
                 listaNomes.Add(atendente.Nome);
             }
@@ -203,7 +198,7 @@ namespace WinDesktop.Forms
 
                     if (msgResultDialog == DialogResult.Yes)
                     {
-                        _clienteRepo.DeletarRegistro(Cliente);
+                        new ClienteRepository().DeletarRegistro(Cliente);
                     }
 
                 }

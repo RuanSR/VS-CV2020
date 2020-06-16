@@ -10,11 +10,9 @@ namespace WinDesktop.Forms
 {
     public partial class frmGerenciadorSistema : Form
     {
-        private readonly AtendenteRepository _atenRepo;
         public frmGerenciadorSistema()
         {
             InitializeComponent();
-            _atenRepo = new AtendenteRepository();
             this.Text = " :: Administrador";
         }
         private Atendente Atendente { get; set; }
@@ -32,7 +30,7 @@ namespace WinDesktop.Forms
             try
             {
                 int id = (int)dtgAtendente.Rows[e.RowIndex].Cells["IdAtendente"].Value;
-                var atendente = _atenRepo.GetAtendenteById(id);
+                var atendente = new AtendenteRepository().GetAtendenteById(id);
 
                 if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnEditar")
                 {
@@ -70,7 +68,7 @@ namespace WinDesktop.Forms
         {
             if (a.AtendenteId != 1)
             {
-                _atenRepo.RevomerAtendente(a);
+                new AtendenteRepository().RevomerAtendente(a);
                 MessageBox.Show("Atendete removido.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CarregaAtendentes();
             }
@@ -165,7 +163,7 @@ namespace WinDesktop.Forms
         {
             try
             {
-                dtgAtendente.DataSource = _atenRepo.ListaAtendentes();
+                dtgAtendente.DataSource = new AtendenteRepository().ListaAtendentes();
             }
             catch (Exception ex)
             {

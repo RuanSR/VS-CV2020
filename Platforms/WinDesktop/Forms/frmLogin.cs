@@ -9,11 +9,9 @@ namespace WinDesktop.Forms
 {
     public partial class frmLogin : Form
     {
-        private readonly AtendenteRepository _repo;
         public frmLogin()
         {
             InitializeComponent();
-            _repo = new AtendenteRepository();
         }
         public Atendente Atendente { get; set; }
 
@@ -35,7 +33,7 @@ namespace WinDesktop.Forms
         {
             try
             {
-                Atendente = _repo.GetAtendenteByUserName(txtUsuario.Text, txtSenha.Text);
+                Atendente = new AtendenteRepository().GetAtendenteByUserName(txtUsuario.Text, txtSenha.Text);
                 if (Atendente != null)
                 {
                     Dispose();

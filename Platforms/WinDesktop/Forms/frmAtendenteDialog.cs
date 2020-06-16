@@ -9,12 +9,10 @@ namespace WinDesktop.Forms
 {
     public partial class frmAtendenteDialog : Form
     {
-        private readonly AtendenteRepository _atenRepo;
         public frmAtendenteDialog(Atendente atendente = null)
         {
             InitializeComponent();
             Atendente = atendente;
-            _atenRepo = new AtendenteRepository();
         }
         //CONTROLES\\
         public Atendente Atendente { get; set; }
@@ -57,13 +55,13 @@ namespace WinDesktop.Forms
             if (txtIdAtendnete.Text == "-1")
             {
                 var atendente = new Atendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
-                _atenRepo.NovoAtendente(atendente);
+                new AtendenteRepository().NovoAtendente(atendente);
                 MessageBox.Show("Atendente criado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 Atendente.AtualizarAtendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
-                _atenRepo.AtualizarAtendente(Atendente);
+                new AtendenteRepository().AtualizarAtendente(Atendente);
                 MessageBox.Show("Atendente atualizado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Dispose();

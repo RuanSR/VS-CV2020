@@ -10,15 +10,12 @@ namespace WinDesktop.Forms
 {
     public partial class frmCliente : Form
     {
-        private readonly ClienteRepository _clienteRepo;
-
         private Cliente _cliente;
         private Size _sizeParent;
 
         public frmCliente(Size sizeParent, Cliente cliente)
         {
             InitializeComponent();
-            _clienteRepo = new ClienteRepository();
             _sizeParent = sizeParent;
             _cliente = cliente;
             SetDefaultSize();
@@ -206,7 +203,7 @@ namespace WinDesktop.Forms
                     {
                         if (_cliente.NotaConta.TotalConta == 0.0)
                         {
-                            _clienteRepo.DeletarRegistro(_cliente);
+                            new ClienteRepository().DeletarRegistro(_cliente);
                             _cliente.NotaConta.RegistroNotas.Clear();
                             dtgLog.DataSource = _cliente.NotaConta.RegistroNotas;
                         }

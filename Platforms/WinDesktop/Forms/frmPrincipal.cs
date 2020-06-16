@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Utils;
 using Utils.Enum;
 
 namespace WinDesktop.Forms
 {
     public partial class FrmPrincipal : Form
     {
-        private readonly ClienteRepository _clienteRepo;
         public FrmPrincipal()
         {
             InitializeComponent();
-            _clienteRepo = new ClienteRepository();
             ClienteDataVisualizers = new List<ClienteDataVisualizer>();
             Atendente = new Atendente();
         }
@@ -80,12 +79,13 @@ namespace WinDesktop.Forms
             try
             {
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
-                var cliente = _clienteRepo.GetClienteById(ClienteId);
+                var cliente = new ClienteRepository().GetClienteById(ClienteId);
 
                 if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
                 {
                     frmOperacao frm = new frmOperacao(cliente, Operacao.ADICIONAR);
                     frm.ShowDialog();
+                    frm.Cliente.NotaConta.RegistroNotas.Clear();
                     FrmIsDisposed(frm);
                 }
                 else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
@@ -106,7 +106,7 @@ namespace WinDesktop.Forms
             try
             {
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
-                var cliente = _clienteRepo.GetClienteByIdWithRegistros(ClienteId);
+                var cliente = new ClienteRepository().GetClienteByIdWithRegistros(ClienteId);
 
                 frmCliente frmCliente = new frmCliente(Size, cliente);
                 frmCliente.ShowDialog();
@@ -174,7 +174,7 @@ namespace WinDesktop.Forms
             {
                 ClienteDataVisualizer clienteData;
                 ClienteDataVisualizers.Clear();
-                var listClientes = _clienteRepo.ListaClientes();
+                var listClientes = new ClienteRepository().ListaClientes();
 
                 foreach (var cliente in listClientes)
                 {
@@ -248,7 +248,7 @@ namespace WinDesktop.Forms
         }
         void AtualizaStatus()
         {
-            //lblStatusRegistro.Text = "Último Registro: " + AppController.GetUltimaNota;
+            lblStatusRegistro.Text = "Último Registro: " + StatusNotas.GetUltimaNota;
         }
         private void Estilo()
         {
