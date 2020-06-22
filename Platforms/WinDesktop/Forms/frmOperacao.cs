@@ -8,6 +8,7 @@ using DAL.Database;
 using Utils.Enum;
 using Utils;
 using Utils.Exceptions;
+using System.Threading.Tasks;
 
 namespace WinDesktop.Forms
 {
@@ -31,7 +32,7 @@ namespace WinDesktop.Forms
             MostraOperacao();
             CarregaAtendente();
         }
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private async void btnConfirmar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -47,10 +48,10 @@ namespace WinDesktop.Forms
                     aux = Operacao.DEBITAR;
                     Cliente.NotaConta.DebitarValor(valor, cbAtendente.Text.ToString(), txtLog.Text);
                 }
-                new ClienteRepository().AtualizarCliente(Cliente);
+                await new ClienteRepository().AtualizarClienteAsync(Cliente);
                 StatusNotas.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
                 MessageBox.Show($"Operação de {_operacao} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                DeletarRegistro();
+                await DeletarRegistro();
                 Dispose();
             }
             catch (OperacaoException ex)
@@ -133,12 +134,12 @@ namespace WinDesktop.Forms
         {
             groupOperacao.Text += _operacao.ToString() + " VALOR";
         }
-        private void CarregaAtendente()
+        private async void CarregaAtendente()
         {
             try
             {
                 cbAtendente.DisplayMember = "usuario_atendente";
-                cbAtendente.DataSource = ListaNomeAtendentes();
+                cbAtendente.DataSource = await ListaNomeAtendentes();
                 cbAtendente.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -146,10 +147,11 @@ namespace WinDesktop.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private IList<string> ListaNomeAtendentes()
+        private async Task<IList<string>> ListaNomeAtendentes()
         {
             var listaNomes = new List<string>();
-            foreach (var atendente in new AtendenteRepository().ListaAtendentes())
+            var listAtendentes = await new AtendenteRepository().ListaAtendentesAsync();
+            foreach (var atendente in listAtendentes)
             {
                 listaNomes.Add(atendente.Nome);
             }
@@ -185,7 +187,7 @@ namespace WinDesktop.Forms
             return ((Val >= 48 && Val <= 57) || (Val == 8) || (Val == 46));
         }
 
-        private void DeletarRegistro()
+        private async Task DeletarRegistro()
         {
             try
             {
@@ -198,7 +200,7 @@ namespace WinDesktop.Forms
 
                     if (msgResultDialog == DialogResult.Yes)
                     {
-                        new ClienteRepository().DeletarRegistro(Cliente);
+                        await new ClienteRepository().DeletarRegistroAsync(Cliente);
                     }
 
                 }

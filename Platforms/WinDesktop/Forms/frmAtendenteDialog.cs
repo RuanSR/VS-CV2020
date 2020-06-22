@@ -50,18 +50,18 @@ namespace WinDesktop.Forms
                 txtIdAtendnete.Text = "-1";
             }
         }
-        private void GravaAtendente()
+        private async void GravaAtendente()
         {
             if (txtIdAtendnete.Text == "-1")
             {
                 var atendente = new Atendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
-                new AtendenteRepository().NovoAtendente(atendente);
+                await new AtendenteRepository().NovoAtendenteAsync(atendente);
                 MessageBox.Show("Atendente criado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 Atendente.AtualizarAtendente(txtNome.Text, txtUsuario.Text, txtSenha.Text, NivelAcesso.ADMIN);
-                new AtendenteRepository().AtualizarAtendente(Atendente);
+                await new AtendenteRepository().AtualizarAtendenteAsync(Atendente);
                 MessageBox.Show("Atendente atualizado com sucesso", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Dispose();

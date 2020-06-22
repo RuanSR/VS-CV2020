@@ -29,11 +29,11 @@ namespace WinDesktop.Forms
         }
 
         //MÉTODOS\\
-        private void FazerLogin()
+        private async void FazerLogin()
         {
             try
             {
-                Atendente = new AtendenteRepository().GetAtendenteByUserName(txtUsuario.Text, txtSenha.Text);
+                Atendente = await new AtendenteRepository().GetAtendenteByUserNameAsync(txtUsuario.Text, txtSenha.Text);
                 if (Atendente != null)
                 {
                     Dispose();

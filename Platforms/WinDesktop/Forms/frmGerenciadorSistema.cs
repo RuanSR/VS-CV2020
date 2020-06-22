@@ -25,12 +25,12 @@ namespace WinDesktop.Forms
             tabControl1.TabPages.Remove(tabPage2);
         }
         //CONTROLES\\
-        private void dtgAtendente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dtgAtendente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 int id = (int)dtgAtendente.Rows[e.RowIndex].Cells["IdAtendente"].Value;
-                var atendente = new AtendenteRepository().GetAtendenteById(id);
+                var atendente = await new AtendenteRepository().GetAtendenteByIdAsync(id);
 
                 if (dtgAtendente.Columns[e.ColumnIndex].Name == "btnEditar")
                 {
@@ -64,11 +64,11 @@ namespace WinDesktop.Forms
                 CarregaAtendentes();
             }
         }
-        private void BtnDelete(Atendente a, DataGridViewCellEventArgs e)
+        private async void BtnDelete(Atendente a, DataGridViewCellEventArgs e)
         {
             if (a.AtendenteId != 1)
             {
-                new AtendenteRepository().RevomerAtendente(a);
+                await new AtendenteRepository().RevomerAtendenteAsync(a);
                 MessageBox.Show("Atendete removido.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CarregaAtendentes();
             }
@@ -159,11 +159,11 @@ namespace WinDesktop.Forms
             }
         }
         //METODOS\\
-        private void CarregaAtendentes()
+        private async void CarregaAtendentes()
         {
             try
             {
-                dtgAtendente.DataSource = new AtendenteRepository().ListaAtendentes();
+                dtgAtendente.DataSource = await new AtendenteRepository().ListaAtendentesAsync();
             }
             catch (Exception ex)
             {

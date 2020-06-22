@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL.Database;
 using Models.Classes;
@@ -24,11 +25,11 @@ namespace WinDesktop.Forms
             GerenForm();
             txtLimite.Text = "50,00";
         }
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                SalvarCliente();
+                await SalvarCliente();
             }
             catch (ClienteException ex)
             {
@@ -43,11 +44,11 @@ namespace WinDesktop.Forms
                 MessageBox.Show(ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void BtnExluir_Click(object sender, EventArgs e)
+        private async void BtnExluir_Click(object sender, EventArgs e)
         {
             try
             {
-                ExcluirCliente();
+                await ExcluirCliente();
             }
             catch (ClienteException ex)
             {
@@ -126,7 +127,7 @@ namespace WinDesktop.Forms
                 BtnExluir.Visible = false;
             }
         }
-        private void SalvarCliente()
+        private async Task SalvarCliente()
         {
             try
             {
@@ -135,14 +136,14 @@ namespace WinDesktop.Forms
                     Cliente.AtualizarCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, ckStatus.Checked);
                     Cliente.NotaConta.AtualizarNota(double.Parse(txtLimite.Text), Cliente.NotaConta.TotalConta, Cliente.NotaConta.DataConta);
 
-                    new ClienteRepository().AtualizarCliente(Cliente);
+                    await new ClienteRepository().AtualizarClienteAsync(Cliente);
 
                     MessageBox.Show("Cliente atualizado com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     var cliente = new Cliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, txtTelefone.Text, txtCpf.Text, double.Parse(txtLimite.Text));
-                    new ClienteRepository().NovoCliente(cliente);
+                    await new ClienteRepository().NovoClienteAsync(cliente);
 
                     MessageBox.Show("Cliente inserido com sucesso!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -161,7 +162,7 @@ namespace WinDesktop.Forms
                 throw e;
             }
         }
-        private void ExcluirCliente()
+        private async Task ExcluirCliente()
         {
             var result = MessageBox.Show("TEM CERTEZA QUE DESEJA EXLUIR ESTE CLINTE?\nISTO APAGARÁ:" +
                 "\nTODOS OS DADOS DO CLIENTE." +
@@ -183,7 +184,7 @@ namespace WinDesktop.Forms
 
                     if (frm.Atendente.AtendenteId == 1)
                     {
-                        new ClienteRepository().RemoverCliente(Cliente);
+                        await new ClienteRepository().RemoverClienteAsync(Cliente);
                         Cliente = null;
                         this.Dispose();
                     }
