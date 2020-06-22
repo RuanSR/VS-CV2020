@@ -3,6 +3,7 @@ using Models.Classes;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils.Enum;
 
@@ -96,11 +97,11 @@ namespace WinDesktop.Forms
             }
         }
 
-        private void btnDeletaRegistro_Click(object sender, EventArgs e)
+        private async void btnDeletaRegistro_Click(object sender, EventArgs e)
         {
             try
             {
-                DeletarRegistro();
+                await DeletarRegistro();
             }
             catch (Exception err)
             {
@@ -188,7 +189,7 @@ namespace WinDesktop.Forms
                 btnAdicionarValor.Enabled = _cliente.Status;
             }
         }
-        private void DeletarRegistro()
+        private async Task DeletarRegistro()
         {
             try
             {
@@ -203,7 +204,7 @@ namespace WinDesktop.Forms
                     {
                         if (_cliente.NotaConta.TotalConta == 0.0)
                         {
-                            new ClienteRepository().DeletarRegistro(_cliente);
+                            await new ClienteRepository().DeletarRegistroAsync(_cliente);
                             _cliente.NotaConta.RegistroNotas.Clear();
                             dtgLog.DataSource = _cliente.NotaConta.RegistroNotas;
                         }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 using Utils.Enum;
@@ -51,7 +52,7 @@ namespace WinDesktop.Forms
                     break;
             }
         }
-        private void BtnNovoCliente_Click(object sender, EventArgs e)
+        private async void BtnNovoCliente_Click(object sender, EventArgs e)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace WinDesktop.Forms
 
                 if (frm.IsDisposed)
                 {
-                    LoadDataSourceCliente();
+                    await LoadDataSourceCliente();
                     GridViewClientes();
                 }
             }
@@ -74,12 +75,12 @@ namespace WinDesktop.Forms
             frmGerenciadorSistema frm = new frmGerenciadorSistema();
             frm.ShowDialog();
         }
-        private void DtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void DtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
-                var cliente = new ClienteRepository().GetClienteById(ClienteId);
+                var cliente = await new ClienteRepository().GetClienteByIdAsync(ClienteId);
 
                 if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
                 {
@@ -101,12 +102,12 @@ namespace WinDesktop.Forms
                 MessageBox.Show($"Erro ao entrar na conta! Detalhes: {ex.Message}");
             }
         }
-        private void DtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void DtgClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
-                var cliente = new ClienteRepository().GetClienteByIdWithRegistros(ClienteId);
+                var cliente = await new ClienteRepository().GetClienteByIdWithRegistrosAsync(ClienteId);
 
                 frmCliente frmCliente = new frmCliente(Size, cliente);
                 frmCliente.ShowDialog();
@@ -168,13 +169,13 @@ namespace WinDesktop.Forms
             }
             Estilo();
         }
-        void LoadDataSourceCliente()
+        private async Task LoadDataSourceCliente()
         {
             try
             {
                 ClienteDataVisualizer clienteData;
                 ClienteDataVisualizers.Clear();
-                var listClientes = new ClienteRepository().ListaClientes();
+                var listClientes = await new ClienteRepository().ListaClientesAsync();
 
                 foreach (var cliente in listClientes)
                 {
@@ -207,13 +208,13 @@ namespace WinDesktop.Forms
                 MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        void CheckLogin()
+        private async void CheckLogin()
         {
             try
             {
                 if (Atendente != null)
                 {
-                    LoadDataSourceCliente();
+                    await LoadDataSourceCliente();
                     EnableComponentes(true);
                     GridViewClientes();
                     btnLogin.Text = "Logout";
@@ -229,11 +230,11 @@ namespace WinDesktop.Forms
                 MessageBox.Show($"Erro ao obter permissão de login! Detalhes: {ex.Message}", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        void FrmIsDisposed(Form frm)
+        private async void FrmIsDisposed(Form frm)
         {
             if (frm.IsDisposed)
             {
-                LoadDataSourceCliente();
+                await LoadDataSourceCliente();
                 GridViewClientes(txtPesquisa.Text);
             }
         }

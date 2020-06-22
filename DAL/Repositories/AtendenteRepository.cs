@@ -1,8 +1,10 @@
-﻿using Models.Classes;
+﻿using Microsoft.EntityFrameworkCore;
+using Models.Classes;
 using Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DAL.Database
 {
@@ -21,59 +23,61 @@ namespace DAL.Database
                 throw e;
             }
         }
-        public void NovoAtendente(Atendente atendente)
+        public async Task NovoAtendenteAsync(Atendente atendente)
         {
             try
             {
-                _atendenteContext.Atendentes.Add(atendente);
-                _atendenteContext.SaveChanges();
+                _atendenteContext.Add(atendente);
+                await _atendenteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao adiconar novo atendente. Detalhes: {e.Message}");
             }
         }
-        public void AtualizarAtendente(Atendente atendente)
+        public async Task AtualizarAtendenteAsync(Atendente atendente)
         {
             try
             {
-                _atendenteContext.Atendentes.Update(atendente);
-                _atendenteContext.SaveChanges();
+                _atendenteContext.Update(atendente);
+                await _atendenteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao atualizar dados do atendente. {e.Message}");
             }
         }
-        public void RevomerAtendente(Atendente atendente)
+        public async Task RevomerAtendenteAsync(Atendente atendente)
         {
             try
             {
-                _atendenteContext.Atendentes.Remove(atendente);
-                _atendenteContext.SaveChanges();
+                _atendenteContext.Remove(atendente);
+                await _atendenteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao remover atendente. {e.Message}");
             }
         }
-        public Atendente GetAtendenteByUserName(string userName, string senha)
+        public async Task<Atendente> GetAtendenteByUserNameAsync(string userName, string senha)
         {
-            return ListaAtendentes()
+            var listAtendentes = await ListaAtendentesAsync();
+            return listAtendentes
                 .Where(at => at.Usuario.ToLower() == userName.ToLower() && at.Senha == senha)
                 .FirstOrDefault();
         }
-        public Atendente GetAtendenteById(int id)
+        public async Task<Atendente> GetAtendenteByIdAsync(int id)
         {
-            return ListaAtendentes()
+            var listAtendentes = await ListaAtendentesAsync();
+            return listAtendentes
                 .Where(a => a.AtendenteId == id)
                 .FirstOrDefault();
         }
-        public IList<Atendente> ListaAtendentes()
+        public async Task<IList<Atendente>> ListaAtendentesAsync()
         {
             try
             {
-                return _atendenteContext.Atendentes.ToList();
+                return await _atendenteContext.Atendentes.ToListAsync();
             }
             catch (Exception e)
             {

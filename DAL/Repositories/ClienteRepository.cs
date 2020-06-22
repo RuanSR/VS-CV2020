@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Models.Classes;
 using Models.Interface;
@@ -22,87 +23,89 @@ namespace DAL.Database
                 throw e;
             }
         }
-        public void NovoCliente(Cliente c)
+        public async Task NovoClienteAsync(Cliente c)
         {
             try
             {
                 _clienteContext.Clientes.Add(c);
-                _clienteContext.SaveChanges();
+                await _clienteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao salvar cliente. {e.Message}");
             }
         }
-        public void AtualizarCliente(Cliente c)
+        public async Task AtualizarClienteAsync(Cliente c)
         {
             try
             {
                 _clienteContext.Clientes.Update(c);
-                _clienteContext.SaveChanges();
+                await _clienteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao atulizar dados do cliente. {e.Message}");
             }
         }
-        public void RemoverCliente(Cliente c)
+        public async Task RemoverClienteAsync(Cliente c)
         {
             try
             {
                 _clienteContext.Clientes.Remove(c);
-                _clienteContext.SaveChanges();
+                await _clienteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao remover cliente. {e.Message}");
             }
         }
-        public void DeletarRegistro(Cliente c)
+        public async Task DeletarRegistroAsync(Cliente c)
         {
             try
             {
                 _clienteContext.RegistroNotas.RemoveRange(c.NotaConta.RegistroNotas);
-                _clienteContext.SaveChanges();
+                await _clienteContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao deletar registros do cliente. {e.Message}");
             }
         }
-        public Cliente GetClienteById(int id)
+        public async Task<Cliente> GetClienteByIdAsync(int id)
         {
-            return ListaClientes()
+            var listClientes = await ListaClientesAsync();
+            return listClientes
                 .Where(c => c.ClienteId == id)
                 .FirstOrDefault();
         }
-        public Cliente GetClienteByIdWithRegistros(int id)
+        public async Task<Cliente> GetClienteByIdWithRegistrosAsync(int id)
         {
-            return ListaClienteWithRegistros()
+            var listClientes = await ListaClienteWithRegistrosAsync();
+            return listClientes
                 .Where(c => c.ClienteId == id)
                 .FirstOrDefault();
         }
-        public IList<Cliente> ListaClientes()
+        public async Task<IList<Cliente>> ListaClientesAsync()
         {
             try
             {
-                return _clienteContext.Clientes
+                return await _clienteContext.Clientes
                     .Include(nt => nt.NotaConta)
-                    .ToList();
+                    .ToListAsync();
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro ao obter lista de clientes. {e.Message}");
             }
         }
-        public IList<Cliente> ListaClienteWithRegistros()
+        public async Task<IList<Cliente>> ListaClienteWithRegistrosAsync()
         {
             try
             {
-                return _clienteContext.Clientes
+                return await _clienteContext.Clientes
                     .Include(nt => nt.NotaConta)
                     .Include(nt => nt.NotaConta.RegistroNotas)
-                    .ToList();
+                    .ToListAsync();
             }
             catch (Exception e)
             {
