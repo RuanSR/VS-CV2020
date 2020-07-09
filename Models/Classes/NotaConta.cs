@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using Models.Exceptions;
 using Utils.Enum;
 using Utils.Exceptions;
@@ -27,7 +28,8 @@ namespace Models.Classes
         [Required]
         public string DataConta { get; private set; }
 
-        public List<RegistroNota> RegistroNotas { get; private set; } = new List<RegistroNota>();
+        public List<RegistroNota> RegistroNotas { get; set; } = new List<RegistroNota>();
+        public List<ArquivoRegistros> Arquivo { get; set; } = new List<ArquivoRegistros>();
         public int ClienteId { get; private set; }
 
         public void AdicionarValor(double valor, string atendente, string obs)
@@ -65,6 +67,16 @@ namespace Models.Classes
             {
                 throw new OperacaoException("O valor do debito não pode ser maior que valor total da conta!");
             }
+        }
+
+        public void ArquivarRegistros()
+        {
+            foreach (var registro in RegistroNotas)
+            {
+                var arquivoModelText = $"Data/Hora: {registro.DataHora}, Valor: R$ {registro.Valor.ToString("F2", CultureInfo.InvariantCulture)}, Atendente: {registro.NomeAtendente}, Observaçẽs: {registro.TextoDescricao}";
+                Arquivo.Add(new ArquivoRegistros(arquivoModelText));
+            }
+            RegistroNotas.Clear();
         }
 
         public void AtualizarNota(double limiteConta, double totalConta, string dataConta)

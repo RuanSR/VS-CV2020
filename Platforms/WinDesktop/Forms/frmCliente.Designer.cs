@@ -96,7 +96,7 @@
             this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnDeletaRegistro = new System.Windows.Forms.ToolStripButton();
+            this.btnArquivo = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -827,21 +827,21 @@
             // 
             this.toolStrip2.BackColor = System.Drawing.Color.Transparent;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDeletaRegistro});
+            this.btnArquivo});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(294, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // btnDeletaRegistro
+            // btnArquivo
             // 
-            this.btnDeletaRegistro.Image = global::WinDesktop.Properties.Resources.decline;
-            this.btnDeletaRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeletaRegistro.Name = "btnDeletaRegistro";
-            this.btnDeletaRegistro.Size = new System.Drawing.Size(110, 22);
-            this.btnDeletaRegistro.Text = "Limpar Registro";
-            this.btnDeletaRegistro.Click += new System.EventHandler(this.btnDeletaRegistro_Click);
+            this.btnArquivo.Image = global::WinDesktop.Properties.Resources.folder;
+            this.btnArquivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnArquivo.Name = "btnArquivo";
+            this.btnArquivo.Size = new System.Drawing.Size(69, 22);
+            this.btnArquivo.Text = "Arquivo";
+            this.btnArquivo.Click += new System.EventHandler(this.btnDeletaRegistro_Click);
             // 
             // frmCliente
             // 
@@ -970,6 +970,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn log_registro;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton btnDeletaRegistro;
+        private System.Windows.Forms.ToolStripButton btnArquivo;
     }
 }
