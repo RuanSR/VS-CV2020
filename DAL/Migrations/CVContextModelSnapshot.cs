@@ -16,7 +16,26 @@ namespace DAL.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
 
-            modelBuilder.Entity("Model.Classes.Atendente", b =>
+            modelBuilder.Entity("Models.Classes.ArquivoRegistros", b =>
+                {
+                    b.Property<int>("ArquivoRegistrosId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("NotaContaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Registro")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ArquivoRegistrosId");
+
+                    b.HasIndex("NotaContaId");
+
+                    b.ToTable("Arquivos");
+                });
+
+            modelBuilder.Entity("Models.Classes.Atendente", b =>
                 {
                     b.Property<int>("AtendenteId")
                         .ValueGeneratedOnAdd()
@@ -26,12 +45,15 @@ namespace DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Senha")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Usuario")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("AtendenteId");
@@ -39,28 +61,32 @@ namespace DAL.Migrations
                     b.ToTable("Atendentes");
                 });
 
-            modelBuilder.Entity("Model.Classes.ClienteModel.Cliente", b =>
+            modelBuilder.Entity("Models.Classes.Cliente", b =>
                 {
                     b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Apelido")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cpf")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Endereco")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Status")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Telefone")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ClienteId");
@@ -68,7 +94,7 @@ namespace DAL.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("Model.Classes.ClienteModel.NotaConta", b =>
+            modelBuilder.Entity("Models.Classes.NotaConta", b =>
                 {
                     b.Property<int>("NotaContaId")
                         .ValueGeneratedOnAdd()
@@ -78,6 +104,7 @@ namespace DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DataConta")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("LimiteConta")
@@ -94,7 +121,7 @@ namespace DAL.Migrations
                     b.ToTable("NotaContas");
                 });
 
-            modelBuilder.Entity("Model.Classes.ClienteModel.RegistroNota", b =>
+            modelBuilder.Entity("Models.Classes.RegistroNota", b =>
                 {
                     b.Property<int>("RegistroNotaId")
                         .ValueGeneratedOnAdd()
@@ -104,13 +131,15 @@ namespace DAL.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NomeAtendente")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NotaContaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TextoDescricao")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(200);
 
                     b.Property<double>("Valor")
                         .HasColumnType("REAL");
@@ -122,18 +151,27 @@ namespace DAL.Migrations
                     b.ToTable("RegistroNotas");
                 });
 
-            modelBuilder.Entity("Model.Classes.ClienteModel.NotaConta", b =>
+            modelBuilder.Entity("Models.Classes.ArquivoRegistros", b =>
                 {
-                    b.HasOne("Model.Classes.ClienteModel.Cliente", null)
-                        .WithOne("NotaConta")
-                        .HasForeignKey("Model.Classes.ClienteModel.NotaConta", "ClienteId")
+                    b.HasOne("Models.Classes.NotaConta", null)
+                        .WithMany("Arquivo")
+                        .HasForeignKey("NotaContaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Model.Classes.ClienteModel.RegistroNota", b =>
+            modelBuilder.Entity("Models.Classes.NotaConta", b =>
                 {
-                    b.HasOne("Model.Classes.ClienteModel.NotaConta", null)
+                    b.HasOne("Models.Classes.Cliente", null)
+                        .WithOne("NotaConta")
+                        .HasForeignKey("Models.Classes.NotaConta", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.Classes.RegistroNota", b =>
+                {
+                    b.HasOne("Models.Classes.NotaConta", null)
                         .WithMany("RegistroNotas")
                         .HasForeignKey("NotaContaId")
                         .OnDelete(DeleteBehavior.Cascade)

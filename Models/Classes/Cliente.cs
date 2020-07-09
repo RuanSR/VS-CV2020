@@ -1,8 +1,6 @@
 ﻿using Models.Exceptions;
 using System;
 using System.ComponentModel.DataAnnotations;
-using Utils.Enum;
-using Utils.Exceptions;
 
 namespace Models.Classes
 {
