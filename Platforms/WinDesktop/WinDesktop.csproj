@@ -179,6 +179,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -193,6 +194,12 @@
     </Compile>
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmArquivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmArquivo.Designer.cs">
+      <DependentUpon>frmArquivo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAtendenteDialog.cs">
       <SubType>Form</SubType>
@@ -241,6 +248,9 @@
     <Compile Include="Utils\AppManager.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmArquivo.resx">
+      <DependentUpon>frmArquivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAtendenteDialog.resx">
       <DependentUpon>frmAtendenteDialog.cs</DependentUpon>

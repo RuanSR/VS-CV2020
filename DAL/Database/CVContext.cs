@@ -11,14 +11,15 @@ namespace DAL.Database
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Atendente> Atendentes { get; set; }
         public DbSet<RegistroNota> RegistroNotas { get; set; }
+        public DbSet<ArquivoRegistros> Arquivos { get; set; }
 
         public CVContext()
         {
-            _localPath = ConfigurationManager.AppSettings[Properties.Resources.KeyName_LocalPath];
-            _dBName = ConfigurationManager.AppSettings[Properties.Resources.KeyName_ServerName];
+            //    _localPath = ConfigurationManager.AppSettings[Properties.Resources.KeyName_LocalPath];
+            //    _dBName = ConfigurationManager.AppSettings[Properties.Resources.KeyName_ServerName];
 
-            //_localPath = @"C:\Caderno Virtual\CV2020";
-            //_dBName = "DB.sqlite";
+            _localPath = @"C:\Caderno Virtual\CV2020";
+            _dBName = "DB.sqlite";
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

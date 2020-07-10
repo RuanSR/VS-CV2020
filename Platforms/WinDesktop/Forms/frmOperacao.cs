@@ -9,6 +9,7 @@ using Utils.Enum;
 using Utils;
 using Utils.Exceptions;
 using System.Threading.Tasks;
+using DAL.Repositories;
 
 namespace WinDesktop.Forms
 {
@@ -51,7 +52,7 @@ namespace WinDesktop.Forms
                 await new ClienteRepository().AtualizarClienteAsync(Cliente);
                 StatusNotas.SetUltimaNota(Cliente.Nome, valor, DateTime.Now, aux);
                 MessageBox.Show($"Operação de {_operacao} no valor de {valor.ToString("F2")} concluido com sucesso!", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                await DeletarRegistro();
+                await ArquivarRegistros();
                 Dispose();
             }
             catch (OperacaoException ex)
@@ -187,21 +188,24 @@ namespace WinDesktop.Forms
             return ((Val >= 48 && Val <= 57) || (Val == 8) || (Val == 46));
         }
 
-        private async Task DeletarRegistro()
+        private async Task ArquivarRegistros()
         {
             try
             {
                 if (Cliente.NotaConta.TotalConta == 0.0)
                 {
-                    var msgResultDialog =
-                        MessageBox.Show("Deseja apagar todo o registro?\n\nNão é possível desfazer esta ação.", "Atenção!",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
+                    var arquvioRepo = new ArquivoRegistrosRepository();
+                    var clienteRepo = new ClienteRepository();
+                    Cliente.NotaConta.RegistroNotas = clienteRepo
+                        .GetClienteByIdWithRegistrosAsync(Cliente.ClienteId)
+                        .Result
+                        .NotaConta.RegistroNotas;
 
-                    if (msgResultDialog == DialogResult.Yes)
-                    {
-                        await new ClienteRepository().DeletarRegistroAsync(Cliente);
-                    }
+                    //var listaRegistros = clienteRepo.GetClienteByIdWithRegistrosAsync(Cliente.ClienteId)
+                    //    .Result.NotaConta.RegistroNotas;
+                    Cliente.NotaConta.ArquivarRegistros();
+                    await clienteRepo.DeletarRegistroAsync(Cliente);
+                    await arquvioRepo.ArquivarRegistros(Cliente);
 
                 }
             }

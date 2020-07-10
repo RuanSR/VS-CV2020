@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAL.Migrations
 {
-    public partial class Init : Migration
+    public partial class Arquivo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +13,9 @@ namespace DAL.Migrations
                 {
                     AtendenteId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(nullable: true),
-                    Usuario = table.Column<string>(nullable: true),
-                    Senha = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
+                    Usuario = table.Column<string>(nullable: false),
+                    Senha = table.Column<string>(nullable: false),
                     NivelAcesso = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -29,10 +29,10 @@ namespace DAL.Migrations
                 {
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(nullable: true),
-                    Apelido = table.Column<string>(nullable: true),
-                    Endereco = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
+                    Apelido = table.Column<string>(nullable: false),
+                    Endereco = table.Column<string>(nullable: false),
+                    Telefone = table.Column<string>(nullable: false),
                     Cpf = table.Column<string>(nullable: true),
                     Status = table.Column<bool>(nullable: false)
                 },
@@ -49,7 +49,7 @@ namespace DAL.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     LimiteConta = table.Column<double>(nullable: false),
                     TotalConta = table.Column<double>(nullable: false),
-                    DataConta = table.Column<string>(nullable: true),
+                    DataConta = table.Column<string>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -64,15 +64,35 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Arquivos",
+                columns: table => new
+                {
+                    ArquivoRegistrosId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Registro = table.Column<string>(nullable: true),
+                    NotaContaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Arquivos", x => x.ArquivoRegistrosId);
+                    table.ForeignKey(
+                        name: "FK_Arquivos_NotaContas_NotaContaId",
+                        column: x => x.NotaContaId,
+                        principalTable: "NotaContas",
+                        principalColumn: "NotaContaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RegistroNotas",
                 columns: table => new
                 {
                     RegistroNotaId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     DataHora = table.Column<DateTime>(nullable: false),
-                    NomeAtendente = table.Column<string>(nullable: true),
+                    NomeAtendente = table.Column<string>(nullable: false),
                     Valor = table.Column<double>(nullable: false),
-                    TextoDescricao = table.Column<string>(nullable: true),
+                    TextoDescricao = table.Column<string>(maxLength: 200, nullable: true),
                     NotaContaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -85,6 +105,11 @@ namespace DAL.Migrations
                         principalColumn: "NotaContaId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Arquivos_NotaContaId",
+                table: "Arquivos",
+                column: "NotaContaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NotaContas_ClienteId",
@@ -100,6 +125,9 @@ namespace DAL.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Arquivos");
+
             migrationBuilder.DropTable(
                 name: "Atendentes");
 

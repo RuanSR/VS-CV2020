@@ -1,9 +1,7 @@
-﻿using DAL.Database;
-using Models.Classes;
+﻿using Models.Classes;
 using System;
 using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils.Enum;
 
@@ -97,11 +95,12 @@ namespace WinDesktop.Forms
             }
         }
 
-        private async void btnDeletaRegistro_Click(object sender, EventArgs e)
+        private void btnDeletaRegistro_Click(object sender, EventArgs e)
         {
             try
             {
-                await DeletarRegistro();
+                //await DeletarRegistro();
+                GetArquivo();
             }
             catch (Exception err)
             {
@@ -189,42 +188,47 @@ namespace WinDesktop.Forms
                 btnAdicionarValor.Enabled = _cliente.Status;
             }
         }
-        private async Task DeletarRegistro()
+        //private async Task DeletarRegistro()
+        //{
+        //    try
+        //    {
+        //        if (_cliente.NotaConta.RegistroNotas.Count != 0)
+        //        {
+        //            var msgResultDialog =
+        //                MessageBox.Show("Deseja apagar todo o registro?\n\nNão é possível desfazer esta ação.", "Atenção!",
+        //                MessageBoxButtons.YesNo,
+        //                MessageBoxIcon.Question);
+
+        //            if (msgResultDialog == DialogResult.Yes)
+        //            {
+        //                if (_cliente.NotaConta.TotalConta == 0.0)
+        //                {
+        //                    await new ClienteRepository().DeletarRegistroAsync(_cliente);
+        //                    _cliente.NotaConta.RegistroNotas.Clear();
+        //                    dtgLog.DataSource = _cliente.NotaConta.RegistroNotas;
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("Não foi permitido a exclusão do registro, é preciso zerar o total da conta.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                }
+        //            }
+
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Não existe registro para ser limpo.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        throw new Exception(err.Message);
+        //    }
+
+        //}
+        private void GetArquivo()
         {
-            try
-            {
-                if (_cliente.NotaConta.RegistroNotas.Count != 0)
-                {
-                    var msgResultDialog =
-                        MessageBox.Show("Deseja apagar todo o registro?\n\nNão é possível desfazer esta ação.", "Atenção!",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-
-                    if (msgResultDialog == DialogResult.Yes)
-                    {
-                        if (_cliente.NotaConta.TotalConta == 0.0)
-                        {
-                            await new ClienteRepository().DeletarRegistroAsync(_cliente);
-                            _cliente.NotaConta.RegistroNotas.Clear();
-                            dtgLog.DataSource = _cliente.NotaConta.RegistroNotas;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Não foi permitido a exclusão do registro, é preciso zerar o total da conta.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Não existe registro para ser limpo.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception err)
-            {
-                throw new Exception(err.Message);
-            }
-
+            frmArquivo frm = new frmArquivo(_cliente.ClienteId);
+            frm.ShowDialog();
         }
     }
 }
