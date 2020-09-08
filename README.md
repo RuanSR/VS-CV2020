@@ -1,6 +1,6 @@
 # Caderno Virtual
 
-![](https://user-images.githubusercontent.com/20114385/84446639-51d1ff00-ac1c-11ea-9af5-fbff138b013a.png)
+![](https://user-images.githubusercontent.com/20114385/92521587-db7d7280-f1f3-11ea-8d3d-6dafa4921785.jpg)
 
 ## Sobre Este Projeto
 Este projeto foi desenvolvido para atender pequenos comerciantes de 
