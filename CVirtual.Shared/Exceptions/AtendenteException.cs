@@ -1,15 +1,20 @@
-﻿using System;
+﻿using CVirtual.Shared.Enuns;
+using System;
 
 namespace CVirtual.Shared.Exceptions
 {
-    public class AtendenteException : Exception
+    public class AtendenteException : ExceptionBase
     {
-        public AtendenteException()
+        public AtendenteException() : base()
+        {
+
+        }
+        public AtendenteException(string MessageInfo) : base(MessageInfo)
         {
 
         }
 
-        public AtendenteException(string msg) : base(msg)
+        public AtendenteException(string MessageInfo, ExceptionInfoType ExceptionType) : base(MessageInfo, ExceptionType)
         {
 
         }

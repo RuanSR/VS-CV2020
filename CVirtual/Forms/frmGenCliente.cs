@@ -1,4 +1,5 @@
 ﻿using CVirtual.Data.Repositories;
+using CVirtual.Presenter;
 using CVirtual.Shared.Classes;
 using CVirtual.Shared.Exceptions;
 using System;
@@ -173,16 +174,16 @@ namespace CVirtual.Forms
             {
                 if (Cliente.NotaConta.TotalConta == 0)
                 {
-                    frmLogin frm = new frmLogin();
+                    AuthForm frm = new AuthForm();
                     frm.ShowDialog();
 
-                    if(frm.Atendente == null)
+                    if(AuthPresenter.isLoggedIn)
                     {
                         MessageBox.Show("Operação cancelada!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    if (frm.Atendente.AtendenteId == 1)
+                    if (AuthPresenter.Atendente.AtendenteId == 1)
                     {
                         await new ClienteRepository().RemoverClienteAsync(Cliente);
                         Cliente = null;
