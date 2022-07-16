@@ -1,4 +1,5 @@
 ﻿using CVirtual.Data.Repositories;
+using CVirtual.Presenter;
 using CVirtual.Shared.Classes;
 using CVirtual.Shared.Enums;
 using CVirtual.Shared.Struct;
@@ -18,10 +19,10 @@ namespace CVirtual.Forms
         {
             InitializeComponent();
             ClienteDataVisualizers = new List<ClienteDataVisualizer>();
-            Atendente = new Atendente();
+            //Atendente = new Atendente();
         }
         private IList<ClienteDataVisualizer> ClienteDataVisualizers { get; set; }
-        private Atendente Atendente { get; set; }
+        //private Atendente Atendente { get; set; }
 
         //CONTROLES\\
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace CVirtual.Forms
                     break;
                 case "Logout":
                     txtPesquisa.Text = string.Empty;
-                    Atendente = null;
+                    new AuthPresenter().Logout();
                     CheckLogin();
                     break;
                 default:
@@ -136,7 +137,7 @@ namespace CVirtual.Forms
         }
         private void BtnAbout_Click(object sender, EventArgs e)
         {
-            new AboutBox().ShowDialog();
+            new AboutBoxForm().ShowDialog();
         }
 
         //METODOS\\
@@ -193,10 +194,8 @@ namespace CVirtual.Forms
         {
             try
             {
-                frmLogin frm = new frmLogin();
+                AuthForm frm = new AuthForm();
                 frm.ShowDialog();
-
-                Atendente = frm.Atendente;
 
                 if (frm.IsDisposed)
                 {
@@ -212,7 +211,7 @@ namespace CVirtual.Forms
         {
             try
             {
-                if (Atendente != null)
+                if (AuthPresenter.isLoggedIn)
                 {
                     await LoadDataSourceCliente();
                     EnableComponentes(true);
