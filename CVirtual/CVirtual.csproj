@@ -190,17 +190,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presenter\AuthPresenter.cs" />
+    <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
     <Compile Include="Views\AboutBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AboutBoxForm.Designer.cs">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmArquivo.cs">
+    <Compile Include="Views\FileStorageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmArquivo.Designer.cs">
-      <DependentUpon>frmArquivo.cs</DependentUpon>
+    <Compile Include="Views\FileStorageForm.Designer.cs">
+      <DependentUpon>FileStorageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAtendenteDialog.cs">
       <SubType>Form</SubType>
@@ -250,11 +251,13 @@
     <Compile Include="Utils\AppManager.cs" />
     <Compile Include="Utils\StatusNotas.cs" />
     <Compile Include="Views\Interfaces\IAboutBoxView.cs" />
+    <Compile Include="Views\Interfaces\IStorageFileView.cs" />
+    <Compile Include="Presenter\FileStoragePresenter.cs" />
     <EmbeddedResource Include="Views\AboutBoxForm.resx">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmArquivo.resx">
-      <DependentUpon>frmArquivo.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FileStorageForm.resx">
+      <DependentUpon>FileStorageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAtendenteDialog.resx">
       <DependentUpon>frmAtendenteDialog.cs</DependentUpon>

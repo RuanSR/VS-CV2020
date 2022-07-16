@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace CVirtual.Forms
+namespace CVirtual.Views
 {
     partial class AboutBoxForm : Form, IAboutBoxView
     {

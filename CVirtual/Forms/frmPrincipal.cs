@@ -4,6 +4,7 @@ using CVirtual.Shared.Classes;
 using CVirtual.Shared.Enums;
 using CVirtual.Shared.Struct;
 using CVirtual.Utils;
+using CVirtual.Views;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

@@ -2,6 +2,7 @@
 using CVirtual.Presenter;
 using CVirtual.Shared.Classes;
 using CVirtual.Shared.Exceptions;
+using CVirtual.Views;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;

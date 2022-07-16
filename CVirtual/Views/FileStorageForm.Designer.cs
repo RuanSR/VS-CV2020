@@ -1,6 +1,6 @@
-﻿namespace CVirtual.Forms
+﻿namespace CVirtual.Views
 {
-    partial class frmArquivo
+    partial class FileStorageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,20 +32,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dtgLog = new System.Windows.Forms.DataGridView();
+            this.dataGridViewLog = new System.Windows.Forms.DataGridView();
             this.arquivo_registro_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nota_conta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgLog
+            // dataGridViewLog
             // 
-            this.dtgLog.AllowUserToAddRows = false;
-            this.dtgLog.AllowUserToDeleteRows = false;
-            this.dtgLog.BackgroundColor = System.Drawing.Color.White;
-            this.dtgLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridViewLog.AllowUserToAddRows = false;
+            this.dataGridViewLog.AllowUserToDeleteRows = false;
+            this.dataGridViewLog.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewLog.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -53,17 +53,17 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.arquivo_registro_id,
             this.nota_conta_id,
             this.registro});
-            this.dtgLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgLog.EnableHeadersVisualStyles = false;
-            this.dtgLog.Location = new System.Drawing.Point(0, 0);
-            this.dtgLog.Name = "dtgLog";
-            this.dtgLog.ReadOnly = true;
+            this.dataGridViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLog.EnableHeadersVisualStyles = false;
+            this.dataGridViewLog.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewLog.Name = "dataGridViewLog";
+            this.dataGridViewLog.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -71,13 +71,13 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgLog.RowHeadersVisible = false;
+            this.dataGridViewLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewLog.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgLog.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dtgLog.RowTemplate.Height = 40;
-            this.dtgLog.Size = new System.Drawing.Size(614, 451);
-            this.dtgLog.TabIndex = 1;
+            this.dataGridViewLog.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewLog.RowTemplate.Height = 40;
+            this.dataGridViewLog.Size = new System.Drawing.Size(614, 451);
+            this.dataGridViewLog.TabIndex = 1;
             // 
             // arquivo_registro_id
             // 
@@ -109,28 +109,28 @@
             this.registro.ToolTipText = "R$";
             this.registro.Width = 1000;
             // 
-            // frmArquivo
+            // StorageFileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 451);
-            this.Controls.Add(this.dtgLog);
+            this.Controls.Add(this.dataGridViewLog);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(630, 490);
-            this.Name = "frmArquivo";
+            this.Name = "StorageFileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " :: ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmArquivo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgLog)).EndInit();
+            this.Load += new System.EventHandler(this.StorageFileForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgLog;
+        private System.Windows.Forms.DataGridView dataGridViewLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn arquivo_registro_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nota_conta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn registro;
