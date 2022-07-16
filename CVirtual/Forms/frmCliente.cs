@@ -1,5 +1,6 @@
 ﻿using CVirtual.Shared.Classes;
 using CVirtual.Shared.Enums;
+using CVirtual.Views;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -227,7 +228,7 @@ namespace CVirtual.Forms
         //}
         private void GetArquivo()
         {
-            frmArquivo frm = new frmArquivo(_cliente.ClienteId);
+            FileStorageForm frm = new FileStorageForm(_cliente.ClienteId);
             frm.ShowDialog();
         }
     }

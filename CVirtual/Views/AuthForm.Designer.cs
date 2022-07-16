@@ -1,4 +1,4 @@
-﻿namespace CVirtual.Forms
+﻿namespace CVirtual.Views
 {
     partial class AuthForm
     {
