@@ -1,20 +1,33 @@
-﻿using System;
+﻿using CVirtual.Views.Interfaces;
+using System;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace CVirtual.Forms
 {
-    partial class AboutBox : Form
+    partial class AboutBoxForm : Form, IAboutBoxView
     {
-        public AboutBox()
+        public Label LblProductName => this.labelProductName;
+
+        public Label LblVersion => this.labelVersion;
+
+        public Label LblCopyright => this.labelCopyright;
+
+        public Label LblCompanyName => this.labelCompanyName;
+
+        public TextBox TxtDescription => this.textBoxDescription;
+
+        public Button BtnOk => this.okButton;
+
+        public AboutBoxForm()
         {
             InitializeComponent();
             this.Text = String.Format("Sobre {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Versão {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            LblProductName.Text = AssemblyProduct;
+            LblVersion.Text = String.Format("Versão {0}", AssemblyVersion);
+            LblCopyright.Text = AssemblyCopyright;
+            LblCompanyName.Text = AssemblyCompany;
+            TxtDescription.Text = AssemblyDescription;
         }
 
         #region Acessório de Atributos do Assembly
