@@ -46,7 +46,7 @@ namespace CVirtual.Views
             }
             catch(AtendenteException e)
             {
-                MessageBox.Show(e.getMessageInfo(), e.getMessageType(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(e.GetMessageInfo, e.GetMessageType, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {

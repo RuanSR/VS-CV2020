@@ -31,41 +31,49 @@ namespace CVirtual.Shared.Classes
         public List<ArquivoRegistros> Arquivo { get; set; } = new List<ArquivoRegistros>();
         public int ClienteId { get; private set; }
 
-        public void AdicionarValor(double valor, string atendente, string obs)
+        public void NewOperation(EActionType operation, double amount, string employee, string registryNote)
         {
+            if (amount < 0) throw new ArgumentException("O valor não pode ser negativo.");
 
-            ValidarNota(valor, atendente);
-            if (valor <= LimiteConta)
+            if (amount == 0.0) throw new ActionTypeException("O valor não pode ser zero.");
+
+            if (string.IsNullOrEmpty(employee)) throw new ArgumentException("É preciso prenecher o campo Atendente.");
+
+            if (operation == EActionType.ADICIONAR)
             {
-                var limiteConta = LimiteConta;
-                var totalConta = TotalConta + valor;
-                totalConta = double.Parse(totalConta.ToString("F2"));
-                var dataConta = VerificaDataNota(Operacao.ADICIONAR, DataConta, valor);
-                AtualizarNota(limiteConta, totalConta, dataConta);
-                RegistroNotas.Add(new RegistroNota(FormatoDateTime(), atendente, valor, FormataDescricaoNota(Operacao.ADICIONAR, obs)));
+                NewAmount(amount, employee, registryNote);
+                return;
             }
-            else
+
+            if (operation == EActionType.DEBITAR)
             {
-                throw new OperacaoException("O valor não pode ser maior que o limite da conta!");
+                NewPaymentAmount(amount, employee, registryNote);
+                return;
             }
         }
-        public void DebitarValor(double valor, string atendente, string obs)
+        private void NewAmount(double amount, string employee, string registryNote)
+        {
+            if (amount > LimiteConta) throw new ActionTypeException("O valor não pode ser maior que o limite da conta!");
+
+            var limiteConta = LimiteConta;
+            var totalConta = TotalConta + amount;
+            totalConta = double.Parse(totalConta.ToString("F2"));
+            var dataConta = VerificaDataNota(EActionType.ADICIONAR, DataConta, amount);
+            AtualizarNota(limiteConta, totalConta, dataConta);
+            RegistroNotas.Add(new RegistroNota(FormatoDateTime(), employee, amount, FormataDescricaoNota(EActionType.ADICIONAR, registryNote)));
+        }
+        private void NewPaymentAmount(double amount, string employee, string registryNote)
         {
 
-            ValidarNota(valor, atendente);
-            if (valor <= TotalConta)
-            {
-                var limiteConta = LimiteConta;
-                var totalConta = TotalConta - valor;
-                totalConta = double.Parse(totalConta.ToString("F2"));
-                var dataConta = VerificaDataNota(Operacao.DEBITAR, DataConta, totalConta);
-                AtualizarNota(limiteConta, totalConta, dataConta);
-                RegistroNotas.Add(new RegistroNota(FormatoDateTime(), atendente, valor, FormataDescricaoNota(Operacao.DEBITAR, obs)));
-            }
-            else
-            {
-                throw new OperacaoException("O valor do debito não pode ser maior que valor total da conta!");
-            }
+            if (amount > TotalConta) throw new ActionTypeException("O valor do debito não pode ser maior que valor total da conta!");
+
+            var limiteConta = LimiteConta;
+            var totalConta = TotalConta - amount;
+            totalConta = double.Parse(totalConta.ToString("F2"));
+            var dataConta = VerificaDataNota(EActionType.DEBITAR, DataConta, totalConta);
+            AtualizarNota(limiteConta, totalConta, dataConta);
+            RegistroNotas.Add(new RegistroNota(FormatoDateTime(), employee, amount, FormataDescricaoNota(EActionType.DEBITAR, registryNote)));
+
         }
 
         public void ArquivarRegistros()
@@ -85,7 +93,7 @@ namespace CVirtual.Shared.Classes
             TotalConta = totalConta;
             DataConta = dataConta;
         }
-        private void ValidarNota(double valor, string atendente)
+        private void ValidarNotas(double valor, string atendente)
         {
             if (valor < 0)
             {
@@ -93,16 +101,16 @@ namespace CVirtual.Shared.Classes
             }
             if (valor == 0.0)
             {
-                throw new OperacaoException("O valor não pode ser zero.");
+                throw new ActionTypeException("O valor não pode ser zero.");
             }
             if (string.IsNullOrEmpty(atendente))
             {
                 throw new ArgumentException("É preciso prenecher o campo Atendente.");
             }
         }
-        private string VerificaDataNota(Operacao op, string propriedadeData, double totalConta)
+        private string VerificaDataNota(EActionType op, string propriedadeData, double totalConta)
         {
-            if (op == Operacao.ADICIONAR)
+            if (op == EActionType.ADICIONAR)
             {
                 if (propriedadeData != "ZERADO")
                 {
@@ -119,9 +127,9 @@ namespace CVirtual.Shared.Classes
                 return propriedadeData;
             }
         }
-        private string FormataDescricaoNota(Operacao opType, string obs)
+        private string FormataDescricaoNota(EActionType opType, string obs)
         {
-            if (opType == Operacao.ADICIONAR)
+            if (opType == EActionType.ADICIONAR)
             {
                 if (string.IsNullOrEmpty(obs))
                 {
