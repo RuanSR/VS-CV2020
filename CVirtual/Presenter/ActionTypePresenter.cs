@@ -69,7 +69,7 @@ namespace CVirtual.Presenter
 
             var amount = double.Parse(_view.TxtAmount.Text);
 
-            customer.NotaConta.NewOperation(_view.EActionType, amount, _view.BoxEmployee.Text.ToString(),
+            customer.NotaConta.NewOperation(_view.EOperationType, amount, _view.BoxEmployee.Text.ToString(),
                     _view.TxtNoteDetails.Text);
 
             await _clienteRepository.AtualizarClienteAsync(customer);

@@ -86,14 +86,14 @@ namespace CVirtual.Forms
 
                 if (dtgClientes.Columns[e.ColumnIndex].Name == "btnAdd")
                 {
-                    ActionTypeForm frm = new ActionTypeForm(cliente.ClienteId, EActionType.ADICIONAR);
+                    ActionTypeForm frm = new ActionTypeForm(cliente.ClienteId, EOperationType.ADICIONAR);
                     frm.ShowDialog();
                     //frm.Cliente.NotaConta.RegistroNotas.Clear();
                     FrmIsDisposed(frm);
                 }
                 else if (dtgClientes.Columns[e.ColumnIndex].Name == "btnDebitar")
                 {
-                    ActionTypeForm frm = new ActionTypeForm(cliente.ClienteId, EActionType.DEBITAR);
+                    ActionTypeForm frm = new ActionTypeForm(cliente.ClienteId, EOperationType.DEBITAR);
                     frm.ShowDialog();
                     FrmIsDisposed(frm);
                 }

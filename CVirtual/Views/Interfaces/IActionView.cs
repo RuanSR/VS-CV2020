@@ -11,7 +11,7 @@ namespace CVirtual.Views.Interfaces
     public interface IActionView
     {
         int CustomerId { get; }
-        EActionType EActionType { get; }
+        EOperationType EOperationType { get; }
         Label LblTotalAmount { get; }
         Label LblTotalDays { get; }
         Label LblRemainderAmount { get; }
