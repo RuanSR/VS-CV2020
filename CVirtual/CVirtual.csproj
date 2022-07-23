@@ -189,8 +189,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenter\ActionTypePresenter.cs" />
     <Compile Include="Presenter\AuthPresenter.cs" />
     <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Compile Include="Views\AboutBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +229,7 @@
     <Compile Include="Forms\frmGerenciadorSistema.Designer.cs">
       <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Interfaces\IActionView.cs" />
     <Compile Include="Views\Interfaces\ILoginView.cs" />
     <Compile Include="Views\AuthForm.cs">
       <SubType>Form</SubType>
@@ -234,11 +237,11 @@
     <Compile Include="Views\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmOperacao.cs">
+    <Compile Include="Views\ActionTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmOperacao.Designer.cs">
-      <DependentUpon>frmOperacao.cs</DependentUpon>
+    <Compile Include="Views\ActionTypeForm.Designer.cs">
+      <DependentUpon>ActionTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -274,8 +277,8 @@
     <EmbeddedResource Include="Views\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmOperacao.resx">
-      <DependentUpon>frmOperacao.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ActionTypeForm.resx">
+      <DependentUpon>ActionTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

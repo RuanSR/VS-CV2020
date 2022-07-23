@@ -20,9 +20,9 @@ namespace CVirtual.Utils
             }
         }
 
-        public static void SetUltimaNota(string nomeCliente, double valorNota, DateTime horaNota, Operacao operacao)
+        public static void SetUltimaNota(string nomeCliente, double valorNota, DateTime horaNota, EActionType operacao)
         {
-            if (operacao == Operacao.ADICIONAR)
+            if (operacao == EActionType.ADICIONAR)
             {
                 _ultimoRegistro = string.Format("{0}, adicionado o valor de R${1}, ás {2}", nomeCliente, valorNota.ToString("F2"), horaNota.ToString("HH:mm:ss"));
             }
