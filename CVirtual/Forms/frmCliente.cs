@@ -36,7 +36,7 @@ namespace CVirtual.Forms
         }
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
-            ActionTypeForm frm = new ActionTypeForm(_cliente.ClienteId, EActionType.ADICIONAR);
+            ActionTypeForm frm = new ActionTypeForm(_cliente.ClienteId, EOperationType.ADICIONAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -48,7 +48,7 @@ namespace CVirtual.Forms
         }
         private void btnDebitarValor_Click(object sender, EventArgs e)
         {
-            ActionTypeForm frm = new ActionTypeForm(_cliente.ClienteId, EActionType.DEBITAR);
+            ActionTypeForm frm = new ActionTypeForm(_cliente.ClienteId, EOperationType.DEBITAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)

@@ -17,14 +17,14 @@ namespace CVirtual.Views
     {
         private readonly ActionTypePresenter _actionTypePresenter;
         private readonly int _customerId;
-        private readonly EActionType _eAction;
+        private readonly EOperationType _eAction;
         private string textAmountField = string.Empty;
 
         #region properties
         public Cliente Cliente { get; private set; }
 
         public int CustomerId => _customerId;
-        public EActionType EActionType => _eAction;
+        public EOperationType EOperationType => _eAction;
 
         public Label LblTotalAmount => this.lblTotalAmount;
 
@@ -54,7 +54,7 @@ namespace CVirtual.Views
 
         #endregion properties
 
-        public ActionTypeForm(int customerId, EActionType eAction)
+        public ActionTypeForm(int customerId, EOperationType eAction)
         {
             InitializeComponent();
             _customerId = customerId;
@@ -88,9 +88,9 @@ namespace CVirtual.Views
                 await _actionTypePresenter.UpdateCustomerData();
                 await _actionTypePresenter.ArchiveRecords();
 
-                StatusNotas.SetUltimaNota(LblFullName.Text, amount, DateTime.Now, EActionType);
+                StatusNotas.SetUltimaNota(LblFullName.Text, amount, DateTime.Now, EOperationType);
 
-                MessageBox.Show($"Operação de {EActionType} no valor de {amount:F2} concluido com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Operação de {EOperationType} no valor de {amount:F2} concluido com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 Dispose();
             }
@@ -164,9 +164,9 @@ namespace CVirtual.Views
         }
         private void SetSelectedActionTheme()
         {
-            GroupBoxAction.Text += EActionType.ToString() + " VALOR";
+            GroupBoxAction.Text += EOperationType.ToString() + " VALOR";
 
-            if (EActionType == EActionType.ADICIONAR)
+            if (EOperationType == EOperationType.ADICIONAR)
             {
                 GroupBoxAction.BackColor = Color.SeaGreen;
                 ToolStripAction.BackColor = Color.SeaGreen;
@@ -174,7 +174,7 @@ namespace CVirtual.Views
                 return;
             }
 
-            if (EActionType == EActionType.DEBITAR)
+            if (EOperationType == EOperationType.DEBITAR)
             {
                 ToolStripAction.BackColor = Color.Brown;
                 GroupBoxAction.BackColor = Color.Brown;
