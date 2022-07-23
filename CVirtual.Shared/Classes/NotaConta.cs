@@ -31,7 +31,7 @@ namespace CVirtual.Shared.Classes
         public List<ArquivoRegistros> Arquivo { get; set; } = new List<ArquivoRegistros>();
         public int ClienteId { get; private set; }
 
-        public void NewOperation(EActionType operation, double amount, string employee, string registryNote)
+        public void NewOperation(EOperationType operation, double amount, string employee, string registryNote)
         {
             if (amount < 0) throw new ArgumentException("O valor não pode ser negativo.");
 
@@ -39,13 +39,13 @@ namespace CVirtual.Shared.Classes
 
             if (string.IsNullOrEmpty(employee)) throw new ArgumentException("É preciso prenecher o campo Atendente.");
 
-            if (operation == EActionType.ADICIONAR)
+            if (operation == EOperationType.ADICIONAR)
             {
                 NewAmount(amount, employee, registryNote);
                 return;
             }
 
-            if (operation == EActionType.DEBITAR)
+            if (operation == EOperationType.DEBITAR)
             {
                 NewPaymentAmount(amount, employee, registryNote);
                 return;
@@ -58,9 +58,9 @@ namespace CVirtual.Shared.Classes
             var limiteConta = LimiteConta;
             var totalConta = TotalConta + amount;
             totalConta = double.Parse(totalConta.ToString("F2"));
-            var dataConta = VerificaDataNota(EActionType.ADICIONAR, DataConta, amount);
+            var dataConta = VerificaDataNota(EOperationType.ADICIONAR, DataConta, amount);
             AtualizarNota(limiteConta, totalConta, dataConta);
-            RegistroNotas.Add(new RegistroNota(FormatoDateTime(), employee, amount, FormataDescricaoNota(EActionType.ADICIONAR, registryNote)));
+            RegistroNotas.Add(new RegistroNota(FormatoDateTime(), employee, amount, FormataDescricaoNota(EOperationType.ADICIONAR, registryNote)));
         }
         private void NewPaymentAmount(double amount, string employee, string registryNote)
         {
@@ -70,9 +70,9 @@ namespace CVirtual.Shared.Classes
             var limiteConta = LimiteConta;
             var totalConta = TotalConta - amount;
             totalConta = double.Parse(totalConta.ToString("F2"));
-            var dataConta = VerificaDataNota(EActionType.DEBITAR, DataConta, totalConta);
+            var dataConta = VerificaDataNota(EOperationType.DEBITAR, DataConta, totalConta);
             AtualizarNota(limiteConta, totalConta, dataConta);
-            RegistroNotas.Add(new RegistroNota(FormatoDateTime(), employee, amount, FormataDescricaoNota(EActionType.DEBITAR, registryNote)));
+            RegistroNotas.Add(new RegistroNota(FormatoDateTime(), employee, amount, FormataDescricaoNota(EOperationType.DEBITAR, registryNote)));
 
         }
 
@@ -108,9 +108,9 @@ namespace CVirtual.Shared.Classes
                 throw new ArgumentException("É preciso prenecher o campo Atendente.");
             }
         }
-        private string VerificaDataNota(EActionType op, string propriedadeData, double totalConta)
+        private string VerificaDataNota(EOperationType op, string propriedadeData, double totalConta)
         {
-            if (op == EActionType.ADICIONAR)
+            if (op == EOperationType.ADICIONAR)
             {
                 if (propriedadeData != "ZERADO")
                 {
@@ -127,9 +127,9 @@ namespace CVirtual.Shared.Classes
                 return propriedadeData;
             }
         }
-        private string FormataDescricaoNota(EActionType opType, string obs)
+        private string FormataDescricaoNota(EOperationType opType, string obs)
         {
-            if (opType == EActionType.ADICIONAR)
+            if (opType == EOperationType.ADICIONAR)
             {
                 if (string.IsNullOrEmpty(obs))
                 {
