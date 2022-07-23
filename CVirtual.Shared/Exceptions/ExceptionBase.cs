@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CVirtual.Shared.Exceptions
 {
-    public class ExceptionBase : ApplicationException
+    public abstract class ExceptionBase : ApplicationException
     {
         private readonly string _DefaultMessage = "Information";
         private readonly string _ErrortMessage = "Error";
@@ -28,18 +28,21 @@ namespace CVirtual.Shared.Exceptions
             this._exceptionType = ExceptionType;
         }
 
-        public string getMessageInfo()
+        public string GetMessageInfo
         {
-            return _messageInfo;
+            get => _messageInfo;
         }
 
-        public string getMessageType()
+        public string GetMessageType
         {
-            switch (_exceptionType)
+            get
             {
-                case ExceptionInfoType.InfoMessage: return _DefaultMessage;
-                case ExceptionInfoType.ErrorMessage: return _ErrortMessage;
-                default : return _DefaultMessage;
+                switch (_exceptionType)
+                {
+                    case ExceptionInfoType.InfoMessage: return _DefaultMessage;
+                    case ExceptionInfoType.ErrorMessage: return _ErrortMessage;
+                    default: return _DefaultMessage;
+                }
             }
         }
 

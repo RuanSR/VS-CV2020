@@ -1,6 +1,6 @@
 ﻿namespace CVirtual.Shared.Enums
 {
-    public enum Operacao
+    public enum EActionType
     {
         ADICIONAR,
         DEBITAR

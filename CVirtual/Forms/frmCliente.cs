@@ -1,5 +1,6 @@
 ﻿using CVirtual.Shared.Classes;
 using CVirtual.Shared.Enums;
+using CVirtual.Utils;
 using CVirtual.Views;
 using System;
 using System.Drawing;
@@ -35,7 +36,7 @@ namespace CVirtual.Forms
         }
         private void btnAdicionarValor_Click(object sender, EventArgs e)
         {
-            frmOperacao frm = new frmOperacao(_cliente, Operacao.ADICIONAR);
+            ActionTypeForm frm = new ActionTypeForm(_cliente.ClienteId, EActionType.ADICIONAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -47,7 +48,7 @@ namespace CVirtual.Forms
         }
         private void btnDebitarValor_Click(object sender, EventArgs e)
         {
-            frmOperacao frm = new frmOperacao(_cliente, Operacao.DEBITAR);
+            ActionTypeForm frm = new ActionTypeForm(_cliente.ClienteId, EActionType.DEBITAR);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -118,7 +119,7 @@ namespace CVirtual.Forms
             double limiteRestante = _cliente.NotaConta.LimiteConta - _cliente.NotaConta.TotalConta;
             lblLimiteRestante.Text = limiteRestante.ToString("F2");
             lblTotalConta.Text = _cliente.NotaConta.TotalConta.ToString("F2");
-            lblTempoAberto.Text = CalculaTempo();
+            lblTempoAberto.Text = Util.GetClienteTotalDays(_cliente).ToString();
 
             lblApelido.Text = _cliente.Apelido;
             lblEndereco.Text = _cliente.Endereco;
@@ -148,15 +149,6 @@ namespace CVirtual.Forms
             {
                 dtgLog.Rows[i].DefaultCellStyle.BackColor = Color.Lavender;
             }
-        }
-        private string CalculaTempo()
-        {
-            if (_cliente.NotaConta.DataConta == "ZERADO")
-            {
-                return "0";
-            }
-            TimeSpan date = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yy")) - Convert.ToDateTime(_cliente.NotaConta.DataConta);
-            return date.Days.ToString();
         }
         private void SetDefaultSize()
         {
