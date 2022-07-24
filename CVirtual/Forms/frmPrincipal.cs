@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CVirtual.Forms
+namespace CVirtual.View
 {
     public partial class FrmPrincipal : Form
     {

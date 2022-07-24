@@ -6,7 +6,7 @@ using CVirtual.Shared.Classes;
 using CVirtual.Data.Repositories;
 using CVirtual.Shared.Exceptions;
 
-namespace CVirtual.Forms
+namespace CVirtual.View
 {
     public partial class frmGerenciadorSistema : Form
     {
@@ -56,7 +56,7 @@ namespace CVirtual.Forms
         }
         private void BtnEdit(Atendente a,DataGridViewCellEventArgs e)
         {
-            frmAtendenteDialog frm = new frmAtendenteDialog(a);
+            EmployeDialogForm frm = new EmployeDialogForm(a.AtendenteId);
             frm.ShowDialog();
 
             if (frm.IsDisposed)
@@ -105,7 +105,7 @@ namespace CVirtual.Forms
         }
         private void btnNovoAtendente_ButtonClick(object sender, EventArgs e)
         {
-            frmAtendenteDialog frm = new frmAtendenteDialog();
+            EmployeDialogForm frm = new EmployeDialogForm(-1);
             frm.ShowDialog();
 
             if (frm.IsDisposed)

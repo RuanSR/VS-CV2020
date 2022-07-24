@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using CVirtual.Forms;
+using CVirtual.View;
 using CVirtual.Utils;
 
 namespace CVirtual.Main
