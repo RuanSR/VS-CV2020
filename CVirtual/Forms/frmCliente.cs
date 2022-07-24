@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CVirtual.Forms
+namespace CVirtual.View
 {
     public partial class frmCliente : Form
     {

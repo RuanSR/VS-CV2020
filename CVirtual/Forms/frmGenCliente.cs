@@ -7,7 +7,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CVirtual.Forms
+namespace CVirtual.View
 {
     public partial class frmGenCliente : Form
     {
