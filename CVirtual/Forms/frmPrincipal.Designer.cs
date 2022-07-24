@@ -1,4 +1,4 @@
-﻿namespace CVirtual.Forms
+﻿namespace CVirtual.View
 {
     partial class FrmPrincipal
     {

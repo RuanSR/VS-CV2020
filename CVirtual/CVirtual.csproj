@@ -191,6 +191,7 @@
   <ItemGroup>
     <Compile Include="Presenter\ActionTypePresenter.cs" />
     <Compile Include="Presenter\AuthPresenter.cs" />
+    <Compile Include="Presenter\EmployeDialogPresenter.cs" />
     <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="Views\AboutBoxForm.cs">
@@ -205,11 +206,11 @@
     <Compile Include="Views\FileStorageForm.Designer.cs">
       <DependentUpon>FileStorageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmAtendenteDialog.cs">
+    <Compile Include="Views\EmployeDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAtendenteDialog.Designer.cs">
-      <DependentUpon>frmAtendenteDialog.cs</DependentUpon>
+    <Compile Include="Views\EmployeDialogForm.Designer.cs">
+      <DependentUpon>EmployeDialogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmCliente.cs">
       <SubType>Form</SubType>
@@ -230,6 +231,7 @@
       <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interfaces\IActionView.cs" />
+    <Compile Include="Views\Interfaces\IEmployeDialogView.cs" />
     <Compile Include="Views\Interfaces\ILoginView.cs" />
     <Compile Include="Views\AuthForm.cs">
       <SubType>Form</SubType>
@@ -262,8 +264,8 @@
     <EmbeddedResource Include="Views\FileStorageForm.resx">
       <DependentUpon>FileStorageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAtendenteDialog.resx">
-      <DependentUpon>frmAtendenteDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Views\EmployeDialogForm.resx">
+      <DependentUpon>EmployeDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
