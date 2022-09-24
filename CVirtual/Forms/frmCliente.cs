@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CVirtual.View
+namespace CVirtual.Views
 {
     public partial class frmCliente : Form
     {
@@ -60,20 +60,20 @@ namespace CVirtual.View
         }
         private void btnEditarDados_Click(object sender, EventArgs e)
         {
-            frmGenCliente frm = new frmGenCliente(_cliente);
+            CustomerManagerForm frm = new CustomerManagerForm(_cliente.ClienteId);
             frm.ShowDialog();
-
+            throw new NotImplementedException();
             if (frm.IsDisposed)
             {
-                if (frm.Cliente != null)
-                {
-                    _cliente = frm.Cliente;
-                    ShowDados();
-                }
-                else
-                {
-                    Close();
-                }
+                //if (frm.Cliente != null)
+                //{
+                //    _cliente = frm.Cliente;
+                //    ShowDados();
+                //}
+                //else
+                //{
+                //    Close();
+                //}
             }
         }
         private void btnLogout_Click(object sender, EventArgs e)
