@@ -191,6 +191,7 @@
   <ItemGroup>
     <Compile Include="Presenter\ActionTypePresenter.cs" />
     <Compile Include="Presenter\AuthPresenter.cs" />
+    <Compile Include="Presenter\CustomerManagerPresenter.cs" />
     <Compile Include="Presenter\EmployeDialogPresenter.cs" />
     <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
     <Compile Include="Utils\Utils.cs" />
@@ -218,11 +219,11 @@
     <Compile Include="Forms\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmGenCliente.cs">
+    <Compile Include="Views\CustomerManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmGenCliente.Designer.cs">
-      <DependentUpon>frmGenCliente.cs</DependentUpon>
+    <Compile Include="Views\CustomerManagerForm.Designer.cs">
+      <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmGerenciadorSistema.cs">
       <SubType>Form</SubType>
@@ -231,6 +232,7 @@
       <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interfaces\IActionView.cs" />
+    <Compile Include="Views\Interfaces\ICustomerManagerView.cs" />
     <Compile Include="Views\Interfaces\IEmployeDialogView.cs" />
     <Compile Include="Views\Interfaces\ILoginView.cs" />
     <Compile Include="Views\AuthForm.cs">
@@ -270,8 +272,8 @@
     <EmbeddedResource Include="Forms\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGenCliente.resx">
-      <DependentUpon>frmGenCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CustomerManagerForm.resx">
+      <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGerenciadorSistema.resx">
       <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>

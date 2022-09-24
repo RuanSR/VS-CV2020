@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CVirtual.View
+namespace CVirtual.Views
 {
     public partial class FrmPrincipal : Form
     {
@@ -58,7 +58,7 @@ namespace CVirtual.View
         {
             try
             {
-                frmGenCliente frm = new frmGenCliente();
+                CustomerManagerForm frm = new CustomerManagerForm();
                 frm.ShowDialog();
 
                 if (frm.IsDisposed)

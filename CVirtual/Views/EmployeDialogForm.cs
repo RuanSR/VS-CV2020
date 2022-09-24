@@ -7,7 +7,7 @@ using CVirtual.Shared.Enums;
 using CVirtual.Shared.Exceptions;
 using CVirtual.Views.Interfaces;
 
-namespace CVirtual.View
+namespace CVirtual.Views
 {
     public partial class EmployeDialogForm : Form, IEmployeDialogView
     {
