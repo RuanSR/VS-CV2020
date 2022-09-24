@@ -1,4 +1,4 @@
-﻿namespace CVirtual.View
+﻿namespace CVirtual.Views
 {
     partial class frmCliente
     {

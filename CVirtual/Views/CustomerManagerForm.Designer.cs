@@ -1,6 +1,6 @@
-﻿namespace CVirtual.View
+﻿namespace CVirtual.Views
 {
-    partial class frmGenCliente
+    partial class CustomerManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnSalvar = new System.Windows.Forms.ToolStripButton();
-            this.BtnExluir = new System.Windows.Forms.ToolStripButton();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.txtCellPhone = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEndereco = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtApelido = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNomeCompleto = new System.Windows.Forms.TextBox();
+            this.txtFullName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ckStatus = new System.Windows.Forms.CheckBox();
+            this.ckAccountStatus = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtLimite = new System.Windows.Forms.TextBox();
+            this.txtMaxLimit = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -64,45 +64,45 @@
             this.toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSalvar,
-            this.BtnExluir});
+            this.btnSave,
+            this.btnDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(484, 58);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "btnSalvar";
             // 
-            // btnSalvar
+            // btnSave
             // 
-            this.btnSalvar.Image = global::CVirtual.Properties.Resources.save;
-            this.btnSalvar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(57, 55);
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSave.Image = global::CVirtual.Properties.Resources.save;
+            this.btnSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(57, 55);
+            this.btnSave.Text = "Salvar";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // BtnExluir
+            // btnDelete
             // 
-            this.BtnExluir.Image = global::CVirtual.Properties.Resources.decline;
-            this.BtnExluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BtnExluir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnExluir.Name = "BtnExluir";
-            this.BtnExluir.Size = new System.Drawing.Size(61, 55);
-            this.BtnExluir.Text = "Excluir";
-            this.BtnExluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BtnExluir.Click += new System.EventHandler(this.BtnExluir_Click);
+            this.btnDelete.Image = global::CVirtual.Properties.Resources.decline;
+            this.btnDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(61, 55);
+            this.btnDelete.Text = "Excluir";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Controls.Add(this.txtEndereco);
+            this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtApelido);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtNomeCompleto);
+            this.groupBox1.Controls.Add(this.txtFullName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,7 +162,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtTelefone);
+            this.panel2.Controls.Add(this.txtCellPhone);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(242, 3);
@@ -170,17 +170,17 @@
             this.panel2.Size = new System.Drawing.Size(233, 54);
             this.panel2.TabIndex = 1;
             // 
-            // txtTelefone
+            // txtCellPhone
             // 
-            this.txtTelefone.BackColor = System.Drawing.Color.White;
-            this.txtTelefone.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtTelefone.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtTelefone.Location = new System.Drawing.Point(0, 17);
-            this.txtTelefone.Mask = "(99) 9 9999-9999";
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(233, 29);
-            this.txtTelefone.TabIndex = 0;
-            this.txtTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCellPhone.BackColor = System.Drawing.Color.White;
+            this.txtCellPhone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCellPhone.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCellPhone.Location = new System.Drawing.Point(0, 17);
+            this.txtCellPhone.Mask = "(99) 9 9999-9999";
+            this.txtCellPhone.Name = "txtCellPhone";
+            this.txtCellPhone.Size = new System.Drawing.Size(233, 29);
+            this.txtCellPhone.TabIndex = 0;
+            this.txtCellPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -192,16 +192,16 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Telefone";
             // 
-            // txtEndereco
+            // txtAddress
             // 
-            this.txtEndereco.BackColor = System.Drawing.Color.White;
-            this.txtEndereco.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtEndereco.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtEndereco.Location = new System.Drawing.Point(3, 142);
-            this.txtEndereco.MaxLength = 50;
-            this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(478, 29);
-            this.txtEndereco.TabIndex = 2;
+            this.txtAddress.BackColor = System.Drawing.Color.White;
+            this.txtAddress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtAddress.Location = new System.Drawing.Point(3, 142);
+            this.txtAddress.MaxLength = 50;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(478, 29);
+            this.txtAddress.TabIndex = 2;
             // 
             // label3
             // 
@@ -236,16 +236,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Apelido";
             // 
-            // txtNomeCompleto
+            // txtFullName
             // 
-            this.txtNomeCompleto.BackColor = System.Drawing.Color.White;
-            this.txtNomeCompleto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNomeCompleto.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtNomeCompleto.Location = new System.Drawing.Point(3, 42);
-            this.txtNomeCompleto.MaxLength = 30;
-            this.txtNomeCompleto.Name = "txtNomeCompleto";
-            this.txtNomeCompleto.Size = new System.Drawing.Size(478, 29);
-            this.txtNomeCompleto.TabIndex = 0;
+            this.txtFullName.BackColor = System.Drawing.Color.White;
+            this.txtFullName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtFullName.Location = new System.Drawing.Point(3, 42);
+            this.txtFullName.MaxLength = 30;
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(478, 29);
+            this.txtFullName.TabIndex = 0;
             // 
             // label1
             // 
@@ -261,9 +261,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Controls.Add(this.ckStatus);
+            this.groupBox2.Controls.Add(this.ckAccountStatus);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtLimite);
+            this.groupBox2.Controls.Add(this.txtMaxLimit);
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -275,18 +275,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados da Conta";
             // 
-            // ckStatus
+            // ckAccountStatus
             // 
-            this.ckStatus.BackColor = System.Drawing.Color.White;
-            this.ckStatus.Checked = true;
-            this.ckStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckStatus.Enabled = false;
-            this.ckStatus.Location = new System.Drawing.Point(28, 114);
-            this.ckStatus.Name = "ckStatus";
-            this.ckStatus.Size = new System.Drawing.Size(64, 25);
-            this.ckStatus.TabIndex = 1;
-            this.ckStatus.Text = "Ativa";
-            this.ckStatus.UseVisualStyleBackColor = false;
+            this.ckAccountStatus.BackColor = System.Drawing.Color.White;
+            this.ckAccountStatus.Checked = true;
+            this.ckAccountStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckAccountStatus.Enabled = false;
+            this.ckAccountStatus.Location = new System.Drawing.Point(28, 114);
+            this.ckAccountStatus.Name = "ckAccountStatus";
+            this.ckAccountStatus.Size = new System.Drawing.Size(64, 25);
+            this.ckAccountStatus.TabIndex = 1;
+            this.ckAccountStatus.Text = "Ativa";
+            this.ckAccountStatus.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
@@ -297,16 +297,16 @@
             this.label7.Text = "Status Conta";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtLimite
+            // txtMaxLimit
             // 
-            this.txtLimite.BackColor = System.Drawing.Color.White;
-            this.txtLimite.Location = new System.Drawing.Point(35, 59);
-            this.txtLimite.MaxLength = 8;
-            this.txtLimite.Name = "txtLimite";
-            this.txtLimite.Size = new System.Drawing.Size(80, 29);
-            this.txtLimite.TabIndex = 0;
-            this.txtLimite.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLimite_KeyDown);
-            this.txtLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimite_KeyPress);
+            this.txtMaxLimit.BackColor = System.Drawing.Color.White;
+            this.txtMaxLimit.Location = new System.Drawing.Point(35, 59);
+            this.txtMaxLimit.MaxLength = 8;
+            this.txtMaxLimit.Name = "txtMaxLimit";
+            this.txtMaxLimit.Size = new System.Drawing.Size(80, 29);
+            this.txtMaxLimit.TabIndex = 0;
+            this.txtMaxLimit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtMaxLimit_KeyDown);
+            this.txtMaxLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMaxLimit_KeyPress);
             // 
             // textBox4
             // 
@@ -327,7 +327,7 @@
             this.label6.Text = "Limite da Conta";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // frmGenCliente
+            // CustomerManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -340,10 +340,10 @@
             this.MaximumSize = new System.Drawing.Size(500, 500);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 500);
-            this.Name = "frmGenCliente";
+            this.Name = "CustomerManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = ":: Cadastro de Novo Cliente";
-            this.Load += new System.EventHandler(this.frmGenCliente_Load);
+            this.Load += new System.EventHandler(this.OnLoad);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -363,12 +363,12 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnSalvar;
+        private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNomeCompleto;
-        private System.Windows.Forms.TextBox txtEndereco;
+        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtApelido;
         private System.Windows.Forms.Label label2;
@@ -376,14 +376,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.MaskedTextBox txtTelefone;
+        private System.Windows.Forms.MaskedTextBox txtCellPhone;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtCpf;
-        private System.Windows.Forms.CheckBox ckStatus;
+        private System.Windows.Forms.CheckBox ckAccountStatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtLimite;
-        private System.Windows.Forms.ToolStripButton BtnExluir;
+        private System.Windows.Forms.TextBox txtMaxLimit;
+        private System.Windows.Forms.ToolStripButton btnDelete;
     }
 }

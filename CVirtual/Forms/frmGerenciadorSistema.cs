@@ -6,7 +6,7 @@ using CVirtual.Shared.Classes;
 using CVirtual.Data.Repositories;
 using CVirtual.Shared.Exceptions;
 
-namespace CVirtual.View
+namespace CVirtual.Views
 {
     public partial class frmGerenciadorSistema : Form
     {
