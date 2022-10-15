@@ -193,6 +193,7 @@
     <Compile Include="Presenter\AuthPresenter.cs" />
     <Compile Include="Presenter\CustomerManagerPresenter.cs" />
     <Compile Include="Presenter\EmployeDialogPresenter.cs" />
+    <Compile Include="Presenter\SystemManagerPresenter.cs" />
     <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="Views\AboutBoxForm.cs">
@@ -225,11 +226,11 @@
     <Compile Include="Views\CustomerManagerForm.Designer.cs">
       <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmGerenciadorSistema.cs">
+    <Compile Include="Forms\SystemManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmGerenciadorSistema.Designer.cs">
-      <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
+    <Compile Include="Forms\SystemManagerForm.Designer.cs">
+      <DependentUpon>SystemManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interfaces\IActionView.cs" />
     <Compile Include="Views\Interfaces\ICustomerManagerView.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="Views\Interfaces\IAboutBoxView.cs" />
     <Compile Include="Views\Interfaces\IStorageFileView.cs" />
     <Compile Include="Presenter\FileStoragePresenter.cs" />
+    <Compile Include="Views\Interfaces\ISystemManagerView.cs" />
     <EmbeddedResource Include="Views\AboutBoxForm.resx">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,8 +277,8 @@
     <EmbeddedResource Include="Views\CustomerManagerForm.resx">
       <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGerenciadorSistema.resx">
-      <DependentUpon>frmGerenciadorSistema.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SystemManagerForm.resx">
+      <DependentUpon>SystemManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
