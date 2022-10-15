@@ -74,7 +74,7 @@ namespace CVirtual.Views
         }
         private void BtnSistema_Click(object sender, EventArgs e)
         {
-            frmGerenciadorSistema frm = new frmGerenciadorSistema();
+            SystemManagerForm frm = new SystemManagerForm();
             frm.ShowDialog();
         }
         private async void DtgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
