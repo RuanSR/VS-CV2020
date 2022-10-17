@@ -1,6 +1,6 @@
 ﻿namespace CVirtual.Views
 {
-    partial class frmCliente
+    partial class CustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdicionarValor = new System.Windows.Forms.ToolStripButton();
+            this.btnAddAmount = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnDebitarValor = new System.Windows.Forms.ToolStripButton();
+            this.btnRemoveAmount = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnEditarDados = new System.Windows.Forms.ToolStripButton();
+            this.btnUpdateDataCustomer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLogout = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -49,42 +49,42 @@
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.lblTotalConta = new System.Windows.Forms.Label();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblTempoAberto = new System.Windows.Forms.Label();
+            this.lblAmountDateOpened = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblLimiteRestante = new System.Windows.Forms.Label();
+            this.lblRemainingLimit = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblLimiteConta = new System.Windows.Forms.Label();
+            this.lblMaxAmount = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblDataConta = new System.Windows.Forms.Label();
-            this.lblNomeCliente = new System.Windows.Forms.Label();
+            this.lblDateAmount = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblNotasRegistradas = new System.Windows.Forms.Label();
+            this.lblTotalNotes = new System.Windows.Forms.Label();
             this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.lblCpf = new System.Windows.Forms.Label();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.label19 = new System.Windows.Forms.Label();
-            this.lblTelefone = new System.Windows.Forms.Label();
+            this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.label22 = new System.Windows.Forms.Label();
-            this.lblEndereco = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.label25 = new System.Windows.Forms.Label();
-            this.lblApelido = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgLog = new System.Windows.Forms.DataGridView();
@@ -96,7 +96,7 @@
             this.id_cliente_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.log_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnArquivo = new System.Windows.Forms.ToolStripButton();
+            this.btnOpenFileStorage = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -128,11 +128,11 @@
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAdicionarValor,
+            this.btnAddAmount,
             this.toolStripSeparator2,
-            this.btnDebitarValor,
+            this.btnRemoveAmount,
             this.toolStripSeparator1,
-            this.btnEditarDados,
+            this.btnUpdateDataCustomer,
             this.toolStripSeparator3,
             this.btnLogout,
             this.toolStripSeparator4});
@@ -142,48 +142,48 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnAdicionarValor
+            // btnAddAmount
             // 
-            this.btnAdicionarValor.Image = global::CVirtual.Properties.Resources.add;
-            this.btnAdicionarValor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnAdicionarValor.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdicionarValor.Name = "btnAdicionarValor";
-            this.btnAdicionarValor.Size = new System.Drawing.Size(91, 49);
-            this.btnAdicionarValor.Text = "Adicionar Valor";
-            this.btnAdicionarValor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdicionarValor.Click += new System.EventHandler(this.btnAdicionarValor_Click);
+            this.btnAddAmount.Image = global::CVirtual.Properties.Resources.add;
+            this.btnAddAmount.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnAddAmount.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddAmount.Name = "btnAddAmount";
+            this.btnAddAmount.Size = new System.Drawing.Size(91, 49);
+            this.btnAddAmount.Text = "Adicionar Valor";
+            this.btnAddAmount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddAmount.Click += new System.EventHandler(this.BtnAddAmount_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
             // 
-            // btnDebitarValor
+            // btnRemoveAmount
             // 
-            this.btnDebitarValor.Image = global::CVirtual.Properties.Resources.debitar;
-            this.btnDebitarValor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDebitarValor.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDebitarValor.Name = "btnDebitarValor";
-            this.btnDebitarValor.Size = new System.Drawing.Size(78, 49);
-            this.btnDebitarValor.Text = "Debitar Valor";
-            this.btnDebitarValor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDebitarValor.Click += new System.EventHandler(this.btnDebitarValor_Click);
+            this.btnRemoveAmount.Image = global::CVirtual.Properties.Resources.debitar;
+            this.btnRemoveAmount.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRemoveAmount.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRemoveAmount.Name = "btnRemoveAmount";
+            this.btnRemoveAmount.Size = new System.Drawing.Size(78, 49);
+            this.btnRemoveAmount.Text = "Debitar Valor";
+            this.btnRemoveAmount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRemoveAmount.Click += new System.EventHandler(this.BtnRemoveAmount_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
             // 
-            // btnEditarDados
+            // btnUpdateDataCustomer
             // 
-            this.btnEditarDados.Image = global::CVirtual.Properties.Resources.ediatar;
-            this.btnEditarDados.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnEditarDados.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditarDados.Name = "btnEditarDados";
-            this.btnEditarDados.Size = new System.Drawing.Size(82, 49);
-            this.btnEditarDados.Text = "Alterar Dados";
-            this.btnEditarDados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEditarDados.Click += new System.EventHandler(this.btnEditarDados_Click);
+            this.btnUpdateDataCustomer.Image = global::CVirtual.Properties.Resources.ediatar;
+            this.btnUpdateDataCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnUpdateDataCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdateDataCustomer.Name = "btnUpdateDataCustomer";
+            this.btnUpdateDataCustomer.Size = new System.Drawing.Size(82, 49);
+            this.btnUpdateDataCustomer.Text = "Alterar Dados";
+            this.btnUpdateDataCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnUpdateDataCustomer.Click += new System.EventHandler(this.BtnEditData_Click);
             // 
             // toolStripSeparator3
             // 
@@ -199,7 +199,7 @@
             this.btnLogout.Size = new System.Drawing.Size(34, 49);
             this.btnLogout.Text = "Sair";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
             // toolStripSeparator4
             // 
@@ -258,7 +258,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.lblNomeCliente);
+            this.panel2.Controls.Add(this.lblFullName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -287,7 +287,7 @@
             // 
             this.flowLayoutPanel5.Controls.Add(this.label10);
             this.flowLayoutPanel5.Controls.Add(this.label12);
-            this.flowLayoutPanel5.Controls.Add(this.lblTotalConta);
+            this.flowLayoutPanel5.Controls.Add(this.lblTotalAmount);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel5.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 129);
@@ -301,7 +301,7 @@
             this.label10.ForeColor = System.Drawing.Color.Crimson;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 32);
+            this.label10.Size = new System.Drawing.Size(145, 32);
             this.label10.TabIndex = 0;
             this.label10.Text = "Total Conta:";
             // 
@@ -309,26 +309,26 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Crimson;
-            this.label12.Location = new System.Drawing.Point(155, 0);
+            this.label12.Location = new System.Drawing.Point(154, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 32);
+            this.label12.Size = new System.Drawing.Size(48, 32);
             this.label12.TabIndex = 1;
             this.label12.Text = "R$:";
             // 
-            // lblTotalConta
+            // lblTotalAmount
             // 
-            this.lblTotalConta.AutoSize = true;
-            this.lblTotalConta.ForeColor = System.Drawing.Color.Crimson;
-            this.lblTotalConta.Location = new System.Drawing.Point(210, 0);
-            this.lblTotalConta.Name = "lblTotalConta";
-            this.lblTotalConta.Size = new System.Drawing.Size(28, 32);
-            this.lblTotalConta.TabIndex = 2;
-            this.lblTotalConta.Text = "0";
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.ForeColor = System.Drawing.Color.Crimson;
+            this.lblTotalAmount.Location = new System.Drawing.Point(208, 0);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(27, 32);
+            this.lblTotalAmount.TabIndex = 2;
+            this.lblTotalAmount.Text = "0";
             // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.label9);
-            this.flowLayoutPanel4.Controls.Add(this.lblTempoAberto);
+            this.flowLayoutPanel4.Controls.Add(this.lblAmountDateOpened);
             this.flowLayoutPanel4.Controls.Add(this.label11);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -346,14 +346,14 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Tempo em Aberto:";
             // 
-            // lblTempoAberto
+            // lblAmountDateOpened
             // 
-            this.lblTempoAberto.AutoSize = true;
-            this.lblTempoAberto.Location = new System.Drawing.Point(180, 0);
-            this.lblTempoAberto.Name = "lblTempoAberto";
-            this.lblTempoAberto.Size = new System.Drawing.Size(23, 25);
-            this.lblTempoAberto.TabIndex = 1;
-            this.lblTempoAberto.Text = "0";
+            this.lblAmountDateOpened.AutoSize = true;
+            this.lblAmountDateOpened.Location = new System.Drawing.Point(180, 0);
+            this.lblAmountDateOpened.Name = "lblAmountDateOpened";
+            this.lblAmountDateOpened.Size = new System.Drawing.Size(23, 25);
+            this.lblAmountDateOpened.TabIndex = 1;
+            this.lblAmountDateOpened.Text = "0";
             // 
             // label11
             // 
@@ -368,7 +368,7 @@
             // 
             this.flowLayoutPanel3.Controls.Add(this.label6);
             this.flowLayoutPanel3.Controls.Add(this.label7);
-            this.flowLayoutPanel3.Controls.Add(this.lblLimiteRestante);
+            this.flowLayoutPanel3.Controls.Add(this.lblRemainingLimit);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 79);
@@ -396,22 +396,22 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "RS:";
             // 
-            // lblLimiteRestante
+            // lblRemainingLimit
             // 
-            this.lblLimiteRestante.AutoSize = true;
-            this.lblLimiteRestante.ForeColor = System.Drawing.Color.Black;
-            this.lblLimiteRestante.Location = new System.Drawing.Point(203, 0);
-            this.lblLimiteRestante.Name = "lblLimiteRestante";
-            this.lblLimiteRestante.Size = new System.Drawing.Size(23, 25);
-            this.lblLimiteRestante.TabIndex = 2;
-            this.lblLimiteRestante.Text = "0";
+            this.lblRemainingLimit.AutoSize = true;
+            this.lblRemainingLimit.ForeColor = System.Drawing.Color.Black;
+            this.lblRemainingLimit.Location = new System.Drawing.Point(203, 0);
+            this.lblRemainingLimit.Name = "lblRemainingLimit";
+            this.lblRemainingLimit.Size = new System.Drawing.Size(23, 25);
+            this.lblRemainingLimit.TabIndex = 2;
+            this.lblRemainingLimit.Text = "0";
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.label4);
-            this.flowLayoutPanel2.Controls.Add(this.lblLimiteConta);
+            this.flowLayoutPanel2.Controls.Add(this.lblMaxAmount);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 54);
@@ -437,19 +437,19 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "R$:";
             // 
-            // lblLimiteConta
+            // lblMaxAmount
             // 
-            this.lblLimiteConta.AutoSize = true;
-            this.lblLimiteConta.Location = new System.Drawing.Point(181, 0);
-            this.lblLimiteConta.Name = "lblLimiteConta";
-            this.lblLimiteConta.Size = new System.Drawing.Size(23, 25);
-            this.lblLimiteConta.TabIndex = 2;
-            this.lblLimiteConta.Text = "0";
+            this.lblMaxAmount.AutoSize = true;
+            this.lblMaxAmount.Location = new System.Drawing.Point(181, 0);
+            this.lblMaxAmount.Name = "lblMaxAmount";
+            this.lblMaxAmount.Size = new System.Drawing.Size(23, 25);
+            this.lblMaxAmount.TabIndex = 2;
+            this.lblMaxAmount.Text = "0";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Controls.Add(this.lblDataConta);
+            this.flowLayoutPanel1.Controls.Add(this.lblDateAmount);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 29);
@@ -467,29 +467,29 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Data Conta:";
             // 
-            // lblDataConta
+            // lblDateAmount
             // 
-            this.lblDataConta.AutoSize = true;
-            this.lblDataConta.ForeColor = System.Drawing.Color.Black;
-            this.lblDataConta.Location = new System.Drawing.Point(123, 0);
-            this.lblDataConta.Name = "lblDataConta";
-            this.lblDataConta.Size = new System.Drawing.Size(94, 25);
-            this.lblDataConta.TabIndex = 1;
-            this.lblDataConta.Text = "00/00/00";
+            this.lblDateAmount.AutoSize = true;
+            this.lblDateAmount.ForeColor = System.Drawing.Color.Black;
+            this.lblDateAmount.Location = new System.Drawing.Point(123, 0);
+            this.lblDateAmount.Name = "lblDateAmount";
+            this.lblDateAmount.Size = new System.Drawing.Size(94, 25);
+            this.lblDateAmount.TabIndex = 1;
+            this.lblDateAmount.Text = "00/00/00";
             // 
-            // lblNomeCliente
+            // lblFullName
             // 
-            this.lblNomeCliente.AutoSize = true;
-            this.lblNomeCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNomeCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblNomeCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeCliente.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNomeCliente.Location = new System.Drawing.Point(0, 0);
-            this.lblNomeCliente.Name = "lblNomeCliente";
-            this.lblNomeCliente.Size = new System.Drawing.Size(171, 25);
-            this.lblNomeCliente.TabIndex = 0;
-            this.lblNomeCliente.Text = "NOME COMPLETO";
-            this.lblNomeCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFullName.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.ForeColor = System.Drawing.Color.Crimson;
+            this.lblFullName.Location = new System.Drawing.Point(0, 0);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(171, 25);
+            this.lblFullName.TabIndex = 0;
+            this.lblFullName.Text = "NOME COMPLETO";
+            this.lblFullName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox3
             // 
@@ -543,7 +543,7 @@
             // flowLayoutPanel6
             // 
             this.flowLayoutPanel6.Controls.Add(this.label5);
-            this.flowLayoutPanel6.Controls.Add(this.lblNotasRegistradas);
+            this.flowLayoutPanel6.Controls.Add(this.lblTotalNotes);
             this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 129);
@@ -561,15 +561,15 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Notas Registradas:";
             // 
-            // lblNotasRegistradas
+            // lblTotalNotes
             // 
-            this.lblNotasRegistradas.AutoSize = true;
-            this.lblNotasRegistradas.ForeColor = System.Drawing.Color.Black;
-            this.lblNotasRegistradas.Location = new System.Drawing.Point(155, 0);
-            this.lblNotasRegistradas.Name = "lblNotasRegistradas";
-            this.lblNotasRegistradas.Size = new System.Drawing.Size(19, 21);
-            this.lblNotasRegistradas.TabIndex = 1;
-            this.lblNotasRegistradas.Text = "0";
+            this.lblTotalNotes.AutoSize = true;
+            this.lblTotalNotes.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalNotes.Location = new System.Drawing.Point(155, 0);
+            this.lblTotalNotes.Name = "lblTotalNotes";
+            this.lblTotalNotes.Size = new System.Drawing.Size(19, 21);
+            this.lblTotalNotes.TabIndex = 1;
+            this.lblTotalNotes.Text = "0";
             // 
             // flowLayoutPanel7
             // 
@@ -605,7 +605,7 @@
             // flowLayoutPanel8
             // 
             this.flowLayoutPanel8.Controls.Add(this.label19);
-            this.flowLayoutPanel8.Controls.Add(this.lblTelefone);
+            this.flowLayoutPanel8.Controls.Add(this.lblPhoneNumber);
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 79);
@@ -623,21 +623,21 @@
             this.label19.TabIndex = 1;
             this.label19.Text = "Telefone:";
             // 
-            // lblTelefone
+            // lblPhoneNumber
             // 
-            this.lblTelefone.AutoSize = true;
-            this.lblTelefone.ForeColor = System.Drawing.Color.Black;
-            this.lblTelefone.Location = new System.Drawing.Point(86, 0);
-            this.lblTelefone.Name = "lblTelefone";
-            this.lblTelefone.Size = new System.Drawing.Size(130, 21);
-            this.lblTelefone.TabIndex = 1;
-            this.lblTelefone.Text = "(91) 9 9999-9999";
+            this.lblPhoneNumber.AutoSize = true;
+            this.lblPhoneNumber.ForeColor = System.Drawing.Color.Black;
+            this.lblPhoneNumber.Location = new System.Drawing.Point(86, 0);
+            this.lblPhoneNumber.Name = "lblPhoneNumber";
+            this.lblPhoneNumber.Size = new System.Drawing.Size(130, 21);
+            this.lblPhoneNumber.TabIndex = 1;
+            this.lblPhoneNumber.Text = "(91) 9 9999-9999";
             // 
             // flowLayoutPanel9
             // 
             this.flowLayoutPanel9.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flowLayoutPanel9.Controls.Add(this.label22);
-            this.flowLayoutPanel9.Controls.Add(this.lblEndereco);
+            this.flowLayoutPanel9.Controls.Add(this.lblAddress);
             this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 54);
@@ -655,20 +655,20 @@
             this.label22.TabIndex = 0;
             this.label22.Text = "Endereço:";
             // 
-            // lblEndereco
+            // lblAddress
             // 
-            this.lblEndereco.AutoSize = true;
-            this.lblEndereco.ForeColor = System.Drawing.Color.Black;
-            this.lblEndereco.Location = new System.Drawing.Point(92, 0);
-            this.lblEndereco.Name = "lblEndereco";
-            this.lblEndereco.Size = new System.Drawing.Size(114, 21);
-            this.lblEndereco.TabIndex = 1;
-            this.lblEndereco.Text = "Endereço aqui";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.ForeColor = System.Drawing.Color.Black;
+            this.lblAddress.Location = new System.Drawing.Point(92, 0);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(114, 21);
+            this.lblAddress.TabIndex = 1;
+            this.lblAddress.Text = "Endereço aqui";
             // 
             // flowLayoutPanel10
             // 
             this.flowLayoutPanel10.Controls.Add(this.label25);
-            this.flowLayoutPanel10.Controls.Add(this.lblApelido);
+            this.flowLayoutPanel10.Controls.Add(this.lblFirstName);
             this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel10.Location = new System.Drawing.Point(3, 29);
@@ -686,15 +686,15 @@
             this.label25.TabIndex = 0;
             this.label25.Text = "Apelido:";
             // 
-            // lblApelido
+            // lblFirstName
             // 
-            this.lblApelido.AutoSize = true;
-            this.lblApelido.ForeColor = System.Drawing.Color.Black;
-            this.lblApelido.Location = new System.Drawing.Point(81, 0);
-            this.lblApelido.Name = "lblApelido";
-            this.lblApelido.Size = new System.Drawing.Size(68, 21);
-            this.lblApelido.TabIndex = 1;
-            this.lblApelido.Text = "Apelido";
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.ForeColor = System.Drawing.Color.Black;
+            this.lblFirstName.Location = new System.Drawing.Point(81, 0);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(68, 21);
+            this.lblFirstName.TabIndex = 1;
+            this.lblFirstName.Text = "Apelido";
             // 
             // groupBox1
             // 
@@ -827,23 +827,23 @@
             // 
             this.toolStrip2.BackColor = System.Drawing.Color.Transparent;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnArquivo});
+            this.btnOpenFileStorage});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(294, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // btnArquivo
+            // btnOpenFileStorage
             // 
-            this.btnArquivo.Image = global::CVirtual.Properties.Resources.folder;
-            this.btnArquivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnArquivo.Name = "btnArquivo";
-            this.btnArquivo.Size = new System.Drawing.Size(69, 22);
-            this.btnArquivo.Text = "Arquivo";
-            this.btnArquivo.Click += new System.EventHandler(this.btnDeletaRegistro_Click);
+            this.btnOpenFileStorage.Image = global::CVirtual.Properties.Resources.folder;
+            this.btnOpenFileStorage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOpenFileStorage.Name = "btnOpenFileStorage";
+            this.btnOpenFileStorage.Size = new System.Drawing.Size(69, 22);
+            this.btnOpenFileStorage.Text = "Arquivo";
+            this.btnOpenFileStorage.Click += new System.EventHandler(this.BtnLoadDataLog_Click);
             // 
-            // frmCliente
+            // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -852,13 +852,13 @@
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.toolStrip1);
             this.MinimumSize = new System.Drawing.Size(590, 500);
-            this.Name = "frmCliente";
+            this.Name = "CustomerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "::";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCliente_FormClosed);
-            this.Load += new System.EventHandler(this.frmCliente_Load);
-            this.Resize += new System.EventHandler(this.frmCliente_Resize);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Customer_FormClosed);
+            this.Load += new System.EventHandler(this.OnLoad);
+            this.Resize += new System.EventHandler(this.Customer_FormResize);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer.Panel1.ResumeLayout(false);
@@ -907,10 +907,10 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnAdicionarValor;
-        private System.Windows.Forms.ToolStripButton btnDebitarValor;
+        private System.Windows.Forms.ToolStripButton btnAddAmount;
+        private System.Windows.Forms.ToolStripButton btnRemoveAmount;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnEditarDados;
+        private System.Windows.Forms.ToolStripButton btnUpdateDataCustomer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnLogout;
@@ -921,43 +921,43 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblNomeCliente;
+        private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDataConta;
+        private System.Windows.Forms.Label lblDateAmount;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblTempoAberto;
+        private System.Windows.Forms.Label lblAmountDateOpened;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblLimiteRestante;
+        private System.Windows.Forms.Label lblRemainingLimit;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblLimiteConta;
+        private System.Windows.Forms.Label lblMaxAmount;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblTotalConta;
+        private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblNotasRegistradas;
+        private System.Windows.Forms.Label lblTotalNotes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblCpf;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label lblTelefone;
+        private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label lblEndereco;
+        private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label lblApelido;
+        private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblId;
@@ -970,6 +970,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn log_registro;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton btnArquivo;
+        private System.Windows.Forms.ToolStripButton btnOpenFileStorage;
     }
 }

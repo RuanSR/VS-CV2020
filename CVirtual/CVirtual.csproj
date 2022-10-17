@@ -192,6 +192,7 @@
     <Compile Include="Presenter\ActionTypePresenter.cs" />
     <Compile Include="Presenter\AuthPresenter.cs" />
     <Compile Include="Presenter\CustomerManagerPresenter.cs" />
+    <Compile Include="Presenter\CustomerPresenter.cs" />
     <Compile Include="Presenter\EmployeDialogPresenter.cs" />
     <Compile Include="Presenter\SystemManagerPresenter.cs" />
     <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
@@ -214,11 +215,11 @@
     <Compile Include="Views\EmployeDialogForm.Designer.cs">
       <DependentUpon>EmployeDialogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmCliente.cs">
+    <Compile Include="Views\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmCliente.Designer.cs">
-      <DependentUpon>frmCliente.cs</DependentUpon>
+    <Compile Include="Views\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomerManagerForm.cs">
       <SubType>Form</SubType>
@@ -226,10 +227,11 @@
     <Compile Include="Views\CustomerManagerForm.Designer.cs">
       <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SystemManagerForm.cs">
+    <Compile Include="Views\Interfaces\ICustomerView.cs" />
+    <Compile Include="Views\SystemManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SystemManagerForm.Designer.cs">
+    <Compile Include="Views\SystemManagerForm.Designer.cs">
       <DependentUpon>SystemManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interfaces\IActionView.cs" />
@@ -271,13 +273,13 @@
     <EmbeddedResource Include="Views\EmployeDialogForm.resx">
       <DependentUpon>EmployeDialogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCliente.resx">
-      <DependentUpon>frmCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomerManagerForm.resx">
       <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SystemManagerForm.resx">
+    <EmbeddedResource Include="Views\SystemManagerForm.resx">
       <DependentUpon>SystemManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AuthForm.resx">
