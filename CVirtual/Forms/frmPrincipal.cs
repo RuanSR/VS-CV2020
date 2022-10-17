@@ -111,7 +111,7 @@ namespace CVirtual.Views
                 var ClienteId = (int)dtgClientes.Rows[e.RowIndex].Cells["IdCliente"].Value;
                 var cliente = await new ClienteRepository().GetClienteByIdWithRegistrosAsync(ClienteId);
 
-                frmCliente frmCliente = new frmCliente(Size, cliente);
+                CustomerForm frmCliente = new CustomerForm(ClienteId, Size);
                 frmCliente.ShowDialog();
                 FrmIsDisposed(frmCliente);
                 AtualizaStatus();
