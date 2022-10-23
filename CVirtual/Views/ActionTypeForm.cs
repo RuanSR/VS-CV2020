@@ -21,7 +21,7 @@ namespace CVirtual.Views
         private string textAmountField = string.Empty;
 
         #region properties
-        public Cliente Cliente { get; private set; }
+        private Cliente Cliente { get; set; }
 
         public int CustomerId => _customerId;
         public EOperationType EOperationType => _eAction;
