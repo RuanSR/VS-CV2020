@@ -36,8 +36,6 @@ namespace CVirtual.Views
         public SystemManagerForm()
         {
             InitializeComponent();
-            //this.DataGridViewEmployee.Columns[this.DataGridViewEmployee.Columns.Count-1].Name = "btnEditar";
-            //this.DataGridViewEmployee.Columns[this.DataGridViewEmployee.Columns.Count].Name = "btnDeletar";
             _presenter = new SystemManagerPresenter(this);
         }
 

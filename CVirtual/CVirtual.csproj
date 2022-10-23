@@ -194,6 +194,7 @@
     <Compile Include="Presenter\CustomerManagerPresenter.cs" />
     <Compile Include="Presenter\CustomerPresenter.cs" />
     <Compile Include="Presenter\EmployeDialogPresenter.cs" />
+    <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Presenter\SystemManagerPresenter.cs" />
     <Compile Include="Utils\ExtensionMethods\DataGridViewExtension.cs" />
     <Compile Include="Utils\Utils.cs" />
@@ -228,6 +229,7 @@
       <DependentUpon>CustomerManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interfaces\ICustomerView.cs" />
+    <Compile Include="Views\Interfaces\IMainView.cs" />
     <Compile Include="Views\SystemManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,11 +252,11 @@
     <Compile Include="Views\ActionTypeForm.Designer.cs">
       <DependentUpon>ActionTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmPrincipal.cs">
+    <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmPrincipal.Designer.cs">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <Compile Include="Views\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,8 +290,8 @@
     <EmbeddedResource Include="Views\ActionTypeForm.resx">
       <DependentUpon>ActionTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPrincipal.resx">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
