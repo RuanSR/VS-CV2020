@@ -38,18 +38,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripBar = new System.Windows.Forms.ToolStrip();
-            this.btnNovoCliente = new System.Windows.Forms.ToolStripButton();
+            this.btnAddCustomer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnLogin = new System.Windows.Forms.ToolStripButton();
+            this.btnAuth = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuBar = new System.Windows.Forms.MenuStrip();
-            this.btnSistema = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBoxPesquisa = new System.Windows.Forms.GroupBox();
-            this.rbInativos = new System.Windows.Forms.RadioButton();
-            this.rbAtivos = new System.Windows.Forms.RadioButton();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.dtgClientes = new System.Windows.Forms.DataGridView();
+            this.groupBoxSearth = new System.Windows.Forms.GroupBox();
+            this.rbStatusOff = new System.Windows.Forms.RadioButton();
+            this.rbStatusOn = new System.Windows.Forms.RadioButton();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
             this.btnDebitar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.DataGridViewImageColumn();
             this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,11 +62,11 @@
             this.StatusCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.lblStatusRegistro = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblUltimoBackup = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblLastBackup = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripBar.SuspendLayout();
             this.menuBar.SuspendLayout();
-            this.groupBoxPesquisa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
+            this.groupBoxSearth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,9 +75,9 @@
             this.toolStripBar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStripBar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnNovoCliente,
+            this.btnAddCustomer,
             this.toolStripSeparator1,
-            this.btnLogin,
+            this.btnAuth,
             this.toolStripSeparator2});
             this.toolStripBar.Location = new System.Drawing.Point(0, 25);
             this.toolStripBar.Name = "toolStripBar";
@@ -85,33 +85,33 @@
             this.toolStripBar.TabIndex = 0;
             this.toolStripBar.Text = "toolStripBar";
             // 
-            // btnNovoCliente
+            // btnAddCustomer
             // 
-            this.btnNovoCliente.Enabled = false;
-            this.btnNovoCliente.Image = global::CVirtual.Properties.Resources.add_user;
-            this.btnNovoCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnNovoCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNovoCliente.Name = "btnNovoCliente";
-            this.btnNovoCliente.Size = new System.Drawing.Size(109, 55);
-            this.btnNovoCliente.Text = "Novo Cliente";
-            this.btnNovoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNovoCliente.Click += new System.EventHandler(this.BtnNovoCliente_Click);
+            this.btnAddCustomer.Enabled = false;
+            this.btnAddCustomer.Image = global::CVirtual.Properties.Resources.add_user;
+            this.btnAddCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnAddCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(109, 55);
+            this.btnAddCustomer.Text = "Novo Cliente";
+            this.btnAddCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 58);
             // 
-            // btnLogin
+            // btnAuth
             // 
-            this.btnLogin.Image = global::CVirtual.Properties.Resources.login;
-            this.btnLogin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(55, 55);
-            this.btnLogin.Text = "Login";
-            this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            this.btnAuth.Image = global::CVirtual.Properties.Resources.login;
+            this.btnAuth.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnAuth.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAuth.Name = "btnAuth";
+            this.btnAuth.Size = new System.Drawing.Size(55, 55);
+            this.btnAuth.Text = "Login";
+            this.btnAuth.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAuth.Click += new System.EventHandler(this.BtnAuth_Click);
             // 
             // toolStripSeparator2
             // 
@@ -124,7 +124,7 @@
             this.menuBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSistema,
+            this.btnSystem,
             this.btnAbout});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
@@ -132,13 +132,13 @@
             this.menuBar.TabIndex = 1;
             this.menuBar.Text = "menuBar";
             // 
-            // btnSistema
+            // btnSystem
             // 
-            this.btnSistema.Enabled = false;
-            this.btnSistema.Name = "btnSistema";
-            this.btnSistema.Size = new System.Drawing.Size(67, 21);
-            this.btnSistema.Text = "Sistema";
-            this.btnSistema.Click += new System.EventHandler(this.BtnSistema_Click);
+            this.btnSystem.Enabled = false;
+            this.btnSystem.Name = "btnSystem";
+            this.btnSystem.Size = new System.Drawing.Size(67, 21);
+            this.btnSystem.Text = "Sistema";
+            this.btnSystem.Click += new System.EventHandler(this.BtnSystem_Click);
             // 
             // btnAbout
             // 
@@ -147,66 +147,66 @@
             this.btnAbout.Text = "Sobre";
             this.btnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
-            // groupBoxPesquisa
+            // groupBoxSearth
             // 
-            this.groupBoxPesquisa.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxPesquisa.Controls.Add(this.rbInativos);
-            this.groupBoxPesquisa.Controls.Add(this.rbAtivos);
-            this.groupBoxPesquisa.Controls.Add(this.txtPesquisa);
-            this.groupBoxPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxPesquisa.Enabled = false;
-            this.groupBoxPesquisa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxPesquisa.Location = new System.Drawing.Point(0, 83);
-            this.groupBoxPesquisa.Name = "groupBoxPesquisa";
-            this.groupBoxPesquisa.Size = new System.Drawing.Size(484, 81);
-            this.groupBoxPesquisa.TabIndex = 3;
-            this.groupBoxPesquisa.TabStop = false;
-            this.groupBoxPesquisa.Text = "Pesquisa";
+            this.groupBoxSearth.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxSearth.Controls.Add(this.rbStatusOff);
+            this.groupBoxSearth.Controls.Add(this.rbStatusOn);
+            this.groupBoxSearth.Controls.Add(this.txtSearch);
+            this.groupBoxSearth.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBoxSearth.Enabled = false;
+            this.groupBoxSearth.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxSearth.Location = new System.Drawing.Point(0, 83);
+            this.groupBoxSearth.Name = "groupBoxSearth";
+            this.groupBoxSearth.Size = new System.Drawing.Size(484, 81);
+            this.groupBoxSearth.TabIndex = 3;
+            this.groupBoxSearth.TabStop = false;
+            this.groupBoxSearth.Text = "Pesquisa";
             // 
-            // rbInativos
+            // rbStatusOff
             // 
-            this.rbInativos.AutoSize = true;
-            this.rbInativos.Location = new System.Drawing.Point(83, 53);
-            this.rbInativos.Name = "rbInativos";
-            this.rbInativos.Size = new System.Drawing.Size(74, 21);
-            this.rbInativos.TabIndex = 1;
-            this.rbInativos.Text = "Inativos";
-            this.rbInativos.UseVisualStyleBackColor = true;
-            this.rbInativos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
+            this.rbStatusOff.AutoSize = true;
+            this.rbStatusOff.Location = new System.Drawing.Point(83, 53);
+            this.rbStatusOff.Name = "rbStatusOff";
+            this.rbStatusOff.Size = new System.Drawing.Size(74, 21);
+            this.rbStatusOff.TabIndex = 1;
+            this.rbStatusOff.Text = "Inativos";
+            this.rbStatusOff.UseVisualStyleBackColor = true;
+            this.rbStatusOff.CheckedChanged += new System.EventHandler(this.RbStatus_CheckedChanged);
             // 
-            // rbAtivos
+            // rbStatusOn
             // 
-            this.rbAtivos.AutoSize = true;
-            this.rbAtivos.Checked = true;
-            this.rbAtivos.Location = new System.Drawing.Point(13, 53);
-            this.rbAtivos.Name = "rbAtivos";
-            this.rbAtivos.Size = new System.Drawing.Size(64, 21);
-            this.rbAtivos.TabIndex = 1;
-            this.rbAtivos.TabStop = true;
-            this.rbAtivos.Text = "Ativos";
-            this.rbAtivos.UseVisualStyleBackColor = true;
-            this.rbAtivos.CheckedChanged += new System.EventHandler(this.rbAtivos_CheckedChanged);
+            this.rbStatusOn.AutoSize = true;
+            this.rbStatusOn.Checked = true;
+            this.rbStatusOn.Location = new System.Drawing.Point(13, 53);
+            this.rbStatusOn.Name = "rbStatusOn";
+            this.rbStatusOn.Size = new System.Drawing.Size(64, 21);
+            this.rbStatusOn.TabIndex = 1;
+            this.rbStatusOn.TabStop = true;
+            this.rbStatusOn.Text = "Ativos";
+            this.rbStatusOn.UseVisualStyleBackColor = true;
+            this.rbStatusOn.CheckedChanged += new System.EventHandler(this.RbStatus_CheckedChanged);
             // 
-            // txtPesquisa
+            // txtSearch
             // 
-            this.txtPesquisa.BackColor = System.Drawing.Color.White;
-            this.txtPesquisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPesquisa.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPesquisa.Location = new System.Drawing.Point(3, 21);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(478, 25);
-            this.txtPesquisa.TabIndex = 0;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.TxtPesquisa_TextChanged);
+            this.txtSearch.BackColor = System.Drawing.Color.White;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSearch.Location = new System.Drawing.Point(3, 21);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(478, 25);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
-            // dtgClientes
+            // dataGridViewCustomers
             // 
-            this.dtgClientes.AllowUserToAddRows = false;
-            this.dtgClientes.AllowUserToDeleteRows = false;
+            this.dataGridViewCustomers.AllowUserToAddRows = false;
+            this.dataGridViewCustomers.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.NullValue = null;
-            this.dtgClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridViewCustomers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewCustomers.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewCustomers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,9 +215,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnDebitar,
             this.btnAdd,
             this.IdCliente,
@@ -237,13 +237,13 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgClientes.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dtgClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgClientes.EnableHeadersVisualStyles = false;
-            this.dtgClientes.GridColor = System.Drawing.Color.SlateGray;
-            this.dtgClientes.Location = new System.Drawing.Point(0, 164);
-            this.dtgClientes.Name = "dtgClientes";
-            this.dtgClientes.ReadOnly = true;
+            this.dataGridViewCustomers.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCustomers.EnableHeadersVisualStyles = false;
+            this.dataGridViewCustomers.GridColor = System.Drawing.Color.SlateGray;
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(0, 164);
+            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
+            this.dataGridViewCustomers.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,18 +251,18 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SlateGray;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dtgClientes.RowHeadersVisible = false;
-            this.dtgClientes.RowHeadersWidth = 49;
+            this.dataGridViewCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewCustomers.RowHeadersVisible = false;
+            this.dataGridViewCustomers.RowHeadersWidth = 49;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.dtgClientes.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dtgClientes.RowTemplate.Height = 35;
-            this.dtgClientes.Size = new System.Drawing.Size(484, 297);
-            this.dtgClientes.TabIndex = 4;
-            this.dtgClientes.Visible = false;
-            this.dtgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentClick);
-            this.dtgClientes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgClientes_CellContentDoubleClick);
+            this.dataGridViewCustomers.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewCustomers.RowTemplate.Height = 35;
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(484, 297);
+            this.dataGridViewCustomers.TabIndex = 4;
+            this.dataGridViewCustomers.Visible = false;
+            this.dataGridViewCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgCustomers_CellContentClick);
+            this.dataGridViewCustomers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgCustomers_CellContentDoubleClick);
             // 
             // btnDebitar
             // 
@@ -368,7 +368,7 @@
             this.statusBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatusRegistro,
-            this.lblUltimoBackup});
+            this.lblLastBackup});
             this.statusBar.Location = new System.Drawing.Point(0, 439);
             this.statusBar.Name = "statusBar";
             this.statusBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -384,12 +384,12 @@
             this.lblStatusRegistro.Size = new System.Drawing.Size(109, 17);
             this.lblStatusRegistro.Text = "Ultimo Registro: ";
             // 
-            // lblUltimoBackup
+            // lblLastBackup
             // 
-            this.lblUltimoBackup.Name = "lblUltimoBackup";
-            this.lblUltimoBackup.Size = new System.Drawing.Size(103, 17);
-            this.lblUltimoBackup.Text = "Último backup: ";
-            this.lblUltimoBackup.Visible = false;
+            this.lblLastBackup.Name = "lblLastBackup";
+            this.lblLastBackup.Size = new System.Drawing.Size(103, 17);
+            this.lblLastBackup.Text = "Último backup: ";
+            this.lblLastBackup.Visible = false;
             // 
             // FrmPrincipal
             // 
@@ -398,8 +398,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.statusBar);
-            this.Controls.Add(this.dtgClientes);
-            this.Controls.Add(this.groupBoxPesquisa);
+            this.Controls.Add(this.dataGridViewCustomers);
+            this.Controls.Add(this.groupBoxSearth);
             this.Controls.Add(this.toolStripBar);
             this.Controls.Add(this.menuBar);
             this.MainMenuStrip = this.menuBar;
@@ -408,14 +408,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caderno Virtual :: 2020 Edition";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
+            this.Load += new System.EventHandler(this.OnLoad);
             this.toolStripBar.ResumeLayout(false);
             this.toolStripBar.PerformLayout();
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
-            this.groupBoxPesquisa.ResumeLayout(false);
-            this.groupBoxPesquisa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
+            this.groupBoxSearth.ResumeLayout(false);
+            this.groupBoxSearth.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.ResumeLayout(false);
@@ -426,21 +426,21 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStripBar;
-        private System.Windows.Forms.ToolStripButton btnNovoCliente;
+        private System.Windows.Forms.ToolStripButton btnAddCustomer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnLogin;
+        private System.Windows.Forms.ToolStripButton btnAuth;
         private System.Windows.Forms.MenuStrip menuBar;
         private System.Windows.Forms.ToolStripMenuItem btnAbout;
-        private System.Windows.Forms.GroupBox groupBoxPesquisa;
-        private System.Windows.Forms.TextBox txtPesquisa;
-        private System.Windows.Forms.ToolStripMenuItem btnSistema;
-        private System.Windows.Forms.DataGridView dtgClientes;
+        private System.Windows.Forms.GroupBox groupBoxSearth;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ToolStripMenuItem btnSystem;
+        private System.Windows.Forms.DataGridView dataGridViewCustomers;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel lblStatusRegistro;
-        private System.Windows.Forms.ToolStripStatusLabel lblUltimoBackup;
+        private System.Windows.Forms.ToolStripStatusLabel lblLastBackup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.RadioButton rbInativos;
-        private System.Windows.Forms.RadioButton rbAtivos;
+        private System.Windows.Forms.RadioButton rbStatusOff;
+        private System.Windows.Forms.RadioButton rbStatusOn;
         private System.Windows.Forms.DataGridViewImageColumn btnDebitar;
         private System.Windows.Forms.DataGridViewImageColumn btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
